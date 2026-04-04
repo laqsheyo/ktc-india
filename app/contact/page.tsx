@@ -6,8 +6,8 @@ export default function Contact() {
 
       <p className="address">
         707-710 Paras Trinity, Maidawas Rd, Sector 63,<br />
-        Gurugram, Haryana 122098
-        <br> +917683005899 </br>
+        Gurugram, Haryana 122098<br />
+        Phone: <a href="tel:+917683005899">+91 76830 05899</a>
       </p>
 
       {/* GOOGLE MAP */}
