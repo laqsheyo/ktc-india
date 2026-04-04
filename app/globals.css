@@ -1,18 +1,21 @@
-body {
+/* RESET & BASE */
+html, body {
   margin: 0;
+  padding: 0;
   background: #000;
   color: #fff;
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-/* HEADER */
+/* NAVIGATION */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   position: fixed;
   top: 0;
   width: 100%;
@@ -25,13 +28,13 @@ nav a {
   color: #ccc;
   margin-left: 20px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   text-transform: uppercase;
   transition: 0.3s;
 }
 
 nav a:hover {
-  color: white;
+  color: #fff;
 }
 
 /* HERO SECTION */
@@ -43,7 +46,6 @@ nav a:hover {
   background: #000;
 }
 
-/* VIDEO LAYER */
 .hero-video {
   position: absolute;
   top: 0;
@@ -54,36 +56,30 @@ nav a:hover {
   z-index: 1;
 }
 
-/* AUDIO CONTROL BUTTON */
 .audio-toggle {
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 40px;
+  right: 40px;
   z-index: 100;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 30px;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 50px;
   cursor: pointer;
-  font-size: 12px;
-  backdrop-filter: blur(5px);
-  transition: 0.3s;
+  font-size: 11px;
+  font-weight: bold;
+  backdrop-filter: blur(10px);
 }
 
-.audio-toggle:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* SLIDER LAYER (Faded Overlay) */
-.slider {
+.slider-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 2;
-  pointer-events: none; /* Allows clicks to reach the audio button */
+  pointer-events: none;
 }
 
 .slide {
@@ -92,83 +88,87 @@ nav a:hover {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  filter: brightness(0.4); /* Darkens slider images so video shines through */
+  transition: opacity 2s ease-in-out;
+  filter: brightness(0.4);
 }
 
 .slide.active {
-  opacity: 0.5; /* Semi-transparent so video is visible behind images */
+  opacity: 0.6;
 }
 
-/* GENERAL SECTIONS */
+/* CONTENT SECTIONS */
 .section {
-  padding: 100px 20px;
-  max-width: 1200px;
+  padding: 80px 20px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.center {
-  text-align: center;
+.center { text-align: center; }
+
+.section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.section p {
+  color: #aaa;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 30px;
 }
 
 .section img {
   width: 100%;
-  max-width: 900px;
-  border-radius: 12px;
-  margin-top: 30px;
+  max-width: 850px;
+  border-radius: 8px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* NEWS SECTION */
-.news-item {
-  margin-bottom: 30px;
-  border-bottom: 1px solid #222;
-  padding-bottom: 15px;
-}
-
-.news-item span {
-  color: #666;
-  font-size: 13px;
+  margin: 20px auto;
 }
 
 /* CONTACT FORM */
-.contact form {
+.contact-form {
   max-width: 500px;
   margin: 0 auto;
 }
 
-.contact input, .contact textarea {
+.contact-form input, 
+.contact-form textarea {
   width: 100%;
   padding: 15px;
   margin-bottom: 15px;
   background: #111;
   border: 1px solid #333;
-  color: white;
-  border-radius: 5px;
+  color: #fff;
+  border-radius: 4px;
   box-sizing: border-box;
 }
 
 .btn-submit {
-  background: white;
-  color: black;
+  background: #fff;
+  color: #000;
   padding: 15px 40px;
   border: none;
-  border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
+  width: 100%;
   transition: 0.3s;
 }
 
 .btn-submit:hover {
-  background: #ddd;
+  background: #ccc;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-  header { flex-direction: column; padding: 10px; }
+/* FOOTER */
+footer {
+  padding: 50px;
+  text-align: center;
+  border-top: 1px solid #111;
+  color: #444;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  header { flex-direction: column; padding: 15px; }
   nav { margin-top: 10px; }
-  .hero { height: 70vh; }
-  .audio-toggle { bottom: 15px; right: 15px; padding: 8px 15px; }
+  .hero { height: 60vh; }
 }
