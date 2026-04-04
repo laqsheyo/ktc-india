@@ -5,62 +5,99 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* HEADER */
+/* HEADER - Fixed Spacing */
 header {
   display: flex;
   justify-content: space-between;
-  padding: 15px 20px;
+  align-items: center;
+  padding: 15px 30px;
+  background: #000;
   border-bottom: 1px solid #333;
 }
 
-/* HERO */
+h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Added spacing between links */
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 25px; 
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #aaa;
+}
+
+/* HERO SECTION */
 .hero {
   position: relative;
   height: 90vh;
+  width: 100%;
   overflow: hidden;
+  background: #000;
 }
 
-/* VIDEO (BACK) */
+/* VIDEO (BOTTOM LAYER) */
 .hero-video {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 1;
 }
 
-/* SLIDER (MIDDLE) */
+/* SLIDER (MIDDLE LAYER - Above Video) */
 .slide {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
   z-index: 2;
-  transition: opacity 1s ease;
+  transition: opacity 1.5s ease-in-out;
+  /* Add this if you want to see video through images: 
+     mix-blend-mode: screen; 
+  */
 }
 
 .slide.active {
   opacity: 1;
 }
 
-/* TEXT (TOP) */
+/* TEXT (TOP LAYER) */
 .hero-text {
   position: absolute;
-  z-index: 3;
+  z-index: 10; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  width: 100%;
 }
 
-/* SECTION */
+.hero-text h2 {
+  font-size: 48px;
+  margin: 0;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+/* CONTENT SECTIONS */
 .section {
-  padding: 30px;
+  padding: 60px 20px;
 }
 
 .section img {
   width: 100%;
+  max-width: 1000px;
   border-radius: 10px;
   margin-top: 20px;
 }
@@ -69,28 +106,44 @@ header {
   text-align: center;
 }
 
-/* CONTACT */
+/* CONTACT FORM */
 .contact input,
 .contact textarea {
   width: 90%;
-  max-width: 400px;
+  max-width: 450px;
   margin: 10px auto;
-  padding: 10px;
+  padding: 12px;
   display: block;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background: #111;
+  color: white;
 }
 
-/* BUTTON */
 .button {
-  padding: 10px 20px;
-  border-radius: 999px;
+  padding: 12px 30px;
+  border-radius: 50px;
   background: white;
   color: black;
   border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+  nav {
+    margin-top: 15px;
+  }
   .hero {
     height: 60vh;
+  }
+  .hero-text h2 {
+    font-size: 28px;
   }
 }
