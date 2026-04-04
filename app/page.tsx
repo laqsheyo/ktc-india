@@ -16,16 +16,15 @@ export default function Home() {
       <section className="hero">
 
         {/* VIDEO ONLY */}
-        <video
-          className="hero-video"
-          autoPlay
-          loop
-          muted   /* autoplay works only if muted */
-          playsInline
-          controls   /* THIS gives sound option */
-        >
-          <source src="/videos/hero.mp4" type="video/mp4" />
-        </video>
+<video
+  className="hero-video"
+  autoPlay
+  loop
+  muted
+  playsInline
+>
+  <source src="/videos/hero.mp4" type="video/mp4" />
+</video>
 
         {/* TEXT */}
         <div className="hero-text">
