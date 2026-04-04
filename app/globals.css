@@ -18,7 +18,6 @@ nav a {
   color: #ccc;
   margin-left: 15px;
   text-decoration: none;
-  font-size: 14px;
 }
 
 nav a:hover {
@@ -26,30 +25,60 @@ nav a:hover {
 }
 
 /* HERO */
+.hero {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+}
+
 .hero img {
+  position: absolute;
   width: 100%;
-  height: 60vh;
+  height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.hero img.active {
+  opacity: 1;
+}
+
+.hero-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 /* SECTION */
 .section {
-  padding: 20px;
+  padding: 30px;
 }
 
 .section img {
   width: 100%;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+/* CENTER TEXT */
+.center {
+  text-align: center;
 }
 
 /* NEWS */
 .news {
   padding: 20px;
-}
-
-.news p {
-  margin: 15px 0 5px;
 }
 
 .news span {
@@ -58,11 +87,6 @@ nav a:hover {
 }
 
 /* CONTACT */
-.contact {
-  padding: 20px;
-  text-align: center;
-}
-
 .contact input,
 .contact textarea {
   width: 90%;
@@ -75,7 +99,6 @@ nav a:hover {
 }
 
 .button {
-  margin-top: 10px;
   padding: 10px 20px;
   border-radius: 999px;
   background: white;
@@ -86,16 +109,7 @@ nav a:hover {
 
 /* MOBILE */
 @media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav {
-    margin-top: 10px;
-  }
-
-  .hero img {
-    height: 40vh;
+  .hero {
+    height: 60vh;
   }
 }
