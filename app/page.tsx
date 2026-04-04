@@ -11,7 +11,7 @@ export default function Home() {
       </header>
 
       <section className="hero">
-  <img src="/images/banner.jpg" alt="KTC TV" />
+  <img src="/images/banner.png" alt="KTC TV" />
 
   <div className="hero-content">
     <h1>Premium Electronics for India</h1>
