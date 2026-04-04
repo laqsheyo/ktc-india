@@ -4,6 +4,7 @@ export default function About() {
 
       {/* TITLE */}
       <section className="center section">
+        <img src="/images/1.jpg" alt="Office" />
         <h1>KTC India Display LLP</h1>
         <p>
           Based in Gurugram, Haryana<br />
@@ -14,6 +15,7 @@ export default function About() {
 
       {/* ABOUT */}
       <section className="center section">
+        <img src="/images/2.jpg" alt="About" />
         <h2>About Us</h2>
         <p>
           KTC India Display LLP is a professional services and sourcing company 
@@ -23,6 +25,7 @@ export default function About() {
 
       {/* LEADERSHIP */}
       <section className="center section">
+        <img src="/images/3.jpg" alt="Leadership" />
         <h2>Leadership</h2>
         <p><strong>Ajay Arora</strong></p>
         <p>35+ years experience in Consumer Electronics, IT & Automotive</p>
@@ -33,6 +36,7 @@ export default function About() {
 
       {/* INDUSTRY EXPERIENCE */}
       <section className="center section">
+        <img src="/images/4.jpg" alt="Brands" />
         <h2>Industry Experience</h2>
         <p>
           Worked with leading brands:<br />
@@ -48,6 +52,7 @@ export default function About() {
 
       {/* SERVICES */}
       <section className="center section">
+        <img src="/images/5.jpg" alt="Services" />
         <h2>Our Services</h2>
         <p>
           India Office Opening<br />
@@ -63,12 +68,14 @@ export default function About() {
 
       {/* BRAND */}
       <section className="center section">
+        <img src="/images/6.jpg" alt="Brand" />
         <h2>Brand</h2>
         <p>Registered Brand: <strong>ECLARA</strong></p>
       </section>
 
       {/* CERTIFICATIONS */}
       <section className="center section">
+        <img src="/images/7.jpg" alt="Certificates" />
         <h2>Certifications</h2>
         <p>
           ISO Certified Company<br />
@@ -81,6 +88,7 @@ export default function About() {
 
       {/* PARTNERS */}
       <section className="center section">
+        <img src="/images/8.jpg" alt="Partners" />
         <h2>Manufacturing Partners</h2>
         <p>
           Winsharp<br />
@@ -93,6 +101,7 @@ export default function About() {
 
       {/* CONTACT */}
       <section className="center section">
+        <img src="/images/9.jpg" alt="Contact" />
         <h2>Let’s Get In Touch</h2>
         <p>
           707, Paras Trinity,<br />
