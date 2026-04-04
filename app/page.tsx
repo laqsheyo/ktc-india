@@ -12,13 +12,6 @@ export default function Home() {
 
       <section className="hero">
   <img src="/images/banner.png" alt="KTC TV" />
-
-  <div className="hero-content">
-    <h1>Premium Electronics for India</h1>
-    <p>
-      Inspired by innovation. Designed for performance. Experience the future with KTC India.
-    </p>
-  </div>
 </section>
 
       <section className="products">
