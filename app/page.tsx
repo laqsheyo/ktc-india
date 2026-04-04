@@ -11,12 +11,16 @@ export default function Home() {
       </header>
 
       <section className="hero">
-        <h1>Premium Electronics for India</h1>
-        <p>
-          Inspired by innovation. Designed for performance. Experience the future with KTC India.
-        </p>
-        <button className="button">Explore Products</button>
-      </section>
+  <img src="/images/banner.jpg" alt="KTC TV" />
+
+  <div className="hero-content">
+    <h1>Premium Electronics for India</h1>
+    <p>
+      Inspired by innovation. Designed for performance. Experience the future with KTC India.
+    </p>
+    <button className="button">Explore Products</button>
+  </div>
+</section>
 
       <section className="products">
         <div className="card">
