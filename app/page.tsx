@@ -25,13 +25,6 @@ export default function Home() {
 >
   <source src="/videos/hero.mp4" type="video/mp4" />
 </video>
-
-        {/* TEXT */}
-        <div className="hero-text">
-          <h2>Innovative Displays</h2>
-          <p>Ultra-large screen, ultimate immersion</p>
-        </div>
-
       </section>
 
       {/* ABOUT */}
