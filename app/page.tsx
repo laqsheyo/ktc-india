@@ -4,12 +4,17 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [index, setIndex] = useState(0);
 
-  const images = ["/images/banner.png", "/images/slide2.pn", "/images/slide3.png"];
+  const images = [
+    "/images/banner.png",
+    "/images/slide2.png",
+    "/images/slide3.png",
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 3000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -24,16 +29,25 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* HERO SLIDER + VIDEO */}
+      {/* HERO */}
       <section className="hero">
-        {images.map((img, i) => (
-          <img key={i} src={img} className={i === index ? "active" : ""} />
-        ))}
+        {/* SLIDER */}
+        <div className="slider">
+          {images.map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              className={i === index ? "slide active" : "slide"}
+            />
+          ))}
+        </div>
 
-        <video autoPlay muted loop className="hero-video">
+        {/* VIDEO */}
+        <video autoPlay muted loop playsInline className="hero-video">
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
+        {/* TEXT */}
         <div className="hero-text">
           <h1>MINI LED TV</h1>
           <p>Ultra-large screen, ultimate immersion</p>
