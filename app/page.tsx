@@ -6,7 +6,7 @@ export default function Home() {
         <nav>
           <a href="#">Products</a>
           <a href="#">About</a>
-          <a href="#">Contact</a>
+          <a href="mailto:laqsheyo@gmail.com?subject=KTC Inquiry">Contact</a>
         </nav>
       </header>
 
@@ -18,9 +18,6 @@ export default function Home() {
     <p>
       Inspired by innovation. Designed for performance. Experience the future with KTC India.
     </p>
-    <a href="mailto:laqsheyo@gmail.com?subject=KTC Inquiry">
-  <button className="button">Contact Us</button>
-</a>
   </div>
 </section>
 
