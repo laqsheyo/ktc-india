@@ -17,7 +17,7 @@ export default function Home() {
 
       {/* ABOUT */}
       <section id="about" className="section">
-        <img src="/images/about.jpg" alt="About KTC" />
+        <img src="/images/about.jpeg" alt="About KTC" />
         <h2>About KTC</h2>
         <p>
           KTC is one of the first companies dedicated to the display terminal products in China, specializing in manufacturing of flat panel display terminal products.
@@ -26,7 +26,7 @@ export default function Home() {
 
       {/* PRODUCTS */}
       <section id="products" className="section">
-        <img src="/images/mirror.jpg" alt="Smart Mirror" />
+        <img src="/images/mirror.jpeg" alt="Smart Mirror" />
         <h2>Smart Mirror Display Products</h2>
         <p>
           Products include Smart Fitness Mirror, AR Smart Beauty Mirror, Smart Rehabilitation Mirror, Smart Fitting Mirror, Smart Bathroom Mirror, Smart Control Center etc.
@@ -34,7 +34,7 @@ export default function Home() {
       </section>
 
       <section className="section">
-        <img src="/images/mobile.jpg" alt="Mobile Display" />
+        <img src="/images/mobile.jpeg" alt="Mobile Display" />
         <h2>Mobile smart display products</h2>
         <p>
           Products include Mobile smart screen, Mobile smart TV etc.
@@ -42,7 +42,7 @@ export default function Home() {
       </section>
 
       <section className="section">
-        <img src="/images/tv.jpg" alt="TV" />
+        <img src="/images/tv.jpeg" alt="TV" />
         <h2>TV</h2>
         <p>
           The company currently offers a total of 16 sizes TV products ranging from 24 inches to 100 inches.
@@ -50,7 +50,7 @@ export default function Home() {
       </section>
 
       <section className="section">
-        <img src="/images/commercial.jpg" alt="Commercial Displays" />
+        <img src="/images/commercial.jpeg" alt="Commercial Displays" />
         <h2>Commercial Displays</h2>
         <p>
           Products include interactive flat panel display, splicing units, signage monitors, digital signage, commercial TV, gaming monitor etc.
@@ -58,7 +58,7 @@ export default function Home() {
       </section>
 
       <section className="section">
-        <img src="/images/medical.jpg" alt="Medical Displays" />
+        <img src="/images/medical.jpeg" alt="Medical Displays" />
         <h2>Medical Displays</h2>
         <p>
           Products include Diagnostic Display, Endoscopic Surgical Display, PACS Intergrated Display, Consultation Display Center, Ultrasound Image Display etc.
