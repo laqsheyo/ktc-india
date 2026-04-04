@@ -1,62 +1,36 @@
 "use client";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [index, setIndex] = useState(0);
-
-  const images = [
-    "/images/banner.jpg",
-    "/images/slide2.jpg",
-    "/images/slide3.jpg",
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
   return (
     <main>
       <header>
         <h1>KTC India</h1>
-       <nav>
-  <a href="#products">Products</a>
-  <a href="/about">About</a>
-  <a href="/contact">Contact</a>
-</nav>
+        <nav>
+          <a href="#products">Products</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
       </header>
 
       {/* HERO SECTION */}
       <section className="hero">
-        
-        {/* Layer 1: VIDEO (Background) */}
+
+        {/* VIDEO ONLY */}
         <video
           className="hero-video"
           autoPlay
           loop
-          muted
+          muted   /* autoplay works only if muted */
           playsInline
+          controls   /* THIS gives sound option */
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* Layer 2: SLIDER (Over Video) */}
-        {images.map((img, i) => (
-          <img
-            key={i}
-            src={img}
-            alt={`Slide ${i}`}
-            className={i === index ? "slide active" : "slide"}
-          />
-        ))}
-
-        {/* Layer 3: TEXT (Top) */}
+        {/* TEXT */}
         <div className="hero-text">
-           <h2>Innovative Displays</h2>
-           <p>Ultra-large screen, ultimate immersion</p>
+          <h2>Innovative Displays</h2>
+          <p>Ultra-large screen, ultimate immersion</p>
         </div>
 
       </section>
@@ -68,38 +42,38 @@ export default function Home() {
           KTC is one of the first companies dedicated to display terminal products in China, 
           specializing in the manufacturing of flat panel display terminal products.
         </p>
-        <img src="/images/about.jpg" alt="About KTC" />
+        <img src="/images/about.jpg" />
       </section>
 
       {/* PRODUCTS */}
       <section id="products" className="section center">
         <h2>Smart Mirror Display Products</h2>
         <p>Fitness Mirrors, AR Beauty Mirrors, and Smart Bathroom solutions.</p>
-        <img src="/images/mirror.jpg" alt="Smart Mirror" />
+        <img src="/images/mirror.jpg" />
       </section>
 
       <section className="section center">
         <h2>Mobile Smart Displays</h2>
         <p>Portable smart screens and mobile TV entertainment.</p>
-        <img src="/images/mobile.jpg" alt="Mobile Display" />
+        <img src="/images/mobile.jpg" />
       </section>
 
       <section className="section center">
         <h2>TV</h2>
         <p>Ranging from 24 inches to 100 inches with cutting-edge technology.</p>
-        <img src="/images/tv.jpg" alt="KTC TV" />
+        <img src="/images/tv.jpg" />
       </section>
 
       <section className="section center">
         <h2>Commercial Displays</h2>
         <p>Interactive flat panels, signage monitors, and gaming monitors.</p>
-        <img src="/images/commercial.jpg" alt="Commercial Display" />
+        <img src="/images/commercial.jpg" />
       </section>
 
       <section className="section center">
         <h2>Medical Displays</h2>
         <p>Professional diagnostic and surgical display solutions.</p>
-        <img src="/images/medical.jpg" alt="Medical Display" />
+        <img src="/images/medical.jpg" />
       </section>
 
       {/* NEWS */}

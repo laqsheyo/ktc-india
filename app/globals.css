@@ -9,6 +9,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 15px 20px;
   border-bottom: 1px solid #333;
   flex-wrap: wrap;
@@ -18,13 +19,14 @@ nav a {
   color: #ccc;
   margin-left: 15px;
   text-decoration: none;
+  font-size: 14px;
 }
 
 nav a:hover {
   color: white;
 }
 
-/* HERO */
+/* HERO (VIDEO ONLY) */
 .hero {
   position: relative;
   height: 90vh;
@@ -32,34 +34,29 @@ nav a:hover {
 }
 
 .hero-video {
-  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
 }
 
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  z-index: 2;
-  transition: opacity 1s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
-}
-
+/* TEXT ON VIDEO */
 .hero-text {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.hero-text h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 16px;
+  color: #ddd;
 }
 
 /* SECTION */
@@ -68,9 +65,11 @@ nav a:hover {
 }
 
 .section img {
+  display: block;
+  margin: 20px auto;
   width: 100%;
+  max-width: 800px;
   border-radius: 10px;
-  margin-top: 20px;
 }
 
 .center {
@@ -87,7 +86,7 @@ nav a:hover {
   font-size: 12px;
 }
 
-/* CONTACT FORM (HOME PAGE) */
+/* CONTACT (HOME) */
 .contact input,
 .contact textarea {
   width: 90%;
@@ -113,10 +112,6 @@ nav a:hover {
 .contact-page {
   padding: 40px 20px;
   text-align: center;
-}
-
-.contact-page h1 {
-  margin-bottom: 10px;
 }
 
 .address {
@@ -162,12 +157,7 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-  .hero {
-    height: 60vh;
-  }
-}
+/* ABOUT PAGE */
 .about-page {
   padding: 20px;
 }
@@ -190,43 +180,44 @@ nav a:hover {
   color: white;
   text-decoration: underline;
 }
-/* ABOUT SLIDER */
-.about-slider {
-  position: relative;
+
+/* ABOUT IMAGE */
+.about-img {
+  display: block;
+  margin: 20px auto;
   width: 100%;
-  height: 300px;
-  overflow: hidden;
+  max-width: 800px;
+  border-radius: 10px;
 }
 
-.about-slide {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ARROWS */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  font-size: 30px;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-.left {
-  left: 10px;
-}
-
-.right {
-  right: 10px;
-}
+/* ABOUT TITLE */
 .about-title {
   font-size: 42px;
   text-decoration: underline;
   text-underline-offset: 8px;
   margin-bottom: 15px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  .hero {
+    height: 60vh;
+  }
+
+  .hero-text h2 {
+    font-size: 24px;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+  }
 }
