@@ -31,12 +31,12 @@ nav a:hover {
   overflow: hidden;
 }
 
-/* SLIDER */
+/* SLIDER (TOP LAYER BELOW TEXT) */
 .slider {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 2; /* IMPORTANT */
 }
 
 .slide {
@@ -45,24 +45,24 @@ nav a:hover {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 1s ease-in-out;
 }
 
 .slide.active {
   opacity: 1;
 }
 
-/* VIDEO */
+/* VIDEO (LOWEST LAYER) */
 .hero-video {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 2;
-  opacity: 0.3;
+  z-index: 1; /* BELOW slider */
+  opacity: 0.25; /* LIGHT effect only */
 }
 
-/* TEXT */
+/* TEXT (TOP) */
 .hero-text {
   position: absolute;
   z-index: 3;
