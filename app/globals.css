@@ -224,3 +224,9 @@ nav a:hover {
 .right {
   right: 10px;
 }
+.about-title {
+  font-size: 42px;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  margin-bottom: 15px;
+}
