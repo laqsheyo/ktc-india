@@ -4,7 +4,7 @@ export default function About() {
 
       {/* ABOUT */}
       <section className="section center">
-        <h2>About Us</h2>
+        <h1>About Us</h1>
         <p>
           KTC India Display LLP is a professional services and sourcing company focused on consumer electronics, IT, and related industries. Based in Gurugram, the company operates as a strategic hub, helping brands establish and grow their presence in India.
         </p>
