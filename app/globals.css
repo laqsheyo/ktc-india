@@ -9,6 +9,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 15px 20px;
   border-bottom: 1px solid #333;
   flex-wrap: wrap;
@@ -18,6 +19,7 @@ nav a {
   color: #ccc;
   margin-left: 15px;
   text-decoration: none;
+  font-size: 14px;
 }
 
 nav a:hover {
@@ -31,12 +33,26 @@ nav a:hover {
   overflow: hidden;
 }
 
-/* SLIDER (TOP LAYER BELOW TEXT) */
-.slider {
+/* VIDEO (BACKGROUND - LOWEST) */
+.hero-video {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2; /* IMPORTANT */
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.25;
+}
+
+/* SLIDER (ABOVE VIDEO) */
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
 .slide {
@@ -52,17 +68,7 @@ nav a:hover {
   opacity: 1;
 }
 
-/* VIDEO (LOWEST LAYER) */
-.hero-video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1; /* BELOW slider */
-  opacity: 0.25; /* LIGHT effect only */
-}
-
-/* TEXT (TOP) */
+/* TEXT (TOP LAYER) */
 .hero-text {
   position: absolute;
   z-index: 3;
@@ -72,9 +78,19 @@ nav a:hover {
   text-align: center;
 }
 
+.hero-text h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  color: #ddd;
+}
+
 /* SECTION */
 .section {
-  padding: 30px;
+  padding: 30px 20px;
 }
 
 .section img {
@@ -83,6 +99,7 @@ nav a:hover {
   margin-top: 20px;
 }
 
+/* CENTER TEXT */
 .center {
   text-align: center;
 }
@@ -90,6 +107,10 @@ nav a:hover {
 /* NEWS */
 .news {
   padding: 20px;
+}
+
+.news p {
+  margin: 15px 0 5px;
 }
 
 .news span {
@@ -116,11 +137,29 @@ nav a:hover {
   color: black;
   border: none;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
   .hero {
     height: 60vh;
+  }
+
+  .hero-text h1 {
+    font-size: 24px;
+  }
+
+  .hero-text p {
+    font-size: 14px;
   }
 }
