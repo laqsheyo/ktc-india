@@ -18,7 +18,9 @@ export default function Home() {
     <p>
       Inspired by innovation. Designed for performance. Experience the future with KTC India.
     </p>
-    <button className="button">Explore Products</button>
+    <a href="mailto:laqsheyo@gmail.com?subject=KTC Inquiry">
+  <button className="button">Contact Us</button>
+</a>
   </div>
 </section>
 
@@ -36,6 +38,17 @@ export default function Home() {
           <p>High performance display panels built for next-gen users.</p>
         </div>
       </section>
+      <section className="contact">
+  <h2>Contact Us</h2>
+
+  <form action="https://formsubmit.co/laqsheyo@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
+
+    <button type="submit" className="button">Send Message</button>
+  </form>
+</section>
     </main>
   );
 }

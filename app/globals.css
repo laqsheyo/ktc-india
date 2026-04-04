@@ -65,3 +65,18 @@ nav a:hover {
   padding: 20px;
   border-radius: 16px;
 }
+.contact {
+  padding: 40px;
+  text-align: center;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  display: block;
+  border-radius: 8px;
+  border: none;
+}
