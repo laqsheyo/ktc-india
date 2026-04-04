@@ -25,7 +25,7 @@ export default function Home() {
         <nav>
           <a href="#products">Products</a>
           <a href="#about">About</a>
-          <a href="mailto:laqsheyo@gmail.com">Contact</a>
+          <a href="/contact">Contact</a>
         </nav>
       </header>
 
