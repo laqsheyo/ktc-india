@@ -22,11 +22,11 @@ export default function Home() {
     <main>
       <header>
         <h1>KTC India</h1>
-        <nav>
-          <a href="#products">Products</a>
-          <a href="#about">About</a>
-          <a href="/contact">Contact</a>
-        </nav>
+       <nav>
+  <a href="#products">Products</a>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+</nav>
       </header>
 
       {/* HERO SECTION */}
