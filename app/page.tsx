@@ -52,12 +52,6 @@ export default function Home() {
           />
         ))}
 
-        {/* TEXT */}
-        <div className="hero-text">
-          <h1>MINI LED TV</h1>
-          <p>Ultra-large screen, ultimate immersion</p>
-        </div>
-
       </section>
 
       {/* ABOUT */}
