@@ -5,9 +5,9 @@ export default function Home() {
   const [index, setIndex] = useState(0);
 
   const images = [
-    "/images/banner.png",
-    "/images/slide2.png",
-    "/images/slide3.png",
+    "/images/banner.jpg",
+    "/images/slide2.jpg",
+    "/images/slide3.jpg",
   ];
 
   useEffect(() => {
@@ -25,12 +25,25 @@ export default function Home() {
         <nav>
           <a href="#products">Products</a>
           <a href="#about">About</a>
-          <a href="mailto:laqsheyo@gmail.com?subject=KTC Inquiry">Contact</a>
+          <a href="mailto:laqsheyo@gmail.com">Contact</a>
         </nav>
       </header>
 
       {/* HERO */}
       <section className="hero">
+
+        {/* VIDEO BACKGROUND */}
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+
+        {/* SLIDER */}
         {images.map((img, i) => (
           <img
             key={i}
@@ -39,10 +52,12 @@ export default function Home() {
           />
         ))}
 
+        {/* TEXT */}
         <div className="hero-text">
           <h1>MINI LED TV</h1>
           <p>Ultra-large screen, ultimate immersion</p>
         </div>
+
       </section>
 
       {/* ABOUT */}
@@ -51,7 +66,7 @@ export default function Home() {
         <p>
           KTC is one of the first companies dedicated to the display terminal products in China, specializing in manufacturing of flat panel display terminal products.
         </p>
-        <img src="/images/about.jpeg" />
+        <img src="/images/about.jpg" />
       </section>
 
       {/* PRODUCTS */}
@@ -60,7 +75,7 @@ export default function Home() {
         <p>
           Products include Smart Fitness Mirror, AR Smart Beauty Mirror, Smart Rehabilitation Mirror, Smart Fitting Mirror, Smart Bathroom Mirror, Smart Control Center etc.
         </p>
-        <img src="/images/mirror.jpeg" />
+        <img src="/images/mirror.jpg" />
       </section>
 
       <section className="section center">
@@ -68,7 +83,7 @@ export default function Home() {
         <p>
           Products include Mobile smart screen, Mobile smart TV etc.
         </p>
-        <img src="/images/mobile.jpeg" />
+        <img src="/images/mobile.jpg" />
       </section>
 
       <section className="section center">
@@ -76,7 +91,7 @@ export default function Home() {
         <p>
           The company currently offers a total of 16 sizes TV products ranging from 24 inches to 100 inches.
         </p>
-        <img src="/images/tv.jpeg" />
+        <img src="/images/tv.jpg" />
       </section>
 
       <section className="section center">
@@ -84,7 +99,7 @@ export default function Home() {
         <p>
           Products include interactive flat panel display, splicing units, signage monitors, digital signage, commercial TV, gaming monitor etc.
         </p>
-        <img src="/images/commercial.jpeg" />
+        <img src="/images/commercial.jpg" />
       </section>
 
       <section className="section center">
@@ -92,7 +107,7 @@ export default function Home() {
         <p>
           Products include Diagnostic Display, Endoscopic Surgical Display, PACS Intergrated Display, Consultation Display Center, Ultrasound Image Display etc.
         </p>
-        <img src="/images/medical.jpeg" />
+        <img src="/images/medical.jpg" />
       </section>
 
       {/* NEWS */}
