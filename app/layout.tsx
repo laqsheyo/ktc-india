@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export default function RootLayout({
   children,
 }: {
@@ -5,11 +7,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <head>
+        <title>KTC India</title>
+        <meta
+          name="description"
+          content="KTC India Display LLP official website"
+        />
 
-        {children}
-
-        {/* CHATBASE SCRIPT */}
+        {/* ✅ CHATBASE SCRIPT (SAFE PLACE) */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -29,7 +34,7 @@ export default function RootLayout({
                 const onLoad = function(){
                   const script = document.createElement("script");
                   script.src = "https://www.chatbase.co/embed.min.js";
-                  script.id = "Csa19KwvsbwSZ8nF8w1i6";  // ✅ YOUR ID ALREADY ADDED
+                  script.id = "Csa19KwvsbwSZ8nF8w1i6";
                   script.domain = "www.chatbase.co";
                   document.body.appendChild(script);
                 };
@@ -39,7 +44,11 @@ export default function RootLayout({
             `,
           }}
         />
+      </head>
 
+      {/* ✅ KEEP YOUR ORIGINAL BODY */}
+      <body className="bg-black text-white">
+        {children}
       </body>
     </html>
   );
