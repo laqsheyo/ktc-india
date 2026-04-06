@@ -3,7 +3,6 @@
 export default function Home() {
   return (
     <main>
-      {/* HEADER */}
       <header>
         <h1>KTC India</h1>
 
@@ -19,7 +18,6 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* HERO VIDEO */}
       <section className="hero">
         <video
           className="hero-video"
@@ -31,13 +29,11 @@ export default function Home() {
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* 🔥 WATERMARK TEXT */}
         <div className="hero-overlay">
           <h2>TECHNOLOGY & INNOVATION</h2>
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="footer">
         <p>&copy; 2026 KTC India. All rights reserved.</p>
       </footer>

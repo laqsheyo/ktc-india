@@ -16,10 +16,10 @@ export default function RootLayout({
         />
       </head>
 
-      <body className="bg-black text-white">
+      <body>
         {children}
 
-        {/* ✅ CHATBASE SCRIPT (CORRECT WAY FOR NEXT.JS) */}
+        {/* CHATBASE */}
         <Script id="chatbase-script" strategy="afterInteractive">
           {`
             (function(){
@@ -47,7 +47,6 @@ export default function RootLayout({
             })();
           `}
         </Script>
-
       </body>
     </html>
   );
