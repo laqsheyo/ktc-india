@@ -3,49 +3,39 @@ import { useEffect, useState } from "react";
 
 export default function AboutUs() {
   const [index, setIndex] = useState(0);
-
-  const images = [
-    "/images/s1.jpg",
-    "/images/s2.jpg",
-    "/images/s3.jpg",
-    "/images/s4.jpg",
-    "/images/s5.jpg",
-  ];
+  const images = ["/images/s1.jpg", "/images/s2.jpg", "/images/s3.jpg", "/images/s4.jpg", "/images/s5.jpg"];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 4000);
-
     return () => clearInterval(interval);
   }, [images.length]);
 
-  const next = () => {
-    setIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prev = () => {
-    setIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
   return (
-    <main className="about-page">
-
+    <div className="white-page-theme">
       <section className="section center">
         <h2>Leadership</h2>
-        <p>
+        <p className="max-width-text">
           The company is led by experienced professionals. Ajay Arora brings over 35 years of expertise across consumer electronics, IT, and automotive sectors, while Laqshay Arora contributes strong experience in operations and marketing.
         </p>
-        <img src="/images/3.jpg" className="about-img" />
+        <img src="/images/3.jpg" className="about-img" alt="Leadership" />
       </section>
 
       <section className="section center">
         <h2>Industry Experience</h2>
-        <p>
+        <p className="max-width-text">
           KTC India has worked with leading brands such as Onida, AMKETTE, INTEX, BEETEL, PGEL, MATATA, and ELISTA.
         </p>
-        <img src="/images/4.jpg" className="about-img" />
+        <img src="/images/4.jpg" className="about-img" alt="Experience" />
       </section>
-    </main>
+
+      <section className="section center">
+        <h2>Our Showroom</h2>
+        <div className="slider-container">
+          <img src={images[index]} className="slider-img" alt="Showroom" />
+        </div>
+      </section>
+    </div>
   );
 }

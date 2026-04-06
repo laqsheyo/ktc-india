@@ -106,3 +106,50 @@ nav a:hover {
 .partners-img img:hover {
   filter: grayscale(0);
 }
+/* Ensure content doesn't get hidden behind the sticky header */
+#page-wrapper {
+  min-height: calc(100vh - 75px);
+}
+
+.white-page-theme {
+  background: white !important;
+  color: black !important;
+  padding: 60px 20px;
+}
+
+.max-width-text {
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  line-height: 1.6;
+}
+
+.about-img {
+  max-width: 600px;
+  width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.centered-list {
+  display: inline-block;
+  text-align: left;
+  font-size: 18px;
+}
+
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button {
+  background: #000;
+  color: #fff;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

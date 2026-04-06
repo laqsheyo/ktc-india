@@ -1,28 +1,20 @@
 export default function Partners() {
   return (
-    <main className="partners-page-new">
-
+    <div className="white-page-theme center">
       <h1>Manufacturing Partners</h1>
-
-      {/* IMAGE */}
       <div className="partners-img">
-        <img src="/images/mp.jpg" alt="Manufacturing Partners" />
+        <img src="/images/mp.jpg" alt="Manufacturing Partners" style={{maxWidth: '800px', width: '100%'}} />
       </div>
-
-      {/* TEXT */}
-      <p>
-        KTC India Display LLP collaborates with leading manufacturing partners
-        to ensure high-quality production, scalability, and reliability.
+      <p className="max-width-text" style={{margin: '20px auto'}}>
+        KTC India Display LLP collaborates with leading manufacturing partners to ensure high-quality production, scalability, and reliability.
       </p>
-
-      <ul>
+      <ul className="centered-list">
         <li>Winsharp</li>
         <li>PG</li>
         <li>Dixon</li>
         <li>Genus</li>
         <li>Zetwerk</li>
       </ul>
-
-    </main>
+    </div>
   );
 }
