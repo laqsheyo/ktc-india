@@ -1,16 +1,6 @@
 export default function About() {
   return (
     <main className="about-page">
-
-      {/* ABOUT */}
-      <section className="section center">
-        <h1 className="about-title">About Us</h1>
-        <p>
-          KTC India Display LLP is a professional services and sourcing company focused on consumer electronics, IT, and related industries. Based in Gurugram, the company operates as a strategic hub, helping brands establish and grow their presence in India.
-        </p>
-        <img src="/images/2.jpg" className="about-img" />
-      </section>
-
       {/* LEADERSHIP */}
       <section className="section center">
         <h2>Leadership</h2>
@@ -19,25 +9,6 @@ export default function About() {
         </p>
         <img src="/images/3.jpg" className="about-img" />
       </section>
-
-      {/* INDUSTRY EXPERIENCE */}
-      <section className="section center">
-        <h2>Industry Experience</h2>
-        <p>
-          KTC India has worked with leading brands such as Onida, AMKETTE, INTEX, BEETEL, PGEL, MATATA, and ELISTA, showcasing strong industry relationships and execution capabilities.
-        </p>
-        <img src="/images/4.jpg" className="about-img" />
-      </section>
-
-      {/* SERVICES */}
-      <section className="section center">
-        <h2>Our Services</h2>
-        <p>
-          The company provides end-to-end support including India office setup, sales and business development, product and vendor development, financial support, operational assistance, marketing, and post-sales services.
-        </p>
-        <img src="/images/5.jpg" className="about-img" />
-      </section>
-
       {/* CERTIFICATIONS */}
       <section className="section center">
         <h2>Certifications</h2>
@@ -46,16 +17,6 @@ export default function About() {
         </p>
         <img src="/images/7.jpg" className="about-img" />
       </section>
-
-      {/* PARTNERS */}
-      <section className="section center">
-        <h2>Manufacturing Partners</h2>
-        <p>
-          The company works with trusted partners such as Winsharp, PG, Dixon, Genus, and Zetwerk, enabling efficient manufacturing, strong quality control, and scalable production.
-        </p>
-        <img src="/images/8.jpg" className="about-img" />
-      </section>
-
       {/* CONTACT */}
       <section className="section center">
         <h2>Let’s Get In Touch</h2>
