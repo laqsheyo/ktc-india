@@ -9,6 +9,7 @@ export default function About() {
         </p>
         <img src="/images/3.jpg" className="about-img" />
       </section>
+
       {/* INDUSTRY EXPERIENCE */}
       <section className="section center">
         <h2>Industry Experience</h2>
@@ -25,6 +26,16 @@ export default function About() {
         </p>
         <img src="/images/7.jpg" className="about-img" />
       </section>
+
+      {/* PARTNERS */}
+      <section className="section center">
+        <h2>Manufacturing Partners</h2>
+        <p>
+          The company works with trusted partners such as Winsharp, PG, Dixon, Genus, and Zetwerk, enabling efficient manufacturing, strong quality control, and scalable production.
+        </p>
+        <img src="/images/8.jpg" className="about-img" />
+      </section>
+
       {/* CONTACT */}
       <section className="section center">
         <h2>Let’s Get In Touch</h2>
