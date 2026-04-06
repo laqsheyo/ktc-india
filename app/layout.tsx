@@ -17,6 +17,25 @@ export default function RootLayout({
       </head>
 
       <body>
+
+        {/* 🔥 GLOBAL HEADER (VISIBLE ON ALL PAGES) */}
+        <header>
+          <h1>KTC India</h1>
+
+          <nav>
+            <a href="/">Home</a>
+            <a href="/about-us">About Us</a>
+            <a href="/promoters">Promoters</a>
+            <a href="/consulting-assignments">Consulting</a>
+            <a href="/certifications">Certifications</a>
+            <a href="/brands">Brands</a>
+            <a href="/showroom">Showroom</a>
+            <a href="/partners">Partners</a>
+            <a href="/contact">Contact Us</a>
+          </nav>
+        </header>
+
+        {/* PAGE CONTENT */}
         {children}
 
         {/* CHATBASE */}
@@ -31,7 +50,7 @@ export default function RootLayout({
                 window.chatbase = new Proxy(window.chatbase, {
                   get(target, prop){
                     if(prop === "q"){return target.q}
-                    return (...args) => target(prop, ...args)
+                    return (...args)=>target(prop,...args)
                   }
                 });
               }
@@ -47,6 +66,7 @@ export default function RootLayout({
             })();
           `}
         </Script>
+
       </body>
     </html>
   );

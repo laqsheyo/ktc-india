@@ -4,31 +4,25 @@ export default function Promoters() {
   return (
     <main className="promoters-page">
 
-      {/* TOP IMAGE */}
+      {/* IMAGE */}
       <div className="promo-top">
         <img src="/images/se.jpg" alt="Office" />
       </div>
 
-      {/* MAIN SECTION */}
-      <section className="promo-section">
+      {/* CONTENT */}
+      <div className="promo-content-center">
 
-        {/* LEFT IMAGE */}
-        <div className="promo-image">
-          <img src="/images/3.jpg" alt="Display Setup" />
-        </div>
+        <img src="/images/3.jpg" className="promo-img" />
 
-        {/* RIGHT TEXT */}
-        <div className="promo-text">
-          <h1>KTC India Display LLP</h1>
+        <h2>KTC India Display LLP</h2>
 
-          <ul>
-            <li>Based in Gurugram, Haryana</li>
-            <li>Close proximity to New Delhi Airport</li>
-            <li>Strategic hub for business operations in India</li>
-          </ul>
-        </div>
+        <ul>
+          <li>Based in Gurugram, Haryana</li>
+          <li>Close proximity to New Delhi Airport</li>
+          <li>Strategic hub for business operations in India</li>
+        </ul>
 
-      </section>
+      </div>
 
     </main>
   );

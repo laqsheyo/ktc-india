@@ -37,18 +37,19 @@ nav {
 }
 
 nav a {
-  color: #ccc !important;
+  color: #ccc;
   text-decoration: none;
   font-size: 14px;
   transition: 0.3s;
 }
 
-nav a:visited {
-  color: #ccc;
-}
-
 nav a:hover {
   color: white;
+}
+
+/* ================= MAIN ================= */
+main {
+  padding-top: 20px;
 }
 
 /* ================= HERO ================= */
@@ -78,7 +79,6 @@ nav a:hover {
   font-size: 60px;
   color: rgba(255, 255, 255, 0.25);
   letter-spacing: 6px;
-  text-transform: uppercase;
 }
 
 /* ================= COMMON ================= */
@@ -90,139 +90,49 @@ nav a:hover {
   text-align: center;
 }
 
-.about-title {
-  font-size: 40px;
-  margin-bottom: 15px;
-}
-
-/* ================= SLIDER ================= */
-.slider-box {
-  position: relative;
-  max-width: 900px;
-  margin: 30px auto;
-  overflow: hidden;
-}
-
-.slider-img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  font-size: 28px;
-  padding: 10px 14px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.arrow.left { left: 15px; }
-.arrow.right { right: 15px; }
-
-/* ================= FOOTER ================= */
-.footer {
-  padding: 20px;
-  text-align: center;
-  border-top: 1px solid #333;
-}
-
-/* ================= CONTACT ================= */
-.contact-page {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.address {
-  color: #ccc;
-  margin-bottom: 20px;
-}
-
-.map-container {
-  margin: 20px auto;
-  max-width: 900px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.directions-btn {
-  display: inline-block;
-  margin: 20px 0;
-  padding: 12px 25px;
-  background: white;
-  color: black;
-  border-radius: 999px;
-  text-decoration: none;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 90%;
-  max-width: 400px;
-  margin: 10px auto;
-  padding: 12px;
-  display: block;
-  border-radius: 8px;
-  border: none;
-}
-
-/* ================= PROMOTERS (NEW) ================= */
-.promoters-page {
+/* ================= WHITE PAGES ================= */
+.promoters-page,
+.consulting-page-new,
+.cert-page-one,
+.cert-page-two,
+.partners-page-new,
+.partners-page-flex {
   background: #fff;
   color: #000;
+  min-height: 100vh;
+  text-align: center;
 }
 
+/* ================= PROMOTERS ================= */
 .promo-top img {
   width: 100%;
   height: 350px;
   object-fit: cover;
 }
 
-.promo-section {
-  display: flex;
-  gap: 40px;
-  padding: 50px 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+.promo-content-center {
+  padding: 40px 20px;
 }
 
-.promo-image img {
-  max-width: 500px;
+.promo-img {
   width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
   border-radius: 10px;
 }
 
-.promo-text {
-  max-width: 500px;
+.promo-content-center ul {
+  display: inline-block;
+  text-align: left;
+  margin-top: 10px;
 }
 
-.promo-text h1 {
-  font-size: 36px;
-  margin-bottom: 15px;
-}
-
-.promo-text li {
-  margin-bottom: 10px;
-}
-
-/* ================= CONSULTING (NEW IMAGE VERSION) ================= */
-.consulting-page-new {
-  background: #fff;
-  color: #000;
-  padding: 40px 20px;
-  text-align: center;
-}
-
+/* ================= CONSULTING ================= */
 .consulting-image img {
   width: 100%;
   max-width: 900px;
+  margin: 20px auto;
   border-radius: 10px;
-  margin-bottom: 30px;
 }
 
 .consulting-content {
@@ -231,16 +141,11 @@ nav a:hover {
   text-align: left;
 }
 
-.consulting-content li {
-  margin-bottom: 10px;
-}
-
-/* ================= CERTIFICATIONS (IMAGE VERSION) ================= */
-.cert-page-one,
-.cert-page-two {
-  background: #fff;
-  color: #000;
-  padding: 40px 20px;
+/* ================= CERTIFICATIONS ================= */
+.cert-img img {
+  max-width: 400px;
+  margin: 20px auto;
+  border-radius: 10px;
 }
 
 .cert-flex {
@@ -248,21 +153,13 @@ nav a:hover {
   gap: 40px;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
 }
 
-.cert-img img {
+/* ================= PARTNERS ================= */
+.partners-img img {
   max-width: 400px;
-  width: 100%;
+  margin: 20px auto;
   border-radius: 10px;
-}
-
-/* ================= PARTNERS (IMAGE VERSION) ================= */
-.partners-page-new,
-.partners-page-flex {
-  background: #fff;
-  color: #000;
-  padding: 40px 20px;
 }
 
 .partners-flex {
@@ -270,25 +167,41 @@ nav a:hover {
   gap: 40px;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
 }
 
-.partners-img img {
-  max-width: 400px;
-  width: 100%;
+/* ================= CONTACT ================= */
+.contact-page {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.map-container {
+  max-width: 900px;
+  margin: auto;
   border-radius: 10px;
+  overflow: hidden;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
-  .hero { height: 60vh; }
+  .hero {
+    height: 60vh;
+  }
 
   .hero-overlay h2 {
     font-size: 28px;
-    letter-spacing: 3px;
   }
 
-  .promo-section,
   .cert-flex,
   .partners-flex {
     flex-direction: column;
