@@ -1,18 +1,18 @@
-/* RESET */
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BODY */
+/* ================= BODY ================= */
 body {
   background: #000;
   color: #fff;
   font-family: Arial, sans-serif;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 header {
   position: sticky;
   top: 0;
@@ -28,7 +28,7 @@ header {
   flex-wrap: wrap;
 }
 
-/* NAV */
+/* ================= NAV ================= */
 nav {
   display: flex;
   flex-wrap: wrap;
@@ -51,7 +51,7 @@ nav a:hover {
   color: white;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
   position: relative;
   height: 90vh;
@@ -62,11 +62,10 @@ nav a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: relative;
   z-index: 1;
 }
 
-/* WATERMARK TEXT */
+/* WATERMARK */
 .hero-overlay {
   position: absolute;
   top: 50%;
@@ -86,7 +85,7 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-/* SECTION */
+/* ================= COMMON ================= */
 .section {
   padding: 30px;
 }
@@ -95,13 +94,12 @@ nav a:hover {
   text-align: center;
 }
 
-/* TITLE */
 .about-title {
   font-size: 40px;
   margin-bottom: 15px;
 }
 
-/* SLIDER */
+/* ================= SLIDER ================= */
 .slider-box {
   position: relative;
   max-width: 900px;
@@ -115,7 +113,6 @@ nav a:hover {
   transition: 0.4s;
 }
 
-/* ARROWS */
 .arrow {
   position: absolute;
   top: 50%;
@@ -137,29 +134,14 @@ nav a:hover {
   right: 15px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 .footer {
   padding: 20px;
   text-align: center;
   border-top: 1px solid #333;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-  .hero {
-    height: 60vh;
-  }
-
-  .hero-overlay h2 {
-    font-size: 28px;
-    letter-spacing: 3px;
-  }
-
-  nav a {
-    font-size: 12px;
-  }
-}
-/* CONTACT PAGE */
+/* ================= CONTACT ================= */
 .contact-page {
   padding: 40px 20px;
   text-align: center;
@@ -175,7 +157,6 @@ nav a:hover {
   line-height: 1.6;
 }
 
-/* MAP */
 .map-container {
   margin: 20px auto;
   max-width: 900px;
@@ -183,7 +164,6 @@ nav a:hover {
   overflow: hidden;
 }
 
-/* BUTTON */
 .directions-btn {
   display: inline-block;
   margin: 20px 0;
@@ -200,7 +180,6 @@ nav a:hover {
   background: #ddd;
 }
 
-/* FORM */
 .contact-form {
   margin-top: 20px;
 }
@@ -234,4 +213,147 @@ nav a:hover {
 
 .contact-form button:hover {
   background: #ddd;
+}
+
+/* ================= PROMOTERS ================= */
+.promoters-page {
+  background: #fff;
+  color: #000;
+}
+
+.promo-hero img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.promo-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.promo-left h1 {
+  font-size: 40px;
+}
+
+.promo-divider {
+  width: 4px;
+  height: 80px;
+  background: #c0392b;
+}
+
+.promo-right li {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* ================= CONSULTING ================= */
+.consulting-page {
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+.consulting-left {
+  flex: 1;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.consulting-left h1 {
+  color: white;
+  text-align: center;
+}
+
+.consulting-right {
+  flex: 2;
+  background: #f2f2f2;
+  padding: 40px 20px;
+}
+
+.card {
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+/* COLORS */
+.blue { background: linear-gradient(90deg, #6dd5ed, #2193b0); }
+.teal { background: linear-gradient(90deg, #43cea2, #185a9d); }
+.green { background: linear-gradient(90deg, #56ab2f, #a8e063); }
+.light-green { background: linear-gradient(90deg, #a8e063, #56ab2f); }
+.yellow { background: #f6ff00; color: red; }
+.orange { background: linear-gradient(90deg, #f7971e, #ffd200); }
+
+/* ================= CERTIFICATIONS ================= */
+.cert-page {
+  background: #fff;
+  color: #000;
+  text-align: center;
+  padding: 40px;
+}
+
+.cert-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* ================= PARTNERS ================= */
+.partners-page {
+  background: #f2f2f2;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(3, 180px);
+  gap: 10px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.partner-box {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-center {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  background: #4a4a4a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .hero-overlay h2 {
+    font-size: 28px;
+  }
+
+  .consulting-page {
+    flex-direction: column;
+  }
+
+  .partners-grid {
+    grid-template-columns: 1fr;
+  }
 }
