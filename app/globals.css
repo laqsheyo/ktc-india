@@ -1,61 +1,72 @@
-/* ================= RESET ================= */
+/* ================= RESET & BASE ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ================= BODY ================= */
 body {
-  background: #000;
+  background: #000; /* Default dark theme */
   color: #fff;
   font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-/* ================= HEADER ================= */
-header {
+/* ================= HEADER (Shared) ================= */
+.main-header {
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(12px);
   z-index: 1000;
-  padding: 15px 20px;
-
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
-/* ================= NAV ================= */
 nav {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 nav a {
-  color: #ccc;
+  color: #aaa;
   text-decoration: none;
   font-size: 14px;
+  font-weight: 500;
   transition: 0.3s;
 }
 
 nav a:hover {
-  color: white;
+  color: #fff;
 }
 
-/* ================= MAIN ================= */
-main {
-  padding-top: 20px;
+/* ================= THEME FIXES (Force White) ================= */
+/* Use these classes on your specific page containers */
+.white-page-theme {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 20px;
 }
 
-/* ================= HERO ================= */
+/* Apply to your specific routes */
+.promoters-page,
+.consulting-page-new,
+.cert-page-one,
+.partners-page-new {
+  background: #fff !important; 
+  color: #000 !important;
+}
+
+/* ================= HERO SECTION ================= */
 .hero {
   position: relative;
-  height: 90vh;
+  height: 100vh; /* Full screen height */
+  margin-top: -75px; /* Pulls video behind the transparent header */
   overflow: hidden;
 }
 
@@ -65,145 +76,33 @@ main {
   object-fit: cover;
 }
 
-.hero-overlay {
+.hero-overlay h2 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  pointer-events: none;
-  width: 100%;
+  font-size: 5vw;
+  color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
 }
 
-.hero-overlay h2 {
-  font-size: 60px;
-  color: rgba(255, 255, 255, 0.25);
-  letter-spacing: 6px;
-}
-
-/* ================= COMMON ================= */
-.section {
-  padding: 30px;
-}
-
-.center {
-  text-align: center;
-}
-
-/* ================= WHITE PAGES ================= */
-.promoters-page,
-.consulting-page-new,
-.cert-page-one,
-.cert-page-two,
-.partners-page-new,
-.partners-page-flex {
-  background: #fff;
-  color: #000;
-  min-height: 100vh;
-  text-align: center;
-}
-
-/* ================= PROMOTERS ================= */
-.promo-top img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-}
-
-.promo-content-center {
-  padding: 40px 20px;
-}
-
-.promo-img {
-  width: 100%;
-  max-width: 400px;
-  margin: 20px auto;
-  border-radius: 10px;
-}
-
-.promo-content-center ul {
-  display: inline-block;
-  text-align: left;
-  margin-top: 10px;
-}
-
-/* ================= CONSULTING ================= */
-.consulting-image img {
-  width: 100%;
-  max-width: 900px;
-  margin: 20px auto;
-  border-radius: 10px;
-}
-
-.consulting-content {
-  max-width: 800px;
-  margin: auto;
-  text-align: left;
-}
-
-/* ================= CERTIFICATIONS ================= */
-.cert-img img {
-  max-width: 400px;
-  margin: 20px auto;
-  border-radius: 10px;
-}
-
-.cert-flex {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* ================= PARTNERS ================= */
-.partners-img img {
-  max-width: 400px;
-  margin: 20px auto;
-  border-radius: 10px;
-}
-
+/* ================= PARTNERS GRID (Fixing your screenshot) ================= */
 .partners-flex {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
 }
 
-/* ================= CONTACT ================= */
-.contact-page {
-  text-align: center;
-  padding: 40px 20px;
+.partners-img img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(1);
+  transition: 0.3s;
 }
 
-.map-container {
-  max-width: 900px;
-  margin: auto;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 90%;
-  max-width: 400px;
-  margin: 10px auto;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-  .hero {
-    height: 60vh;
-  }
-
-  .hero-overlay h2 {
-    font-size: 28px;
-  }
-
-  .cert-flex,
-  .partners-flex {
-    flex-direction: column;
-  }
+.partners-img img:hover {
+  filter: grayscale(0);
 }

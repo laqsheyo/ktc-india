@@ -10,18 +10,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>KTC India</title>
-        <meta
-          name="description"
-          content="KTC India Display LLP official website"
-        />
+        <meta name="description" content="KTC India Display LLP official website" />
       </head>
-
       <body>
-
-        {/* 🔥 GLOBAL HEADER (VISIBLE ON ALL PAGES) */}
-        <header>
+        {/* GLOBAL HEADER - Only define this ONCE here */}
+        <header className="main-header">
           <h1>KTC India</h1>
-
           <nav>
             <a href="/">Home</a>
             <a href="/about-us">About Us</a>
@@ -35,10 +29,12 @@ export default function RootLayout({
           </nav>
         </header>
 
-        {/* PAGE CONTENT */}
-        {children}
+        {/* This renders the content of page.tsx */}
+        <div id="page-wrapper">
+          {children}
+        </div>
 
-        {/* CHATBASE */}
+        {/* CHATBASE SCRIPT */}
         <Script id="chatbase-script" strategy="afterInteractive">
           {`
             (function(){
@@ -66,7 +62,6 @@ export default function RootLayout({
             })();
           `}
         </Script>
-
       </body>
     </html>
   );
