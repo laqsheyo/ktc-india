@@ -1,6 +1,36 @@
+"use client";
+import { useEffect, useState } from "react";
+
 export default function About() {
+  const [index, setIndex] = useState(0);
+
+  const images = [
+    "/images/s1.jpg",
+    "/images/s2.jpg",
+    "/images/s3.jpg",
+    "/images/s4.jpg",
+    "/images/s5.jpg",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const next = () => {
+    setIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prev = () => {
+    setIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
   return (
     <main className="about-page">
+
       {/* LEADERSHIP */}
       <section className="section center">
         <h2>Leadership</h2>
@@ -18,6 +48,7 @@ export default function About() {
         </p>
         <img src="/images/4.jpg" className="about-img" />
       </section>
+
       {/* CERTIFICATIONS */}
       <section className="section center">
         <h2>Certifications</h2>
@@ -34,6 +65,38 @@ export default function About() {
           The company works with trusted partners such as Winsharp, PG, Dixon, Genus, and Zetwerk, enabling efficient manufacturing, strong quality control, and scalable production.
         </p>
         <img src="/images/8.jpg" className="about-img" />
+      </section>
+
+      {/* ✅ NEW SECTION: BRANDS */}
+      <section className="section center">
+        <h2>Brands</h2>
+        <p>
+          KTC India provides services to various international brands, supporting their operations, sourcing, and market expansion in India.
+        </p>
+
+        <div style={{ marginTop: "20px" }}>
+          <a href="https://fpdvision.com/" target="_blank">
+            <button className="button">FPD Vision</button>
+          </a>
+
+          <a href="https://global.horion.com" target="_blank">
+            <button className="button" style={{ marginLeft: "10px" }}>
+              Horion
+            </button>
+          </a>
+        </div>
+      </section>
+
+      {/* ✅ NEW SECTION: SHOWROOM SLIDER */}
+      <section className="section center">
+        <h2>Showroom</h2>
+
+        <div className="slider-box">
+          <img src={images[index]} className="slider-img" />
+
+          <button className="arrow left" onClick={prev}>‹</button>
+          <button className="arrow right" onClick={next}>›</button>
+        </div>
       </section>
 
       {/* CONTACT */}
