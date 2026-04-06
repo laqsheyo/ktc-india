@@ -14,18 +14,26 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="hero">
 
-        {/* VIDEO ONLY */}
-<video
-  className="hero-video"
-  autoPlay
-  loop
-  muted
-  playsInline
->
-  <source src="/videos/hero.mp4" type="video/mp4/>
-</video>
+        {/* VIDEO */}
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+
       </section>
-      <footer style={{ padding: '20px', textAlign: 'center', borderTop: '1px solid #333' }}>
+
+      <footer
+        style={{
+          padding: "20px",
+          textAlign: "center",
+          borderTop: "1px solid #333",
+        }}
+      >
         <p>&copy; 2026 KTC India. All rights reserved.</p>
       </footer>
     </main>
