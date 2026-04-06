@@ -2,7 +2,8 @@
 
 export default function Home() {
   return (
-    <>
+    <main>
+
       <section className="hero">
         <video
           className="hero-video"
@@ -22,6 +23,7 @@ export default function Home() {
       <footer className="footer">
         <p>&copy; 2026 KTC India. All rights reserved.</p>
       </footer>
-    </>
+
+    </main>
   );
 }

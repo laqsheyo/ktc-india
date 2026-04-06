@@ -1,14 +1,15 @@
-export default function Consulting() {
+export default function ConsultingAssignments() {
   return (
-    <div className="white-page-theme">
+    <main className="section">
+
       <h1>Consulting Assignments</h1>
-      <img src="/images/co.jpg" alt="Consulting" />
-      <ul className="content-list">
-        <li><strong>INTEX:</strong> Product Development</li>
-        <li><strong>SHENZHEN KTC:</strong> Business Development</li>
-        <li><strong>FLYBALL China:</strong> Brand Launch</li>
-        <li><strong>PGEL:</strong> Strategic Alignments</li>
-      </ul>
-    </div>
+
+      <img src="/images/co.jpg" />
+
+      <p>
+        KTC India has successfully handled multiple consulting assignments.
+      </p>
+
+    </main>
   );
 }
