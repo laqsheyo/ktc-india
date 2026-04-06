@@ -22,7 +22,7 @@ export default function Home() {
   muted
   playsInline
 >
-  <source src="/videos/hero.mov" type="video/mov/>
+  <source src="/videos/hero.mp4" type="video/mp4/>
 </video>
       </section>
       <footer style={{ padding: '20px', textAlign: 'center', borderTop: '1px solid #333' }}>
