@@ -9,6 +9,14 @@ export default function About() {
         </p>
         <img src="/images/3.jpg" className="about-img" />
       </section>
+      {/* INDUSTRY EXPERIENCE */}
+      <section className="section center">
+        <h2>Industry Experience</h2>
+        <p>
+          KTC India has worked with leading brands such as Onida, AMKETTE, INTEX, BEETEL, PGEL, MATATA, and ELISTA, showcasing strong industry relationships and execution capabilities.
+        </p>
+        <img src="/images/4.jpg" className="about-img" />
+      </section>
       {/* CERTIFICATIONS */}
       <section className="section center">
         <h2>Certifications</h2>
