@@ -171,3 +171,42 @@ button:hover {
   }
 
 }
+.contact-form {
+  margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  display: block;
+}
+
+.contact-form textarea {
+  height: 120px;
+}
+
+.contact-form button {
+  margin-top: 10px;
+  width: 200px;
+}
+
+/* Directions button */
+.directions-btn {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.directions-btn:hover {
+  background: #ccc;
+}
