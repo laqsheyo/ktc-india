@@ -1,29 +1,14 @@
-"use client";
-
 export default function Promoters() {
   return (
-    <main className="promoters-page">
-
-      {/* IMAGE */}
-      <div className="promo-top">
-        <img src="/images/se.jpg" alt="Office" />
-      </div>
-
-      {/* CONTENT */}
-      <div className="promo-content-center">
-
-        <img src="/images/3.jpg" className="promo-img" />
-
-        <h2>KTC India Display LLP</h2>
-
-        <ul>
-          <li>Based in Gurugram, Haryana</li>
-          <li>Close proximity to New Delhi Airport</li>
-          <li>Strategic hub for business operations in India</li>
-        </ul>
-
-      </div>
-
-    </main>
+    <div className="white-page-theme">
+      <h1>Promoters</h1>
+      <img src="/images/se.jpg" alt="Office" />
+      <img src="/images/3.jpg" style={{maxWidth: '300px'}} alt="Ajay Arora" />
+      <h2>Based in Gurugram, Haryana</h2>
+      <ul className="content-list">
+        <li>Strategic hub for business operations</li>
+        <li>Proximity to New Delhi Airport</li>
+      </ul>
+    </div>
   );
 }
