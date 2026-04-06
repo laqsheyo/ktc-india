@@ -6,15 +6,12 @@ export default function Home() {
       <header>
         <h1>KTC India</h1>
         <nav>
-          <a href="/about">About</a>
+          <a href="/about-us">About</a>   {/* ✅ FIXED */}
           <a href="/contact">Contact</a>
         </nav>
       </header>
 
-      {/* HERO SECTION */}
       <section className="hero">
-
-        {/* VIDEO */}
         <video
           className="hero-video"
           autoPlay
@@ -24,7 +21,6 @@ export default function Home() {
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
-
       </section>
 
       <footer

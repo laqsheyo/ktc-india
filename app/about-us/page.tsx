@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function About() {
+export default function AboutUs() {
   const [index, setIndex] = useState(0);
 
   const images = [
@@ -31,7 +31,6 @@ export default function About() {
   return (
     <main className="about-page">
 
-      {/* LEADERSHIP */}
       <section className="section center">
         <h2>Leadership</h2>
         <p>
@@ -40,46 +39,43 @@ export default function About() {
         <img src="/images/3.jpg" className="about-img" />
       </section>
 
-      {/* INDUSTRY EXPERIENCE */}
       <section className="section center">
         <h2>Industry Experience</h2>
         <p>
-          KTC India has worked with leading brands such as Onida, AMKETTE, INTEX, BEETEL, PGEL, MATATA, and ELISTA, showcasing strong industry relationships and execution capabilities.
+          KTC India has worked with leading brands such as Onida, AMKETTE, INTEX, BEETEL, PGEL, MATATA, and ELISTA.
         </p>
         <img src="/images/4.jpg" className="about-img" />
       </section>
 
-      {/* CERTIFICATIONS */}
       <section className="section center">
         <h2>Certifications</h2>
         <p>
-          KTC India Display LLP operates with all required certifications including GST registration, MSME recognition, import-export licensing, and other compliance approvals, ensuring reliability and trust.
+          KTC India Display LLP operates with GST, MSME, import-export licensing, and other approvals ensuring reliability.
         </p>
         <img src="/images/7.jpg" className="about-img" />
       </section>
 
-      {/* PARTNERS */}
       <section className="section center">
         <h2>Manufacturing Partners</h2>
         <p>
-          The company works with trusted partners such as Winsharp, PG, Dixon, Genus, and Zetwerk, enabling efficient manufacturing, strong quality control, and scalable production.
+          Partners include Winsharp, PG, Dixon, Genus, and Zetwerk for scalable production and quality control.
         </p>
         <img src="/images/8.jpg" className="about-img" />
       </section>
 
-      {/* ✅ NEW SECTION: BRANDS */}
+      {/* BRANDS */}
       <section className="section center">
         <h2>Brands</h2>
         <p>
-          KTC India provides services to various international brands, supporting their operations, sourcing, and market expansion in India.
+          KTC India provides services to international brands and supports their expansion in India.
         </p>
 
         <div style={{ marginTop: "20px" }}>
-          <a href="https://fpdvision.com/" target="_blank">
+          <a href="https://fpdvision.com/" target="_blank" rel="noopener noreferrer">
             <button className="button">FPD Vision</button>
           </a>
 
-          <a href="https://global.horion.com" target="_blank">
+          <a href="https://global.horion.com" target="_blank" rel="noopener noreferrer">
             <button className="button" style={{ marginLeft: "10px" }}>
               Horion
             </button>
@@ -87,7 +83,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ✅ NEW SECTION: SHOWROOM SLIDER */}
+      {/* SHOWROOM */}
       <section className="section center">
         <h2>Showroom</h2>
 
@@ -99,11 +95,11 @@ export default function About() {
         </div>
       </section>
 
-      {/* CONTACT */}
       <section className="section center">
         <h2>Let’s Get In Touch</h2>
+
         <p>
-          KTC India Display LLP is located at 707, Paras Trinity, Sector 63, Gurugram, Haryana. You can reach out for business inquiries and partnerships anytime.
+          707, Paras Trinity, Sector 63, Gurugram, Haryana
         </p>
 
         <p>
