@@ -1,23 +1,23 @@
-/* RESET */
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BODY */
+/* ================= BODY ================= */
 body {
   background: #000;
   color: #fff;
   font-family: Arial, sans-serif;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .header {
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(12px);
   z-index: 1000;
   padding: 15px 20px;
@@ -28,7 +28,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* NAV */
+/* ================= NAV ================= */
 nav {
   display: flex;
   flex-wrap: wrap;
@@ -46,15 +46,20 @@ nav a:hover {
   color: #fff;
 }
 
-/* SECTION (GLOBAL FIX) */
+/* ================= MAIN ================= */
+main {
+  min-height: 100vh;
+}
+
+/* ================= SECTION ================= */
 .section {
   max-width: 900px;
   margin: auto;
-  padding: 50px 20px;
+  padding: 60px 20px;
   text-align: center;
 }
 
-/* IMAGES */
+/* ================= IMAGES ================= */
 img {
   width: 100%;
   max-width: 500px;
@@ -63,7 +68,7 @@ img {
   display: block;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
   position: relative;
   height: 90vh;
@@ -76,25 +81,39 @@ img {
   object-fit: cover;
 }
 
+/* DARK OVERLAY FOR VISIBILITY */
 .hero-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  
+  width: 100%;
+  text-align: center;
+
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px 0;
 }
 
+/* HERO TEXT FIX */
 .hero-overlay h2 {
-  font-size: 60px;
-  color: rgba(255,255,255,0.25);
+  font-size: 64px;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 6px;
+
+  white-space: nowrap; /* force single line */
+  text-align: center;
+
+  text-shadow: 0 0 20px rgba(0,0,0,0.8);
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 .footer {
   text-align: center;
   padding: 20px;
 }
 
-/* DARK PAGE FIX (IMPORTANT) */
+/* ================= COMMON PAGE FIX ================= */
 .promoters-page,
 .consulting-page-new,
 .cert-page-one,
@@ -106,7 +125,14 @@ img {
   text-align: center;
 }
 
-/* FORM */
+/* ================= CONTACT ================= */
+.map-container {
+  max-width: 900px;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .contact-form input,
 .contact-form textarea {
   width: 90%;
@@ -117,13 +143,31 @@ img {
   border: none;
 }
 
-/* MOBILE */
+/* ================= BUTTON ================= */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ccc;
+}
+
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
+
   .hero {
     height: 60vh;
   }
 
   .hero-overlay h2 {
     font-size: 28px;
+    white-space: normal; /* allow wrap on mobile */
   }
+
 }
