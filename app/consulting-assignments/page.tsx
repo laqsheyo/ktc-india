@@ -1,38 +1,47 @@
-export default function Consulting() {
+export default function ConsultingAssignments() {
   return (
-    <main className="consulting-page">
+    <main className="consulting-page-new">
 
-      {/* LEFT PANEL */}
-      <div className="consulting-left">
-        <h1>CONSULTING<br />ASSIGNMENTS</h1>
+      <h1 className="consulting-title">Consulting Assignments</h1>
+
+      {/* IMAGE */}
+      <div className="consulting-image">
+        <img src="/images/co.jpg" alt="Consulting" />
       </div>
 
-      {/* RIGHT CONTENT */}
-      <div className="consulting-right">
+      {/* TEXT CONTENT */}
+      <div className="consulting-content">
 
-        <div className="card blue">
-          INTEX - Consumer Electronics, IT & Mobile Accessories Product Dev.
-        </div>
+        <p>
+          KTC India has successfully handled multiple consulting assignments across
+          consumer electronics, IT, and related industries.
+        </p>
 
-        <div className="card teal">
-          SHENZHEN KTC - Product Showroom, Business Development, After Sales.
-        </div>
+        <ul>
+          <li>
+            <strong>INTEX:</strong> Consumer Electronics, IT & Mobile Accessories Product Development
+          </li>
 
-        <div className="card green">
-          FLYBALL China - Office Opening, Brand Launch & Distribution.
-        </div>
+          <li>
+            <strong>SHENZHEN KTC:</strong> Product Showroom, Business Development, After Sales
+          </li>
 
-        <div className="card light-green">
-          PGEL - TV Sourcing & Strategic Alignments
-        </div>
+          <li>
+            <strong>FLYBALL China:</strong> Office Opening, Brand Launch & Distribution
+          </li>
 
-        <div className="card yellow red-text">
-          MICROMAX - Audio Product Sourcing
-        </div>
+          <li>
+            <strong>PGEL:</strong> TV Sourcing & Strategic Alignments
+          </li>
 
-        <div className="card orange">
-          NEOTERIC - Audio Business Development
-        </div>
+          <li>
+            <strong>MICROMAX:</strong> Audio Product Sourcing
+          </li>
+
+          <li>
+            <strong>NEOTERIC:</strong> Audio Business Development
+          </li>
+        </ul>
 
       </div>
 
