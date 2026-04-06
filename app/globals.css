@@ -159,3 +159,79 @@ nav a:hover {
     font-size: 12px;
   }
 }
+/* CONTACT PAGE */
+.contact-page {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.contact-page h1 {
+  margin-bottom: 10px;
+}
+
+.address {
+  color: #ccc;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* MAP */
+.map-container {
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* BUTTON */
+.directions-btn {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 12px 25px;
+  background: white;
+  color: black;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.directions-btn:hover {
+  background: #ddd;
+}
+
+/* FORM */
+.contact-form {
+  margin-top: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 12px;
+  display: block;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #ddd;
+}
