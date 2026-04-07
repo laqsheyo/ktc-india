@@ -530,3 +530,58 @@ a:hover {
 .arrow.right {
   right: -25px;
 }
+/* ===== CINEMATIC SLIDER ===== */
+
+.slider-box {
+  position: relative;
+  max-width: 1200px; /* ✅ MUCH WIDER */
+  margin: 40px auto;
+}
+
+/* IMAGE */
+.slider-img {
+  width: 100%;
+  height: 450px; /* ✅ LOWER HEIGHT (wide look) */
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* ARROWS */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  backdrop-filter: blur(6px);
+  transition: 0.3s;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* POSITION */
+.arrow.left {
+  left: -30px;
+}
+
+.arrow.right {
+  right: -30px;
+}
