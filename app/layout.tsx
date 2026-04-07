@@ -30,7 +30,7 @@ export default function RootLayout({
             <a href="/certifications">Certifications</a>
             <a href="/brands">Brands</a>
             <a href="/showroom">Showroom</a>
-            <a href="/partners">Partners</a>
+            <a href="/partners">Manufacturing Partners</a>
             <a href="/contact">Contact</a>
           </nav>
         </header>
