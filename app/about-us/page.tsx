@@ -3,13 +3,7 @@
 export default function AboutUs() {
   return (
     <main>
-
-      {/* TOP IMAGE */}
-      <div className="about-hero">
-        <img src="/images/abo.jpg" alt="About KTC India" />
-      </div>
-
-      {/* MAIN INTRO */}
+     {/* MAIN INTRO */}
       <section className="section">
 
         <h1>Driving Global Sourcing Excellence</h1>
