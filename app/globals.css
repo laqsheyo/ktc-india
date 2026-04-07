@@ -475,3 +475,58 @@ a:hover {
 .about-section h2 {
   text-align: center;
 }
+/* ===== SLIDER (UPGRADED) ===== */
+
+.slider-box {
+  position: relative;
+  max-width: 950px; /* ✅ increased ~30% */
+  margin: 40px auto;
+}
+
+/* FORCE SAME SIZE FOR ALL IMAGES */
+.slider-img {
+  width: 100%;
+  height: 500px; /* ✅ FIXED HEIGHT → all images same size */
+  object-fit: cover; /* ✅ crops nicely instead of stretching */
+  border-radius: 16px;
+  transition: 0.5s;
+}
+
+/* ARROWS (KEEP YOUR GOOD STYLE) */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  backdrop-filter: blur(6px);
+  transition: 0.3s;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow.left {
+  left: -25px;
+}
+
+.arrow.right {
+  right: -25px;
+}
