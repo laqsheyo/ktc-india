@@ -7,7 +7,7 @@ export default function Contact() {
       <p>
         707-710 Paras Trinity, Maidawas Rd, Sector 63,<br />
         Gurugram, Haryana 122098<br />
-        Phone: <a href="tel:+917683005899">+91 76830 05899</a><br />
+        Phone: <a href="tel:+917683005899">0124 490 8294</a><br />
         Email: <a href="mailto:Support@ktcindia.co">Support@ktcindia.co</a>
       </p>
 
