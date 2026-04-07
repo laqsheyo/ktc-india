@@ -229,3 +229,62 @@ button:hover {
   font-size: 16px;
   color: #ccc;
 }
+/* ===== BRANDS ===== */
+
+.brands-page {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.brands-title {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+/* CONTAINER */
+.brands-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* EACH BRAND */
+.brand-item {
+  width: 220px;
+  text-align: center;
+}
+
+/* IMAGE */
+.brand-item img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: auto;
+}
+
+/* NAME */
+.brand-item h2 {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+/* LINK */
+.brand-item a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.brand-item a:hover {
+  color: #fff;
+}
+
+/* COMING SOON */
+.coming-text {
+  margin-top: 10px;
+  color: #777;
+  font-style: italic;
+}
