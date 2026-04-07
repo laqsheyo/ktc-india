@@ -2,10 +2,7 @@ export default function Promoters() {
   return (
     <main className="section">
 
-      {/* AJAY IMAGE FIRST */}
-      <img src="/images/3.jpg" alt="Ajay Arora" />
-
-      {/* AJAY TEXT */}
+      {/* AJAY TEXT FIRST */}
       <section className="section">
 
         <h2>Ajay Arora</h2>
@@ -32,10 +29,10 @@ export default function Promoters() {
 
       </section>
 
-      {/* OFFICE IMAGE AFTER TEXT */}
-      <img src="/images/se.jpg" alt="Office" />
+      {/* AJAY IMAGE */}
+      <img src="/images/3.jpg" alt="Ajay Arora" />
 
-      {/* COMPANY TEXT LAST */}
+      {/* KTC TEXT */}
       <section className="section">
 
         <h2>KTC India Display LLP</h2>
@@ -47,6 +44,9 @@ export default function Promoters() {
         </p>
 
       </section>
+
+      {/* OFFICE IMAGE */}
+      <img src="/images/se.jpg" alt="Office" />
 
     </main>
   );
