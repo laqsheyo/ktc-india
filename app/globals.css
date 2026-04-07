@@ -288,3 +288,17 @@ button:hover {
   color: #777;
   font-style: italic;
 }
+.contact-heading {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.contact-heading h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.contact-heading p {
+  color: #aaa;
+  font-size: 14px;
+}

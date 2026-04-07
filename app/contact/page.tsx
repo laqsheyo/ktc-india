@@ -31,7 +31,13 @@ export default function Contact() {
         Get Directions
       </a>
 
-      {/* CONTACT FORM (RESTORED) */}
+      {/* ✅ NEW HEADING (IMPORTANT FIX) */}
+      <div className="contact-heading">
+        <h2>Send an Enquiry or Feedback</h2>
+        <p>We will get back to you as soon as possible.</p>
+      </div>
+
+      {/* CONTACT FORM */}
       <form
         action="https://formsubmit.co/laqsheyo@gmail.com"
         method="POST"
