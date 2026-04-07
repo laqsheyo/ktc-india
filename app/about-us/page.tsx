@@ -25,19 +25,6 @@ export default function AboutUs() {
       <section className="about-section">
         <img src="/images/se.jpg" alt="Office" />
       </section>
-
-      <section className="about-section">
-
-        <h2>Industry Experience</h2>
-
-        <p className="about-text">
-          KTC India has worked with leading brands such as Onida, AMKETTE, INTEX, BEETEL, PGEL, MATATA, and ELISTA.
-        </p>
-
-        <img src="/images/4.jpg" alt="Industry Experience" />
-
-      </section>
-
     </main>
   );
 }
