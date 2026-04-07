@@ -4,24 +4,12 @@ export default function AboutUs() {
   return (
     <main className="about-container">
 
-      {/* INTRO */}
       <section className="about-section">
 
-        <h1>Driving Global Sourcing Excellence</h1>
+        <h1>KTC India Display LLP</h1>
 
         <p className="about-text">
-          KTC India Display LLP enables businesses to scale through efficient sourcing, innovative product development, and reliable execution. The company offers a strong global sourcing network, along with product development and engineering support, customer service and relationship management, marketing and brand enablement, and creative and packaging design solutions. Its approach is focused on deeply understanding client requirements, identifying the most suitable suppliers and solutions, ensuring quality, compliance, and timely execution, and consistently delivering value through long-term partnerships. The vision of KTC India Display LLP is to be a trusted partner for global sourcing and product solutions in the Consumer Electronics and IT sectors.
-        </p>
-
-      </section>
-
-      {/* KTC TEXT (FIXED CENTERING) */}
-      <section className="about-section">
-
-        <h2>KTC India Display LLP</h2>
-
-        <p className="about-text">
-          KTC India Display LLP is based in Gurugram, Haryana, and operates as a strategic hub for global sourcing, product development, and business expansion. The company focuses on delivering efficient sourcing solutions, strong supplier networks, and reliable execution for clients across the consumer electronics and IT sectors.
+          KTC India Display LLP enables businesses to scale through efficient sourcing, innovative product development, and reliable execution. The company offers a strong global sourcing network, along with product development and engineering support, customer service and relationship management, marketing and brand enablement, and creative and packaging design solutions. Its approach is focused on deeply understanding client requirements, identifying the most suitable suppliers and solutions, ensuring quality, compliance, and timely execution, and consistently delivering value through long-term partnerships. Based in Gurugram, Haryana, the company operates as a strategic hub for global sourcing, product development, and business expansion, focusing on delivering efficient sourcing solutions, strong supplier networks, and reliable execution for clients across the consumer electronics and IT sectors.
         </p>
 
       </section>
