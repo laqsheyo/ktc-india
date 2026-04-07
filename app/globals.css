@@ -721,3 +721,33 @@ a:hover {
   }
 
 }
+/* ===== FIX BRANDS MOBILE ===== */
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 🔥 FORCE 3 ALWAYS */
+  gap: 15px;
+}
+
+/* MAKE SURE MOBILE DOESN’T BREAK IT */
+@media (max-width: 768px) {
+  .brands-grid {
+    grid-template-columns: repeat(3, 1fr); /* 🔥 FORCE AGAIN */
+  }
+}
+
+/* SMALL ADJUSTMENTS FOR MOBILE */
+@media (max-width: 768px) {
+  .brand-card img {
+    width: 60px; /* smaller so they fit */
+  }
+
+  .brand-card h3 {
+    font-size: 14px;
+  }
+
+  .brand-card a,
+  .brand-card p {
+    font-size: 12px;
+  }
+}
