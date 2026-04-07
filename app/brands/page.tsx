@@ -17,7 +17,7 @@ export default function Brands() {
 
         {/* HORION */}
         <div className="brand-item">
-          <img src="/images/horion.jpg" alt="Horion" />
+          <img src="/images/horion.png" alt="Horion" />
           <h2>Horion</h2>
           <a href="https://global.horion.com" target="_blank">
             Visit Website
