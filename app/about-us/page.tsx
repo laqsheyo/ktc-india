@@ -14,6 +14,19 @@ export default function AboutUs() {
         </p>
 
       </section>
+            {/* KTC TEXT */}
+      <section className="promoter-section">
+
+        <h2>KTC India Display LLP</h2>
+
+        <p className="promoter-text">
+          KTC India Display LLP is based in Gurugram, Haryana, and operates as a strategic hub for global sourcing, product development, and business expansion. The company focuses on delivering efficient sourcing solutions, strong supplier networks, and reliable execution for clients across the consumer electronics and IT sectors.
+        </p>
+
+      </section>
+
+      {/* OFFICE IMAGE */}
+      <img src="/images/se.jpg" alt="Office" />
 
       {/* LEADERSHIP */}
       <section className="about-section">
