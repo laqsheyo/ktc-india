@@ -403,3 +403,12 @@ button:hover {
   margin: auto;
   border-radius: 12px;
 }
+a {
+  color: #d1d5db; /* light modern grey */
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #ffffff;
+}
