@@ -14,31 +14,21 @@ export default function AboutUs() {
         </p>
 
       </section>
-            {/* KTC TEXT */}
-      <section className="promoter-section">
+
+      {/* KTC TEXT (FIXED CENTERING) */}
+      <section className="about-section">
 
         <h2>KTC India Display LLP</h2>
 
-        <p className="promoter-text">
+        <p className="about-text">
           KTC India Display LLP is based in Gurugram, Haryana, and operates as a strategic hub for global sourcing, product development, and business expansion. The company focuses on delivering efficient sourcing solutions, strong supplier networks, and reliable execution for clients across the consumer electronics and IT sectors.
         </p>
 
       </section>
 
       {/* OFFICE IMAGE */}
-      <img src="/images/se.jpg" alt="Office" />
-
-      {/* LEADERSHIP */}
       <section className="about-section">
-
-        <h2>Leadership</h2>
-
-        <p className="about-text">
-          The company is led by experienced professionals. Ajay Arora brings over 35 years of expertise across consumer electronics, IT, and automotive sectors, while Laqshay Arora contributes strong experience in operations and marketing.
-        </p>
-
-        <img src="/images/3.jpg" alt="Leadership" />
-
+        <img src="/images/se.jpg" alt="Office" />
       </section>
 
       {/* INDUSTRY */}

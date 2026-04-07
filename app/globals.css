@@ -412,3 +412,66 @@ a {
 a:hover {
   color: #ffffff;
 }
+/* ===== SLIDER ===== */
+
+.slider-box {
+  position: relative;
+  max-width: 750px; /* ✅ increased size (~25%) */
+  margin: 30px auto;
+}
+
+/* IMAGE */
+.slider-img {
+  width: 100%;
+  border-radius: 16px;
+  transition: 0.5s;
+}
+
+/* ARROWS (PREMIUM LOOK) */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  backdrop-filter: blur(6px);
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* POSITION */
+.arrow.left {
+  left: -20px;
+}
+
+.arrow.right {
+  right: -20px;
+}
+.about-section {
+  margin-bottom: 60px;
+  text-align: center; /* ✅ THIS FIXES CENTERING */
+}
+
+.about-section h2 {
+  text-align: center;
+}

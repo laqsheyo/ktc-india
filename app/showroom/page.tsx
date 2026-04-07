@@ -16,7 +16,7 @@ export default function Showroom() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 4000);
+    }, 2000); // ✅ changed to 2 seconds
 
     return () => clearInterval(interval);
   }, [images.length]);
@@ -33,15 +33,18 @@ export default function Showroom() {
     <main className="section center">
       <h1 className="about-title">Showroom</h1>
 
-      <p>
-        Explore our showroom showcasing display solutions and products.
-      </p>
+      <p>Explore our showroom showcasing display solutions and products.</p>
 
       <div className="slider-box">
         <img src={images[index]} className="slider-img" />
 
-        <button className="arrow left" onClick={prev}>‹</button>
-        <button className="arrow right" onClick={next}>›</button>
+        <button className="arrow left" onClick={prev}>
+          ‹
+        </button>
+
+        <button className="arrow right" onClick={next}>
+          ›
+        </button>
       </div>
     </main>
   );
