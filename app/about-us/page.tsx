@@ -3,7 +3,12 @@
 export default function AboutUs() {
   return (
     <main>
-      
+
+      {/* TOP IMAGE */}
+      <div className="about-hero">
+        <img src="/images/abo.jpg" alt="About KTC India" />
+      </div>
+
       {/* MAIN INTRO */}
       <section className="section">
 
@@ -14,12 +19,6 @@ export default function AboutUs() {
         </p>
 
       </section>
-
-      {/* TOP IMAGE */}
-      <div className="about-hero">
-        <img src="/images/abo.jpg" alt="About KTC India" />
-      </div>
-
 
       {/* LEADERSHIP */}
       <section className="section">
