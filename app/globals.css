@@ -661,3 +661,10 @@ a:hover {
 .arrow.right {
   right: -35px;
 }
+.page-text {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 20px; /* 🔥 reduced gap */
+}
