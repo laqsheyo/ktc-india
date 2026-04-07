@@ -7,7 +7,8 @@ export default function Contact() {
       <p>
         707-710 Paras Trinity, Maidawas Rd, Sector 63,<br />
         Gurugram, Haryana 122098<br />
-        Phone: <a href="tel:+917683005899">+91 76830 05899</a>
+        Phone: <a href="tel:+917683005899">+91 76830 05899</a><br />
+        Email: <a href="mailto:Support@ktcindia.co">Support@ktcindia.co</a>
       </p>
 
       {/* GOOGLE MAP */}
@@ -31,7 +32,7 @@ export default function Contact() {
         Get Directions
       </a>
 
-      {/* ✅ NEW HEADING (IMPORTANT FIX) */}
+      {/* HEADING */}
       <div className="contact-heading">
         <h2>Send an Enquiry or Feedback</h2>
         <p>We will get back to you as soon as possible.</p>
@@ -39,7 +40,7 @@ export default function Contact() {
 
       {/* CONTACT FORM */}
       <form
-        action="https://formsubmit.co/laqsheyo@gmail.com"
+        action="https://formsubmit.co/Support@ktcindia.co"
         method="POST"
         className="contact-form"
       >
