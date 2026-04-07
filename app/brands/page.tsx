@@ -26,7 +26,7 @@ export default function Brands() {
 
         {/* ECLARA */}
         <div className="brand-item">
-          <img src="/images/eclara.jpg" alt="Eclara" />
+          <img src="/images/eclara.png" alt="Eclara" />
           <h2>Eclara</h2>
           <p className="coming-text">Coming Soon</p>
         </div>
