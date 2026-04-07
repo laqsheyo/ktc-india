@@ -342,3 +342,34 @@ button:hover {
   max-width: 500px;
   border-radius: 12px;
 }
+/* ===== PROMOTERS PAGE FIX ===== */
+
+.promoters-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.promoter-section {
+  margin-bottom: 40px;
+}
+
+.promoter-section h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.promoter-text {
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.7;
+  color: #ccc;
+}
+
+/* IMAGES */
+.promoters-container img {
+  margin: 25px auto 50px;
+  max-width: 500px;
+  border-radius: 12px;
+}
