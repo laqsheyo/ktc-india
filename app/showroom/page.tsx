@@ -35,7 +35,7 @@ export default function Showroom() {
       <h1 className="showroom-title">Showroom</h1>
 
       <p className="showroom-text">
-        Explore our showroom showcasing display solutions and products.
+        Explore our showroom showcasing display solutions, products, and our team in action.
       </p>
 
       <div className="slider-box">
