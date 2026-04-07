@@ -25,8 +25,8 @@ export default function RootLayout({
           <nav>
             <a href="/">Home</a>
             <a href="/about-us">About Us</a>
-            <a href="/promoters">Promoters</a>
-            <a href="/consulting">Consulting</a>
+            <a href="/promoters">Leadership</a>
+            <a href="/consulting">Consulting Assignments</a>
             <a href="/certifications">Certifications</a>
             <a href="/brands">Brands</a>
             <a href="/showroom">Showroom</a>
