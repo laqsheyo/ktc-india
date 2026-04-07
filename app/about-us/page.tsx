@@ -2,24 +2,25 @@
 
 export default function AboutUs() {
   return (
-    <main>
-     {/* MAIN INTRO */}
-      <section className="section">
+    <main className="about-container">
+
+      {/* INTRO */}
+      <section className="about-section">
 
         <h1>Driving Global Sourcing Excellence</h1>
 
-        <p>
+        <p className="about-text">
           KTC India Display LLP enables businesses to scale through efficient sourcing, innovative product development, and reliable execution. The company offers a strong global sourcing network, along with product development and engineering support, customer service and relationship management, marketing and brand enablement, and creative and packaging design solutions. Its approach is focused on deeply understanding client requirements, identifying the most suitable suppliers and solutions, ensuring quality, compliance, and timely execution, and consistently delivering value through long-term partnerships. The vision of KTC India Display LLP is to be a trusted partner for global sourcing and product solutions in the Consumer Electronics and IT sectors.
         </p>
 
       </section>
 
       {/* LEADERSHIP */}
-      <section className="section">
+      <section className="about-section">
 
         <h2>Leadership</h2>
 
-        <p>
+        <p className="about-text">
           The company is led by experienced professionals. Ajay Arora brings over 35 years of expertise across consumer electronics, IT, and automotive sectors, while Laqshay Arora contributes strong experience in operations and marketing.
         </p>
 
@@ -27,12 +28,12 @@ export default function AboutUs() {
 
       </section>
 
-      {/* INDUSTRY EXPERIENCE */}
-      <section className="section">
+      {/* INDUSTRY */}
+      <section className="about-section">
 
         <h2>Industry Experience</h2>
 
-        <p>
+        <p className="about-text">
           KTC India has worked with leading brands such as Onida, AMKETTE, INTEX, BEETEL, PGEL, MATATA, and ELISTA.
         </p>
 
