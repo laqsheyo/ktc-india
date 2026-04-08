@@ -236,6 +236,9 @@ a {
   display: block;
   width: fit-content;
   margin: 20px auto;
+
+  text-decoration: none; /* 🔥 removes underline */
+  color: #000;           /* match button */
 }
 
 /* ================= BRANDS ================= */
