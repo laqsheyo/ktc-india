@@ -5,22 +5,21 @@
   box-sizing: border-box;
 }
 
-/* ================= BODY (GLASS BASE) ================= */
+/* ================= BODY ================= */
 body {
   background: radial-gradient(circle at top, #0f172a, #000);
   color: #fff;
   font-family: Arial, sans-serif;
 }
 
-/* ================= HEADER (GLASS) ================= */
+/* ================= HEADER ================= */
 .header {
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 1000;
 
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(14px);
+  background: rgba(0, 0, 0, 0.6); /* cleaner */
   border-bottom: 1px solid rgba(255,255,255,0.1);
 
   padding: 15px 20px;
@@ -62,22 +61,20 @@ nav a:hover {
   object-fit: cover;
 }
 
-/* GLASS OVERLAY */
+/* CLEAN OVERLAY (NO BLUR) */
 .hero-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 90%;
-  max-width: 900px;
+  width: 85%;
+  max-width: 800px;
 
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(18px);
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.45); /* clean glass look */
+  border-radius: 14px;
 
-  padding: 30px;
+  padding: 25px;
   text-align: center;
 }
 
@@ -88,7 +85,7 @@ nav a:hover {
   text-shadow: 0 0 20px rgba(0,0,0,0.8);
 }
 
-/* ================= BUTTONS (GLASS PREMIUM) ================= */
+/* ================= BUTTONS ================= */
 .hero-buttons {
   margin-top: 25px;
   display: flex;
@@ -98,32 +95,31 @@ nav a:hover {
 
 .hero-buttons button {
   padding: 12px 22px;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
 
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+  background: #fff;
+  color: #000;
 
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(0,0,0,0.5);
 
-  backdrop-filter: blur(10px);
-
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 
   transition: 0.25s;
 }
 
 .hero-buttons button:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
+  background: #f0f0f0;
+  transform: translateY(-1px);
 }
 
-/* SECOND BUTTON */
 .outline-btn {
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.5);
 }
 
-/* ================= SECTION (GLASS CARDS) ================= */
+/* ================= SECTION ================= */
 .section,
 .about-container,
 .page-container,
@@ -135,15 +131,14 @@ nav a:hover {
   text-align: center;
 }
 
-/* GLASS CARD EFFECT */
+/* CLEAN CARD (NO HEAVY BLUR) */
 .about-section,
 .promoter-section,
 .page-container,
 .section {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(14px);
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
   padding: 30px;
   margin-bottom: 40px;
 }
@@ -193,23 +188,42 @@ img {
   border-radius: 16px;
 }
 
-/* ARROWS */
+/* ARROWS FIXED */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 
   border-radius: 50%;
   border: none;
 
-  background: rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.6);
   color: #fff;
 
-  backdrop-filter: blur(6px);
+  font-size: 22px;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s;
+}
+
+.arrow:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* 🔥 FIX VISIBILITY */
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
 }
 
 /* ================= CONTACT ================= */
@@ -232,6 +246,36 @@ img {
 
   background: rgba(255,255,255,0.1);
   color: #fff;
+}
+
+/* BUTTON FIX */
+.contact-form button,
+.directions-btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+
+  background: #fff;
+  color: #000;
+
+  border: 1px solid rgba(0,0,0,0.5);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.contact-form button:hover,
+.directions-btn:hover {
+  background: #f0f0f0;
+}
+
+/* ================= BRANDS FIX ================= */
+.brands-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* ALWAYS 3 */
+  gap: 30px;
+  max-width: 900px;
+  margin: auto;
 }
 
 /* ================= FOOTER ================= */
