@@ -282,6 +282,31 @@ a {
   }
 
   .brands-container {
-    grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+@media (max-width: 768px) {
+  .brands-container {
+    grid-template-columns: repeat(3, 1fr); /* keep 3 */
+
+    padding: 0 10px; /* 🔥 prevents cutting */
+    gap: 12px;       /* 🔥 tighter spacing */
   }
+
+  .brands-container img {
+    width: 100%;
+    max-width: 90px; /* 🔥 shrink logos */
+  }
+
+  .brands-container h2 {
+    font-size: 18px; /* 🔥 smaller text */
+  }
+
+  .brands-container a {
+    font-size: 13px;
+  }
+}
 }
