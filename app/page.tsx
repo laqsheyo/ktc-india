@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <main>
 
+      {/* HERO */}
       <section className="hero">
         <video
           className="hero-video"
@@ -16,13 +17,27 @@ export default function Home() {
         </video>
 
         <div className="hero-overlay">
+
           <h2>TECHNOLOGY & INNOVATION</h2>
+
+          {/* NEW SUBTITLE */}
+          <p className="hero-subtext">
+            Global sourcing. Product development. Reliable execution.
+          </p>
+
+          {/* BUTTONS (IMPORTANT UPGRADE) */}
+          <div className="hero-buttons">
+            <a href="/about-us">
+              <button>Explore More</button>
+            </a>
+
+            <a href="/contact">
+              <button className="outline-btn">Contact Us</button>
+            </a>
+          </div>
+
         </div>
       </section>
-
-      <footer className="footer">
-        <p>&copy; 2026 KTC India. All rights reserved.</p>
-      </footer>
 
     </main>
   );

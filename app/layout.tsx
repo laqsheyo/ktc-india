@@ -18,7 +18,7 @@ export default function RootLayout({
 
       <body>
 
-        {/* GLOBAL HEADER */}
+        {/* HEADER */}
         <header className="header">
           <h1>KTC India</h1>
 
@@ -35,7 +35,13 @@ export default function RootLayout({
           </nav>
         </header>
 
+        {/* PAGE CONTENT */}
         {children}
+
+        {/* FOOTER (MOVED HERE - CORRECT WAY) */}
+        <footer className="footer">
+          <p>© 2026 KTC India Display LLP. All rights reserved.</p>
+        </footer>
 
         {/* CHATBASE */}
         <Script id="chatbase-script" strategy="afterInteractive">
