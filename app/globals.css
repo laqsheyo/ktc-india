@@ -751,3 +751,9 @@ a:hover {
     font-size: 12px;
   }
 }
+.hero-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px; /* 🔥 THIS FIXES SPACING */
+}

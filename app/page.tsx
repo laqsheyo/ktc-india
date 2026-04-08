@@ -19,10 +19,6 @@ export default function Home() {
 
           <h2>TECHNOLOGY & INNOVATION</h2>
 
-          <p className="hero-subtext">
-            Global sourcing. Product development. Reliable execution.
-          </p>
-
           <div className="hero-buttons">
             <a href="/about-us">
               <button>Explore More</button>
@@ -33,7 +29,7 @@ export default function Home() {
             </a>
           </div>
 
-        </div> {/* ✅ MISSING CLOSING DIV FIXED */}
+        </div>
 
       </section>
 
