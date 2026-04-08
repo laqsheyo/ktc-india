@@ -62,7 +62,7 @@ nav a:hover {
   object-fit: cover;
 }
 
-/* DARK GLASS TEXT BOX (LIKE YOUR 4TH IMAGE) */
+/* DARK GLASS TEXT BOX */
 .hero-overlay {
   position: absolute;
   top: 50%;
@@ -90,37 +90,39 @@ nav a:hover {
   gap: 18px;
 }
 
-/* PREMIUM BUTTON */
 .hero-buttons button,
 .contact-form button,
 .directions-btn {
   padding: 12px 26px;
   border-radius: 999px;
-
   background: #fff;
   color: #000;
-
   border: none;
   cursor: pointer;
-
   font-size: 15px;
 }
 
-/* OUTLINE BUTTON */
 .outline-btn {
   background: transparent;
   color: #fff;
   border: 1px solid rgba(255,255,255,0.6);
 }
 
-/* ================= SECTION ================= */
+/* ================= SECTION (FIXED) ================= */
 .section,
 .about-container,
 .page-container,
 .promoters-container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 70px 20px;
+  max-width: 800px; /* 🔥 FIXED (was 1000px) */
+  margin: 0 auto;
+  padding: 70px 16px;
+  text-align: center;
+}
+
+/* FORCE PERFECT CENTER */
+.section h1,
+.section p {
+  width: 100%;
   text-align: center;
 }
 
@@ -194,13 +196,10 @@ img {
 }
 
 /* ================= CONTACT ================= */
-
-/* FIX BLUE LINKS → WHITE */
 a {
   color: #fff;
 }
 
-/* MAP */
 .map-container {
   max-width: 900px;
   margin: 30px auto;
@@ -208,7 +207,6 @@ a {
   overflow: hidden;
 }
 
-/* FORM FIX */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -230,12 +228,10 @@ a {
   color: #fff;
 }
 
-/* CENTER BUTTON */
 .contact-form button {
   margin-top: 10px;
 }
 
-/* FIX DIRECTIONS BUTTON */
 .directions-btn {
   display: block;
   width: fit-content;
@@ -286,18 +282,6 @@ a {
   }
 
   .brands-container {
-    grid-template-columns: repeat(3, 1fr); /* KEEP IN ONE LINE */
+    grid-template-columns: repeat(3, 1fr);
   }
-}
-/* SHOWROOM FIX */
-.center {
-  text-align: center;
-  margin: auto;
-}
-
-.center h1,
-.center p {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
 }
