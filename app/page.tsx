@@ -19,12 +19,10 @@ export default function Home() {
 
           <h2>TECHNOLOGY & INNOVATION</h2>
 
-          {/* NEW SUBTITLE */}
           <p className="hero-subtext">
             Global sourcing. Product development. Reliable execution.
           </p>
 
-          {/* BUTTONS (IMPORTANT UPGRADE) */}
           <div className="hero-buttons">
             <a href="/about-us">
               <button>Explore More</button>
@@ -34,7 +32,11 @@ export default function Home() {
               <button className="outline-btn">Contact Us</button>
             </a>
           </div>
+
+        </div> {/* ✅ MISSING CLOSING DIV FIXED */}
+
       </section>
+
     </main>
   );
 }
