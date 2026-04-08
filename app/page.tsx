@@ -18,17 +18,7 @@ export default function Home() {
         <div className="hero-overlay">
 
           <h2>TECHNOLOGY & INNOVATION</h2>
-
-          <div className="hero-buttons">
-            <a href="/about-us">
-              <button>Explore More</button>
-            </a>
-
-            <a href="/contact">
-              <button className="outline-btn">Contact Us</button>
-            </a>
-          </div>
-
+          
         </div>
 
       </section>
