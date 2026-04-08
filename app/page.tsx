@@ -35,11 +35,6 @@ export default function Home() {
             </a>
           </div>
       </section>
-
-      <footer className="footer">
-        <p>&copy; 2026 KTC India. All rights reserved.</p>
-      </footer>
-
     </main>
   );
 }
