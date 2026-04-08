@@ -787,3 +787,9 @@ a:hover {
   color: #fff;
   border: 1px solid rgba(255,255,255,0.5);
 }
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #aaa;
+  font-size: 14px;
+}

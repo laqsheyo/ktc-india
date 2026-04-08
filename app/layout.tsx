@@ -64,6 +64,9 @@ export default function RootLayout({
               else{window.addEventListener("load", onLoad)}
             })();
           `}
+          <footer className="footer">
+  <p>© 2026 KTC India Display LLP. All rights reserved.</p>
+</footer>
         </Script>
 
       </body>
