@@ -9,8 +9,7 @@
 body {
   background: #000;
   color: #f5f5f7;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
 }
 
 /* ================= HEADER ================= */
@@ -19,7 +18,7 @@ body {
   top: 0;
   z-index: 1000;
 
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 
   padding: 16px 24px;
@@ -32,21 +31,19 @@ body {
 
 .header h1 {
   font-size: 24px;
-  font-weight: 600;
 }
 
 /* ================= NAV ================= */
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 16px;
 }
 
 nav a {
   color: #aaa;
   text-decoration: none;
   font-size: 14px;
-  transition: 0.25s;
 }
 
 nav a:hover {
@@ -57,7 +54,6 @@ nav a:hover {
 .hero {
   position: relative;
   height: 90vh;
-  overflow: hidden;
 }
 
 .hero-video {
@@ -66,65 +62,65 @@ nav a:hover {
   object-fit: cover;
 }
 
-/* CLEAN OVERLAY */
+/* DARK GLASS TEXT BOX (LIKE YOUR 4TH IMAGE) */
 .hero-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  text-align: center;
+  background: rgba(0,0,0,0.45);
+  padding: 30px 50px;
+  border-radius: 16px;
 }
 
 /* HERO TEXT */
 .hero-overlay h2 {
-  font-size: 64px;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 56px;
+  text-align: center;
+  letter-spacing: 3px;
+  color: #fff;
 }
 
 /* ================= BUTTONS ================= */
 .hero-buttons {
-  margin-top: 28px;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 18px;
 }
 
-.hero-buttons button {
+/* PREMIUM BUTTON */
+.hero-buttons button,
+.contact-form button,
+.directions-btn {
   padding: 12px 26px;
   border-radius: 999px;
-  font-size: 15px;
-
-  border: none;
-  cursor: pointer;
 
   background: #fff;
   color: #000;
 
-  transition: 0.25s;
+  border: none;
+  cursor: pointer;
+
+  font-size: 15px;
 }
 
-.hero-buttons button:hover {
-  opacity: 0.85;
-}
-
-/* SECOND BUTTON */
+/* OUTLINE BUTTON */
 .outline-btn {
   background: transparent;
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.6);
 }
 
 /* ================= SECTION ================= */
 .section,
 .about-container,
 .page-container,
-.promoters-container,
-.showroom-container {
+.promoters-container {
   max-width: 1000px;
   margin: auto;
-  padding: 80px 20px;
+  padding: 70px 20px;
   text-align: center;
 }
 
@@ -132,24 +128,22 @@ nav a:hover {
 .about-text,
 .page-text,
 .promoter-text {
-  font-size: 19px;
-  line-height: 1.8;
+  font-size: 18px;
+  line-height: 1.7;
   color: #ccc;
   max-width: 750px;
-  margin: 0 auto 16px;
+  margin: 0 auto 14px;
 }
 
 /* ================= HEADINGS ================= */
 h1 {
-  font-size: 48px;
-  font-weight: 600;
-  margin-bottom: 24px;
+  font-size: 44px;
+  margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 32px;
-  font-weight: 500;
-  margin-bottom: 18px;
+  font-size: 30px;
+  margin-bottom: 14px;
 }
 
 /* ================= IMAGES ================= */
@@ -157,7 +151,7 @@ img {
   width: 100%;
   max-width: 700px;
   margin: 30px auto;
-  border-radius: 16px;
+  border-radius: 14px;
   display: block;
 }
 
@@ -172,10 +166,9 @@ img {
   width: 100%;
   height: 420px;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: 16px;
 }
 
-/* ARROWS */
 .arrow {
   position: absolute;
   top: 50%;
@@ -185,64 +178,68 @@ img {
   height: 44px;
 
   border-radius: 50%;
-  border: none;
-
   background: rgba(0,0,0,0.6);
   color: #fff;
 
-  font-size: 20px;
+  border: none;
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .arrow.left {
-  left: 12px;
+  left: 10px;
 }
 
 .arrow.right {
-  right: 12px;
+  right: 10px;
 }
 
 /* ================= CONTACT ================= */
+
+/* FIX BLUE LINKS → WHITE */
+a {
+  color: #fff;
+}
+
+/* MAP */
 .map-container {
   max-width: 900px;
   margin: 30px auto;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
 }
 
+/* FORM FIX */
 .contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
   margin-top: 20px;
 }
 
 .contact-form input,
 .contact-form textarea {
-  width: 90%;
+  width: 100%;
   max-width: 500px;
-  margin: 12px auto;
   padding: 14px;
 
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
 
   background: #111;
   color: #fff;
 }
 
-.contact-form button,
+/* CENTER BUTTON */
+.contact-form button {
+  margin-top: 10px;
+}
+
+/* FIX DIRECTIONS BUTTON */
 .directions-btn {
-  padding: 12px 26px;
-  border-radius: 999px;
-
-  background: #fff;
-  color: #000;
-
-  border: none;
-  cursor: pointer;
-  margin-top: 12px;
+  display: block;
+  width: fit-content;
+  margin: 20px auto;
 }
 
 /* ================= BRANDS ================= */
@@ -269,12 +266,12 @@ img {
     height: 60vh;
   }
 
-  .hero-overlay h2 {
-    font-size: 32px;
+  .hero-overlay {
+    padding: 20px;
   }
 
-  nav {
-    justify-content: center;
+  .hero-overlay h2 {
+    font-size: 28px;
   }
 
   .about-text,
@@ -284,4 +281,11 @@ img {
     text-align: left;
   }
 
+  nav {
+    justify-content: center;
+  }
+
+  .brands-container {
+    grid-template-columns: repeat(3, 1fr); /* KEEP IN ONE LINE */
+  }
 }
