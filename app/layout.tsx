@@ -35,7 +35,13 @@ export default function RootLayout({
           </nav>
         </header>
 
+        {/* PAGE CONTENT */}
         {children}
+
+        {/* ✅ FOOTER (CORRECT PLACE) */}
+        <footer className="footer">
+          <p>© 2026 KTC India Display LLP. All rights reserved.</p>
+        </footer>
 
         {/* CHATBASE */}
         <Script id="chatbase-script" strategy="afterInteractive">
@@ -64,9 +70,6 @@ export default function RootLayout({
               else{window.addEventListener("load", onLoad)}
             })();
           `}
-          <footer className="footer">
-  <p>© 2026 KTC India Display LLP. All rights reserved.</p>
-</footer>
         </Script>
 
       </body>
