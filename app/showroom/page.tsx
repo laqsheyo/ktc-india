@@ -30,11 +30,11 @@ export default function Showroom() {
   };
 
   return (
-    <main className="showroom-container">
+    <main className="section"> {/* ✅ FIXED */}
 
-      <h1 className="showroom-title">Showroom</h1>
+      <h1>Showroom</h1>
 
-      <p className="showroom-text">
+      <p>
         Explore our showroom showcasing display solutions, products, and our team in action.
       </p>
 
