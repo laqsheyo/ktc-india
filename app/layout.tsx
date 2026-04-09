@@ -17,7 +17,7 @@ export default function RootLayout({
         />
 
         {/* ✅ ADD THIS */}
-        <link rel="icon" href="/ktc.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
 
