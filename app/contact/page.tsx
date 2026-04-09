@@ -33,8 +33,7 @@ export default function Contact() {
       </a>
 
       {/* HEADING */}
-      <div className="contact-heading">
-        <h2>Send an Enquiry or Feedback</h2>
+      <h1 className="contact-heading">Send an Enquiry or Feedback</h1>
         <p>We will get back to you as soon as possible.</p>
       </div>
 

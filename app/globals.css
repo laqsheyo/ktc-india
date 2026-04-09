@@ -240,6 +240,38 @@ a {
   text-decoration: none; /* 🔥 removes underline */
   color: #000;           /* match button */
 }
+/* ================= CONTACT SPACING FIX ================= */
+
+/* space between sections */
+.map-container {
+  margin-bottom: 40px;
+}
+
+/* spacing after button */
+.directions-btn {
+  margin: 40px auto 30px auto;
+}
+
+/* main heading spacing */
+.contact-heading {
+  margin-top: 20px;
+}
+
+/* form spacing */
+.contact-form {
+  margin-top: 30px;
+}
+
+/* inputs spacing already fine, but slightly better */
+.contact-form input,
+.contact-form textarea {
+  margin-bottom: 10px;
+}
+
+/* button spacing */
+.contact-form button {
+  margin-top: 20px;
+}
 
 /* ================= BRANDS ================= */
 .brands-container {
