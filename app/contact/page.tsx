@@ -34,8 +34,7 @@ export default function Contact() {
 
       {/* HEADING */}
       <h1 className="contact-heading">Send an Enquiry or Feedback</h1>
-        <p>We will get back to you as soon as possible.</p>
-      </div>
+      <p>We will get back to you as soon as possible.</p>
 
       {/* CONTACT FORM */}
       <form
