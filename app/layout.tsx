@@ -10,12 +10,15 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>KTC India</title>
+
         <meta
           name="description"
           content="KTC India Display LLP official website"
         />
-      </head>
 
+        {/* ✅ ADD THIS */}
+        <link rel="icon" href="/ktc.png" type="image/png" />
+      </head>
       <body>
 
         {/* GLOBAL HEADER */}
