@@ -243,7 +243,10 @@ a {
 .contact-heading {
   margin-top: 0; /* prevent clash */
 }
-
+/* FIX CONTACT HEADING SIZE */
+.contact-heading {
+  font-size: 34px; /* smaller, clean Apple style */
+}
 /* ================= BRANDS ================= */
 .brands-container {
   display: grid;
