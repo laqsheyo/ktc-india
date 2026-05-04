@@ -28,27 +28,23 @@ export default function Home() {
           <h2>TECHNOLOGY & INNOVATION</h2>
         </div>
 
-        {/* 🔥 4 BRAND BUTTONS */}
+        {/* 🔥 CIRCLE LOGO BUTTONS */}
         <div className="hero-brands">
 
-          <button className="brand-btn" onClick={goToBrands}>
+          <button className="brand-circle" onClick={goToBrands}>
             <img src="/images/ktc.jpg" alt="KTC" />
-            <span>KTC</span>
           </button>
 
-          <button className="brand-btn" onClick={goToBrands}>
+          <button className="brand-circle" onClick={goToBrands}>
             <img src="/images/fpd.jpg" alt="FPD" />
-            <span>FPD</span>
           </button>
 
-          <button className="brand-btn" onClick={goToBrands}>
-            <img src="/images/horion.jpg" alt="Horion" />
-            <span>Horion</span>
+          <button className="brand-circle" onClick={goToBrands}>
+            <img src="/images/horion.png" alt="Horion" />
           </button>
 
-          <button className="brand-btn" onClick={goToBrands}>
+          <button className="brand-circle" onClick={goToBrands}>
             <img src="/images/eclara.jpg" alt="Eclara" />
-            <span>Eclara</span>
           </button>
 
         </div>

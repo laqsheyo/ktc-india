@@ -304,3 +304,43 @@ a {
     height: 18px;
   }
 }
+/* ================= CIRCLE BRAND BUTTONS ================= */
+
+.brand-circle {
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  border: none;
+  cursor: pointer;
+
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.25s;
+}
+
+/* LOGO FULL FIT */
+.brand-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔥 fills completely */
+}
+
+/* HOVER */
+.brand-circle:hover {
+  transform: scale(1.1);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .brand-circle {
+    width: 55px;
+    height: 55px;
+  }
+}
