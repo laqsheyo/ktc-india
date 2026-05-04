@@ -91,25 +91,30 @@ nav a:hover {
 
 /* ================= CIRCLE BRAND BUTTONS ================= */
 .brand-circle {
-  width: 70px;
-  height: 70px;
+  width: 140px;  /* 🔥 FIXED */
+  height: 140px; /* 🔥 FIXED */
+
   border-radius: 50%;
   overflow: hidden;
   border: none;
   cursor: pointer;
   background: #fff;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px; /* 🔥 gives breathing space */
+
+  padding: 12px;
   transition: 0.25s;
+
+  position: relative;
 }
 
-/* 🔥 FIXED (NO CUTTING NOW) */
+/* FULL LOGO WITHOUT CUT */
 .brand-circle img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* ✅ shows full logo */
+  object-fit: contain;
 }
 
 /* HOVER */
@@ -295,39 +300,19 @@ a {
     gap: 10px;
   }
 
+  /* 🔥 MOBILE SIZE FIX */
   .brand-circle {
-  width: 140px;
-  height: 140px;
-
-  border-radius: 50%;
-  overflow: hidden;
-
-  border: none;
-  cursor: pointer;
-
-  background: #fff;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 12px;
-  transition: 0.25s;
+    width: 90px;
+    height: 90px;
+  }
 }
-}
+
 /* LABEL TEXT */
 .brand-label {
   position: absolute;
   bottom: -22px;
-
   font-size: 12px;
   color: #fff;
-
   width: 100%;
   text-align: center;
-}
-
-/* IMPORTANT */
-.brand-circle {
-  position: relative; /* needed for label */
 }
