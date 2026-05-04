@@ -296,9 +296,24 @@ a {
   }
 
   .brand-circle {
-    width: 55px;
-    height: 55px;
-  }
+  width: 140px;
+  height: 140px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  border: none;
+  cursor: pointer;
+
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px;
+  transition: 0.25s;
+}
 }
 /* LABEL TEXT */
 .brand-label {
