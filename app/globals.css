@@ -17,12 +17,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-
   background: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(255,255,255,0.08);
-
   padding: 16px 24px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,13 +59,11 @@ nav a:hover {
   object-fit: cover;
 }
 
-/* DARK GLASS TEXT BOX */
 .hero-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   background: rgba(0,0,0,0.45);
   padding: 30px 50px;
   border-radius: 16px;
@@ -81,30 +76,43 @@ nav a:hover {
   color: #fff;
 }
 
-/* ================= BUTTONS ================= */
-.hero-buttons {
-  margin-top: 25px;
+/* ================= HERO BRAND BUTTONS ================= */
+.hero-brands {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
+  gap: 16px;
   justify-content: center;
-  gap: 18px;
+  flex-wrap: wrap;
+  max-width: 90%;
 }
 
-.hero-buttons button,
-.contact-form button,
-.directions-btn {
-  padding: 12px 26px;
+.brand-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
   border-radius: 999px;
-  background: #fff;
+  background: rgba(255,255,255,0.95);
   color: #000;
   border: none;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.25s;
 }
 
-.outline-btn {
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.6);
+.brand-btn img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.brand-btn:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
 }
 
 /* ================= SECTION ================= */
@@ -173,25 +181,17 @@ img {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-
   width: 44px;
   height: 44px;
-
   border-radius: 50%;
   background: rgba(0,0,0,0.6);
   color: #fff;
-
   border: none;
   cursor: pointer;
 }
 
-.arrow.left {
-  left: 10px;
-}
-
-.arrow.right {
-  right: 10px;
-}
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
 
 /* ================= CONTACT ================= */
 a {
@@ -218,10 +218,8 @@ a {
   width: 100%;
   max-width: 500px;
   padding: 14px;
-
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.2);
-
   background: #111;
   color: #fff;
 }
@@ -230,23 +228,20 @@ a {
   margin-top: 20px;
 }
 
-/* ✅ CLEAN BUTTON + SPACING FIX */
 .directions-btn {
   display: block;
   width: fit-content;
-  margin: 40px auto 50px auto; /* 🔥 THIS FIXES YOUR GAP */
+  margin: 40px auto 50px auto;
   text-decoration: none;
   color: #000;
 }
 
-/* ✅ THIS IS THE REAL GAP FIX */
+/* FIX CONTACT HEADING SIZE + SPACING */
 .contact-heading {
-  margin-top: 0; /* prevent clash */
+  font-size: 32px;
+  margin-top: 0;
 }
-/* FIX CONTACT HEADING SIZE */
-.contact-heading {
-  font-size: 34px; /* smaller, clean Apple style */
-}
+
 /* ================= BRANDS ================= */
 .brands-container {
   display: grid;
@@ -267,17 +262,11 @@ a {
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  .hero {
-    height: 60vh;
-  }
+  .hero { height: 60vh; }
 
-  .hero-overlay {
-    padding: 20px;
-  }
+  .hero-overlay { padding: 20px; }
 
-  .hero-overlay h2 {
-    font-size: 28px;
-  }
+  .hero-overlay h2 { font-size: 28px; }
 
   .about-text,
   .page-text,
@@ -286,9 +275,7 @@ a {
     text-align: left;
   }
 
-  nav {
-    justify-content: center;
-  }
+  nav { justify-content: center; }
 
   .brands-container {
     grid-template-columns: repeat(3, 1fr);
@@ -296,65 +283,24 @@ a {
     gap: 12px;
   }
 
-  .brands-container img {
-    max-width: 90px;
+  .brands-container img { max-width: 90px; }
+
+  .brands-container h2 { font-size: 18px; }
+
+  .brands-container a { font-size: 13px; }
+
+  .hero-brands {
+    bottom: 20px;
+    gap: 10px;
   }
 
-  .brands-container h2 {
-    font-size: 18px;
-  }
-
-  .brands-container a {
+  .brand-btn {
+    padding: 8px 14px;
     font-size: 13px;
   }
-}
-/* ================= HOME BRANDS SECTION ================= */
 
-.home-brands-section {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.home-brands-heading {
-  font-size: 32px;
-  margin-bottom: 40px;
-  font-weight: 500;
-}
-
-.home-brands {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-/* PREMIUM BUTTONS */
-.brand-btn {
-  padding: 18px 40px;
-  border-radius: 999px;
-
-  background: #fff;
-  color: #000;
-
-  border: none;
-  cursor: pointer;
-
-  font-size: 16px;
-  font-weight: 500;
-
-  transition: 0.25s;
-}
-
-/* HOVER */
-.brand-btn:hover {
-  transform: translateY(-3px);
-  opacity: 0.9;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .brand-btn {
-    width: 80%;
-    max-width: 260px;
+  .brand-btn img {
+    width: 18px;
+    height: 18px;
   }
 }

@@ -23,29 +23,32 @@ export default function Home() {
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
-        
+
         <div className="hero-overlay">
           <h2>TECHNOLOGY & INNOVATION</h2>
         </div>
-      </section>
 
-      {/* BRAND BUTTONS SECTION */}
-      <section className="home-brands-section">
-
-        <h2 className="home-brands-heading">Our Brands</h2>
-
-        <div className="home-brands">
+        {/* 🔥 4 BRAND BUTTONS */}
+        <div className="hero-brands">
 
           <button className="brand-btn" onClick={goToBrands}>
-            FPD
+            <img src="/images/ktc.jpg" alt="KTC" />
+            <span>KTC</span>
           </button>
 
           <button className="brand-btn" onClick={goToBrands}>
-            Horion
+            <img src="/images/fpd.jpg" alt="FPD" />
+            <span>FPD</span>
           </button>
 
           <button className="brand-btn" onClick={goToBrands}>
-            Eclara
+            <img src="/images/horion.jpg" alt="Horion" />
+            <span>Horion</span>
+          </button>
+
+          <button className="brand-btn" onClick={goToBrands}>
+            <img src="/images/eclara.jpg" alt="Eclara" />
+            <span>Eclara</span>
           </button>
 
         </div>
