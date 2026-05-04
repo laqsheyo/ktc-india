@@ -308,3 +308,53 @@ a {
     font-size: 13px;
   }
 }
+/* ================= HOME BRANDS SECTION ================= */
+
+.home-brands-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.home-brands-heading {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+.home-brands {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* PREMIUM BUTTONS */
+.brand-btn {
+  padding: 18px 40px;
+  border-radius: 999px;
+
+  background: #fff;
+  color: #000;
+
+  border: none;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  transition: 0.25s;
+}
+
+/* HOVER */
+.brand-btn:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .brand-btn {
+    width: 80%;
+    max-width: 260px;
+  }
+}
