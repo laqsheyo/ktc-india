@@ -316,3 +316,35 @@ a {
   width: 100%;
   text-align: center;
 }
+/* ================= HERO BRAND BUTTONS ================= */
+.hero-brands {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  flex-wrap: nowrap; /* 🔥 IMPORTANT: no wrapping */
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+
+  .hero-brands {
+    bottom: 25px;
+    gap: 10px;
+
+    width: 100%;
+    overflow-x: auto; /* 🔥 allows scroll instead of breaking */
+    padding: 0 10px;
+  }
+
+  .brand-circle {
+    width: 80px;   /* 🔥 smaller so all fit */
+    height: 80px;
+    flex: 0 0 auto; /* 🔥 prevents shrinking */
+  }
+}
