@@ -730,3 +730,55 @@ body:has(.fpd-site) .footer {
     max-width: 360px;
   }
 }
+.promoters-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+.promoter-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  margin-bottom: 72px;
+}
+
+.promoter-content {
+  flex: 1;
+}
+
+.promoter-content h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.promoter-text {
+  font-size: 18px;
+  line-height: 1.75;
+  margin: 0 0 22px;
+}
+
+.promoter-image {
+  width: 320px;
+  max-width: 32%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .promoters-container {
+    padding: 50px 22px;
+  }
+
+  .promoter-row {
+    flex-direction: column;
+    gap: 28px;
+    margin-bottom: 56px;
+  }
+
+  .promoter-image {
+    width: 100%;
+    max-width: 360px;
+  }
+}
