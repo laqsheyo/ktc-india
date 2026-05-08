@@ -52,7 +52,6 @@ a {
   text-decoration: none;
   font-size: 14px;
   opacity: 0.86;
-  transition: opacity 0.2s ease;
 }
 
 .header nav a:hover {
@@ -88,7 +87,6 @@ a {
   color: #fff;
 }
 
-/* ================= HERO BRAND BUTTONS ================= */
 .hero-brands {
   position: absolute;
   bottom: 40px;
@@ -116,7 +114,6 @@ a {
   justify-content: center;
   padding: 12px;
   position: relative;
-  transition: 0.25s;
 }
 
 .brand-circle img {
@@ -148,12 +145,6 @@ a {
   text-align: center;
 }
 
-.section h1,
-.section p {
-  width: 100%;
-  text-align: center;
-}
-
 .about-text,
 .page-text {
   font-size: 18px;
@@ -182,7 +173,7 @@ img {
   display: block;
 }
 
-/* ================= PROMOTERS / LEADERSHIP ================= */
+/* ================= LEADERSHIP ================= */
 .promoters-container {
   display: flex;
   align-items: flex-start;
@@ -195,23 +186,25 @@ img {
 
 .promoter-section {
   flex: 1;
+  min-width: 0;
 }
 
 .promoter-section h2 {
   margin-top: 0;
   margin-bottom: 22px;
   font-size: 38px;
+  line-height: 1.15;
 }
 
 .promoter-section h2:not(:first-child) {
-  margin-top: 44px;
+  margin-top: 54px;
 }
 
 .promoter-text {
   font-size: 18px;
-  line-height: 1.75;
+  line-height: 1.7;
   color: #e5e5e5;
-  margin: 0 auto 22px;
+  margin: 0 auto 24px;
   max-width: 760px;
 }
 
@@ -379,7 +372,6 @@ body:has(.fpd-site) .footer {
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
-  transition: color 0.2s;
   cursor: pointer;
 }
 
@@ -402,7 +394,6 @@ body:has(.fpd-site) .footer {
   padding: 8px 0;
   min-width: 160px;
   margin-top: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .fpd-dropdown-item {
@@ -411,7 +402,6 @@ body:has(.fpd-site) .footer {
   color: #aaa;
   text-decoration: none;
   font-size: 14px;
-  transition: all 0.2s;
   white-space: nowrap;
 }
 
@@ -487,13 +477,13 @@ body:has(.fpd-site) .footer {
 }
 
 /* ================= MOBILE ================= */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header {
     padding: 14px 16px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
+    gap: 12px;
   }
 
   .header h1 {
@@ -501,12 +491,12 @@ body:has(.fpd-site) .footer {
   }
 
   .header nav {
-    gap: 12px;
+    gap: 12px 16px;
     justify-content: flex-end;
   }
 
   .header nav a {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .hero {
@@ -558,35 +548,44 @@ body:has(.fpd-site) .footer {
   }
 
   .promoters-container {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 18px;
-    padding: 48px 16px;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    max-width: 100% !important;
+    padding: 28px 14px 50px !important;
+    text-align: center;
   }
 
   .promoter-section {
-    flex: 1;
+    flex: 1 1 56% !important;
+    min-width: 0 !important;
   }
 
   .promoter-section h2 {
-    font-size: 28px;
-    margin-bottom: 16px;
+    font-size: 25px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 14px !important;
   }
 
   .promoter-section h2:not(:first-child) {
-    margin-top: 34px;
+    margin-top: 34px !important;
   }
 
   .promoter-text {
-    font-size: 14px;
-    line-height: 1.65;
-    margin-bottom: 16px;
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+    margin: 0 auto 14px !important;
+    max-width: 100% !important;
   }
 
   .promoter-image {
-    width: 38%;
-    max-width: 38%;
-    border-radius: 12px;
+    flex: 0 0 42% !important;
+    width: 42% !important;
+    max-width: 42% !important;
+    height: auto !important;
+    margin: 0 !important;
+    border-radius: 12px !important;
   }
 
   .slider-img {
@@ -642,85 +641,5 @@ body:has(.fpd-site) .footer {
   .fpd-image {
     margin-top: 30px;
     border-radius: 14px;
-  }
-}
-/* ================= PROMOTERS / LEADERSHIP ================= */
-.promoters-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 56px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 40px;
-  text-align: center;
-}
-
-.promoter-section {
-  flex: 1;
-}
-
-.promoter-section h2 {
-  margin-top: 0;
-  margin-bottom: 22px;
-  font-size: 38px;
-  line-height: 1.15;
-}
-
-.promoter-section h2:not(:first-child) {
-  margin-top: 54px;
-}
-
-.promoter-text {
-  font-size: 18px;
-  line-height: 1.7;
-  color: #e5e5e5;
-  margin: 0 auto 24px;
-  max-width: 760px;
-}
-
-.promoter-image {
-  width: 460px;
-  max-width: 40%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 14px;
-  margin: 0;
-}
-
-/* MOBILE: keep same left-text / right-image layout */
-@media (max-width: 768px) {
-  .promoters-container {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 28px 14px 50px;
-    max-width: 100%;
-  }
-
-  .promoter-section {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .promoter-section h2 {
-    font-size: 26px;
-    margin-bottom: 14px;
-  }
-
-  .promoter-section h2:not(:first-child) {
-    margin-top: 36px;
-  }
-
-  .promoter-text {
-    font-size: 12.5px;
-    line-height: 1.55;
-    margin-bottom: 16px;
-    max-width: 100%;
-  }
-
-  .promoter-image {
-    width: 42%;
-    max-width: 42%;
-    border-radius: 12px;
   }
 }
