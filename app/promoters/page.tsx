@@ -15,8 +15,6 @@ export default function Promoters() {
           His career includes key roles with Intex Technologies, PG
           Electroplast, Beetel, and Neoteric Infomatique, where he contributed
           to product localization, sourcing strategy, and manufacturing setup.
-          He currently drives growth through strong supplier networks and deep
-          industry expertise.
         </p>
 
         <h2>Consulting Assignments</h2>
@@ -24,10 +22,7 @@ export default function Promoters() {
         <p className="promoter-text">
           Ajay Arora has handled consulting assignments across consumer
           electronics and IT, including product development, sourcing strategy,
-          showroom setup, business development, and after-sales support. He has
-          worked with brands such as Intex, Shenzhen KTC, Flyball China, PG
-          Electroplast, Micromax, and Neoteric to support market entry,
-          partnerships, and long-term value creation.
+          showroom setup, business development, and after-sales support.
         </p>
       </section>
 

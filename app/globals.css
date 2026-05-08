@@ -644,3 +644,83 @@ body:has(.fpd-site) .footer {
     border-radius: 14px;
   }
 }
+/* ================= PROMOTERS / LEADERSHIP ================= */
+.promoters-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.promoter-section {
+  flex: 1;
+}
+
+.promoter-section h2 {
+  margin-top: 0;
+  margin-bottom: 22px;
+  font-size: 38px;
+  line-height: 1.15;
+}
+
+.promoter-section h2:not(:first-child) {
+  margin-top: 54px;
+}
+
+.promoter-text {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #e5e5e5;
+  margin: 0 auto 24px;
+  max-width: 760px;
+}
+
+.promoter-image {
+  width: 460px;
+  max-width: 40%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 0;
+}
+
+/* MOBILE: keep same left-text / right-image layout */
+@media (max-width: 768px) {
+  .promoters-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 28px 14px 50px;
+    max-width: 100%;
+  }
+
+  .promoter-section {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .promoter-section h2 {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+
+  .promoter-section h2:not(:first-child) {
+    margin-top: 36px;
+  }
+
+  .promoter-text {
+    font-size: 12.5px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    max-width: 100%;
+  }
+
+  .promoter-image {
+    width: 42%;
+    max-width: 42%;
+    border-radius: 12px;
+  }
+}
