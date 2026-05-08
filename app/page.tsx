@@ -10,9 +10,18 @@ export default function Home() {
   const handleClick = (brand: string) => {
     setActive(brand);
 
-    // optional: also navigate after delay
     setTimeout(() => {
-      router.push("/brands");
+
+      // ✅ FPD PAGE
+      if (brand === "FPD") {
+        router.push("/fpd");
+      }
+
+      // OTHER BRANDS
+      else {
+        router.push("/brands");
+      }
+
     }, 800);
   };
 
@@ -38,22 +47,22 @@ export default function Home() {
         <div className="hero-brands">
 
           <button className="brand-circle" onClick={() => handleClick("KTC")}>
-            <img src="/images/ktc.jpg" />
+            <img src="/images/ktc.jpg" alt="KTC" />
             {active === "KTC" && <span className="brand-label">KTC</span>}
           </button>
 
           <button className="brand-circle" onClick={() => handleClick("FPD")}>
-            <img src="/images/fpd.jpg" />
+            <img src="/images/fpd.jpg" alt="FPD" />
             {active === "FPD" && <span className="brand-label">FPD</span>}
           </button>
 
           <button className="brand-circle" onClick={() => handleClick("Horion")}>
-            <img src="/images/horion.png" />
+            <img src="/images/horion.png" alt="Horion" />
             {active === "Horion" && <span className="brand-label">Horion</span>}
           </button>
 
           <button className="brand-circle" onClick={() => handleClick("Eclara")}>
-            <img src="/images/eclara.jpg" />
+            <img src="/images/eclara.jpg" alt="Eclara" />
             {active === "Eclara" && <span className="brand-label">Eclara</span>}
           </button>
 

@@ -1,0 +1,114 @@
+"use client";
+
+export default function FPDPage() {
+  return (
+    <main className="fpd-page">
+
+      {/* HERO IMAGE */}
+      <div className="fpd-hero">
+        <img src="/images/fpd-main.jpg" alt="FPD" />
+      </div>
+
+      {/* WHO IS FPD */}
+      <section className="fpd-section">
+        <h1>Who is FPD</h1>
+
+        <p>
+          FPD is an innovative technology brand dedicated to redefining the future of display.
+          The name “FPD” stands for Flat Panel Display, symbolizing our unwavering focus on
+          cutting-edge screen technologies and diverse product forms.
+        </p>
+
+        <p>
+          Each letter—F (Flat), P (Panel), and D (Display)—represents the versatility and
+          possibilities of our advanced display solutions.
+        </p>
+
+        <p>
+          At the heart of FPD is a vision to transform the way we see and interact with the
+          world. Through groundbreaking innovations, FPD integrates smart display technology
+          into every aspect of daily life, creating seamless experiences for families worldwide.
+        </p>
+
+        <img
+          className="fpd-image"
+          src="/images/fpd-about.jpg"
+          alt="FPD Technology"
+        />
+      </section>
+
+      {/* BRAND CONCEPT */}
+      <section className="fpd-section">
+
+        <h1>Brand Concept</h1>
+
+        <h2>Redefining Vision, Enriching Lives</h2>
+
+        <p>
+          FPD believes that every screen is more than just a display—it is a gateway to
+          connection, creativity, and shared experiences.
+        </p>
+
+        <p>
+          By pushing the boundaries of display technology, FPD enriches daily life with
+          solutions that empower individuals and unite families.
+        </p>
+
+        <p>
+          <strong>Innovation for a Brighter Future:</strong> Leveraging groundbreaking
+          technologies like OLED, Mini-LED, and AR/VR, FPD transforms traditional screens
+          into intelligent, immersive, and versatile tools.
+        </p>
+
+        <p>
+          <strong>Human-Centric Design:</strong> Every FPD product is thoughtfully designed
+          to blend engineering excellence with emotional resonance, creating displays that
+          simplify life, inspire creativity, and strengthen connections.
+        </p>
+
+        <p>
+          <strong>Shaping Tomorrow’s Connected Homes:</strong> Through the “Display+”
+          philosophy, FPD envisions a future where displays seamlessly integrate into every
+          aspect of the home, enabling smarter, more fulfilling lifestyles.
+        </p>
+
+        <img
+          className="fpd-image"
+          src="/images/fpd-concept.jpg"
+          alt="FPD Concept"
+        />
+
+      </section>
+
+      {/* BRAND VISION */}
+      <section className="fpd-section">
+
+        <h1>Brand Vision</h1>
+
+        <p>
+          FPD envisions a world where display technology transcends boundaries, transforming
+          screens into windows that connect us to a brighter future.
+        </p>
+
+        <p>
+          As we continue to innovate, FPD is committed to shaping the future of vision and
+          living—creating products that redefine how families see, connect, and experience
+          the world.
+        </p>
+
+        <p>
+          With Unlimited Vision, FPD invites everyone to explore infinite possibilities and
+          embrace a future full of wonder.
+        </p>
+
+        <img
+          className="fpd-image"
+          src="/images/fpd-vision.jpg"
+          alt="FPD Vision"
+        />
+
+      </section>
+
+    </main>
+  );
+}
