@@ -26,7 +26,6 @@ export default function RootLayout({
             <a href="/about-us">About Us</a>
             <a href="/promoters">Leadership</a>
             <a href="/showroom">Showroom</a>
-            <a href="/partners">Manufacturing Partners</a>
             <a href="/contact">Contact Us</a>
           </nav>
         </header>
