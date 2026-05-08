@@ -6,55 +6,32 @@ export default function Promoters() {
 
         <p className="promoter-text">
           Ajay Arora is a seasoned professional with over 35 years of experience
-          across consumer electronics, IT, and manufacturing industries. He has
-          held leadership roles in product development, procurement, global
-          sourcing, and business operations.
+          in consumer electronics, IT, and manufacturing. He has led product
+          development, procurement, global sourcing, vendor development, and
+          business operations for major industry organizations.
         </p>
 
         <p className="promoter-text">
-          Over the years, he has worked with leading organizations including
-          Intex Technologies, PG Electroplast, Beetel (a Bharti Airtel Group
-          company), and Neoteric Infomatique. His expertise spans strategic
-          sourcing, vendor development, product localization, and the setup of
-          manufacturing and assembly operations.
-        </p>
-
-        <p className="promoter-text">
-          Currently serving as General Manager at KTC India Incorporation, he
-          continues to drive growth through efficient sourcing strategies, strong
-          supplier networks, and deep industry knowledge.
+          His career includes key roles with Intex Technologies, PG
+          Electroplast, Beetel, and Neoteric Infomatique, where he contributed
+          to product localization, sourcing strategy, and manufacturing setup.
+          He currently drives growth through strong supplier networks and deep
+          industry expertise.
         </p>
 
         <h2>Consulting Assignments</h2>
 
         <p className="promoter-text">
-          Ajay Arora has successfully handled multiple consulting assignments
-          across consumer electronics and IT industries, including product
-          development, sourcing strategy, showroom setup, business development,
-          and after-sales support. He has partnered with leading brands such as
-          Intex, Shenzhen KTC, and Flyball China to deliver end-to-end solutions
-          covering product development, showroom execution, and market entry
-          strategies.
-        </p>
-
-        <p className="promoter-text">
-          He has also contributed to strategic sourcing and partnerships for PG
-          Electroplast in the TV category, audio product sourcing and vendor
-          alignment for Micromax, and business development initiatives in the
-          audio segment for Neoteric, ensuring efficient execution and long-term
-          value creation.
+          Ajay Arora has handled consulting assignments across consumer
+          electronics and IT, including product development, sourcing strategy,
+          showroom setup, business development, and after-sales support. He has
+          worked with brands such as Intex, Shenzhen KTC, Flyball China, PG
+          Electroplast, Micromax, and Neoteric to support market entry,
+          partnerships, and long-term value creation.
         </p>
       </section>
 
-      <div className="promoter-images">
-        <img className="promoter-image" src="/images/3.jpg" alt="Ajay Arora" />
-
-        <img
-          className="promoter-image consulting-image"
-          src="/images/co.jpg"
-          alt="Consulting Assignments"
-        />
-      </div>
+      <img className="promoter-image" src="/images/3.jpg" alt="Ajay Arora" />
     </main>
   );
 }
