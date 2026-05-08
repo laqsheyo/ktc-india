@@ -1,5 +1,14 @@
 import "./globals.css";
 import Script from "next/script";
+import Header from "./Header";
+
+export const metadata = {
+  title: "KTC India",
+  description: "KTC India Display LLP official website",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -8,45 +17,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <title>KTC India</title>
-
-        <meta
-          name="description"
-          content="KTC India Display LLP official website"
-        />
-
-        {/* ✅ ADD THIS */}
-        <link rel="icon" href="/favicon.ico" />
-      </head>
       <body>
+        <Header />
 
-        {/* GLOBAL HEADER */}
-        <header className="header">
-          <h1>KTC India</h1>
-
-          <nav>
-            <a href="/">Home</a>
-            <a href="/about-us">About Us</a>
-            <a href="/promoters">Leadership</a>
-            <a href="/consulting">Consulting Assignments</a>
-            <a href="/certifications">Certifications</a>
-            <a href="/brands">Brands</a>
-            <a href="/showroom">Showroom</a>
-            <a href="/partners">Manufacturing Partners</a>
-            <a href="/contact">Contact Us</a>
-          </nav>
-        </header>
-
-        {/* PAGE CONTENT */}
         {children}
 
-        {/* ✅ FOOTER (CORRECT PLACE) */}
         <footer className="footer">
           <p>© 2026 KTC India Display LLP. All rights reserved.</p>
         </footer>
 
-        {/* CHATBASE */}
         <Script id="chatbase-script" strategy="afterInteractive">
           {`
             (function(){
@@ -74,7 +53,6 @@ export default function RootLayout({
             })();
           `}
         </Script>
-
       </body>
     </html>
   );
