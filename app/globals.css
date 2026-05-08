@@ -17,9 +17,12 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+
   background: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(255,255,255,0.08);
+
   padding: 16px 24px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,6 +67,7 @@ nav a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   background: rgba(0,0,0,0.45);
   padding: 30px 50px;
   border-radius: 16px;
@@ -82,22 +86,30 @@ nav a:hover {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
+
   display: flex;
-  gap: 16px;
   justify-content: center;
-  flex-wrap: wrap;
-  max-width: 90%;
+  align-items: center;
+
+  gap: 16px;
+
+  flex-wrap: nowrap;
 }
 
-/* ================= CIRCLE BRAND BUTTONS ================= */
+/* ================= BRAND BUTTON ================= */
 .brand-circle {
-  width: 140px;  /* 🔥 FIXED */
-  height: 140px; /* 🔥 FIXED */
+  width: 140px;
+  height: 140px;
+
+  min-width: 140px;
+  min-height: 140px;
 
   border-radius: 50%;
   overflow: hidden;
+
   border: none;
   cursor: pointer;
+
   background: #fff;
 
   display: flex;
@@ -105,21 +117,33 @@ nav a:hover {
   justify-content: center;
 
   padding: 12px;
-  transition: 0.25s;
 
   position: relative;
+
+  transition: 0.25s;
 }
 
-/* FULL LOGO WITHOUT CUT */
 .brand-circle img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-/* HOVER */
 .brand-circle:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
+}
+
+/* LABEL */
+.brand-label {
+  position: absolute;
+  bottom: -24px;
+
+  width: 100%;
+
+  text-align: center;
+
+  color: #fff;
+  font-size: 12px;
 }
 
 /* ================= SECTION ================= */
@@ -146,6 +170,7 @@ nav a:hover {
   font-size: 18px;
   line-height: 1.7;
   color: #ccc;
+
   max-width: 750px;
   margin: 0 auto 14px;
 }
@@ -165,7 +190,9 @@ h2 {
 img {
   width: 100%;
   max-width: 700px;
+
   margin: 30px auto;
+
   border-radius: 14px;
   display: block;
 }
@@ -180,6 +207,7 @@ img {
 .slider-img {
   width: 100%;
   height: 420px;
+
   object-fit: cover;
   border-radius: 16px;
 }
@@ -188,17 +216,26 @@ img {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
   width: 44px;
   height: 44px;
+
   border-radius: 50%;
+
   background: rgba(0,0,0,0.6);
   color: #fff;
+
   border: none;
   cursor: pointer;
 }
 
-.arrow.left { left: 10px; }
-.arrow.right { right: 10px; }
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
 
 /* ================= CONTACT ================= */
 a {
@@ -207,7 +244,9 @@ a {
 
 .map-container {
   max-width: 900px;
+
   margin: 30px auto 40px auto;
+
   border-radius: 14px;
   overflow: hidden;
 }
@@ -216,7 +255,9 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 14px;
+
   margin-top: 30px;
 }
 
@@ -224,9 +265,13 @@ a {
 .contact-form textarea {
   width: 100%;
   max-width: 500px;
+
   padding: 14px;
+
   border-radius: 10px;
+
   border: 1px solid rgba(255,255,255,0.2);
+
   background: #111;
   color: #fff;
 }
@@ -237,22 +282,28 @@ a {
 
 .directions-btn {
   display: block;
+
   width: fit-content;
-  margin: 40px auto 50px auto;
+
+  margin: 40px auto 90px auto;
+
   text-decoration: none;
+
   color: #000;
 }
 
 .contact-heading {
   font-size: 32px;
-  margin-top: 0;
 }
 
 /* ================= BRANDS ================= */
 .brands-container {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
+
   gap: 30px;
+
   max-width: 900px;
   margin: auto;
 }
@@ -260,19 +311,103 @@ a {
 /* ================= FOOTER ================= */
 .footer {
   text-align: center;
+
   padding: 30px;
+
   color: #777;
   font-size: 14px;
+}
+
+/* ================= FPD PAGE ================= */
+
+.fpd-page {
+  width: 100%;
+  background: #000;
+  color: #fff;
+}
+
+.fpd-hero img {
+  width: 100%;
+  height: 85vh;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.fpd-section {
+  width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+
+  padding: 100px 90px;
+
+  text-align: left;
+}
+
+.fpd-section h1 {
+  font-size: 58px;
+  font-weight: 700;
+
+  color: #fff;
+
+  margin-bottom: 38px;
+
+  line-height: 1.2;
+}
+
+.fpd-section h2 {
+  font-size: 34px;
+
+  color: #f5f5f7;
+
+  margin-bottom: 30px;
+
+  line-height: 1.5;
+}
+
+.fpd-section p {
+  font-size: 24px;
+
+  line-height: 2;
+
+  color: #cfcfcf;
+
+  margin-bottom: 24px;
+
+  max-width: 1400px;
+}
+
+.fpd-image {
+  width: 100%;
+  max-width: 100%;
+
+  height: 750px;
+
+  object-fit: cover;
+
+  display: block;
+
+  margin-top: 65px;
+
+  border-radius: 24px;
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  .hero { height: 60vh; }
+  .hero {
+    height: 60vh;
+  }
 
-  .hero-overlay { padding: 20px; }
+  .hero-overlay {
+    padding: 20px;
+  }
 
-  .hero-overlay h2 { font-size: 28px; }
+  .hero-overlay h2 {
+    font-size: 28px;
+  }
 
   .about-text,
   .page-text,
@@ -281,180 +416,80 @@ a {
     text-align: left;
   }
 
-  nav { justify-content: center; }
+  nav {
+    justify-content: center;
+  }
 
   .brands-container {
     grid-template-columns: repeat(3, 1fr);
+
     padding: 0 10px;
+
     gap: 12px;
   }
 
-  .brands-container img { max-width: 90px; }
+  .brands-container img {
+    max-width: 90px;
+  }
 
-  .brands-container h2 { font-size: 18px; }
+  .brands-container h2 {
+    font-size: 18px;
+  }
 
-  .brands-container a { font-size: 13px; }
+  .brands-container a {
+    font-size: 13px;
+  }
 
   .hero-brands {
     bottom: 20px;
-    gap: 10px;
+
+    width: 100%;
+
+    padding: 0 10px;
+
+    gap: 8px;
+
+    overflow: hidden;
   }
 
-  /* 🔥 MOBILE SIZE FIX */
   .brand-circle {
-    width: 90px;
-    height: 90px;
+    width: 72px;
+    height: 72px;
+
+    min-width: 72px;
+    min-height: 72px;
+
+    padding: 8px;
   }
-}
-
-/* LABEL TEXT */
-.brand-label {
-  position: absolute;
-  bottom: -22px;
-  font-size: 12px;
-  color: #fff;
-  width: 100%;
-  text-align: center;
-}
-/* ================= HERO BRAND BUTTONS ================= */
-.hero-brands {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-
-  flex-wrap: nowrap; /* 🔥 IMPORTANT: no wrapping */
-}
-
-/* ================= MOBILE FIX ================= */
-@media (max-width: 768px) {
-
-  /* MOBILE HERO BUTTON FIX */
-.hero-brands {
-  bottom: 25px;
-
-  width: 100%;
-  padding: 0 12px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  gap: 8px;
-
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
-
-/* SMALLER MOBILE BUTTONS */
-.brand-circle {
-  width: 72px;
-  height: 72px;
-
-  min-width: 72px;
-  min-height: 72px;
-
-  padding: 8px;
-}
-
-/* MOBILE LOGO FIT */
-.brand-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-/* ================= FPD PAGE ================= */
-
-.fpd-page {
-  background: #000;
-  color: #fff;
-}
-
-/* HERO IMAGE */
-.fpd-hero img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  display: block;
-}
-
-/* SECTIONS */
-.fpd-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 90px 70px;
-}
-
-/* HEADINGS */
-.fpd-section h1 {
-  font-size: 64px;
-  font-weight: 700;
-  margin-bottom: 40px;
-  color: #fff;
-  line-height: 1.1;
-}
-
-.fpd-section h2 {
-  font-size: 38px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  color: #fff;
-}
-
-/* TEXT */
-.fpd-section p {
-  font-size: 32px;
-  line-height: 1.7;
-  color: #d1d1d1;
-  margin-bottom: 26px;
-  font-weight: 400;
-}
-
-/* IMAGES */
-.fpd-image {
-  width: 100%;
-  max-width: 100%;
-  height: 700px;
-  object-fit: cover;
-
-  margin-top: 60px;
-
-  border-radius: 28px;
-  display: block;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
 
   .fpd-hero img {
-    height: 240px;
+    height: 32vh;
   }
 
   .fpd-section {
-    padding: 50px 20px;
+    padding: 55px 22px;
   }
 
   .fpd-section h1 {
-    font-size: 42px;
-    margin-bottom: 24px;
+    font-size: 40px;
+    margin-bottom: 20px;
   }
 
   .fpd-section h2 {
-    font-size: 28px;
+    font-size: 24px;
+    margin-bottom: 18px;
   }
 
   .fpd-section p {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.9;
   }
 
   .fpd-image {
-    height: 260px;
-    border-radius: 18px;
-    margin-top: 35px;
+    height: 250px;
+
+    margin-top: 30px;
+
+    border-radius: 16px;
   }
 }
