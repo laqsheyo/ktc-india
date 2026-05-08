@@ -61,7 +61,7 @@ export default function FPDPage() {
 
       {/* WHO IS FPD */}
       <section className="fpd-section">
-        <h1>Who is FPD</h1>
+        <h1>What is FPD</h1>
 
         <p>
           FPD is an innovative technology brand dedicated to redefining the future of display. The name “FPD” stands for Flat Panel Display, symbolizing our unwavering focus on cutting-edge screen technologies and diverse product forms. Each letter—F (Flat), P (Panel), and D (Display)—represents the versatility and possibilities of our advanced display solutions. At the heart of FPD is a vision to transform the way we see and interact with the world. Through groundbreaking innovations, FPD integrates smart display technology into every aspect of daily life, creating seamless experiences for families worldwide
