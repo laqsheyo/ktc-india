@@ -1,7 +1,9 @@
+import type { ReactNode } from "react";
+
 export default function FPDLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return <main className="fpd-site">{children}</main>;
 }

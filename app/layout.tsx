@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import "./globals.css";
 import Script from "next/script";
-import Header from "./Header";
 
 export const metadata = {
   title: "KTC India",
@@ -13,12 +13,26 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <html lang="en">
       <body>
-        <Header />
+        <header className="header">
+          <h1>KTC India</h1>
+
+          <nav>
+            <a href="/">Home</a>
+            <a href="/about-us">About Us</a>
+            <a href="/promoters">Leadership</a>
+            <a href="/consulting">Consulting Assignments</a>
+            <a href="/certifications">Certifications</a>
+            <a href="/brands">Brands</a>
+            <a href="/showroom">Showroom</a>
+            <a href="/partners">Manufacturing Partners</a>
+            <a href="/contact">Contact Us</a>
+          </nav>
+        </header>
 
         {children}
 

@@ -659,3 +659,14 @@ a {
 .fpd-site + .footer {
   display: none;
 }
+.fpd-site {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Hide main KTC header and footer only on FPD pages */
+body:has(.fpd-site) .header,
+body:has(.fpd-site) .footer {
+  display: none;
+}
