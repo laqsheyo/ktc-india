@@ -4,22 +4,10 @@ export default function Promoters() {
       <section className="promoter-section">
         <h2>Ajay Arora</h2>
 
-        <p className="promoter-text">
-          Ajay Arora is a seasoned professional with over 35 years of experience
-          in consumer electronics, IT, and manufacturing. He has led product
-          development, procurement, global sourcing, vendor development, and
-          business operations for major industry organizations.
-        </p>
+       <p className="promoter-text">
+  Ajay Arora is a seasoned professional with over 35 years of experience in consumer electronics, IT, and manufacturing. He has worked with leading organizations including Intex Technologies, PG Electroplast, Beetel, and Neoteric Infomatique, with expertise in product development, global sourcing, vendor development, manufacturing setup, business development, and consulting assignments across market entry and after-sales support.
+</p>
 
-        <p className="promoter-text">
-          His career includes key roles with Intex Technologies, PG
-          Electroplast, Beetel, and Neoteric Infomatique, where he contributed
-          to product localization, sourcing strategy, and manufacturing setup.
-          He has also handled consulting assignments across consumer electronics
-          and IT, including product development, sourcing strategy, showroom
-          setup, business development, after-sales support, market entry,
-          partnerships, and long-term value creation.
-        </p>
       </section>
 
       <img className="promoter-image" src="/images/3.jpg" alt="Ajay Arora" />
