@@ -5,9 +5,7 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const pathname = usePathname();
 
-  const isFPDPage = pathname.startsWith("/fpd");
-
-  if (isFPDPage) {
+  if (pathname.startsWith("/fpd")) {
     return null;
   }
 
