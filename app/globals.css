@@ -643,3 +643,35 @@ body:has(.fpd-site) .footer {
     border-radius: 14px;
   }
 }
+@media (max-width: 768px) {
+  .promoters-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 26px !important;
+    padding: 48px 22px 60px !important;
+    text-align: center;
+  }
+
+  .promoter-section {
+    width: 100% !important;
+  }
+
+  .promoter-section h2 {
+    font-size: 38px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .promoter-text {
+    font-size: 16px !important;
+    line-height: 1.65 !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .promoter-image {
+    width: 92% !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+    border-radius: 16px !important;
+  }
+}
