@@ -11,31 +11,20 @@ export default function Home() {
     setActive(brand);
 
     setTimeout(() => {
-
-      // ✅ FPD PAGE
       if (brand === "FPD") {
         router.push("/fpd");
-      }
-
-      // OTHER BRANDS
-      else {
+      } else if (brand === "KTC") {
+        router.push("/ktc");
+      } else {
         router.push("/brands");
       }
-
     }, 800);
   };
 
   return (
     <main>
-
       <section className="hero">
-        <video
-          className="hero-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
+        <video className="hero-video" autoPlay loop muted playsInline>
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
@@ -43,9 +32,7 @@ export default function Home() {
           <h2>TECHNOLOGY & INNOVATION</h2>
         </div>
 
-        {/* BRAND BUTTONS */}
         <div className="hero-brands">
-
           <button className="brand-circle" onClick={() => handleClick("KTC")}>
             <img src="/images/ktc.jpg" alt="KTC" />
             {active === "KTC" && <span className="brand-label">KTC</span>}
@@ -56,20 +43,27 @@ export default function Home() {
             {active === "FPD" && <span className="brand-label">FPD</span>}
           </button>
 
-          <button className="brand-circle" onClick={() => handleClick("Horion")}>
+          <button
+            className="brand-circle"
+            onClick={() => handleClick("Horion")}
+          >
             <img src="/images/horion.png" alt="Horion" />
-            {active === "Horion" && <span className="brand-label">Horion</span>}
+            {active === "Horion" && (
+              <span className="brand-label">Horion</span>
+            )}
           </button>
 
-          <button className="brand-circle" onClick={() => handleClick("Eclara")}>
+          <button
+            className="brand-circle"
+            onClick={() => handleClick("Eclara")}
+          >
             <img src="/images/eclara.jpg" alt="Eclara" />
-            {active === "Eclara" && <span className="brand-label">Eclara</span>}
+            {active === "Eclara" && (
+              <span className="brand-label">Eclara</span>
+            )}
           </button>
-
         </div>
-
       </section>
-
     </main>
   );
 }
