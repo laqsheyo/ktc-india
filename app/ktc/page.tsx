@@ -67,7 +67,7 @@ const monitorModels: MonitorModel[] = [
   },
   {
     name: "H24V27",
-    image: "/images/ktc-h24v27.jpg",
+    image: "/images/ktc-h24v27.png",
     summary: ["23.8 inch VA", "1920 × 1080 @ 100Hz", "300 cd/m²", "HDMI + VGA"],
     specs: [
       ["Model Name", "H24V27"],
@@ -130,7 +130,7 @@ const monitorModels: MonitorModel[] = [
   },
   {
     name: "H24F7",
-    image: "/images/ktc-h24f7.jpg",
+    image: "/images/ktc-h24f7.png",
     summary: ["23.8 inch Fast IPS", "1920 × 1080 @ 240Hz", "400 cd/m²", "HDMI 2.0 + DP 1.4"],
     specs: [
       ["Model Name", "H24F7"],
@@ -194,7 +194,7 @@ const monitorModels: MonitorModel[] = [
   },
   {
     name: "H27T27S",
-    image: "/images/ktc-h27t27s.jpg",
+    image: "/images/ktc-h27t27s.png",
     summary: ["27 inch HVA", "2560 × 1440 @ 144Hz", "300 cd/m²", "HDMI 2.0 + DP 1.4"],
     specs: [
       ["Model Name", "H27T27S"],
@@ -257,7 +257,7 @@ const monitorModels: MonitorModel[] = [
   },
   {
     name: "H27T22C",
-    image: "/images/ktc-h27t22c.jpg",
+    image: "/images/ktc-h27t22c.png",
     summary: ["27 inch Fast IPS", "2560 × 1440 @ 180Hz", "350 cd/m²", "HDMI 2.0 + DP 1.4"],
     specs: [
       ["Model Name", "H27T22C"],
@@ -321,7 +321,7 @@ const monitorModels: MonitorModel[] = [
   },
   {
     name: "H32S5",
-    image: "/images/ktc-h32s5.jpg",
+    image: "/images/ktc-h32s5.png",
     summary: ["31.5 inch Curved HVA", "2560 × 1440 @ 185Hz", "300 cd/m²", "HDMI 2.0 + DP 1.4"],
     specs: [
       ["Model Name", "H32S5"],
@@ -386,7 +386,7 @@ const monitorModels: MonitorModel[] = [
   },
   {
     name: "H34S5",
-    image: "/images/ktc-h34s5.jpg",
+    image: "/images/ktc-h34s5.png",
     summary: ["34 inch Curved HVA", "3440 × 1440 @ 180Hz", "300 cd/m²", "Ultra-wide 21:9"],
     specs: [
       ["Model Name", "H34S5"],
