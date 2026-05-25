@@ -130,8 +130,6 @@ const h15f9Specs = [
 
 export default function KTCPage() {
   const [selectedModel, setSelectedModel] = useState(monitorModels[0]);
-  const [showImage, setShowImage] = useState(false);
-
   const isH15F9 = selectedModel.name === "H15F9";
 
   return (
@@ -152,10 +150,7 @@ export default function KTCPage() {
             className={`ktc-model-card ${
               selectedModel.name === model.name ? "active" : ""
             }`}
-            onClick={() => {
-              setSelectedModel(model);
-              setShowImage(false);
-            }}
+            onClick={() => setSelectedModel(model)}
           >
             <span>{model.name}</span>
             <small>{model.size}</small>
@@ -165,7 +160,31 @@ export default function KTCPage() {
 
       <section className="ktc-details">
         <div className="ktc-details-content">
-          <h2>{selectedModel.name}</h2>
+          <div className="ktc-product-top">
+            <div className="ktc-product-info">
+              <h2>{selectedModel.name}</h2>
+
+              <div className="ktc-product-summary">
+                <p>{selectedModel.size}</p>
+                <p>{selectedModel.resolution}</p>
+                <p>{selectedModel.panel}</p>
+                <p>{selectedModel.brightness}</p>
+                <p>{selectedModel.contrast}</p>
+              </div>
+            </div>
+
+            {selectedModel.image ? (
+              <img
+                className="ktc-monitor-image"
+                src={selectedModel.image}
+                alt={`${selectedModel.name} Monitor`}
+              />
+            ) : (
+              <div className="ktc-image-placeholder">
+                Image coming soon
+              </div>
+            )}
+          </div>
 
           {isH15F9 ? (
             <div className="ktc-spec-grid">
@@ -179,27 +198,6 @@ export default function KTCPage() {
           ) : (
             <p className="ktc-coming-soon">
               Detailed specifications for this model will be available soon.
-            </p>
-          )}
-
-          <button
-            className="ktc-image-btn"
-            onClick={() => setShowImage(!showImage)}
-          >
-            {showImage ? "Hide Monitor Image" : "Show Monitor Image"}
-          </button>
-
-          {showImage && selectedModel.image && (
-            <img
-              className="ktc-monitor-image"
-              src={selectedModel.image}
-              alt={`${selectedModel.name} Monitor`}
-            />
-          )}
-
-          {showImage && !selectedModel.image && (
-            <p className="ktc-coming-soon">
-              Monitor image for this model will be available soon.
             </p>
           )}
         </div>
