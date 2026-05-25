@@ -12,25 +12,136 @@ const monitorModels = [
     contrast: "1000:1",
     image: "/images/ktc-h15f9.jpg",
   },
-  { name: "Model 2", size: "Coming soon", resolution: "Coming soon", panel: "Coming soon", brightness: "Coming soon", contrast: "Coming soon", image: "" },
-  { name: "Model 3", size: "Coming soon", resolution: "Coming soon", panel: "Coming soon", brightness: "Coming soon", contrast: "Coming soon", image: "" },
-  { name: "Model 4", size: "Coming soon", resolution: "Coming soon", panel: "Coming soon", brightness: "Coming soon", contrast: "Coming soon", image: "" },
-  { name: "Model 5", size: "Coming soon", resolution: "Coming soon", panel: "Coming soon", brightness: "Coming soon", contrast: "Coming soon", image: "" },
-  { name: "Model 6", size: "Coming soon", resolution: "Coming soon", panel: "Coming soon", brightness: "Coming soon", contrast: "Coming soon", image: "" },
-  { name: "Model 7", size: "Coming soon", resolution: "Coming soon", panel: "Coming soon", brightness: "Coming soon", panel: "Coming soon", contrast: "Coming soon", image: "" },
+  {
+    name: "Model 2",
+    size: "Coming soon",
+    resolution: "Coming soon",
+    panel: "Coming soon",
+    brightness: "Coming soon",
+    contrast: "Coming soon",
+    image: "",
+  },
+  {
+    name: "Model 3",
+    size: "Coming soon",
+    resolution: "Coming soon",
+    panel: "Coming soon",
+    brightness: "Coming soon",
+    contrast: "Coming soon",
+    image: "",
+  },
+  {
+    name: "Model 4",
+    size: "Coming soon",
+    resolution: "Coming soon",
+    panel: "Coming soon",
+    brightness: "Coming soon",
+    contrast: "Coming soon",
+    image: "",
+  },
+  {
+    name: "Model 5",
+    size: "Coming soon",
+    resolution: "Coming soon",
+    panel: "Coming soon",
+    brightness: "Coming soon",
+    contrast: "Coming soon",
+    image: "",
+  },
+  {
+    name: "Model 6",
+    size: "Coming soon",
+    resolution: "Coming soon",
+    panel: "Coming soon",
+    brightness: "Coming soon",
+    contrast: "Coming soon",
+    image: "",
+  },
+  {
+    name: "Model 7",
+    size: "Coming soon",
+    resolution: "Coming soon",
+    panel: "Coming soon",
+    brightness: "Coming soon",
+    contrast: "Coming soon",
+    image: "",
+  },
+];
+
+const h15f9Specs = [
+  ["Model Name", "H15F9"],
+  ["Stand Model", "Rotary Support Square Plastic Fixed Base"],
+  ["Tilt", "0°-90° Rotary Support Square"],
+  ["Product Size Without Base", "358.646 × 222.876 × 11.8 mm"],
+  ["Packing Size", "414 × 263 × 55 mm"],
+  ["Net Weight With Stand", "600 g"],
+  ["Color", "Black"],
+  ["Panel Supplier", "Goodstar"],
+  ["Panel Model", "LCM156CS0174D"],
+  ["Panel Size", "15.6 inch"],
+  ["Panel Type", "IPS"],
+  ["Module Type", "Flat"],
+  ["Aspect Ratio", "16:9"],
+  ["Backlight Type", "ELED"],
+  ["Maximum Resolution", "1920 × 1080 @ 60Hz"],
+  ["Pixel Pitch", "0.17925(H) × 0.17925(V)"],
+  ["Pixels Per Inch", "141 PPI"],
+  ["Active Area", "344.16(H) × 193.59(V)"],
+  ["Viewing Angle", "±89° Horizontal, ±89° Vertical"],
+  ["Surface Treatment", "Anti-Glare"],
+  ["Brightness", "300 cd/m² Typical"],
+  ["Contrast", "1000:1 Typical"],
+  ["Response Time", "20 ms"],
+  ["Display Colors", "16.7M, 6bit + 2FRC"],
+  ["NTSC Color Gamut", "44% Coverage, 44% Volume"],
+  ["Adobe RGB Color Gamut", "40% Coverage, 40% Volume"],
+  ["DCI-P3 Color Gamut", "37% Coverage, 37% Volume"],
+  ["sRGB Color Gamut", "61% Coverage, 62% Volume"],
+  ["Backlight Control", "DC"],
+  ["Mainboard Model", "RTD2525BE"],
+  ["HDMI Input", "1 × Mini HDMI, 1920 × 1080 @ 60Hz"],
+  ["Type-C Input", "2 × Type-C, 1920 × 1080 @ 60Hz"],
+  ["Audio Output", "1 × Earphone"],
+  ["Flicker Free", "Supported"],
+  ["HDR10", "Supported"],
+  ["MPRT", "Not supported"],
+  ["KVM", "Not supported"],
+  ["AMD Freesync & Nvidia G-Sync Compatible", "Supported"],
+  ["RGB Light", "Not supported"],
+  ["PIP / PBP", "Not supported"],
+  ["MCC PC Client", "Not supported"],
+  ["Color Management", "Not supported"],
+  ["Power Input", "DC 12V / 1A"],
+  ["Working Consumption", "12W"],
+  ["Standby Consumption", "≤0.5W"],
+  ["Audio", "2 × 0.8W"],
+  ["Monitor", "1 PCS"],
+  ["Warranty Card", "In UG"],
+  ["Quick Start Guide", "In UG"],
+  ["User Guide", "1 PCS"],
+  ["Signal Cable", "HDMI to Mini HDMI × 1, Type-C × 1"],
+  ["Power Cord", "Use Type-C"],
+  ["Certification", "FCC, CE, ERP, HDMI Certification"],
+  ["Maximum Working Altitude", "<5000 m"],
+  ["Working Condition", "0℃-40℃, 30%-90% Humidity, Non-condensing"],
+  ["Storage Condition", "-20℃-55℃, 20%-93% Humidity, Non-condensing"],
+  ["Warranty Period", "1 Year"],
 ];
 
 export default function KTCPage() {
   const [selectedModel, setSelectedModel] = useState(monitorModels[0]);
   const [showImage, setShowImage] = useState(false);
 
+  const isH15F9 = selectedModel.name === "H15F9";
+
   return (
     <main className="ktc-page">
       <section className="ktc-hero">
         <h1>KTC Monitors</h1>
         <p>
-          Explore KTC display monitor models with detailed product specifications,
-          connectivity features, display performance, and certification details.
+          Explore KTC display monitor models with detailed product
+          specifications, connectivity features, display performance, and
+          certification details.
         </p>
       </section>
 
@@ -56,192 +167,20 @@ export default function KTCPage() {
         <div className="ktc-details-content">
           <h2>{selectedModel.name}</h2>
 
-          <div className="ktc-spec-grid">
-            <div>
-              <span>Model Name</span>
-              <strong>H15F9</strong>
+          {isH15F9 ? (
+            <div className="ktc-spec-grid">
+              {h15f9Specs.map(([label, value]) => (
+                <div key={label}>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              ))}
             </div>
-            <div>
-              <span>Stand Model</span>
-              <strong>Rotary Support Square Plastic Fixed Base</strong>
-            </div>
-            <div>
-              <span>Tilt</span>
-              <strong>0°-90° Rotary Support Square</strong>
-            </div>
-            <div>
-              <span>Product Size Without Base</span>
-              <strong>358.646 × 222.876 × 11.8 mm</strong>
-            </div>
-            <div>
-              <span>Packing Size</span>
-              <strong>414 × 263 × 55 mm</strong>
-            </div>
-            <div>
-              <span>Net Weight With Stand</span>
-              <strong>600 g</strong>
-            </div>
-            <div>
-              <span>Color</span>
-              <strong>Black</strong>
-            </div>
-            <div>
-              <span>Panel Supplier</span>
-              <strong>Goodstar</strong>
-            </div>
-            <div>
-              <span>Panel Model</span>
-              <strong>LCM156CS0174D</strong>
-            </div>
-            <div>
-              <span>Panel Size</span>
-              <strong>15.6 inch</strong>
-            </div>
-            <div>
-              <span>Panel Type</span>
-              <strong>IPS</strong>
-            </div>
-            <div>
-              <span>Module Type</span>
-              <strong>Flat</strong>
-            </div>
-            <div>
-              <span>Aspect Ratio</span>
-              <strong>16:9</strong>
-            </div>
-            <div>
-              <span>Backlight Type</span>
-              <strong>ELED</strong>
-            </div>
-            <div>
-              <span>Maximum Resolution</span>
-              <strong>1920 × 1080 @ 60Hz</strong>
-            </div>
-            <div>
-              <span>Pixel Pitch</span>
-              <strong>0.17925(H) × 0.17925(V)</strong>
-            </div>
-            <div>
-              <span>Pixels Per Inch</span>
-              <strong>141 PPI</strong>
-            </div>
-            <div>
-              <span>Active Area</span>
-              <strong>344.16(H) × 193.59(V)</strong>
-            </div>
-            <div>
-              <span>Viewing Angle</span>
-              <strong>±89° Horizontal, ±89° Vertical</strong>
-            </div>
-            <div>
-              <span>Surface Treatment</span>
-              <strong>Anti-Glare</strong>
-            </div>
-            <div>
-              <span>Brightness</span>
-              <strong>300 cd/m² Typical</strong>
-            </div>
-            <div>
-              <span>Contrast</span>
-              <strong>1000:1 Typical</strong>
-            </div>
-            <div>
-              <span>Response Time</span>
-              <strong>20 ms</strong>
-            </div>
-            <div>
-              <span>Display Colors</span>
-              <strong>16.7M, 6bit + 2FRC</strong>
-            </div>
-            <div>
-              <span>NTSC Color Gamut</span>
-              <strong>44% Coverage, 44% Volume</strong>
-            </div>
-            <div>
-              <span>Adobe RGB Color Gamut</span>
-              <strong>40% Coverage, 40% Volume</strong>
-            </div>
-            <div>
-              <span>DCI-P3 Color Gamut</span>
-              <strong>37% Coverage, 37% Volume</strong>
-            </div>
-            <div>
-              <span>sRGB Color Gamut</span>
-              <strong>61% Coverage, 62% Volume</strong>
-            </div>
-            <div>
-              <span>Backlight Control</span>
-              <strong>DC</strong>
-            </div>
-            <div>
-              <span>Mainboard Model</span>
-              <strong>RTD2525BE</strong>
-            </div>
-            <div>
-              <span>HDMI Input</span>
-              <strong>1 × Mini HDMI, 1920 × 1080 @ 60Hz</strong>
-            </div>
-            <div>
-              <span>Type-C Input</span>
-              <strong>2 × Type-C, 1920 × 1080 @ 60Hz</strong>
-            </div>
-            <div>
-              <span>Audio Output</span>
-              <strong>1 × Earphone</strong>
-            </div>
-            <div>
-              <span>Flicker Free</span>
-              <strong>Supported</strong>
-            </div>
-            <div>
-              <span>HDR10</span>
-              <strong>Supported</strong>
-            </div>
-            <div>
-              <span>AMD Freesync & Nvidia G-Sync Compatible</span>
-              <strong>Supported</strong>
-            </div>
-            <div>
-              <span>Power Input</span>
-              <strong>DC 12V / 1A</strong>
-            </div>
-            <div>
-              <span>Working Consumption</span>
-              <strong>12W</strong>
-            </div>
-            <div>
-              <span>Standby Consumption</span>
-              <strong>≤0.5W</strong>
-            </div>
-            <div>
-              <span>Audio</span>
-              <strong>2 × 0.8W</strong>
-            </div>
-            <div>
-              <span>Signal Cable</span>
-              <strong>HDMI to Mini HDMI × 1, Type-C × 1</strong>
-            </div>
-            <div>
-              <span>Power Cord</span>
-              <strong>Use Type-C</strong>
-            </div>
-            <div>
-              <span>Certification</span>
-              <strong>FCC, CE, ERP, HDMI Certification</strong>
-            </div>
-            <div>
-              <span>Working Condition</span>
-              <strong>0℃-40℃, 30%-90% Humidity, Non-condensing</strong>
-            </div>
-            <div>
-              <span>Storage Condition</span>
-              <strong>-20℃-55℃, 20%-93% Humidity, Non-condensing</strong>
-            </div>
-            <div>
-              <span>Warranty Period</span>
-              <strong>1 Year</strong>
-            </div>
-          </div>
+          ) : (
+            <p className="ktc-coming-soon">
+              Detailed specifications for this model will be available soon.
+            </p>
+          )}
 
           <button
             className="ktc-image-btn"
@@ -256,6 +195,12 @@ export default function KTCPage() {
               src={selectedModel.image}
               alt={`${selectedModel.name} Monitor`}
             />
+          )}
+
+          {showImage && !selectedModel.image && (
+            <p className="ktc-coming-soon">
+              Monitor image for this model will be available soon.
+            </p>
           )}
         </div>
       </section>
