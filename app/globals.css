@@ -835,3 +835,204 @@ body:has(.fpd-site) .footer {
     grid-template-columns: 1fr;
   }
 }
+/* ================= KTC MONITORS PAGE ================= */
+.ktc-page {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.ktc-hero {
+  padding: 80px 40px 40px;
+  text-align: center;
+}
+
+.ktc-hero h1 {
+  font-size: 52px;
+  margin-bottom: 18px;
+}
+
+.ktc-hero p {
+  max-width: 780px;
+  margin: 0 auto;
+  color: #cfcfcf;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.ktc-models {
+  max-width: 1200px;
+  margin: 20px auto 50px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+}
+
+.ktc-model-card {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-radius: 12px;
+  padding: 18px 12px;
+  cursor: pointer;
+}
+
+.ktc-model-card span {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.ktc-model-card small {
+  display: block;
+  margin-top: 6px;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.ktc-model-card.active {
+  background: #fff;
+  color: #000;
+}
+
+.ktc-model-card.active small {
+  color: #333;
+}
+
+.ktc-details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 90px;
+}
+
+.ktc-details-content {
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 36px;
+}
+
+.ktc-product-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 36px;
+}
+
+.ktc-product-info {
+  flex: 1;
+}
+
+.ktc-product-info h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.ktc-product-summary p {
+  color: #cfcfcf;
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.ktc-monitor-image {
+  width: 520px;
+  max-width: 46%;
+  height: auto;
+  margin: 0;
+  border-radius: 18px;
+  object-fit: contain;
+}
+
+.ktc-image-placeholder {
+  width: 520px;
+  max-width: 46%;
+  min-height: 260px;
+  border-radius: 18px;
+  background: #111;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ktc-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.ktc-spec-grid div {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.ktc-spec-grid span {
+  display: block;
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.ktc-spec-grid strong {
+  display: block;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .ktc-hero {
+    padding: 50px 20px 30px;
+  }
+
+  .ktc-hero h1 {
+    font-size: 36px;
+  }
+
+  .ktc-hero p {
+    font-size: 15px;
+  }
+
+  .ktc-models {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 20px;
+    margin-bottom: 34px;
+  }
+
+  .ktc-details {
+    padding: 0 20px 60px;
+  }
+
+  .ktc-details-content {
+    padding: 22px;
+  }
+
+  .ktc-product-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .ktc-monitor-image,
+  .ktc-image-placeholder {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .ktc-product-info h2 {
+    font-size: 36px;
+  }
+
+  .ktc-product-summary p {
+    font-size: 15px;
+  }
+
+  .ktc-spec-grid {
+    grid-template-columns: 1fr;
+  }
+}
