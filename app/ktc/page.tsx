@@ -5,11 +5,6 @@ import { useState } from "react";
 const monitorModels = [
   {
     name: "H15F9",
-    size: "15.6 inch",
-    resolution: "1920 × 1080 @ 60Hz",
-    panel: "IPS",
-    brightness: "300 cd/m²",
-    contrast: "1000:1",
     image: "/images/ktc-h15f9.jpg",
   },
   {
