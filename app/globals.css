@@ -99,31 +99,39 @@ a {
   flex-wrap: nowrap;
 }
 
-.brand-circle {
-  width: 140px;
-  height: 140px;
-  min-width: 140px;
-  min-height: 140px;
-  border-radius: 50%;
-  overflow: hidden;
+.brand-logo-button {
+  width: 170px;
+  height: 82px;
   border: none;
   cursor: pointer;
   background: #fff;
+  border-radius: 10px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
-  position: relative;
+  transition: transform 0.25s ease;
 }
 
-.brand-circle img {
+.brand-logo-button img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  margin: 0;
+  border-radius: 0;
 }
 
-.brand-circle:hover {
-  transform: scale(1.08);
+.brand-logo-button:hover {
+  transform: scale(1.06);
+}
+
+@media (max-width: 768px) {
+  .brand-logo-button {
+    width: 82px;
+    height: 48px;
+    padding: 7px;
+    border-radius: 8px;
+  }
 }
 
 .brand-label {
