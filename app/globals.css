@@ -1208,3 +1208,16 @@ body:has(.fpd-site) .footer {
     height: 210px !important;
   }
 }
+.promoter-image {
+  object-fit: contain !important;
+  background: transparent !important;
+}
+.promoter-image {
+  width: 360px !important;
+  max-width: 34% !important;
+  height: 230px !important;
+  margin: 0 !important;
+  border-radius: 14px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+}
