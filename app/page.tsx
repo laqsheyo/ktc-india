@@ -31,14 +31,14 @@ export default function Home() {
             className="brand-logo-button"
             onClick={() => handleClick("KTC")}
           >
-            <img src="/images/ktc.jpg" alt="KTC" />
+            <img src="/images/ktc.png" alt="KTC" />
           </button>
 
           <button
             className="brand-logo-button"
             onClick={() => handleClick("FPD")}
           >
-            <img src="/images/fpd.jpg" alt="FPD" />
+            <img src="/images/fpd.png" alt="FPD" />
           </button>
 
           <button
