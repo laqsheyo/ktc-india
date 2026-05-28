@@ -104,9 +104,9 @@ a {
   height: 82px;
   border: none;
   cursor: pointer;
-  background: #fff;
-  border-radius: 10px;
-  padding: 12px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,10 +119,20 @@ a {
   object-fit: contain;
   margin: 0;
   border-radius: 0;
+  display: block;
 }
 
 .brand-logo-button:hover {
   transform: scale(1.06);
+}
+
+@media (max-width: 768px) {
+  .brand-logo-button {
+    width: 82px;
+    height: 48px;
+    padding: 0;
+    border-radius: 0;
+  }
 }
 
 @media (max-width: 768px) {
