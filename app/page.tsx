@@ -16,7 +16,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="home-page">
       <section className="hero">
         <video className="hero-video" autoPlay loop muted playsInline>
           <source src="/videos/hero.mp4" type="video/mp4" />
@@ -25,36 +25,36 @@ export default function Home() {
         <div className="hero-overlay">
           <h2>TECHNOLOGY & INNOVATION</h2>
         </div>
+      </section>
 
-        <div className="hero-brands">
-          <button
-            className="brand-logo-button"
-            onClick={() => handleClick("KTC")}
-          >
-            <img src="/images/ktc.png" alt="KTC" />
-          </button>
+      <section className="home-brand-strip">
+        <button
+          className="brand-logo-button"
+          onClick={() => handleClick("KTC")}
+        >
+          <img src="/images/ktc.png" alt="KTC" />
+        </button>
 
-          <button
-            className="brand-logo-button"
-            onClick={() => handleClick("FPD")}
-          >
-            <img src="/images/fpd.png" alt="FPD" />
-          </button>
+        <button
+          className="brand-logo-button"
+          onClick={() => handleClick("FPD")}
+        >
+          <img src="/images/fpd.png" alt="FPD" />
+        </button>
 
-          <button
-            className="brand-logo-button"
-            onClick={() => handleClick("Horion")}
-          >
-            <img src="/images/horion.png" alt="Horion" />
-          </button>
+        <button
+          className="brand-logo-button"
+          onClick={() => handleClick("Horion")}
+        >
+          <img src="/images/horion.png" alt="Horion" />
+        </button>
 
-          <button
-            className="brand-logo-button"
-            onClick={() => handleClick("Eclara")}
-          >
-            <img src="/images/eclara.png" alt="Eclara" />
-          </button>
-        </div>
+        <button
+          className="brand-logo-button"
+          onClick={() => handleClick("Eclara")}
+        >
+          <img src="/images/eclara.png" alt="Eclara" />
+        </button>
       </section>
     </main>
   );
