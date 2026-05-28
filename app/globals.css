@@ -100,13 +100,13 @@ a {
 }
 
 .brand-logo-button {
-  width: 210px;
-  height: 90px;
+  width: 250px;
+  height: 95px;
   border: none;
   cursor: pointer;
-  background: transparent;
+  background: #000;
   border-radius: 0;
-  padding: 0;
+  padding: 14px 22px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,13 +123,14 @@ a {
 }
 
 .brand-logo-button:hover {
-  transform: scale(1.06);
+  transform: scale(1.04);
 }
 
 @media (max-width: 768px) {
   .brand-logo-button {
     width: 82px;
     height: 42px;
+    padding: 6px 8px;
   }
 }
 
