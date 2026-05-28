@@ -52,7 +52,7 @@ export default function Home() {
             className="brand-logo-button"
             onClick={() => handleClick("Eclara")}
           >
-            <img src="/images/eclara.jpg" alt="Eclara" />
+            <img src="/images/eclara.png" alt="Eclara" />
           </button>
         </div>
       </section>
