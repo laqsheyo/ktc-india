@@ -100,8 +100,8 @@ a {
 }
 
 .brand-logo-button {
-  width: 220px;
-  height: 90px;
+  width: 170px;
+  height: 70px;
   border: none;
   background: transparent;
   padding: 0;
@@ -112,8 +112,8 @@ a {
 }
 
 .brand-logo-button img {
-  width: 220px;
-  height: 90px;
+  width: 170px;
+  height: 70px;
   max-width: none;
   margin: 0;
   padding: 0;
@@ -135,13 +135,13 @@ a {
   }
 
   .brand-logo-button {
-    width: 82px;
-    height: 40px;
+    width: 68px;
+    height: 34px;
   }
 
   .brand-logo-button img {
-    width: 82px;
-    height: 40px;
+    width: 68px;
+    height: 34px;
   }
 }
 
