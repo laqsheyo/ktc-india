@@ -1327,3 +1327,52 @@ body:has(.fpd-site) .footer {
     height: 34px;
   }
 }
+/* ================= MOBILE LEADERSHIP FIX ================= */
+@media (max-width: 768px) {
+  .promoters-container {
+    padding: 34px 22px 60px !important;
+    max-width: 100% !important;
+  }
+
+  .promoter-section {
+    gap: 52px !important;
+  }
+
+  .promoter-profile {
+    flex-direction: column !important;
+    gap: 18px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .promoter-copy {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .promoter-copy h2 {
+    font-size: 30px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 18px !important;
+    white-space: normal !important;
+  }
+
+  .promoter-text {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    max-width: 92% !important;
+    margin: 0 auto !important;
+    color: #e8e8e8 !important;
+  }
+
+  .promoter-image {
+    width: 76% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    max-height: 210px !important;
+    object-fit: contain !important;
+    margin: 10px auto 0 !important;
+    border-radius: 14px !important;
+    background: transparent !important;
+  }
+}
