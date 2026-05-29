@@ -1,7 +1,3 @@
-
-Your **`app/page.tsx`** must contain only this:
-
-```tsx
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -12,9 +8,13 @@ export default function Home() {
   const handleClick = (brand: string) => {
     if (brand === "FPD") {
       router.push("/fpd");
-    } else if (brand === "KTC") {
+    }
+
+    if (brand === "KTC") {
       router.push("/ktc");
-    } else {
+    }
+
+    if (brand === "Horion" || brand === "Eclara") {
       router.push("/");
     }
   };
@@ -33,6 +33,7 @@ export default function Home() {
 
       <section className="home-brand-strip">
         <button
+          type="button"
           className="brand-logo-button"
           onClick={() => handleClick("KTC")}
         >
@@ -40,6 +41,7 @@ export default function Home() {
         </button>
 
         <button
+          type="button"
           className="brand-logo-button"
           onClick={() => handleClick("FPD")}
         >
@@ -47,6 +49,7 @@ export default function Home() {
         </button>
 
         <button
+          type="button"
           className="brand-logo-button"
           onClick={() => handleClick("Horion")}
         >
@@ -54,6 +57,7 @@ export default function Home() {
         </button>
 
         <button
+          type="button"
           className="brand-logo-button"
           onClick={() => handleClick("Eclara")}
         >
