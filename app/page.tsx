@@ -1,3 +1,6 @@
+Replace your full **`app/page.tsx`** with this:
+
+```tsx
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -11,7 +14,7 @@ export default function Home() {
     } else if (brand === "KTC") {
       router.push("/ktc");
     } else {
-      router.push("/brands");
+      router.push("/");
     }
   };
 
@@ -59,3 +62,6 @@ export default function Home() {
     </main>
   );
 }
+```
+
+Now Horion and Eclara will stay on / redirect back to the home page `/`.
