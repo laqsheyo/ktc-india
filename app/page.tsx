@@ -1,4 +1,5 @@
-Replace your full **`app/page.tsx`** with this:
+
+Your **`app/page.tsx`** must contain only this:
 
 ```tsx
 "use client";
@@ -62,6 +63,3 @@ export default function Home() {
     </main>
   );
 }
-```
-
-Now Horion and Eclara will stay on / redirect back to the home page `/`.
