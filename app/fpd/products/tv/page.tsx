@@ -5,7 +5,7 @@ import { useState } from "react";
 const tvModels = [
   {
     model: "32N HD - KTC Basic",
-    image: "/images/fpd-tv-32n-hd.jpg",
+    image: "/images/fpd-tv-32n-hd.png",
     specs: {
       Resolution: "HD Ready",
       Panel: "Standard",
@@ -30,7 +30,7 @@ const tvModels = [
   },
   {
     model: "43N FHD - KTC Basic",
-    image: "/images/fpd-tv-43n-fhd.jpg",
+    image: "/images/fpd-tv-43n-fhd.png",
     specs: {
       Resolution: "FHD",
       Panel: "Standard",
@@ -55,7 +55,7 @@ const tvModels = [
   },
   {
     model: "43J1U UHD",
-    image: "/images/fpd-tv-43j1u-uhd.jpg",
+    image: "/images/fpd-tv-43j1u-uhd.png",
     specs: {
       Resolution: "4K UHD",
       Panel: "IPS",
@@ -80,7 +80,7 @@ const tvModels = [
   },
   {
     model: "50J1U UHD",
-    image: "/images/fpd-tv-50j1u-uhd.jpg",
+    image: "/images/fpd-tv-50j1u-uhd.png",
     specs: {
       Resolution: "4K UHD",
       Panel: "VA",
@@ -105,7 +105,7 @@ const tvModels = [
   },
   {
     model: "55J1U QLED",
-    image: "/images/fpd-tv-55j1u-qled.jpg",
+    image: "/images/fpd-tv-55j1u-qled.png",
     specs: {
       Resolution: "4K UHD",
       Panel: "QLED",
@@ -130,7 +130,7 @@ const tvModels = [
   },
   {
     model: "65J1U QLED - KTC Basic",
-    image: "/images/fpd-tv-65j1u-qled.jpg",
+    image: "/images/fpd-tv-65j1u-qled.png",
     specs: {
       Resolution: "4K UHD",
       Panel: "QLED",
@@ -155,7 +155,7 @@ const tvModels = [
   },
   {
     model: "75J1U QLED - KTC Basic",
-    image: "/images/fpd-tv-75j1u-qled.jpg",
+    image: "/images/fpd-tv-75j1u-qled.png",
     specs: {
       Resolution: "4K UHD",
       Panel: "QLED",
