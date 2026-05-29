@@ -12,7 +12,7 @@ export default function FPDPage() {
       <header className="fpd-header">
         <div className="fpd-header-inner">
           <Link href="/fpd" className="fpd-logo">
-            <img src="/images/fpd.jpg" alt="FPD" />
+            <img src="/images/fpd.png" alt="FPD" />
           </Link>
 
           <nav className="fpd-nav">
