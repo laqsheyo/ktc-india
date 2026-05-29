@@ -1564,3 +1564,49 @@ body:has(.fpd-site) .footer {
     grid-template-columns: 1fr;
   }
 }
+.fpd-products-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+.fpd-dropdown {
+  position: relative;
+}
+
+.fpd-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  background: rgba(16, 16, 16, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 8px 0;
+  min-width: 170px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+
+.fpd-dropdown-item {
+  display: block;
+  padding: 12px 24px;
+  color: #bbb;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.fpd-dropdown-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .fpd-dropdown-menu {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+}

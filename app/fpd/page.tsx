@@ -1,65 +1,10 @@
-"use client";
-
-import Link from "next/link";
-import { useState } from "react";
-
 export default function FPDPage() {
-  const [productsOpen, setProductsOpen] = useState(false);
-
   return (
     <main className="fpd-page">
-      {/* ========== FPD HEADER ========== */}
-      <header className="fpd-header">
-        <div className="fpd-header-inner">
-          <Link href="/fpd" className="fpd-logo">
-            <img src="/images/fpd.png" alt="FPD" />
-          </Link>
-
-          <nav className="fpd-nav">
-            <div
-              className="fpd-nav-item fpd-dropdown"
-              onMouseEnter={() => setProductsOpen(true)}
-              onMouseLeave={() => setProductsOpen(false)}
-            >
-              <span className="fpd-nav-link">Products ▾</span>
-
-              {productsOpen && (
-                <div className="fpd-dropdown-menu">
-                  <Link href="/fpd/products/tv" className="fpd-dropdown-item">
-                    TV
-                  </Link>
-                  <Link
-                    href="/fpd/products/tablet"
-                    className="fpd-dropdown-item"
-                  >
-                    Tablet
-                  </Link>
-                  <Link
-                    href="/fpd/products/projector"
-                    className="fpd-dropdown-item"
-                  >
-                    Projector
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <Link href="/fpd/support" className="fpd-nav-link">
-              Support
-            </Link>
-            <Link href="/fpd/e-waste" className="fpd-nav-link">
-              E-Waste Management
-            </Link>
-          </nav>
-        </div>
-      </header>
-
-      {/* HERO IMAGE */}
       <div className="fpd-hero">
         <img src="/images/fpd-main.jpg" alt="FPD" />
       </div>
 
-      {/* WHO IS FPD */}
       <section className="fpd-section">
         <h1>What is FPD ?</h1>
 
@@ -74,7 +19,6 @@ export default function FPDPage() {
         />
       </section>
 
-      {/* BRAND CONCEPT */}
       <section className="fpd-section">
         <h1>Brand Concept</h1>
 
@@ -89,7 +33,6 @@ export default function FPDPage() {
         />
       </section>
 
-      {/* BRAND VISION */}
       <section className="fpd-section">
         <h1>Brand Vision</h1>
 
