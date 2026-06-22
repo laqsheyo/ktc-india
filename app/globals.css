@@ -1610,3 +1610,24 @@ body:has(.fpd-site) .footer {
     transform: none;
   }
 }
+/* Keep the brand logos visible on the first screen of short laptops */
+@media (min-width: 769px) {
+  .home-page .hero {
+    height: clamp(380px, calc(100svh - 290px), 560px);
+    min-height: 0;
+  }
+
+  .home-page .home-brand-strip {
+    padding: 14px 20px 12px;
+  }
+
+  .home-page .brand-logo-button {
+    width: 145px;
+    height: 48px;
+  }
+
+  .home-page .brand-logo-button img {
+    width: 145px;
+    height: 48px;
+  }
+}
