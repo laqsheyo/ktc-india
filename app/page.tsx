@@ -27,7 +27,7 @@ export default function Home() {
         </video>
 
         <div className="hero-overlay">
-          <h2>TECHNOLOGY & INNOVATION</h2>
+          <h2>TECHNOLOGY & INNOVAION</h2>
         </div>
       </section>
 
