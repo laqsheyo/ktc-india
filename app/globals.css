@@ -1631,3 +1631,67 @@ body:has(.fpd-site) .footer {
     height: 48px;
   }
 }
+/* Main KTC support menu */
+.main-support-dropdown {
+  position: relative;
+}
+
+.main-support-button {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  opacity: 0.86;
+  cursor: pointer;
+  padding: 0;
+}
+
+.main-support-button:hover {
+  opacity: 1;
+}
+
+.main-support-menu {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  z-index: 3000;
+  min-width: 185px;
+  padding: 8px 0;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+.main-support-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: #ddd;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.main-support-menu a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* FPD header */
+.fpd-products-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+@media (max-width: 768px) {
+  .main-support-menu {
+    right: 0;
+  }
+
+  .main-support-button {
+    font-size: 13px;
+  }
+}

@@ -14,6 +14,10 @@ export default function FPDHeader() {
         </Link>
 
         <nav className="fpd-nav">
+          <Link href="/" className="fpd-nav-link">
+            Home
+          </Link>
+
           <div className="fpd-nav-item fpd-dropdown">
             <button
               type="button"
@@ -51,14 +55,6 @@ export default function FPDHeader() {
               </div>
             )}
           </div>
-
-          <Link href="/fpd/support" className="fpd-nav-link">
-            Support
-          </Link>
-
-          <Link href="/fpd/e-waste" className="fpd-nav-link">
-            E-Waste Management
-          </Link>
         </nav>
       </div>
     </header>

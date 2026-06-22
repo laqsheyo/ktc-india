@@ -1,28 +1,44 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Header() {
-  const pathname = usePathname();
-
-  if (pathname.startsWith("/fpd")) {
-    return null;
-  }
+  const [supportOpen, setSupportOpen] = useState(false);
 
   return (
     <header className="header">
       <h1>KTC India</h1>
 
       <nav>
-        <a href="/">Home</a>
-        <a href="/about-us">About Us</a>
-        <a href="/promoters">Leadership</a>
-        <a href="/consulting">Consulting Assignments</a>
-        <a href="/certifications">Certifications</a>
-        <a href="/brands">Brands</a>
-        <a href="/showroom">Showroom</a>
-        <a href="/partners">Manufacturing Partners</a>
-        <a href="/contact">Contact Us</a>
+        <Link href="/">Home</Link>
+        <Link href="/about-us">About Us</Link>
+        <Link href="/promoters">Leadership</Link>
+        <Link href="/showroom">Showroom</Link>
+
+        <div className="main-support-dropdown">
+          <button
+            type="button"
+            className="main-support-button"
+            onClick={() => setSupportOpen(!supportOpen)}
+          >
+            Support ▾
+          </button>
+
+          {supportOpen && (
+            <div className="main-support-menu">
+              <Link href="/fpd/support" onClick={() => setSupportOpen(false)}>
+                FPD Support
+              </Link>
+
+              <Link href="/fpd/e-waste" onClick={() => setSupportOpen(false)}>
+                E-Waste Management
+              </Link>
+            </div>
+          )}
+        </div>
+
+        <Link href="/contact">Contact Us</Link>
       </nav>
     </header>
   );
