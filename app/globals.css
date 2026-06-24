@@ -464,8 +464,9 @@ body:has(.fpd-site) .footer {
   font-size: 52px;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 22px;
+  margin-bottom: 30px;
   line-height: 1.2;
+  text-align: center;
 }
 
 .fpd-section h2 {
@@ -473,6 +474,7 @@ body:has(.fpd-site) .footer {
   color: #fff;
   margin-bottom: 26px;
   line-height: 1.5;
+  text-align: center;
 }
 
 .fpd-section p {
