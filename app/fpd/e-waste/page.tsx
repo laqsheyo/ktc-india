@@ -1,4 +1,3 @@
-```tsx
 export default function EWastePage() {
   return (
     <div className="fpd-page">
@@ -101,4 +100,3 @@ export default function EWastePage() {
     </div>
   );
 }
-```
