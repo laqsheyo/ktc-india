@@ -1765,3 +1765,16 @@ body:has(.fpd-site) .footer {
     font-size: 16px;
   }
 }
+@media (min-width: 1200px) {
+  .home-page .hero {
+    height: 68vh;
+  }
+
+  .home-brand-strip {
+    padding: 12px 20px;
+  }
+
+  .footer {
+    padding: 10px 20px;
+  }
+}
