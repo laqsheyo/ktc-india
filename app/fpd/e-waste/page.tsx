@@ -1,4 +1,3 @@
-```tsx
 export default function EWastePage() {
   return (
     <main className="min-h-screen bg-black text-white">
@@ -123,4 +122,3 @@ export default function EWastePage() {
     </main>
   );
 }
-```
