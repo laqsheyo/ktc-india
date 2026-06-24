@@ -1,10 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Header() {
   const [supportOpen, setSupportOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setSupportOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="header">
@@ -12,22 +30,28 @@ export default function Header() {
 
       <nav>
         <Link href="/">Home</Link>
+
         <Link href="/about-us">About Us</Link>
+
         <Link href="/promoters">Leadership</Link>
+
         <Link href="/showroom">Showroom</Link>
 
-        <div className="main-support-dropdown">
+        <div className="main-support-dropdown" ref={dropdownRef}>
           <button
             type="button"
             className="main-support-button"
-            onClick={() => setSupportOpen(!supportOpen)}
+            onClick={() => setSupportOpen((prev) => !prev)}
           >
             Support ▾
           </button>
 
           {supportOpen && (
             <div className="main-support-menu">
-              <Link href="/fpd/e-waste" onClick={() => setSupportOpen(false)}>
+              <Link
+                href="/fpd/e-waste"
+                onClick={() => setSupportOpen(false)}
+              >
                 E-Waste Management
               </Link>
             </div>
