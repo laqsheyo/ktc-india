@@ -27,10 +27,6 @@ export default function Header() {
 
           {supportOpen && (
             <div className="main-support-menu">
-              <Link href="/fpd/support" onClick={() => setSupportOpen(false)}>
-                FPD Support
-              </Link>
-
               <Link href="/fpd/e-waste" onClick={() => setSupportOpen(false)}>
                 E-Waste Management
               </Link>
