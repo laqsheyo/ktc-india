@@ -49,7 +49,7 @@ export default function Header() {
           {supportOpen && (
             <div className="main-support-menu">
               <Link
-                href="/fpd/e-waste"
+                href="/e-waste"
                 onClick={() => setSupportOpen(false)}
               >
                 E-Waste Management
