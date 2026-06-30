@@ -1780,3 +1780,69 @@ body:has(.fpd-site) .footer {
     padding: 10px 20px;
   }
 }
+.ktc-media-gallery {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.ktc-main-media {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+}
+
+.ktc-monitor-image, .ktc-video-player {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.ktc-photo-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.nav-btn {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.ktc-video-btn {
+  background: #000;
+  color: white;
+  border: 1px solid #333;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  margin: 1rem auto;
+  display: block;
+}
+
+.ktc-thumbnails {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.thumbnail {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.thumbnail.active {
+  border-color: #fff;
+  transform: scale(1.05);
+}
