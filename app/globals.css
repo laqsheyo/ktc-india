@@ -7,13 +7,13 @@
 
 /* ================= BODY ================= */
 body {
-  background: #16222f; /* Consistent slate-blue shade across the entire site */
-  color: #f5f5f7;
+  background: #fcfcfd; /* Premium ultra-clean light alabaster background */
+  color: #1e293b;      /* Sophisticated deep dark slate / navy for crisp reading */
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
 }
 
 a {
-  color: #fff;
+  color: #0f172a;
 }
 
 /* ================= HEADER / TOOLBAR ================= */
@@ -22,21 +22,23 @@ a {
   top: 0;
   z-index: 1000;
   width: 100%;
-  background: #16222f; /* Updated from pure black to matching slate-blue */
-  color: #fff;
+  background: rgba(252, 252, 253, 0.95); /* Semi-transparent premium white */
+  backdrop-filter: blur(8px);
+  color: #0f172a;
   padding: 18px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08); /* Minimal crisp dark line divider */
 }
 
 .header h1 {
   margin: 0;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
+  color: #0f172a;
 }
 
 .header nav {
@@ -48,14 +50,16 @@ a {
 }
 
 .header nav a {
-  color: #fff;
+  color: #1e293b;
   text-decoration: none;
   font-size: 14px;
-  opacity: 0.86;
+  font-weight: 500;
+  opacity: 0.85;
 }
 
 .header nav a:hover {
   opacity: 1;
+  color: #2563eb; /* Smooth premium corporate blue accent on hover */
 }
 
 /* ================= HERO ================= */
@@ -75,16 +79,20 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(255, 255, 255, 0.9); /* High-end frosted light glass look overlay */
+  backdrop-filter: blur(12px);
   padding: 30px 50px;
   border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
 .hero-overlay h2 {
   font-size: 56px;
   text-align: center;
   letter-spacing: 3px;
-  color: #fff;
+  color: #0f172a; /* Rich structural black */
+  font-weight: 800;
 }
 
 .hero-brands {
@@ -150,8 +158,9 @@ a {
   bottom: -24px;
   width: 100%;
   text-align: center;
-  color: #fff;
+  color: #475569;
   font-size: 12px;
+  font-weight: 500;
 }
 
 /* ================= GENERAL PAGES ================= */
@@ -168,7 +177,7 @@ a {
 .page-text {
   font-size: 18px;
   line-height: 1.7;
-  color: #ccc;
+  color: #334155; /* Refined charcoal gray for optimal long-form readability */
   max-width: 750px;
   margin: 0 auto 14px;
 }
@@ -176,11 +185,15 @@ a {
 h1 {
   font-size: 44px;
   margin-bottom: 20px;
+  color: #0f172a;
+  font-weight: 800;
 }
 
 h2 {
   font-size: 30px;
   margin-bottom: 14px;
+  color: #0f172a;
+  font-weight: 700;
 }
 
 /* ================= GLOBAL IMAGES ================= */
@@ -190,6 +203,7 @@ img {
   margin: 30px auto;
   border-radius: 14px;
   display: block;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); /* Soft professional drop shadow instead of harsh outlines */
 }
 
 /* ================= LEADERSHIP ================= */
@@ -221,6 +235,7 @@ img {
   font-size: 34px !important;
   margin-bottom: 18px !important;
   line-height: 1.15 !important;
+  color: #0f172a !important;
 }
 
 .promoter-text {
@@ -228,7 +243,7 @@ img {
   margin: 0 auto !important;
   font-size: 16px !important;
   line-height: 1.65 !important;
-  color: #f1f1f1 !important;
+  color: #334155 !important;
 }
 
 .promoter-image {
@@ -318,7 +333,7 @@ img {
     line-height: 1.55 !important;
     max-width: 92% !important;
     margin: 0 auto !important;
-    color: #e8e8e8 !important;
+    color: #475569 !important;
   }
 
   .promoter-image {
@@ -345,6 +360,7 @@ img {
   height: 420px;
   object-fit: cover;
   border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.06);
 }
 
 .arrow {
@@ -354,10 +370,15 @@ img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+  border: 1px solid rgba(15, 23, 42, 0.08);
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 .arrow.left {
@@ -374,6 +395,7 @@ img {
   margin: 30px auto 40px;
   border-radius: 14px;
   overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
 }
 
 .contact-form {
@@ -390,9 +412,16 @@ img {
   max-width: 500px;
   padding: 14px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: #111;
-  color: #fff;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .contact-form button {
@@ -404,11 +433,16 @@ img {
   width: fit-content;
   margin: 40px auto 90px;
   text-decoration: none;
-  color: #000;
+  color: #ffffff !important;
+  background: #0f172a;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
 }
 
 .contact-heading {
   font-size: 32px;
+  color: #0f172a;
 }
 
 /* ================= BRANDS ================= */
@@ -422,22 +456,23 @@ img {
 
 /* ================= FOOTER ================= */
 .footer {
-  background: #16222f; /* Updated from pure black to slate-blue */
-  color: rgba(255, 255, 255, 0.75);
+  background: #f8fafc; /* Beautiful distinct clean footer zone */
+  color: #475569;
   text-align: center;
-  padding: 24px 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 32px 20px;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .footer p {
   margin: 0;
   font-size: 14px;
+  font-weight: 500;
 }
 
 /* ================= FPD SITE ================= */
 .fpd-site {
-  background: #16222f; /* Updated from black */
-  color: #fff;
+  background: #fcfcfd;
+  color: #1e293b;
   min-height: 100vh;
 }
 
@@ -451,8 +486,9 @@ body:has(.fpd-site) .footer {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(22, 34, 47, 0.95); /* Adjusted from black overlay */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(252, 252, 253, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .fpd-header-inner {
@@ -475,6 +511,7 @@ body:has(.fpd-site) .footer {
   max-width: none;
   margin: 0;
   border-radius: 0;
+  box-shadow: none;
 }
 
 .fpd-nav {
@@ -484,22 +521,22 @@ body:has(.fpd-site) .footer {
 }
 
 .fpd-nav-link {
-  color: #aaa;
+  color: #475569;
   text-decoration: none;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
 }
 
 .fpd-nav-link:hover {
-  color: #fff;
+  color: #2563eb;
 }
 
 /* ================= FPD PAGE ================= */
 .fpd-page {
   width: 100%;
-  background: #16222f; /* Updated from black */
-  color: #fff;
+  background: #fcfcfd;
+  color: #1e293b;
 }
 
 .fpd-hero {
@@ -516,6 +553,7 @@ body:has(.fpd-site) .footer {
   border-radius: 0;
   object-fit: cover;
   margin: 0 !important;
+  box-shadow: none;
 }
 
 .fpd-section {
@@ -528,8 +566,8 @@ body:has(.fpd-site) .footer {
 
 .fpd-section h1 {
   font-size: 52px;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 800;
+  color: #0f172a;
   margin-bottom: 30px;
   line-height: 1.2;
   text-align: center;
@@ -537,7 +575,7 @@ body:has(.fpd-site) .footer {
 
 .fpd-section h2 {
   font-size: 28px;
-  color: #fff;
+  color: #1e293b;
   margin-bottom: 26px;
   line-height: 1.5;
   text-align: center;
@@ -549,7 +587,7 @@ body:has(.fpd-site) .footer {
   line-height: 1.7;
   font-size: 20px;
   font-weight: 400;
-  color: #d0d0d0;
+  color: #334155;
   max-width: none;
 }
 
@@ -561,6 +599,7 @@ body:has(.fpd-site) .footer {
   margin-top: 55px;
   border-radius: 24px;
   object-fit: contain;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
 }
 
 /* ================= MOBILE GLOBAL ADJUSTMENTS ================= */
@@ -678,7 +717,7 @@ body:has(.fpd-site) .footer {
 
 /* ================= HOME PAGE LAYOUTS ================= */
 .home-page {
-  background: #16222f !important; /* Updated from #000 to slate-blue */
+  background: #fcfcfd !important;
   min-height: calc(100vh - 73px);
 }
 
@@ -689,12 +728,13 @@ body:has(.fpd-site) .footer {
 }
 
 .home-brand-strip {
-  background: #16222f; /* Updated from #000 to slate-blue */
+  background: #f8fafc;
   padding: 28px 20px 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 34px;
+  border-top: 1px solid rgba(0,0,0,0.04);
 }
 
 @media (max-width: 768px) {
@@ -737,8 +777,8 @@ body:has(.fpd-site) .footer {
 
 /* ================= FPD TV PRODUCTS ================= */
 .fpd-tv-page {
-  background: #16222f;
-  color: #fff;
+  background: #fcfcfd;
+  color: #1e293b;
   min-height: 100vh;
 }
 
@@ -750,12 +790,13 @@ body:has(.fpd-site) .footer {
 .fpd-tv-hero h1 {
   font-size: 52px;
   margin-bottom: 18px;
+  color: #0f172a;
 }
 
 .fpd-tv-hero p {
   max-width: 820px;
   margin: 0 auto;
-  color: #cfcfcf;
+  color: #475569;
   font-size: 18px;
   line-height: 1.7;
 }
@@ -770,13 +811,15 @@ body:has(.fpd-site) .footer {
 }
 
 .fpd-tv-card {
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: #1c2a3a;
-  color: #fff;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #1e293b;
   border-radius: 14px;
   padding: 14px;
   cursor: pointer;
   text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+  transition: all 0.2s ease;
 }
 
 .fpd-tv-card img {
@@ -785,6 +828,7 @@ body:has(.fpd-site) .footer {
   object-fit: contain;
   margin: 0 0 12px;
   border-radius: 8px;
+  box-shadow: none;
 }
 
 .fpd-tv-card span {
@@ -792,22 +836,28 @@ body:has(.fpd-site) .footer {
   font-size: 14px;
   font-weight: 700;
   line-height: 1.35;
+  color: #0f172a;
 }
 
 .fpd-tv-card small {
   display: block;
   margin-top: 6px;
-  color: #aaa;
+  color: #64748b;
   font-size: 12px;
 }
 
 .fpd-tv-card.active {
-  background: #fff;
-  color: #000;
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.fpd-tv-card.active span {
+  color: #ffffff;
 }
 
 .fpd-tv-card.active small {
-  color: #333;
+  color: #94a3b8;
 }
 
 .fpd-tv-detail {
@@ -817,8 +867,8 @@ body:has(.fpd-site) .footer {
 }
 
 .fpd-tv-detail-top {
-  background: #1c2a3a;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 18px;
   padding: 34px;
   display: flex;
@@ -826,15 +876,17 @@ body:has(.fpd-site) .footer {
   justify-content: space-between;
   gap: 44px;
   margin-bottom: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.03);
 }
 
 .fpd-tv-detail-top h2 {
   font-size: 42px;
   margin-bottom: 14px;
+  color: #0f172a;
 }
 
 .fpd-tv-detail-top p {
-  color: #cfcfcf;
+  color: #334155;
   font-size: 18px;
   line-height: 1.6;
 }
@@ -846,6 +898,7 @@ body:has(.fpd-site) .footer {
   object-fit: contain;
   margin: 0;
   border-radius: 14px;
+  box-shadow: none;
 }
 
 .fpd-tv-spec-grid {
@@ -855,24 +908,27 @@ body:has(.fpd-site) .footer {
 }
 
 .fpd-tv-spec-grid div {
-  background: #1c2a3a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.01);
 }
 
 .fpd-tv-spec-grid span {
   display: block;
-  color: #999;
+  color: #64748b;
   font-size: 13px;
   margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .fpd-tv-spec-grid strong {
   display: block;
-  color: #fff;
+  color: #0f172a;
   font-size: 15px;
   line-height: 1.5;
+  font-weight: 600;
 }
 
 @media (max-width: 900px) {
@@ -930,26 +986,27 @@ body:has(.fpd-site) .footer {
   left: 50%;
   transform: translateX(-50%);
   z-index: 3000;
-  background: rgba(22, 34, 47, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 8px 0;
   min-width: 170px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 
 .fpd-dropdown-item {
   display: block;
   padding: 12px 24px;
-  color: #bbb;
+  color: #475569;
   text-decoration: none;
   font-size: 14px;
   white-space: nowrap;
+  font-weight: 500;
 }
 
 .fpd-dropdown-item:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
+  color: #2563eb;
+  background: #f8fafc;
 }
 
 @media (max-width: 768px) {
@@ -967,16 +1024,18 @@ body:has(.fpd-site) .footer {
 .main-support-button {
   border: none;
   background: transparent;
-  color: #fff;
+  color: #1e293b;
   font: inherit;
   font-size: 14px;
   opacity: 0.86;
   cursor: pointer;
   padding: 0;
+  font-weight: 500;
 }
 
 .main-support-button:hover {
   opacity: 1;
+  color: #2563eb;
 }
 
 .main-support-menu {
@@ -986,24 +1045,25 @@ body:has(.fpd-site) .footer {
   z-index: 3000;
   min-width: 185px;
   padding: 8px 0;
-  background: #1c2a3a;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 
 .main-support-menu a {
   display: block;
   padding: 12px 16px;
-  color: #ddd;
+  color: #475569;
   text-decoration: none;
   font-size: 14px;
   white-space: nowrap;
+  font-weight: 500;
 }
 
 .main-support-menu a:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: #f8fafc;
+  color: #2563eb;
 }
 
 @media (max-width: 768px) {
@@ -1018,8 +1078,8 @@ body:has(.fpd-site) .footer {
 
 /* ================= E-WASTE PAGE ================= */
 .ewaste-page {
-  background: #16222f;
-  color: #fff;
+  background: #fcfcfd;
+  color: #1e293b;
   min-height: 100vh;
 }
 
@@ -1038,21 +1098,23 @@ body:has(.fpd-site) .footer {
   font-size: 34px;
   margin-top: 40px;
   margin-bottom: 20px;
+  color: #0f172a;
 }
 
 .ewaste-container p {
   font-size: 18px;
   line-height: 1.9;
-  color: #d0d0d0;
+  color: #334155;
   margin-bottom: 24px;
 }
 
 .ewaste-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
   padding: 28px;
   margin: 30px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
 }
 
 .ewaste-card ul {
@@ -1062,11 +1124,12 @@ body:has(.fpd-site) .footer {
 
 .ewaste-card li {
   margin-bottom: 12px;
-  color: #d0d0d0;
+  color: #475569;
+  font-weight: 500;
 }
 
 .ewaste-card strong {
-  color: #fff;
+  color: #0f172a;
 }
 
 @media (max-width: 768px) {
@@ -1097,14 +1160,14 @@ body:has(.fpd-site) .footer {
   }
 
   .footer {
-    padding: 10px 20px;
+    padding: 24px 20px;
   }
 }
 
 /* ================= KTC MONITORS BRAND PAGE ================= */
 .ktc-page {
-  background: #16222f !important;
-  color: #eef6ff;
+  background: #fcfcfd !important;
+  color: #1e293b;
   min-height: 100vh;
 }
 
@@ -1118,12 +1181,13 @@ body:has(.fpd-site) .footer {
   margin-bottom: 14px;
   font-weight: 800;
   letter-spacing: -1px;
+  color: #0f172a;
 }
 
 .ktc-hero p {
   max-width: 780px;
   margin: 0 auto;
-  color: #b8c7dd;
+  color: #475569;
   font-size: 19px;
   line-height: 1.7;
 }
@@ -1139,27 +1203,29 @@ body:has(.fpd-site) .footer {
 }
 
 .ktc-model-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  color: #eef6ff;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
   border-radius: 25px;
   padding: 12px 28px;
   cursor: pointer;
   font-weight: 600;
   font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
   transition: all 0.25s ease;
 }
 
 .ktc-model-card:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(56, 189, 248, 0.4);
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
 }
 
 .ktc-model-card.active {
-  background: #38bdf8;
-  color: #000;
-  border-color: #00d2ff;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  background: #2563eb; /* Premium electric brand blue highlight */
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
 }
 
 .ktc-details {
@@ -1187,6 +1253,7 @@ body:has(.fpd-site) .footer {
   margin-bottom: 24px;
   letter-spacing: -1px;
   line-height: 1.1;
+  color: #0f172a;
 }
 
 .ktc-product-summary {
@@ -1196,12 +1263,13 @@ body:has(.fpd-site) .footer {
 }
 
 .ktc-product-summary p {
-  color: #b8c7dd;
+  color: #334155;
   font-size: 18px;
   line-height: 1.6;
   margin: 0;
   padding-left: 14px;
-  border-left: 3px solid rgba(56, 189, 248, 0.4);
+  border-left: 3px solid #2563eb;
+  font-weight: 500;
 }
 
 .ktc-media-container {
@@ -1215,13 +1283,14 @@ body:has(.fpd-site) .footer {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   aspect-ratio: 16 / 10;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.03);
 }
 
 .ktc-monitor-image, 
@@ -1247,43 +1316,45 @@ body:has(.fpd-site) .footer {
 .zoom-btn, 
 .ktc-video-btn {
   padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #eef6ff;
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
   border-radius: 10px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
   transition: all 0.2s ease;
 }
 
 .nav-btn:hover, 
 .zoom-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(56, 189, 248, 0.4);
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
 }
 
 .ktc-video-btn {
-  background: #38bdf8;
-  color: #000;
-  border-color: #00d2ff;
-  font-weight: 600;
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
 }
 
 .ktc-video-btn:hover {
-  background: #00d2ff;
+  background: #1e293b;
+  border-color: #1e293b;
 }
 
 .photo-counter {
   font-size: 16px;
   font-weight: 600;
-  color: #b8c7dd;
+  color: #475569;
   min-width: 60px;
   text-align: center;
 }
 
 .fpd-tv-card.active {
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
 
 .ktc-features-grid {
@@ -1294,31 +1365,33 @@ body:has(.fpd-site) .footer {
 }
 
 .feature-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   padding: 20px;
   border-radius: 14px;
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 500;
-  color: #eef6ff;
+  font-weight: 600;
+  color: #1e293b;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.01);
 }
 
 .feature-card span {
-  color: #38bdf8;
+  color: #2563eb;
   font-size: 18px;
 }
 
 .ktc-specs-section {
-  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  border-top: 1px solid #e2e8f0;
   padding-top: 50px;
 }
 
 .ktc-specs-section h3 {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 30px;
+  color: #0f172a;
 }
 
 .ktc-spec-grid {
@@ -1332,17 +1405,17 @@ body:has(.fpd-site) .footer {
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid #e2e8f0;
   font-size: 16px;
 }
 
 .spec-label {
-  color: #b8c7dd;
+  color: #475569;
   font-weight: 500;
 }
 
 .spec-value {
-  color: #eef6ff;
+  color: #0f172a;
   font-weight: 600;
   text-align: right;
   padding-left: 20px;
