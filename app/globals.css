@@ -7,7 +7,7 @@
 
 /* ================= BODY ================= */
 body {
-  background: #071423;
+  background: #071423; /* Consistent background across the site */
   color: #f5f5f7;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
 }
@@ -676,9 +676,9 @@ body:has(.fpd-site) .footer {
   }
 }
 
-/* ================= HOME PAGE LAYOUTS ================= */
+/* ================= HOME PAGE LAYOUTS (STAYS PURE BLACK) ================= */
 .home-page {
-  background: #000;
+  background: #000 !important;
   min-height: calc(100vh - 73px);
 }
 
@@ -912,7 +912,7 @@ body:has(.fpd-site) .footer {
   }
 }
 
-/* ================= DROPDOWNS & NAVIGATION ELEMENT COMPONENT FIXES ================= */
+/* ================= DROPDOWNS & NAVIGATION CONFIGS ================= */
 .fpd-products-button {
   background: transparent;
   border: none;
@@ -1018,7 +1018,7 @@ body:has(.fpd-site) .footer {
 
 /* ================= E-WASTE PAGE ================= */
 .ewaste-page {
-  background: #000;
+  background: #071423;
   color: #fff;
   min-height: 100vh;
 }
@@ -1048,7 +1048,7 @@ body:has(.fpd-site) .footer {
 }
 
 .ewaste-card {
-  background: #0d0d0d;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 16px;
   padding: 28px;
@@ -1101,9 +1101,9 @@ body:has(.fpd-site) .footer {
   }
 }
 
-/* ================= REBUILT KTC MONITORS BRAND PAGE (PREMIUM DARK NAVY ENGINE) ================= */
+/* ================= KTC MONITORS BRAND PAGE (UNIFIED THEME + LIGHTISH BLUE ACCENTS) ================= */
 .ktc-page {
-  background: linear-gradient(180deg, #071321 0%, #081829 35%, #0d223b 100%);
+  background: #071423; /* Fully same background matching image_c60269.jpg */
   color: #eef6ff;
   min-height: 100vh;
 }
@@ -1139,8 +1139,8 @@ body:has(.fpd-site) .footer {
 }
 
 .ktc-model-card {
-  background: #0d2038;
-  border: 1px solid rgba(87, 150, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   color: #eef6ff;
   border-radius: 25px;
   padding: 12px 28px;
@@ -1151,15 +1151,15 @@ body:has(.fpd-site) .footer {
 }
 
 .ktc-model-card:hover {
-  background: #143357;
-  border-color: rgba(87, 150, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(56, 189, 248, 0.4);
 }
 
 .ktc-model-card.active {
-  background: #3b82f6;
-  color: #fff;
-  border-color: #60a5fa;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  background: #38bdf8; /* Modern Lightish Blue */
+  color: #000;
+  border-color: #00d2ff;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
 }
 
 .ktc-details {
@@ -1168,7 +1168,6 @@ body:has(.fpd-site) .footer {
   padding: 0 40px 90px;
 }
 
-/* Flex Container for Side-by-Side Orientation */
 .ktc-product-top {
   display: flex;
   align-items: flex-start;
@@ -1202,10 +1201,9 @@ body:has(.fpd-site) .footer {
   line-height: 1.6;
   margin: 0;
   padding-left: 14px;
-  border-left: 3px solid rgba(87, 150, 255, 0.25);
+  border-left: 3px solid rgba(56, 189, 248, 0.4);
 }
 
-/* Rebuilt Media Area Grid Elements */
 .ktc-media-container {
   flex: 1.5 1 540px;
   display: flex;
@@ -1217,8 +1215,8 @@ body:has(.fpd-site) .footer {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  background: #0d2038;
-  border: 1px solid rgba(87, 150, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(56, 189, 248, 0.15);
   aspect-ratio: 16 / 10;
   display: flex;
   align-items: center;
@@ -1233,7 +1231,6 @@ body:has(.fpd-site) .footer {
   object-fit: contain;
 }
 
-/* Zoom Engine Styles */
 .ktc-main-media div {
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -1250,9 +1247,9 @@ body:has(.fpd-site) .footer {
 .zoom-btn, 
 .ktc-video-btn {
   padding: 12px 24px;
-  background: #0d2038;
+  background: rgba(255, 255, 255, 0.05);
   color: #eef6ff;
-  border: 1px solid rgba(87, 150, 255, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 10px;
   font-size: 15px;
   font-weight: 500;
@@ -1262,19 +1259,19 @@ body:has(.fpd-site) .footer {
 
 .nav-btn:hover, 
 .zoom-btn:hover {
-  background: #143357;
-  border-color: rgba(87, 150, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(56, 189, 248, 0.4);
 }
 
 .ktc-video-btn {
-  background: #3b82f6;
-  color: #fff;
-  border-color: #60a5fa;
+  background: #38bdf8; /* Lightish Blue Engine */
+  color: #000;
+  border-color: #00d2ff;
   font-weight: 600;
 }
 
 .ktc-video-btn:hover {
-  background: #2563eb;
+  background: #00d2ff;
 }
 
 .photo-counter {
@@ -1285,7 +1282,10 @@ body:has(.fpd-site) .footer {
   text-align: center;
 }
 
-/* Premium Highlight Grid for Features Block */
+.fpd-tv-card.active {
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+}
+
 .ktc-features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -1294,8 +1294,8 @@ body:has(.fpd-site) .footer {
 }
 
 .feature-card {
-  background: #0d2038;
-  border: 1px solid rgba(87, 150, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(56, 189, 248, 0.15);
   padding: 20px;
   border-radius: 14px;
   display: flex;
@@ -1306,13 +1306,12 @@ body:has(.fpd-site) .footer {
 }
 
 .feature-card span {
-  color: #60a5fa;
+  color: #38bdf8; /* Lightish Blue */
   font-size: 18px;
 }
 
-/* Re-engineered Clean Specification Engine Matrix */
 .ktc-specs-section {
-  border-top: 1px solid rgba(87, 150, 255, 0.15);
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
   padding-top: 50px;
 }
 
@@ -1333,7 +1332,7 @@ body:has(.fpd-site) .footer {
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(87, 150, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 16px;
 }
 
@@ -1349,7 +1348,7 @@ body:has(.fpd-site) .footer {
   padding-left: 20px;
 }
 
-/* ================= MONITOR RESPONSIVE ENGINEERING OVERRIDES ================= */
+/* ================= MONITOR RESPONSIVE OVERRIDES ================= */
 @media (max-width: 768px) {
   .ktc-hero {
     padding: 50px 20px 30px;
