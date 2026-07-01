@@ -129,19 +129,18 @@ a {
   object-fit: cover;
 }
 
-/* FIXED: Changed from dense dark overlay to an elegant, ultra-light tinted frost shadow */
 .hero-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.25) !important; /* Significantly lightened shadow opacity */
-  backdrop-filter: blur(12px);                 /* Increased blur for a premium frost effect */
+  background: rgba(0, 0, 0, 0.25) !important; 
+  backdrop-filter: blur(12px);                 
   -webkit-backdrop-filter: blur(12px);
   padding: 30px 50px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.25); /* Subtle bright border to separate from background */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);  /* Softer drop shadow */
+  border: 1px solid rgba(255, 255, 255, 0.25); 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);  
 }
 
 .hero-overlay h2 {
@@ -150,7 +149,7 @@ a {
   letter-spacing: 3px;
   color: #ffffff !important; 
   font-weight: 800;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);  /* Safe contrast shadow directly on the text */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);  
 }
 
 .slider-box {
@@ -298,12 +297,9 @@ img {
 /* ==========================================================================
    5. HOME PAGE & SPECIFIC BRAND HORIZONTAL STRIP
    ========================================================================== */
-/* ==========================================================================
-   5. HOME PAGE & SPECIFIC BRAND HORIZONTAL STRIP
-   ========================================================================== */
 .home-page {
   background: #fbf9f4 !important;
-  height: calc(100vh - 71px); /* Exact dynamic height subtraction */
+  height: calc(100vh - 71px); 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -311,8 +307,8 @@ img {
 
 .home-page .hero {
   position: relative;
-  flex: 1 1 auto;      /* Allows the hero to dynamically shrink to fit the window */
-  min-height: 0;       /* Overrides default browser scaling limits */
+  flex: 1 1 auto;      
+  min-height: 0;       
   height: auto;
 }
 
@@ -326,12 +322,12 @@ img {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
-  flex-shrink: 0;      /* ABSOLUTE MUST: Prevents the strip from being squished or hidden */
+  flex-shrink: 0;      
 }
 
 .home-brand-strip .brand-logo-button {
   width: auto !important;            
-  height: 36px !important; /* Slightly optimized height to guarantee screen fit */           
+  height: 36px !important;            
   background: transparent !important; 
   border: none !important;            
   padding: 0 !important;          
@@ -362,6 +358,7 @@ img {
   opacity: 1;
   background: transparent !important;
 }
+
 /* ==========================================================================
    6. LEADERSHIP & PROMOTERS ARCHITECTURE
    ========================================================================== */
@@ -600,11 +597,10 @@ body:has(.fpd-site) .footer {
 .fpd-section div[style*="background:"] p,
 .fpd-section div[style*="background:"] strong,
 .fpd-section div[style*="background:"] span {
-  color: #1a1b1e !important; /* Premium crisp dark text */
+  color: #1a1b1e !important; 
   opacity: 1 !important;
 }
 
-/* Accessible links inside light container blocks */
 .fpd-section div[style*="background:"] a {
   color: #0066cc !important;
   text-decoration: underline !important;
@@ -772,7 +768,6 @@ body:has(.fpd-site) .footer {
   padding-left: 20px;
 }
 
-/* Automated Hero Slideshow */
 .ktc-hero-slideshow {
   position: relative;
   width: 100%;
@@ -793,10 +788,6 @@ body:has(.fpd-site) .footer {
 .slide-item.active { opacity: 1; z-index: 2; }
 .slide-item img { width: 100%; height: 100%; object-fit: cover; }
 
-
-/* ==========================================================================
-   11. MEDIA QUERIES & RESPONSIVE RULES (DESKTOP & MOBILE WINDOW SCREEN LOCKS)
-   ========================================================================== */
 /* ==========================================================================
    11. MEDIA QUERIES & RESPONSIVE RULES (DESKTOP & MOBILE WINDOW SCREEN LOCKS)
    ========================================================================== */
@@ -809,12 +800,69 @@ body:has(.fpd-site) .footer {
   }
 }
 
+@media (max-width: 900px) {
+  .header {
+    padding: 8px 12px 6px !important;
+    flex-direction: column !important;  
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+  }
+
+  .header-logo-link {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .header-logo-img,
+  header img[src*="logo"],
+  img[alt*="KTC"] {
+    height: 32px !important;
+    width: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .header nav {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 4px 12px !important;
+    padding: 0 !important;
+  }
+
+  .header nav a,
+  .main-support-button {
+    font-size: 11px !important;
+    white-space: nowrap !important;     
+    display: inline-block !important;
+  }
+
+  .section, .about-container, .page-container { padding: 30px 14px; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
+  .slider-img { height: 200px; }
+
+  /* Sub-Page FPD Components */
+  .fpd-header-inner { padding: 10px 14px; flex-direction: column !important; gap: 8px !important; }
+  .fpd-logo img { height: 30px !important; }
+  .fpd-nav { gap: 12px; flex-wrap: wrap !important; justify-content: center !important; }
+  .fpd-nav-link { font-size: 11px; }
+  .fpd-section { padding: 40px 16px; }
+  .fpd-tv-models { grid-template-columns: repeat(2, 1fr); padding: 0 16px; }
+  .fpd-tv-detail { padding: 0 16px 40px; }
+  .fpd-tv-detail-top { flex-direction: column; align-items: flex-start; padding: 18px; }
+  .fpd-tv-spec-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 768px) {
   html, body {
     max-width: 100%;
   }
   
-  /* MOBILE 1-PAGE SCREEN FIT FOR ICONS */
   html:has(.home-page),
   body:has(.home-page) {
     overflow: hidden !important;
@@ -845,44 +893,17 @@ body:has(.fpd-site) .footer {
     font-size: 20px !important; 
   }
 
-  .home-brand-strip {
-    padding: 10px 16px !important;
-    gap: 24px !important;                        
-    justify-content: flex-start !important; 
-    flex-shrink: 0 !important; /* Force it to stay visible on mobile layout */
-    background: #111111 !important;
-    height: 50px !important;
-    overflow-x: auto !important;           
-    white-space: nowrap !important;
-    display: flex !important;
-    -webkit-overflow-scrolling: touch;     
-  }
-
-  .home-brand-strip .brand-logo-button {
-    height: 28px !important;
-    width: auto !important;
-    display: inline-flex !important;
-    flex-shrink: 0 !important;             
-  }
-
-  .home-brand-strip .brand-logo-button img {
-    height: 100% !important;
-    width: auto !important;
-    max-width: 100px !important;
-    display: block !important;
-  }
-}
-
-  /* ================= FIX: ECLARA BRAND STRIP MOBILE OVERFLOW ================= */
+  /* ================= FIX: BRAND STRIP MOBILE VISIBILITY ================= */
   .home-brand-strip {
     padding: 10px 16px !important;
     gap: 24px !important;                        
     justify-content: flex-start !important; 
     flex-shrink: 0 !important; 
     background: #111111 !important;
-    height: 56px !important;
+    height: 54px !important;
     overflow-x: auto !important;           
     white-space: nowrap !important;
+    display: flex !important;
     -webkit-overflow-scrolling: touch;     
   }
 
