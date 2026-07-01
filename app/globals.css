@@ -189,7 +189,7 @@ img {
 
 .promoter-text {
   max-width: 690px !important;
-  margin: 0 auto !important; /* FIXED AND RE-ALIGNED NATIVELY HERE */
+  margin: 0 auto !important;
   font-size: 16px !important;
   line-height: 1.65 !important;
   color: #1a1b1e !important;
@@ -313,7 +313,6 @@ img {
   box-shadow: 0 12px 36px rgba(44, 42, 41, 0.05);
 }
 
-/* Side circle arrow buttons matching showroom style overlay */
 .arrow {
   position: absolute;
   top: 50%;
@@ -341,7 +340,7 @@ img {
 }
 
 .arrow.left {
-  left: -24px; /* Perfectly centers split on the edge frame border line */
+  left: -24px;
 }
 
 .arrow.right {
@@ -355,7 +354,7 @@ img {
     font-size: 14px;
   }
   .arrow.left {
-    left: 8px; /* Tucks neatly inside on cramped mobile aspect screens */
+    left: 8px;
   }
   .arrow.right {
     right: 8px;
@@ -577,7 +576,6 @@ body:has(.fpd-site) .footer {
 }
 
 /* ================= MOBILE GLOBAL ADJUSTMENTS ================= */
-/* ================= FIXED MOBILE HEADER OVERRIDES ================= */
 @media (max-width: 900px) {
   .header {
     padding: 16px 16px 12px !important;
@@ -598,7 +596,7 @@ body:has(.fpd-site) .footer {
   .header nav {
     width: 100% !important;
     display: flex !important;
-    flex-wrap: nowrap !important;       /* FORCES items to stay on a elegant single line */
+    flex-wrap: nowrap !important;       /* FORCES items to stay on an elegant single line */
     justify-content: center !important; /* Centers links nicely under the logo */
     gap: 18px !important;               /* Uniform spacing between links */
     overflow-x: auto !important;        /* Allows swipe scrolling if screens get extremely narrow */
@@ -615,7 +613,6 @@ body:has(.fpd-site) .footer {
     font-size: 13px !important;
     white-space: nowrap !important;     /* Prevents text like "About Us" from breaking into two lines */
   }
-}
 
   .hero {
     height: 88vh;
