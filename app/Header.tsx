@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
 export default function Header() {
@@ -26,15 +27,19 @@ export default function Header() {
 
   return (
     <header className="header">
-      <h1>KTC India</h1>
+      {/* Clickable Image Logo Replacing Text */}
+      <Link href="/" className="header-logo-link">
+        <img 
+          src="/images/Ogbyf.jpg" 
+          alt="KTC India Logo" 
+          className="header-logo-img" 
+        />
+      </Link>
 
       <nav>
         <Link href="/">Home</Link>
-
         <Link href="/about-us">About Us</Link>
-
         <Link href="/promoters">Leadership</Link>
-
         <Link href="/showroom">Showroom</Link>
 
         <div className="main-support-dropdown" ref={dropdownRef}>

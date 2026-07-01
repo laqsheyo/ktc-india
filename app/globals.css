@@ -25,7 +25,7 @@ a {
   background: rgba(251, 249, 244, 0.94); /* Frosted warm cream glass */
   backdrop-filter: blur(8px);
   color: #1a1b1e;
-  padding: 18px 40px;
+  padding: 14px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,12 +33,18 @@ a {
   border-bottom: 1px solid rgba(44, 42, 41, 0.06); /* Invisible organic divider line */
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 700;
-  white-space: nowrap;
-  color: #1a1b1e;
+/* Global Navbar Branding Layout */
+.header-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .header nav {
@@ -105,55 +111,40 @@ a {
   flex-wrap: nowrap;
 }
 
-/* Increased circle button sizing globally */
+/* ================= RECTANGULAR BRAND STRIP BUTTONS ================= */
 .brand-logo-button {
-  width: 120px;            
-  height: 120px;
-  border: none;
-  background: #000000;    
-  padding: 22px;          
+  width: 170px !important;            /* Form factors a crisp rectangle aspect */
+  height: 85px !important;            /* Clean height constraints */
+  border: 1px solid #222 !important;
+  background-color: #111111 !important; /* Premium dark backdrop for transparent logos */
+  padding: 14px 24px !important;          
   margin: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;     
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s ease, box-shadow 0.3s ease;
+  border-radius: 6px !important;       /* Clean rectangular structure instead of circles */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease, box-shadow 0.25s ease;
 }
 
 .brand-logo-button img {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   margin: 0;
   padding: 0;
-  border-radius: 0;
+  border-radius: 0 !important;
   display: block;
-  object-fit: contain;
+  object-fit: contain !important;      /* Forces transparent elements to look right */
 }
 
-/* Interactive zoom effect when mouse is over the circle */
+/* Interactive zoom action on hover */
 .brand-logo-button:hover {
-  transform: scale(1.18);
-  background: #111111;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-}
-
-@media (max-width: 768px) {
-  .hero-brands {
-    bottom: 24px;
-    gap: 16px;
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .brand-logo-button {
-    width: 80px;
-    height: 80px;
-    padding: 14px;
-  }
+  transform: scale(1.06);
+  background-color: #000000 !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
 }
 
 .brand-label {
@@ -618,10 +609,6 @@ body:has(.fpd-site) .footer {
     gap: 12px;
   }
 
-  .header h1 {
-    font-size: 20px;
-  }
-
   .header nav {
     gap: 12px 16px;
     justify-content: flex-end;
@@ -728,21 +715,21 @@ body:has(.fpd-site) .footer {
 
 .home-brand-strip {
   background: #f4f1ea;
-  padding: 40px 20px; /* Enhanced vertical padding for the larger circles */
+  padding: 30px 20px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px; /* Expanded space between brand nodes */
+  gap: 24px;              /* Clean gap management for rectangular layout grid nodes */
   border-top: 1px solid rgba(44,42,41,0.04);
 }
 
-/* Home Strip Circles Scaled Up & Interactive */
+/* Home Strip Buttons Refactored as Rectangles Globally */
 .home-brand-strip .brand-logo-button {
-  width: 120px;
-  height: 120px;
-  background: #000000;
-  border-radius: 50%;
-  padding: 22px;
+  width: 170px !important;
+  height: 85px !important;
+  background: #111111 !important;
+  border-radius: 6px !important;
+  padding: 14px 24px !important;
 }
 
 @media (max-width: 768px) {
@@ -757,14 +744,14 @@ body:has(.fpd-site) .footer {
 
   .home-brand-strip {
     padding: 24px 10px;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: nowrap;
   }
 
   .home-brand-strip .brand-logo-button {
-    width: 76px;
-    height: 76px;
-    padding: 12px;
+    width: 125px !important;
+    height: 65px !important;
+    padding: 10px 14px !important;
   }
 }
 
@@ -1174,15 +1161,6 @@ body:has(.fpd-site) .footer {
   color: #1a1b1e;
 }
 
-.ktc-hero p {
-  max-width: 780px;
-  margin: 0 auto;
-  color: #1a1b1e;
-  font-size: 19px;
-  line-height: 1.7;
-  font-weight: 500;
-}
-
 .ktc-models {
   max-width: 1200px;
   margin: 20px auto 50px;
@@ -1247,21 +1225,10 @@ body:has(.fpd-site) .footer {
   color: #1a1b1e;
 }
 
-/* Hardened product feature text column styling from washouts */
 .ktc-product-summary {
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-
-.ktc-product-summary p {
-  color: #1a1b1e !important; 
-  font-size: 19px;
-  line-height: 1.6;
-  margin: 0;
-  padding-left: 14px;
-  border-left: 3.5px solid #1a1b1e;
-  font-weight: 700; 
 }
 
 .ktc-media-container {
@@ -1401,11 +1368,66 @@ body:has(.fpd-site) .footer {
   font-weight: 600;
 }
 
+/* ================= CRISP CONTRAST BLACK TEXT OVERRIDES ================= */
+/* Hardens subheaders, premium display features, summaries and text strings from washing out */
+.premium-display-subtitle,
+.ktc-hero p,
+.ktc-product-summary p,
 .spec-value {
-  color: #000000 !important;
+  color: #000000 !important;   /* Solid bold black overlay */
+  opacity: 1 !important;       /* Blocks transparency masks */
+}
+
+.ktc-product-summary p {
+  font-size: 19px;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 14px;
+  border-left: 3.5px solid #1a1b1e;
+  font-weight: 700; 
+}
+
+.spec-value {
   font-weight: 800;
   text-align: right;
   padding-left: 20px;
+}
+
+/* ================= KTC AUTOMATED HERO SLIDESHOW MODULE ================= */
+.ktc-hero-slideshow {
+  position: relative;
+  width: 100%;
+  height: clamp(350px, 55vh, 600px);
+  overflow: hidden;
+  background-color: #fbf9f4;
+}
+
+.slideshow-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out; /* Smooth background crossfade translation */
+  z-index: 1;
+}
+
+.slide-item.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ================= MONITOR RESPONSIVE OVERRIDES ================= */
