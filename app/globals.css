@@ -189,7 +189,7 @@ img {
 
 .promoter-text {
   max-width: 690px !important;
-  margin: 0 auto !important; /* FIXED AND RE-ALIGNED NATIVELY HERE */
+  margin: 0 auto !important;
   font-size: 16px !important;
   line-height: 1.65 !important;
   color: #1a1b1e !important;
@@ -692,50 +692,50 @@ body:has(.fpd-site) .footer {
 
 /* ================= REFACTORED CONTINUOUS BRAND STRIP LINE ================= */
 .home-brand-strip {
-  background: #111111; 
-  padding: 20px 40px; 
+  background: transparent; /* Seamless blend into the native warm cream background */
+  padding: 40px 40px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 64px;           
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 40px;           
   width: 100%;
 }
 
 .home-brand-strip .brand-logo-button {
-  width: auto !important;            
-  height: 40px !important;            
-  background: transparent !important; 
-  border: none !important;            
-  padding: 0 !important;          
+  width: 180px !important;            
+  height: 64px !important;            
+  /* Isolated contrast pod protects white logos without cutting across the screen */
+  background: rgba(17, 17, 17, 0.95) !important; 
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;            
+  padding: 12px 24px !important;          
   margin: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0 !important;       
-  box-shadow: none !important;        
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  opacity: 0.85;                      
+  border-radius: 32px !important; /* Premium rounded pill outline contour */      
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;        
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0.9;                      
 }
 
 .home-brand-strip .brand-logo-button img {
   width: auto !important;
   height: 100% !important;
-  max-width: 160px !important;
+  max-width: 100% !important;
   margin: 0;
   padding: 0;
   border-radius: 0 !important;
   display: block;
   object-fit: contain !important;     
-  filter: brightness(1);              
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));              
 }
 
 .home-brand-strip .brand-logo-button:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px) scale(1.03);
   opacity: 1;
-  background: transparent !important;
+  background: #000000 !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2) !important;
 }
 
 @media (max-width: 768px) {
@@ -749,14 +749,18 @@ body:has(.fpd-site) .footer {
   }
 
   .home-brand-strip {
-    padding: 16px 20px;
-    gap: 28px;                        
+    padding: 24px 20px;
+    gap: 16px;                        
     overflow-x: auto;                 
-    justify-content: space-between;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 28px !important;          
+    width: 140px !important;
+    height: 48px !important;          
+    padding: 8px 16px !important;
+    flex-shrink: 0;
   }
 }
 
