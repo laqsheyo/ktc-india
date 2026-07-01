@@ -8,8 +8,8 @@
 }
 
 body {
-  background: #fbf9f4; /* High-end warm cream / luxury ivory editorial backdrop */
-  color: #1a1b1e;      /* Forced dark charcoal/black for premium readability */
+  background: #fbf9f4; /* Premium warm cream editorial backdrop */
+  color: #1a1b1e;      /* Default high-visibility charcoal text */
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
 }
 
@@ -25,7 +25,7 @@ a {
   top: 0;
   z-index: 1000;
   width: 100%;
-  background: rgba(251, 249, 244, 0.94); /* Frosted warm cream glass */
+  background: rgba(251, 249, 244, 0.94); 
   backdrop-filter: blur(8px);
   color: #1a1b1e;
   padding: 14px 40px;
@@ -65,7 +65,7 @@ a {
 }
 
 .header nav a:hover {
-  color: #d4af37; /* Champagne gold hover element */
+  color: #d4af37; 
 }
 
 /* Main Site Support Dropdown */
@@ -129,13 +129,12 @@ a {
   object-fit: cover;
 }
 
-/* FIXED: Replaced stark white box with premium semi-transparent dark transparent overlay */
 .hero-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.65) !important; /* Premium dark transparent layer */
+  background: rgba(0, 0, 0, 0.65) !important; 
   backdrop-filter: blur(8px);
   padding: 30px 50px;
   border-radius: 16px;
@@ -143,7 +142,6 @@ a {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* FIXED: Changed text color inside the overlay to pure white for crisp contrast */
 .hero-overlay h2 {
   font-size: 56px;
   text-align: center;
@@ -241,7 +239,6 @@ img {
   box-shadow: 0 12px 32px rgba(44, 42, 41, 0.04); 
 }
 
-/* Contact and Map Elements */
 .map-container {
   max-width: 900px;
   margin: 30px auto 40px;
@@ -583,37 +580,22 @@ body:has(.fpd-site) .footer {
 .ewaste-container h2 { font-size: 34px; margin-top: 40px; margin-bottom: 20px; }
 .ewaste-container p { font-size: 18px; line-height: 1.9; margin-bottom: 24px; font-weight: 500; }
 
-/* FIXED: Corrected invisible text inside dark E-waste card boxes */
-.ewaste-card,
-div[class*="RecyclingPartner"],
-div[class*="Grievance"] { 
-  background: #111111 !important; /* Kept block layout dark */
-  border: 1px solid #1a1b1e; 
-  border-radius: 16px; 
-  padding: 28px; 
-  margin: 30px 0; 
+/* FIXED: Targets all elements inside dark containers with inline styling backgrounds */
+.fpd-section div[style*="background:"] h2,
+.fpd-section div[style*="background:"] p,
+.fpd-section div[style*="background:"] strong,
+.fpd-section div[style*="background:"] span {
+  color: #ffffff !important;
 }
-.ewaste-card ul { list-style: none; padding: 0; }
 
-/* Forces all paragraph and list text into high-visibility white/silver */
-.ewaste-card li,
-.ewaste-card p,
-div[class*="RecyclingPartner"] p,
-div[class*="Grievance"] p { 
-  margin-bottom: 12px; 
-  font-weight: 600; 
-  color: #f5f5f7 !important; 
+.fpd-section div[style*="background:"] p {
+  opacity: 0.9;
 }
-.ewaste-card strong,
-div[class*="RecyclingPartner"] h3,
-div[class*="Grievance"] h3,
-div[class*="RecyclingPartner"] strong { 
-  color: #ffffff !important; 
-}
-.ewaste-card a,
-div[class*="RecyclingPartner"] a {
-  color: #3ba3ff !important; /* Premium readable blue link */
-  text-decoration: underline;
+
+/* Fixed active visibility on high-contrast links inside E-waste text blocks */
+.fpd-section div[style*="background:"] a {
+  color: #3ba3ff !important;
+  text-decoration: underline !important;
 }
 
 /* ==========================================================================
@@ -649,7 +631,6 @@ div[class*="RecyclingPartner"] a {
 
 .ktc-details { max-width: 1200px; margin: 0 auto; padding: 0 40px 90px; }
 
-/* Fixed Product Info Positioning */
 .ktc-product-top {
   display: flex;
   align-items: flex-start;
@@ -664,7 +645,6 @@ div[class*="RecyclingPartner"] a {
 
 .ktc-product-summary { display: flex; flex-direction: column; gap: 12px; }
 
-/* Fixed Monitor Media Containers */
 .ktc-media-container {
   flex: 1.5 1 540px;
   display: flex;
@@ -738,7 +718,6 @@ div[class*="RecyclingPartner"] a {
   box-shadow: 0 4px 10px rgba(44,42,41,0.01);
 }
 
-/* Fixed Detailed Specs Rows */
 .ktc-specs-section { border-top: 1px solid #1a1b1e; padding-top: 50px; }
 .ktc-specs-section h3 { font-size: 28px; font-weight: 800; margin-bottom: 30px; }
 
@@ -808,11 +787,11 @@ div[class*="RecyclingPartner"] a {
    ========================================================================== */
 @media (max-width: 900px) {
   .header {
-    padding: 12px 12px 10px !important;
+    padding: 8px 12px 6px !important;
     flex-direction: column !important;  
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 6px !important;
   }
 
   .header-logo-link {
@@ -821,11 +800,10 @@ div[class*="RecyclingPartner"] a {
     width: 100% !important;
   }
 
-  /* FIXED: Forced absolute visibility on main header KTC image logo */
   .header-logo-img,
   header img[src*="logo"],
   img[alt*="KTC"] {
-    height: 36px !important;
+    height: 32px !important;
     width: auto !important;
     display: block !important;
     visibility: visible !important;
@@ -837,53 +815,51 @@ div[class*="RecyclingPartner"] a {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 8px 14px !important;
+    gap: 4px 12px !important;
     padding: 0 !important;
   }
 
   .header nav a,
   .main-support-button {
-    font-size: 12px !important;
+    font-size: 11px !important;
     white-space: nowrap !important;     
     display: inline-block !important;
   }
 
-  .section, .about-container, .page-container { padding: 40px 18px; }
-  h1 { font-size: 32px; }
-  h2 { font-size: 24px; }
-  .slider-img { height: 240px; }
+  .section, .about-container, .page-container { padding: 30px 14px; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
+  .slider-img { height: 200px; }
 
   /* Sub-Page FPD Components */
-  .fpd-header-inner { padding: 14px 18px; flex-direction: column !important; gap: 12px !important; }
-  .fpd-logo img { height: 34px !important; }
-  .fpd-nav { gap: 16px; flex-wrap: wrap !important; justify-content: center !important; }
-  .fpd-nav-link { font-size: 12px; }
-  .fpd-section { padding: 50px 20px; }
-  .fpd-tv-models { grid-template-columns: repeat(2, 1fr); padding: 0 20px; }
-  .fpd-tv-detail { padding: 0 20px 60px; }
-  .fpd-tv-detail-top { flex-direction: column; align-items: flex-start; padding: 22px; }
+  .fpd-header-inner { padding: 10px 14px; flex-direction: column !important; gap: 8px !important; }
+  .fpd-logo img { height: 30px !important; }
+  .fpd-nav { gap: 12px; flex-wrap: wrap !important; justify-content: center !important; }
+  .fpd-nav-link { font-size: 11px; }
+  .fpd-section { padding: 40px 16px; }
+  .fpd-tv-models { grid-template-columns: repeat(2, 1fr); padding: 0 16px; }
+  .fpd-tv-detail { padding: 0 16px 40px; }
+  .fpd-tv-detail-top { flex-direction: column; align-items: flex-start; padding: 18px; }
   .fpd-tv-spec-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-  /* FIXED: FORCED EXACT 1-PAGE CONTENT CONFIGURATION ON MOBILE HOMEPAGE
-     Calculates header heights to dynamically fit the site layout on one screen */
   html, body {
     max-width: 100%;
     overflow-x: hidden;
   }
   
+  /* FIXED: ABSOLUTE 1-PAGE MAX VIEWPORT OVERRIDE ON MOBILE HOMEPAGE */
   .home-page { 
-    height: calc(100vh - 105px) !important; /* Perfectly locked matching the viewport frame */
-    max-height: calc(100vh - 105px) !important;
+    height: calc(100vh - 84px) !important; 
+    max-height: calc(100vh - 84px) !important;
     min-height: auto !important;
-    overflow: hidden !important; /* Kills secondary overflow scroll loops */
+    overflow: hidden !important; 
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
   }
 
-  /* Shrinks down the video module box so the bottom strip can fit on the same screen */
   .home-page .hero { 
     flex: 1 !important;
     height: auto !important;
@@ -892,75 +868,91 @@ div[class*="RecyclingPartner"] a {
   }
 
   .hero-overlay { 
-    padding: 16px 20px !important; 
-    width: 88% !important; 
+    padding: 14px 16px !important; 
+    width: 90% !important; 
   }
   .hero-overlay h2 { 
-    font-size: 26px !important; 
+    font-size: 22px !important; 
     letter-spacing: 1px !important; 
   }
 
-  /* Fixed Mobile Logo visibility constraints across entire home strip */
   .home-brand-strip {
-    padding: 12px 16px !important;
-    gap: 14px !important;                        
+    padding: 10px 12px !important;
+    gap: 12px !important;                        
     justify-content: space-around !important;
-    flex-shrink: 0 !important; /* Prevents the bar from flattening out */
+    flex-shrink: 0 !important; 
     background: #111111 !important;
-    height: 65px !important;
+    height: 56px !important;
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 38px !important;
-    min-width: 90px !important;
+    height: 32px !important;
+    min-width: 80px !important;
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     flex: 0 0 auto !important;
-    background: transparent !important;
-    box-shadow: none !important;
   }
 
   .home-brand-strip .brand-logo-button img {
     height: 100% !important;
     width: auto !important;
-    max-width: 120px !important;
+    max-width: 100px !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     object-fit: contain !important;
   }
 
-  /* Product Pages Details Fixes */
-  .ktc-product-top { display: flex; flex-direction: column; align-items: center; }
-  .ktc-product-info, .ktc-media-container { width: 100%; }
-  .ktc-main-media { width: 100%; height: 320px; aspect-ratio: auto; }
-  .ktc-monitor-image, .ktc-video-player { width: 100%; height: 100%; object-fit: contain; }
-  .ktc-controls { justify-content: center; }
-  .zoom-btn, .nav-btn, .ktc-video-btn { width: 100%; max-width: 220px; }
+  /* FIXED: OPTIMIZED KTC MONITOR SPECS GRID TO PREVENT DEEP VERTICAL SCROLLING */
+  .ktc-spec-grid { 
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* Forces side-by-side spec layout */
+    gap: 10px !important;
+  }
+  
+  .spec-row { 
+    flex-direction: column !important; 
+    align-items: flex-start !important; 
+    padding: 8px !important; 
+    background: #fefdfb;
+    border: 1px solid rgba(26, 27, 30, 0.1) !important;
+    border-radius: 8px;
+  }
+  
+  .spec-label { 
+    font-size: 11px !important; 
+    opacity: 0.7;
+    margin-bottom: 2px;
+  }
+  
+  .spec-value { 
+    text-align: left !important; 
+    padding-left: 0 !important; 
+    font-size: 12px !important; 
+    font-weight: 700 !important;
+  }
 
-  /* Stacked specifications layout */
-  .ktc-spec-grid { display: block; }
-  .spec-row { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 12px 0; }
-  .spec-label { font-size: 13px; font-weight: 700; }
-  .spec-value { text-align: left; padding-left: 0; font-size: 14px; word-break: break-word; }
+  .ktc-product-top { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .ktc-product-info, .ktc-media-container { width: 100%; }
+  .ktc-main-media { width: 100%; height: 240px; aspect-ratio: auto; }
+  .ktc-controls { justify-content: center; gap: 10px; }
+  .zoom-btn, .ktc-video-btn { width: 48%; padding: 10px; font-size: 13px; }
 
   .fpd-dropdown-menu, .main-support-menu { right: 0; left: auto; transform: none; }
-  .ewaste-container { padding: 40px 20px; }
-  .arrow { width: 38px; height: 38px; }
-  .arrow.left { left: 8px; }
-  .arrow.right { right: 8px; }
+  .ewaste-container { padding: 30px 16px; }
+  .arrow { width: 34px; height: 34px; }
+  .arrow.left { left: 4px; }
+  .arrow.right { right: 4px; }
 
-  /* Founders/Promoters responsiveness fixes */
-  .promoters-container { padding: 34px 22px 60px !important; }
-  .promoter-profile { flex-direction: column !important; gap: 18px !important; text-align: center !important; }
-  .promoter-copy h2 { font-size: 26px !important; }
-  .promoter-image { width: 70% !important; max-width: 250px !important; height: auto !important; }
+  .promoters-container { padding: 24px 16px 40px !important; }
+  .promoter-profile { flex-direction: column !important; gap: 14px !important; }
+  .promoter-copy h2 { font-size: 22px !important; }
+  .promoter-image { width: 60% !important; max-width: 200px !important; height: auto !important; }
 }
 
 @media (min-width: 769px) {
   .home-page .hero {
-    height: clamp(380px, calc(100svh - 290px), 560px);
-    min-index: 0;
+    height: clamp(380px, calc(100svh - 240px), 560px);
   }
 }
