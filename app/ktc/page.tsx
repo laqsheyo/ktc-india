@@ -71,6 +71,7 @@ export default function KTCPage() {
   const [selectedModel, setSelectedModel] = useState<MonitorModel>(monitorModels[0]);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
   const [showVideo, setShowVideo] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
   
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
   const containerRef = useRef<HTMLDivElement>(null);
@@ -100,7 +101,7 @@ export default function KTCPage() {
 
     setZoomStyle({
       transformOrigin: `${x}% ${y}%`,
-      transform: "scale(2.2)"
+      transform: "scale(2)"
     });
   };
 
@@ -143,11 +144,11 @@ export default function KTCPage() {
       </section>
 
       <section className="ktc-details" style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="ktc-product-top" style={{ display: "flex", flexWrap: "wrap", gap: "40px", alignItems: "flex-start", marginBottom: "60px" }}>
+        <div className="ktc-product-top" style={{ display: "flex", flexWrap: "wrap", gap: "40px", alignItems: "center", marginBottom: "60px" }}>
           
           <div className="ktc-product-info" style={{ flex: "1 1 300px", minWidth: "280px" }}>
-            <h2 style={{ fontSize: "3rem", fontWeight: "800", marginBottom: "20px", letterSpacing: "-0.5px" }}>{selectedModel.name}</h2>
-            <div className="ktc-product-summary" style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <h2 style={{ fontSize: "3.5rem", fontWeight: "800", marginBottom: "20px", letterSpacing: "-0.5px" }}>{selectedModel.name}</h2>
+            <div className="ktc-product-summary" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {selectedModel.summary.map((item, i) => (
                 <p key={i} style={{ color: "#ccc", fontSize: "1.1rem", margin: 0, paddingLeft: "10px", borderLeft: "2px solid #333" }}>{item}</p>
               ))}
@@ -158,17 +159,19 @@ export default function KTCPage() {
             <div 
               ref={containerRef}
               className="ktc-main-media" 
+              onMouseEnter={() => setIsHovered(true)}
               onMouseMove={handleMouseMove}
-              onMouseLeave={resetZoom}
+              onMouseLeave={() => { resetZoom(); setIsHovered(false); }}
               style={{ 
                 backgroundColor: "transparent", 
+                border: "1px solid #333",
                 borderRadius: "16px", 
                 overflow: "hidden", 
                 position: "relative",
                 aspectRatio: "16/10",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center", // Fixed syntax error
+                justifyContent: "center",
                 width: "100%",
                 cursor: showVideo ? "default" : "zoom-in"
               }}
@@ -185,66 +188,119 @@ export default function KTCPage() {
                 />
               ) : (
                 currentImage && (
-                  <div 
-                    style={{ 
-                      width: "100%", 
-                      height: "100%", 
-                      position: "relative", 
-                      ...zoomStyle,
-                      transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
-                    }}
-                  >
-                    <Image 
-                      src={currentImage} 
-                      alt={selectedModel.name} 
-                      fill
-                      sizes="(max-width: 1200px) 100vw, 800px"
-                      style={{ objectFit: "contain" }}
-                      priority 
-                    />
-                  </div>
+                  <>
+                    {/* Left Side Overlay Arrow */}
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
+                      style={{
+                        position: "absolute",
+                        left: "15px",
+                        zIndex: 10,
+                        backgroundColor: "rgba(0, 0, 0, 0.6)",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "50%",
+                        width: "40px",
+                        height: "40px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        opacity: isHovered ? 1 : 0,
+                        transition: "opacity 0.2s ease",
+                      }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+
+                    <div 
+                      style={{ 
+                        width: "100%", 
+                        height: "100%", 
+                        position: "relative", 
+                        ...zoomStyle,
+                        transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
+                      }}
+                    >
+                      <Image 
+                        src={currentImage} 
+                        alt={selectedModel.name} 
+                        fill
+                        sizes="(max-width: 1200px) 100vw, 800px"
+                        style={{ objectFit: "contain", padding: "20px" }}
+                        priority 
+                      />
+                    </div>
+
+                    {/* Right Side Overlay Arrow */}
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
+                      style={{
+                        position: "absolute",
+                        right: "15px",
+                        zIndex: 10,
+                        backgroundColor: "rgba(0, 0, 0, 0.6)",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "50%",
+                        width: "40px",
+                        height: "40px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        opacity: isHovered ? 1 : 0,
+                        transition: "opacity 0.2s ease",
+                      }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                  </>
                 )
               )}
             </div>
 
-            <div className="ktc-controls" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "15px", justifyContent: "space-between", padding: "0 5px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            {/* Bottom Controls Panel formatted to mirror image_fcfbd9.jpg */}
+            <div className="ktc-controls" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                 <button 
                   type="button"
                   onClick={() => { setShowVideo(false); prevPhoto(); }} 
-                  className="nav-btn"
                   style={{ 
                     backgroundColor: "#111", 
                     color: "#fff", 
-                    border: "1px solid #222", 
+                    border: "1px solid #333", 
                     padding: "8px 16px", 
-                    borderRadius: "8px", 
+                    borderRadius: "6px", 
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
-                    gap: "6px"
+                    gap: "6px",
+                    fontSize: "0.9rem"
                   }}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                   {"Prev"}
                 </button>
-                <span className="photo-counter" style={{ color: "#888", fontSize: "0.9rem", minWidth: "45px", textAlign: "center" }}>
+                <span style={{ color: "#888", fontSize: "0.95rem", minWidth: "45px", textAlign: "center" }}>
                   {currentPhotoIndex + 1} / {selectedModel?.images?.length || 0}
                 </span>
                 <button 
                   type="button"
                   onClick={() => { setShowVideo(false); nextPhoto(); }} 
-                  className="nav-btn"
                   style={{ 
                     backgroundColor: "#111", 
                     color: "#fff", 
-                    border: "1px solid #222", 
+                    border: "1px solid #333", 
                     padding: "8px 16px", 
-                    borderRadius: "8px", 
+                    borderRadius: "6px", 
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
-                    gap: "6px"
+                    gap: "6px",
+                    fontSize: "0.9rem"
                   }}
                 >
                   {"Next"}
@@ -252,9 +308,9 @@ export default function KTCPage() {
                 </button>
               </div>
 
-              <div style={{ display: "flex", gap: "10px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
                 {!showVideo && (
-                  <span style={{ color: "#666", fontSize: "0.85rem", display: "flex", alignItems: "center", paddingRight: "5px" }}>
+                  <span style={{ color: "#666", fontSize: "0.85rem" }}>
                     {"Hover over image to zoom"}
                   </span>
                 )}
@@ -265,15 +321,15 @@ export default function KTCPage() {
                       setShowVideo(!showVideo);
                       resetZoom();
                     }} 
-                    className="ktc-video-btn"
                     style={{ 
-                      backgroundColor: showVideo ? "#fff" : "#222", 
+                      backgroundColor: showVideo ? "#fff" : "#111", 
                       color: showVideo ? "#000" : "#fff", 
-                      border: "1px solid #444", 
+                      border: "1px solid #333", 
                       padding: "8px 20px", 
-                      borderRadius: "8px", 
+                      borderRadius: "6px", 
                       cursor: "pointer",
-                      fontWeight: "600"
+                      fontWeight: "600",
+                      fontSize: "0.9rem"
                     }}
                   >
                     {showVideo ? "Show Photos" : "Watch Video"}
