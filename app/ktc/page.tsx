@@ -22,13 +22,13 @@ const monitorModels: MonitorModel[] = [
       "/images/ktc/h15f9/6.png",
     ],
     video: "/videos/ktc/h15f9.mp4",
-    summary: ["15.6 inch IPS", "1920 × 1080 @ 60Hz", "300 cd/m²", "Mini HDMI + Type-C"],
+    summary: ["15.6 inch IPS", "1920 x 1080 @ 60Hz", "300 cd/m2", "Mini HDMI + Type-C"],
     specs: [
       ["Model Name", "H15F9"],
       ["Stand Model", "Rotary Support Square Plastic Fixed Base"],
-      ["Tilt", "0°-90°"],
-      ["Product Size Without Base", "358.646 × 222.876 × 11.8 mm"],
-      ["Packing Size", "414 × 263 × 55 mm"],
+      ["Tilt", "0 degree - 90 degree"],
+      ["Product Size Without Base", "358.646 x 222.876 x 11.8 mm"],
+      ["Packing Size", "414 x 263 x 55 mm"],
       ["Gross Weight", "TBD / 13 KG (12-in-1 box)"],
       ["Net Weight With Stand", "600 g"],
       ["Color", "Black"],
@@ -39,13 +39,13 @@ const monitorModels: MonitorModel[] = [
       ["Module Type", "Flat"],
       ["Aspect Ratio", "16:9"],
       ["Backlight Type", "ELED"],
-      ["Maximum Resolution", "1920 × 1080 @ 60Hz"],
-      ["Pixel Pitch", "0.17925(H) × 0.17925(V)"],
+      ["Maximum Resolution", "1920 x 1080 @ 60Hz"],
+      ["Pixel Pitch", "0.17925(H) x 0.17925(V)"],
       ["PPI", "141"],
-      ["Active Area", "344.16(H) × 193.59(V)"],
-      ["Viewing Angle", "±89° Horizontal, ±89° Vertical"],
+      ["Active Area", "344.16(H) x 193.59(V)"],
+      ["Viewing Angle", "89 degree Horizontal, 89 degree Vertical"],
       ["Surface Treatment", "Anti-Glare"],
-      ["Brightness", "300 cd/m² Typical"],
+      ["Brightness", "300 cd/m2 Typical"],
       ["Contrast", "1000:1 Typical"],
       ["Response Time", "20 ms"],
       ["Display Colors", "16.7M (6bit + 2FRC)"],
@@ -54,25 +54,24 @@ const monitorModels: MonitorModel[] = [
       ["DCI-P3 Color Gamut", "37% Coverage, 37% Volume"],
       ["sRGB Color Gamut", "61% Coverage, 62% Volume"],
       ["Mainboard Model", "RTD2525BE"],
-      ["HDMI Input", "1 × Mini HDMI"],
-      ["Type-C Input", "2 × Type-C"],
-      ["Audio Output", "1 × Earphone"],
+      ["HDMI Input", "1 x Mini HDMI"],
+      ["Type-C Input", "2 x Type-C"],
+      ["Audio Output", "1 x Earphone"],
       ["Flicker Free", "Supported"],
       ["HDR10", "Supported"],
       ["Power Input", "DC 12V / 1A"],
       ["Working Consumption", "12W"],
-      ["Standby Consumption", "≤0.5W"],
+      ["Standby Consumption", "<= 0.5W"],
       ["Warranty Period", "1 Year"],
     ],
   },
 ];
 
 export default function KTCPage() {
-  const [selectedModel, setSelectedModel] = useState(monitorModels[0]);
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [showVideo, setShowVideo] = useState(false);
+  const [selectedModel, setSelectedModel] = useState<MonitorModel>(monitorModels[0]);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
+  const [showVideo, setShowVideo] = useState<boolean>(false);
   
-  // Amazon-Style Zoom States
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -88,7 +87,6 @@ export default function KTCPage() {
     setCurrentPhotoIndex((p) => (p - 1 + selectedModel.images.length) % selectedModel.images.length);
   };
 
-  // Tracks cursor coordinate percentages to update the lens focal point
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current || showVideo) return;
 
@@ -98,7 +96,7 @@ export default function KTCPage() {
 
     setZoomStyle({
       transformOrigin: `${x}% ${y}%`,
-      transform: "scale(2.2)" // Premium interactive magnification scale
+      transform: "scale(2.2)"
     });
   };
 
@@ -161,7 +159,7 @@ export default function KTCPage() {
               onMouseMove={handleMouseMove}
               onMouseLeave={resetZoom}
               style={{ 
-                backgroundColor: "transparent", // Fixed: Changed from #0a0a0a to transparent
+                backgroundColor: "transparent", 
                 borderRadius: "16px", 
                 overflow: "hidden", 
                 position: "relative",
@@ -213,7 +211,7 @@ export default function KTCPage() {
                   className="nav-btn"
                   style={{ backgroundColor: "#111", color: "#fff", border: "1px solid #222", padding: "8px 16px", borderRadius: "8px", cursor: "pointer" }}
                 >
-                  ← Prev
+                  &larr; Prev
                 </button>
                 <span className="photo-counter" style={{ color: "#888", fontSize: "0.9rem", minWidth: "45px", textAlign: "center" }}>
                   {currentPhotoIndex + 1} / {selectedModel.images.length}
@@ -223,7 +221,7 @@ export default function KTCPage() {
                   className="nav-btn"
                   style={{ backgroundColor: "#111", color: "#fff", border: "1px solid #222", padding: "8px 16px", borderRadius: "8px", cursor: "pointer" }}
                 >
-                  Next →
+                  Next &rarr;
                 </button>
               </div>
 
