@@ -574,27 +574,33 @@ body:has(.fpd-site) .footer {
 /* ==========================================================================
    9. E-WASTE ASSIGNMENT INTERFACES
    ========================================================================== */
+/* ==========================================================================
+   9. E-WASTE ASSIGNMENT INTERFACES
+   ========================================================================== */
 .ewaste-page { background: #fbf9f4; min-height: 100vh; }
 .ewaste-container { max-width: 1200px; margin: 0 auto; padding: 70px 40px; }
 .ewaste-container h1 { font-size: 56px; margin-bottom: 40px; }
 .ewaste-container h2 { font-size: 34px; margin-top: 40px; margin-bottom: 20px; }
 .ewaste-container p { font-size: 18px; line-height: 1.9; margin-bottom: 24px; font-weight: 500; }
 
-/* FIXED: Targets all elements inside dark containers with inline styling backgrounds */
+/* FORCE WHITE BACKGROUND AND BLACK TEXT OVER INLINE STYLES */
+.fpd-section div[style*="background:"] {
+  background: #ffffff !important;
+  border: 1px solid rgba(26, 27, 30, 0.15) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+}
+
 .fpd-section div[style*="background:"] h2,
 .fpd-section div[style*="background:"] p,
 .fpd-section div[style*="background:"] strong,
 .fpd-section div[style*="background:"] span {
-  color: #ffffff !important;
+  color: #1a1b1e !important; /* Premium crisp dark text */
+  opacity: 1 !important;
 }
 
-.fpd-section div[style*="background:"] p {
-  opacity: 0.9;
-}
-
-/* Fixed active visibility on high-contrast links inside E-waste text blocks */
+/* Accessible links inside light container blocks */
 .fpd-section div[style*="background:"] a {
-  color: #3ba3ff !important;
+  color: #0066cc !important;
   text-decoration: underline !important;
 }
 
