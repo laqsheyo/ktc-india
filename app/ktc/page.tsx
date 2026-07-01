@@ -61,7 +61,7 @@ const monitorModels: MonitorModel[] = [
       ["HDR10", "Supported"],
       ["Power Input", "DC 12V / 1A"],
       ["Working Consumption", "12W"],
-      ["Standby Consumption", "<= 0.5W"],
+      ["Standby Consumption", "Less than or equal to 0.5W"],
       ["Warranty Period", "1 Year"],
     ],
   },
