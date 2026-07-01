@@ -77,7 +77,7 @@ export default function KTCPage() {
 
   const currentImage = selectedModel?.images?.[currentPhotoIndex] || "";
 
-  // Auto-changing images every 2 seconds (when video is hidden)
+  // Auto-changing images every 2 seconds
   useEffect(() => {
     if (showVideo || !selectedModel?.images?.length) return;
 
@@ -106,7 +106,6 @@ export default function KTCPage() {
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current || showVideo) return;
 
-    // Check if hovering near the left/right custom navigation overlay bars to prevent active zoom behavior on click targets
     const target = e.target as HTMLElement;
     if (target.closest(".side-nav-bar")) {
       resetZoom();
@@ -128,10 +127,10 @@ export default function KTCPage() {
   };
 
   return (
-    <main className="ktc-page" style={{ backgroundColor: "#16222f", color: "#fff", minHeight: "100vh", padding: "40px 20px" }}>
+    <main className="ktc-page" style={{ backgroundColor: "#faf9f6", color: "#000", minHeight: "100vh", padding: "40px 20px" }}>
       <section className="ktc-hero" style={{ marginBottom: "40px", textAlign: "center" }}>
         <h1 style={{ fontSize: "2.5rem", fontWeight: "700", letterSpacing: "1px", marginBottom: "10px" }}>{"KTC Monitors"}</h1>
-        <p style={{ color: "#aaa" }}>{"Premium display technology with professional specifications."}</p>
+        <p style={{ color: "#666" }}>{"Premium display technology with professional specifications."}</p>
       </section>
 
       <section className="ktc-models" style={{ display: "flex", gap: "15px", marginBottom: "40px", justifyContent: "center" }}>
@@ -147,9 +146,9 @@ export default function KTCPage() {
             }}
             style={{
               padding: "10px 24px",
-              backgroundColor: selectedModel.name === model.name ? "#fff" : "#111",
-              color: selectedModel.name === model.name ? "#000" : "#fff",
-              border: "1px solid #333",
+              backgroundColor: selectedModel.name === model.name ? "#000" : "#fff",
+              color: selectedModel.name === model.name ? "#fff" : "#000",
+              border: "1px solid #ddd",
               borderRadius: "25px",
               cursor: "pointer",
               fontWeight: "600",
@@ -165,24 +164,23 @@ export default function KTCPage() {
         <div className="ktc-product-top" style={{ display: "flex", flexWrap: "wrap", gap: "40px", alignItems: "center", marginBottom: "60px" }}>
           
           <div className="ktc-product-info" style={{ flex: "1 1 300px", minWidth: "280px" }}>
-            <h2 style={{ fontSize: "3.5rem", fontWeight: "800", marginBottom: "20px", letterSpacing: "-0.5px" }}>{selectedModel.name}</h2>
-            <div className="ktc-product-summary" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            <h2 style={{ fontSize: "4.5rem", fontWeight: "800", marginBottom: "20px", letterSpacing: "-1px" }}>{selectedModel.name}</h2>
+            <div className="ktc-product-summary" style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
               {selectedModel.summary.map((item, i) => (
-                <p key={i} style={{ color: "#ccc", fontSize: "1.1rem", margin: 0, paddingLeft: "10px", borderLeft: "2px solid #333" }}>{item}</p>
+                <p key={i} style={{ color: "#333", fontSize: "1.25rem", fontWeight: "600", margin: 0, paddingLeft: "15px", borderLeft: "3px solid #000" }}>{item}</p>
               ))}
             </div>
           </div>
 
           <div className="ktc-media-container" style={{ flex: "1.5 1 500px", display: "flex", flexDirection: "column", gap: "20px" }}>
-            {/* Main Media Border Frame */}
             <div 
               ref={containerRef}
               className="ktc-main-media" 
               onMouseMove={handleMouseMove}
               onMouseLeave={resetZoom}
               style={{ 
-                backgroundColor: "transparent", 
-                border: "1px solid #333",
+                backgroundColor: "#fff", 
+                border: "1px solid #ccc",
                 borderRadius: "16px", 
                 overflow: "hidden", 
                 position: "relative",
@@ -207,7 +205,7 @@ export default function KTCPage() {
               ) : (
                 currentImage && (
                   <>
-                    {/* Left Side Bar Controller */}
+                    {/* Transparent Left Click Area */}
                     <button
                       type="button"
                       onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
@@ -220,19 +218,15 @@ export default function KTCPage() {
                         bottom: 0,
                         width: "60px",
                         zIndex: 10,
-                        backgroundColor: "rgba(0, 0, 0, 0.2)",
-                        color: "#fff",
+                        backgroundColor: "transparent",
                         border: "none",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        cursor: "pointer",
-                        transition: "background-color 0.2s ease"
+                        cursor: "pointer"
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.2)")}
                     >
-                      <span style={{ backgroundColor: "rgba(0,0,0,0.6)", borderRadius: "50%", width: "36px", height: "36px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ backgroundColor: "rgba(0,0,0,0.6)", color: "#fff", borderRadius: "50%", width: "36px", height: "36px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 19l-7-7 7-7"/></svg>
                       </span>
                     </button>
@@ -256,7 +250,7 @@ export default function KTCPage() {
                       />
                     </div>
 
-                    {/* Right Side Bar Controller */}
+                    {/* Transparent Right Click Area */}
                     <button
                       type="button"
                       onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
@@ -269,19 +263,15 @@ export default function KTCPage() {
                         bottom: 0,
                         width: "60px",
                         zIndex: 10,
-                        backgroundColor: "rgba(0, 0, 0, 0.2)",
-                        color: "#fff",
+                        backgroundColor: "transparent",
                         border: "none",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        cursor: "pointer",
-                        transition: "background-color 0.2s ease"
+                        cursor: "pointer"
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.2)")}
                     >
-                      <span style={{ backgroundColor: "rgba(0,0,0,0.6)", borderRadius: "50%", width: "36px", height: "36px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ backgroundColor: "rgba(0,0,0,0.6)", color: "#fff", borderRadius: "50%", width: "36px", height: "36px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 5l7 7-7 7"/></svg>
                       </span>
                     </button>
@@ -290,17 +280,16 @@ export default function KTCPage() {
               )}
             </div>
 
-            {/* Sub-Media controls matching visual spacing targets */}
             <div className="ktc-controls" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5px" }}>
               <div>
-                <span style={{ color: "#888", fontSize: "0.95rem" }}>
+                <span style={{ color: "#666", fontSize: "0.95rem" }}>
                   {currentPhotoIndex + 1} / {selectedModel?.images?.length || 0}
                 </span>
               </div>
 
               <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
                 {!showVideo && (
-                  <span style={{ color: "#666", fontSize: "0.85rem" }}>
+                  <span style={{ color: "#888", fontSize: "0.85rem" }}>
                     {"Hover over image to zoom"}
                   </span>
                 )}
@@ -312,9 +301,9 @@ export default function KTCPage() {
                       resetZoom();
                     }} 
                     style={{ 
-                      backgroundColor: showVideo ? "#fff" : "#111", 
-                      color: showVideo ? "#000" : "#fff", 
-                      border: "1px solid #333", 
+                      backgroundColor: "#000", 
+                      color: "#fff", 
+                      border: "1px solid #000", 
                       padding: "8px 20px", 
                       borderRadius: "6px", 
                       cursor: "pointer",
@@ -330,13 +319,13 @@ export default function KTCPage() {
           </div>
         </div>
 
-        <div className="ktc-specs-section" style={{ borderTop: "1px solid #222", paddingTop: "40px" }}>
+        <div className="ktc-specs-section" style={{ borderTop: "1px solid #ddd", paddingTop: "40px" }}>
           <h3 style={{ fontSize: "1.8rem", fontWeight: "700", marginBottom: "30px" }}>{"Detailed Specifications"}</h3>
           <div className="ktc-spec-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(450px, 1fr))", gap: "0 40px" }}>
             {selectedModel.specs.map(([label, value], index) => (
-              <div key={index} className="spec-row" style={{ display: "flex", justifyContent: "space-between", padding: "14px 0", borderBottom: "1px solid #111", fontSize: "0.95rem" }}>
-                <div className="spec-label" style={{ color: "#888", fontWeight: "500" }}>{label}</div>
-                <div className="spec-value" style={{ color: "#fff", textAlign: "right", paddingLeft: "20px" }}>{value}</div>
+              <div key={index} className="spec-row" style={{ display: "flex", justifyContent: "space-between", padding: "14px 0", borderBottom: "1px solid #eee", fontSize: "0.95rem" }}>
+                <div className="spec-label" style={{ color: "#666", fontWeight: "500" }}>{label}</div>
+                <div className="spec-value" style={{ color: "#000", textAlign: "right", paddingLeft: "20px" }}>{value}</div>
               </div>
             ))}
           </div>
