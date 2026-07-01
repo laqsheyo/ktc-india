@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, MouseEvent } from "react";
+import { useState, useRef, MouseEvent, useEffect } from "react";
 import Image from "next/image";
 
 interface MonitorModel {
@@ -71,26 +71,23 @@ export default function KTCPage() {
   const [selectedModel, setSelectedModel] = useState<MonitorModel>(monitorModels[0]);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
   const [showVideo, setShowVideo] = useState<boolean>(false);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
   
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
   const containerRef = useRef<HTMLDivElement>(null);
 
   const currentImage = selectedModel?.images?.[currentPhotoIndex] || "";
 
-  const nextPhoto = () => {
-    resetZoom();
-    if (selectedModel?.images) {
-      setCurrentPhotoIndex((p) => (p + 1) % selectedModel.images.length);
-    }
-  };
-  
-  const prevPhoto = () => {
-    resetZoom();
-    if (selectedModel?.images) {
-      setCurrentPhotoIndex((p) => (p - 1 + selectedModel.images.length) % selectedModel.images.length);
-    }
-  };
+  // Auto-changing images every 3 seconds (only if video mode is off)
+  useEffect(() => {
+    if (showVideo || !selectedModel?.images?.length) return;
+
+    const interval = setInterval(() => {
+      resetZoom();
+      setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % selectedModel.images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [showVideo, selectedModel]);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current || showVideo) return;
@@ -159,9 +156,8 @@ export default function KTCPage() {
             <div 
               ref={containerRef}
               className="ktc-main-media" 
-              onMouseEnter={() => setIsHovered(true)}
               onMouseMove={handleMouseMove}
-              onMouseLeave={() => { resetZoom(); setIsHovered(false); }}
+              onMouseLeave={resetZoom}
               style={{ 
                 backgroundColor: "transparent", 
                 border: "1px solid #333",
@@ -188,124 +184,34 @@ export default function KTCPage() {
                 />
               ) : (
                 currentImage && (
-                  <>
-                    {/* Left Side Overlay Arrow */}
-                    <button
-                      type="button"
-                      onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
-                      style={{
-                        position: "absolute",
-                        left: "15px",
-                        zIndex: 10,
-                        backgroundColor: "rgba(0, 0, 0, 0.6)",
-                        color: "#fff",
-                        border: "none",
-                        borderRadius: "50%",
-                        width: "40px",
-                        height: "40px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer",
-                        opacity: isHovered ? 1 : 0,
-                        transition: "opacity 0.2s ease",
-                      }}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 19l-7-7 7-7"/></svg>
-                    </button>
-
-                    <div 
-                      style={{ 
-                        width: "100%", 
-                        height: "100%", 
-                        position: "relative", 
-                        ...zoomStyle,
-                        transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
-                      }}
-                    >
-                      <Image 
-                        src={currentImage} 
-                        alt={selectedModel.name} 
-                        fill
-                        sizes="(max-width: 1200px) 100vw, 800px"
-                        style={{ objectFit: "contain", padding: "20px" }}
-                        priority 
-                      />
-                    </div>
-
-                    {/* Right Side Overlay Arrow */}
-                    <button
-                      type="button"
-                      onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
-                      style={{
-                        position: "absolute",
-                        right: "15px",
-                        zIndex: 10,
-                        backgroundColor: "rgba(0, 0, 0, 0.6)",
-                        color: "#fff",
-                        border: "none",
-                        borderRadius: "50%",
-                        width: "40px",
-                        height: "40px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer",
-                        opacity: isHovered ? 1 : 0,
-                        transition: "opacity 0.2s ease",
-                      }}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 5l7 7-7 7"/></svg>
-                    </button>
-                  </>
+                  <div 
+                    style={{ 
+                      width: "100%", 
+                      height: "100%", 
+                      position: "relative", 
+                      ...zoomStyle,
+                      transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
+                    }}
+                  >
+                    <Image 
+                      src={currentImage} 
+                      alt={selectedModel.name} 
+                      fill
+                      sizes="(max-width: 1200px) 100vw, 800px"
+                      style={{ objectFit: "contain", padding: "20px" }}
+                      priority 
+                    />
+                  </div>
                 )
               )}
             </div>
 
-            {/* Bottom Controls Panel formatted to mirror image_fcfbd9.jpg */}
+            {/* Controls Panel configured without navigation layouts */}
             <div className="ktc-controls" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                <button 
-                  type="button"
-                  onClick={() => { setShowVideo(false); prevPhoto(); }} 
-                  style={{ 
-                    backgroundColor: "#111", 
-                    color: "#fff", 
-                    border: "1px solid #333", 
-                    padding: "8px 16px", 
-                    borderRadius: "6px", 
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "6px",
-                    fontSize: "0.9rem"
-                  }}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  {"Prev"}
-                </button>
-                <span style={{ color: "#888", fontSize: "0.95rem", minWidth: "45px", textAlign: "center" }}>
+              <div>
+                <span style={{ color: "#888", fontSize: "0.95rem" }}>
                   {currentPhotoIndex + 1} / {selectedModel?.images?.length || 0}
                 </span>
-                <button 
-                  type="button"
-                  onClick={() => { setShowVideo(false); nextPhoto(); }} 
-                  style={{ 
-                    backgroundColor: "#111", 
-                    color: "#fff", 
-                    border: "1px solid #333", 
-                    padding: "8px 16px", 
-                    borderRadius: "6px", 
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "6px",
-                    fontSize: "0.9rem"
-                  }}
-                >
-                  {"Next"}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
               </div>
 
               <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
