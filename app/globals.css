@@ -1,11 +1,12 @@
-/* ================= RESET ================= */
+/* ==========================================================================
+   1. RESET & BASE LAYOUTS
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ================= BODY ================= */
 body {
   background: #fbf9f4; /* High-end warm cream / luxury ivory editorial backdrop */
   color: #1a1b1e;      /* Forced dark charcoal/black for premium readability */
@@ -16,7 +17,9 @@ a {
   color: #1a1b1e;
 }
 
-/* ================= HEADER / TOOLBAR ================= */
+/* ==========================================================================
+   2. MAIN SITE HEADER & GLOBAL NAVIGATION
+   ========================================================================== */
 .header {
   position: sticky;
   top: 0;
@@ -30,10 +33,9 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  border-bottom: 1px solid rgba(44, 42, 41, 0.06); /* Invisible organic divider line */
+  border-bottom: 1px solid rgba(44, 42, 41, 0.06);
 }
 
-/* Global Navbar Branding Layout */
 .header-logo-link {
   display: flex;
   align-items: center;
@@ -56,17 +58,66 @@ a {
 }
 
 .header nav a {
-  color: #1a1b1e; /* Crisp black navigation links */
+  color: #1a1b1e;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
 }
 
 .header nav a:hover {
-  color: #d4af37; /* Warm subtle champagne gold highlight on hover */
+  color: #d4af37; /* Champagne gold hover element */
 }
 
-/* ================= HERO ================= */
+/* Main Site Support Dropdown */
+.main-support-dropdown {
+  position: relative;
+}
+
+.main-support-button {
+  border: none;
+  background: transparent;
+  color: #1a1b1e;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 600;
+}
+
+.main-support-button:hover {
+  color: #d4af37;
+}
+
+.main-support-menu {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  z-index: 3000;
+  min-width: 185px;
+  padding: 8px 0;
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(44, 42, 41, 0.06);
+}
+
+.main-support-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: #1a1b1e;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.main-support-menu a:hover {
+  background: #f4f1ea;
+}
+
+/* ==========================================================================
+   3. HERO MODULES & CORRESPONDING SLIDERS
+   ========================================================================== */
 .hero {
   position: relative;
   height: 90vh;
@@ -83,7 +134,7 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(254, 253, 251, 0.92); /* Luxe alabaster warm glass card */
+  background: rgba(254, 253, 251, 0.92);
   backdrop-filter: blur(12px);
   padding: 30px 50px;
   border-radius: 16px;
@@ -99,19 +150,52 @@ a {
   font-weight: 800;
 }
 
-.hero-brands {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: nowrap;
+.slider-box {
+  position: relative;
+  max-width: 1100px;
+  margin: 50px auto;
 }
 
-/* ================= GENERAL PAGES ================= */
+.slider-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(44, 42, 41, 0.05);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1a1b1e;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 10;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.arrow:hover {
+  background: #f4f1ea;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.arrow.left { left: -24px; }
+.arrow.right { right: -24px; }
+
+/* ==========================================================================
+   4. CONTENT LAYOUTS (ABOUT, SHOWROOM, CONTACT, FOOTER)
+   ========================================================================== */
 .section,
 .about-container,
 .page-container {
@@ -145,7 +229,6 @@ h2 {
   font-weight: 700;
 }
 
-/* ================= GLOBAL IMAGES ================= */
 img {
   width: 100%;
   max-width: 700px;
@@ -155,7 +238,124 @@ img {
   box-shadow: 0 12px 32px rgba(44, 42, 41, 0.04); 
 }
 
-/* ================= LEADERSHIP ================= */
+/* Contact and Map Elements */
+.map-container {
+  max-width: 900px;
+  margin: 30px auto 40px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(44, 42, 41, 0.04);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #1a1b1e;
+  background: #fefdfb; 
+  color: #1a1b1e;
+  font-weight: 600;
+}
+
+.directions-btn {
+  display: block;
+  width: fit-content;
+  margin: 40px auto 90px;
+  text-decoration: none;
+  color: #fefdfb !important;
+  background: #1a1b1e;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.footer {
+  background: #f4f1ea; 
+  color: #1a1b1e;
+  text-align: center;
+  padding: 32px 20px;
+  border-top: 1px solid rgba(44, 42, 41, 0.06);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   5. HOME PAGE & SPECIFIC BRAND HORIZONTAL STRIP
+   ========================================================================== */
+.home-page {
+  background: #fbf9f4 !important;
+  min-height: calc(100vh - 73px);
+}
+
+.home-page .hero {
+  position: relative;
+  height: 72vh;
+  min-height: 520px;
+}
+
+.home-brand-strip {
+  background: #111111; 
+  padding: 20px 40px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;           
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+}
+
+.home-brand-strip .brand-logo-button {
+  width: auto !important;            
+  height: 40px !important;            
+  background: transparent !important; 
+  border: none !important;            
+  padding: 0 !important;          
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 !important;       
+  box-shadow: none !important;        
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;                      
+}
+
+.home-brand-strip .brand-logo-button img {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 160px !important;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important;
+  display: block;
+  object-fit: contain !important;     
+}
+
+.home-brand-strip .brand-logo-button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  background: transparent !important;
+}
+
+/* ==========================================================================
+   6. LEADERSHIP & PROMOTERS ARCHITECTURE
+   ========================================================================== */
 .promoters-container {
   max-width: 1280px !important;
   margin: 0 auto !important;
@@ -206,243 +406,9 @@ img {
   background: transparent !important;
 }
 
-@media (max-width: 900px) {
-  .promoters-container {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    gap: 14px !important;
-    max-width: 100% !important;
-    padding: 28px 14px 50px !important;
-    text-align: center;
-  }
-
-  .promoter-section {
-    flex: 1 1 56% !important;
-    min-width: 0 !important;
-  }
-
-  .promoter-section h2 {
-    font-size: 25px !important;
-    line-height: 1.1 !important;
-    margin-bottom: 14px !important;
-  }
-
-  .promoter-section h2:not(:first-child) {
-    margin-top: 34px !important;
-  }
-
-  .promoter-text {
-    font-size: 11.5px !important;
-    line-height: 1.5 !important;
-    margin: 0 auto 14px !important;
-    max-width: 100% !important;
-  }
-
-  .promoter-image {
-    flex: 0 0 42% !important;
-    width: 42% !important;
-    max-width: 42% !important;
-    height: auto !important;
-    margin: 0 !important;
-    border-radius: 12px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .promoters-container {
-    padding: 34px 22px 60px !important;
-    max-width: 100% !important;
-  }
-
-  .promoter-section {
-    gap: 52px !important;
-  }
-
-  .promoter-profile {
-    flex-direction: column !important;
-    gap: 18px !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  .promoter-copy {
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  .promoter-copy h2 {
-    font-size: 30px !important;
-    line-height: 1.15 !important;
-    margin-bottom: 18px !important;
-    white-space: normal !important;
-  }
-
-  .promoter-text {
-    font-size: 14px !important;
-    line-height: 1.55 !important;
-    max-width: 92% !important;
-    margin: 0 auto !important;
-    color: #1a1b1e !important;
-  }
-
-  .promoter-image {
-    width: 76% !important;
-    max-width: 280px !important;
-    height: auto !important;
-    max-height: 210px !important;
-    object-fit: contain !important;
-    margin: 10px auto 0 !important;
-    border-radius: 14px !important;
-    background: transparent !important;
-  }
-}
-
-/* ================= SLIDER & SIDE BUTTON OPTIONS ================= */
-.slider-box {
-  position: relative;
-  max-width: 1100px;
-  margin: 50px auto;
-}
-
-.slider-img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 12px 36px rgba(44, 42, 41, 0.05);
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #ffffff;
-  color: #1a1b1e;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: bold;
-  z-index: 10;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.arrow:hover {
-  background: #f4f1ea;
-  transform: translateY(-50%) scale(1.05);
-}
-
-.arrow.left {
-  left: -24px;
-}
-
-.arrow.right {
-  right: -24px;
-}
-
-@media (max-width: 768px) {
-  .arrow {
-    width: 38px;
-    height: 38px;
-    font-size: 14px;
-  }
-  .arrow.left {
-    left: 8px;
-  }
-  .arrow.right {
-    right: 8px;
-  }
-}
-
-/* ================= CONTACT ================= */
-.map-container {
-  max-width: 900px;
-  margin: 30px auto 40px;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 8px 30px rgba(44, 42, 41, 0.04);
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  margin-top: 30px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  max-width: 500px;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #1a1b1e;
-  background: #fefdfb; 
-  color: #1a1b1e;
-  font-weight: 600;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #c5a880; 
-  box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.15);
-}
-
-.contact-form button {
-  margin-top: 20px;
-}
-
-.directions-btn {
-  display: block;
-  width: fit-content;
-  margin: 40px auto 90px;
-  text-decoration: none;
-  color: #fefdfb !important;
-  background: #1a1b1e;
-  padding: 12px 30px;
-  border-radius: 30px;
-  font-weight: 600;
-}
-
-.contact-heading {
-  font-size: 32px;
-  color: #1a1b1e;
-}
-
-/* ================= BRANDS ================= */
-.brands-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 900px;
-  margin: auto;
-}
-
-/* ================= FOOTER ================= */
-.footer {
-  background: #f4f1ea; 
-  color: #1a1b1e;
-  text-align: center;
-  padding: 32px 20px;
-  border-top: 1px solid rgba(44, 42, 41, 0.06);
-}
-
-.footer p {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-/* ================= FPD SITE ================= */
+/* ==========================================================================
+   7. SUB-BRAND FPD SYSTEMS DESIGN
+   ========================================================================== */
 .fpd-site {
   background: #fbf9f4;
   color: #1a1b1e;
@@ -454,7 +420,6 @@ body:has(.fpd-site) .footer {
   display: none;
 }
 
-/* ================= FPD HEADER ================= */
 .fpd-header {
   position: sticky;
   top: 0;
@@ -473,11 +438,7 @@ body:has(.fpd-site) .footer {
   align-items: center;
 }
 
-.fpd-logo {
-  display: flex;
-  align-items: center;
-}
-
+.fpd-logo { display: flex; align-items: center; }
 .fpd-logo img {
   height: 40px;
   width: auto;
@@ -487,12 +448,7 @@ body:has(.fpd-site) .footer {
   box-shadow: none;
 }
 
-.fpd-nav {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
+.fpd-nav { display: flex; align-items: center; gap: 32px; }
 .fpd-nav-link {
   color: #1a1b1e;
   text-decoration: none;
@@ -500,24 +456,36 @@ body:has(.fpd-site) .footer {
   font-weight: 700;
   cursor: pointer;
 }
+.fpd-nav-link:hover { color: #d4af37; }
 
-.fpd-nav-link:hover {
-  color: #d4af37;
+/* FPD Dropdown Modules */
+.fpd-dropdown { position: relative; }
+.fpd-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  border-radius: 12px;
+  padding: 8px 0;
+  min-width: 170px;
+  box-shadow: 0 12px 30px rgba(44, 42, 41, 0.06);
 }
-
-/* ================= FPD PAGE ================= */
-.fpd-page {
-  width: 100%;
-  background: #fbf9f4;
+.fpd-dropdown-item {
+  display: block;
+  padding: 12px 24px;
   color: #1a1b1e;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: 600;
 }
+.fpd-dropdown-item:hover { background: #f4f1ea; }
 
-.fpd-hero {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
+.fpd-page { width: 100%; background: #fbf9f4; color: #1a1b1e; }
+.fpd-hero { width: 100%; padding: 0; margin: 0; }
 .fpd-hero img {
   width: 100% !important;
   max-width: none !important;
@@ -534,35 +502,10 @@ body:has(.fpd-site) .footer {
   max-width: 1500px;
   margin: 0 auto;
   padding: 80px 90px;
-  text-align: left;
 }
-
-.fpd-section h1 {
-  font-size: 52px;
-  font-weight: 800;
-  color: #1a1b1e;
-  margin-bottom: 30px;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.fpd-section h2 {
-  font-size: 28px;
-  color: #1a1b1e;
-  margin-bottom: 26px;
-  line-height: 1.5;
-  text-align: center;
-}
-
-.fpd-section p {
-  margin-top: 0;
-  margin-bottom: 32px;
-  line-height: 1.7;
-  font-size: 20px;
-  font-weight: 500;
-  color: #1a1b1e;
-  max-width: none;
-}
+.fpd-section h1 { font-size: 52px; font-weight: 800; text-align: center; margin-bottom: 30px; }
+.fpd-section h2 { font-size: 28px; text-align: center; margin-bottom: 26px; }
+.fpd-section p { font-size: 20px; font-weight: 500; margin-bottom: 32px; line-height: 1.7; }
 
 .fpd-image {
   width: 100%;
@@ -575,248 +518,13 @@ body:has(.fpd-site) .footer {
   box-shadow: 0 20px 40px rgba(44,42,41,0.03);
 }
 
-/* ================= MOBILE GLOBAL ADJUSTMENTS ================= */
-@media (max-width: 900px) {
-  .header {
-    padding: 16px 12px 14px !important;
-    flex-direction: column !important;  
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 14px !important;
-  }
-
-  .header-logo-link {
-    margin-bottom: 0px;
-    display: flex !important;
-    justify-content: center !important;
-    width: 100% !important;
-  }
-
-  .header-logo-img {
-    height: 34px !important; /* Forces layout tracking inside screen grid boundaries cleanly */
-    width: auto !important;
-  }
-
-  /* REFACTORED TO FIX CUT-OFF TABS & BLOCKED NAVIGATION ROWS */
-  .header nav {
-    width: 100% !important;
-    display: flex !important;
-    flex-wrap: wrap !important;          /* Allows wrapped navigation lines so items never push off-screen */
-    justify-content: center !important;   /* Beautifully lines up elements across rows symmetrically */
-    gap: 12px 16px !important;           /* Clean horizontal separation and row lines */
-    padding: 0 4px !important;
-    overflow: visible !important;
-  }
-
-  .header nav a,
-  .main-support-button {
-    font-size: 13px !important;
-    white-space: nowrap !important;     
-    display: inline-block !important;
-  }
-
-  .hero {
-    height: 88vh;
-  }
-
-  .hero-overlay {
-    padding: 18px 22px;
-    width: 86%;
-  }
-
-  .hero-overlay h2 {
-    font-size: 34px;
-    letter-spacing: 2px;
-  }
-
-  .section,
-  .about-container,
-  .page-container {
-    padding: 50px 18px;
-  }
-
-  h1 {
-    font-size: 34px;
-  }
-
-  h2 {
-    font-size: 26px;
-  }
-
-  .about-text,
-  .page-text {
-    font-size: 16px;
-  }
-
-  .slider-img {
-    height: 260px;
-  }
-
-  .brands-container {
-    grid-template-columns: 1fr;
-    padding: 0 20px;
-  }
-
-  .fpd-header-inner {
-    padding: 14px 18px;
-    flex-direction: column !important;
-    gap: 12px !important;
-  }
-
-  .fpd-logo img {
-    height: 34px !important;
-  }
-
-  .fpd-nav {
-    gap: 16px;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-  }
-
-  .fpd-nav-link {
-    font-size: 12px;
-  }
-
-  .fpd-section {
-    padding: 50px 20px;
-  }
-
-  .fpd-section h1 {
-    font-size: 38px;
-    margin-bottom: 20px;
-  }
-
-  .fpd-section h2 {
-    font-size: 22px;
-    margin-bottom: 18px;
-  }
-
-  .fpd-section p {
-    font-size: 16px;
-    line-height: 1.8;
-  }
-
-  .fpd-image {
-    margin-top: 30px;
-    border-radius: 14px;
-  }
-}
-
-/* ================= HOME PAGE LAYOUTS ================= */
-.home-page {
-  background: #fbf9f4 !important;
-  min-height: calc(100vh - 73px);
-}
-
-.home-page .hero {
-  position: relative;
-  height: 72vh;
-  min-height: 520px;
-}
-
-/* ================= REFACTORED CONTINUOUS BRAND STRIP LINE ================= */
-.home-brand-strip {
-  background: #111111; 
-  padding: 20px 40px; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 64px;           
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  width: 100%;
-}
-
-.home-brand-strip .brand-logo-button {
-  width: auto !important;            
-  height: 40px !important;            
-  background: transparent !important; 
-  border: none !important;            
-  padding: 0 !important;          
-  margin: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 !important;       
-  box-shadow: none !important;        
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  opacity: 0.85;                      
-}
-
-.home-brand-strip .brand-logo-button img {
-  width: auto !important;
-  height: 100% !important;
-  max-width: 160px !important;
-  margin: 0;
-  padding: 0;
-  border-radius: 0 !important;
-  display: block;
-  object-fit: contain !important;     
-  filter: brightness(1);              
-}
-
-.home-brand-strip .brand-logo-button:hover {
-  transform: scale(1.05);
-  opacity: 1;
-  background: transparent !important;
-}
-
-@media (max-width: 768px) {
-  .home-page {
-    min-height: auto;
-  }
-
-  .home-page .hero {
-    height: 62vh;
-    min-height: 430px;
-  }
-
-  .home-brand-strip {
-    padding: 16px 20px;
-    gap: 28px;                        
-    overflow-x: auto;                 
-    justify-content: space-between;
-  }
-
-  .home-brand-strip .brand-logo-button {
-    height: 28px !important;          
-  }
-}
-
-@media (min-width: 769px) {
-  .home-page .hero {
-    height: clamp(380px, calc(100svh - 290px), 560px);
-    min-height: 0;
-  }
-}
-
-/* ================= FPD TV PRODUCTS ================= */
-.fpd-tv-page {
-  background: #fbf9f4;
-  color: #1a1b1e;
-  min-height: 100vh;
-}
-
-.fpd-tv-hero {
-  padding: 80px 40px 36px;
-  text-align: center;
-}
-
-.fpd-tv-hero h1 {
-  font-size: 52px;
-  margin-bottom: 18px;
-  color: #1a1b1e;
-}
-
-.fpd-tv-hero p {
-  max-width: 820px;
-  margin: 0 auto;
-  color: #1a1b1e;
-  font-size: 18px;
-  line-height: 1.7;
-  font-weight: 500;
-}
+/* ==========================================================================
+   8. FPD HIGH-END TV PRODUCT VIEWER
+   ========================================================================== */
+.fpd-tv-page { background: #fbf9f4; min-height: 100vh; }
+.fpd-tv-hero { padding: 80px 40px 36px; text-align: center; }
+.fpd-tv-hero h1 { font-size: 52px; margin-bottom: 18px; }
+.fpd-tv-hero p { max-width: 820px; margin: 0 auto; font-size: 18px; font-weight: 500; line-height: 1.7; }
 
 .fpd-tv-models {
   max-width: 1300px;
@@ -830,61 +538,19 @@ body:has(.fpd-site) .footer {
 .fpd-tv-card {
   border: 1px solid #1a1b1e;
   background: #fefdfb;
-  color: #1a1b1e;
   border-radius: 14px;
   padding: 14px;
   cursor: pointer;
   text-align: center;
-  box-shadow: 0 4px 6px -1px rgba(44,42,41,0.01);
   transition: all 0.2s ease;
 }
+.fpd-tv-card img { width: 100%; height: 86px; object-fit: contain; margin-bottom: 12px; border-radius: 8px; box-shadow: none; }
+.fpd-tv-card span { display: block; font-size: 14px; font-weight: 700; }
+.fpd-tv-card small { display: block; margin-top: 6px; font-size: 12px; font-weight: 600; }
+.fpd-tv-card.active { background: #1a1b1e; color: #fefdfb; }
+.fpd-tv-card.active span, .fpd-tv-card.active small { color: #fefdfb; }
 
-.fpd-tv-card img {
-  width: 100%;
-  height: 86px;
-  object-fit: contain;
-  margin: 0 0 12px;
-  border-radius: 8px;
-  box-shadow: none;
-}
-
-.fpd-tv-card span {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.35;
-  color: #1a1b1e;
-}
-
-.fpd-tv-card small {
-  display: block;
-  margin-top: 6px;
-  color: #1a1b1e;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.fpd-tv-card.active {
-  background: #1a1b1e;
-  color: #fefdfb;
-  border-color: #1a1b1e;
-}
-
-.fpd-tv-card.active span {
-  color: #fefdfb;
-}
-
-.fpd-tv-card.active small {
-  color: #fefdfb;
-  opacity: 0.9;
-}
-
-.fpd-tv-detail {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px 90px;
-}
-
+.fpd-tv-detail { max-width: 1200px; margin: 0 auto; padding: 0 40px 90px; }
 .fpd-tv-detail-top {
   background: #fefdfb;
   border: 1px solid #1a1b1e;
@@ -895,300 +561,35 @@ body:has(.fpd-site) .footer {
   justify-content: space-between;
   gap: 44px;
   margin-bottom: 18px;
-  box-shadow: 0 10px 25px rgba(44,42,41,0.02);
 }
+.fpd-tv-detail-top h2 { font-size: 42px; margin-bottom: 14px; }
+.fpd-tv-detail-top p { font-size: 18px; font-weight: 500; line-height: 1.6; }
+.fpd-tv-detail-top img { width: 420px; max-width: 42%; height: 240px; object-fit: contain; margin: 0; border-radius: 14px; box-shadow: none; }
 
-.fpd-tv-detail-top h2 {
-  font-size: 42px;
-  margin-bottom: 14px;
-  color: #1a1b1e;
-}
+.fpd-tv-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.fpd-tv-spec-grid div { background: #fefdfb; border: 1px solid #1a1b1e; border-radius: 12px; padding: 16px; }
+.fpd-tv-spec-grid span { display: block; font-size: 13px; margin-bottom: 8px; font-weight: 600; opacity: 0.8; }
+.fpd-tv-spec-grid strong { display: block; font-size: 15px; font-weight: 700; }
 
-.fpd-tv-detail-top p {
-  color: #1a1b1e;
-  font-size: 18px;
-  line-height: 1.6;
-  font-weight: 500;
-}
+/* ==========================================================================
+   9. E-WASTE ASSIGNMENT INTERFACES
+   ========================================================================== */
+.ewaste-page { background: #fbf9f4; min-height: 100vh; }
+.ewaste-container { max-width: 1200px; margin: 0 auto; padding: 70px 40px; }
+.ewaste-container h1 { font-size: 56px; margin-bottom: 40px; }
+.ewaste-container h2 { font-size: 34px; margin-top: 40px; margin-bottom: 20px; }
+.ewaste-container p { font-size: 18px; line-height: 1.9; margin-bottom: 24px; font-weight: 500; }
+.ewaste-card { background: #fefdfb; border: 1px solid #1a1b1e; border-radius: 16px; padding: 28px; margin: 30px 0; }
+.ewaste-card ul { list-style: none; padding: 0; }
+.ewaste-card li { margin-bottom: 12px; font-weight: 600; }
+.ewaste-card strong { color: #000000; }
 
-.fpd-tv-detail-top img {
-  width: 420px;
-  max-width: 42%;
-  height: 240px;
-  object-fit: contain;
-  margin: 0;
-  border-radius: 14px;
-  box-shadow: none;
-}
-
-.fpd-tv-spec-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-.fpd-tv-spec-grid div {
-  background: #fefdfb;
-  border: 1px solid #1a1b1e;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 8px rgba(44,42,41,0.01);
-}
-
-.fpd-tv-spec-grid span {
-  display: block;
-  color: #1a1b1e;
-  font-size: 13px;
-  margin-bottom: 8px;
-  font-weight: 600;
-  opacity: 0.8;
-}
-
-.fpd-tv-spec-grid strong {
-  display: block;
-  color: #1a1b1e !important;
-  font-size: 15px;
-  line-height: 1.5;
-  font-weight: 700;
-}
-
-@media (max-width: 900px) {
-  .fpd-tv-models {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 20px;
-    margin-bottom: 34px;
-  }
-
-  .fpd-tv-detail {
-    padding: 0 20px 60px;
-  }
-
-  .fpd-tv-detail-top {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 22px;
-    gap: 24px;
-  }
-
-  .fpd-tv-detail-top h2 {
-    font-size: 30px;
-  }
-
-  .fpd-tv-detail-top p {
-    font-size: 15px;
-  }
-
-  .fpd-tv-detail-top img {
-    width: 100%;
-    max-width: 100%;
-    height: 220px;
-  }
-
-  .fpd-tv-spec-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ================= DROPDOWNS & NAVIGATION CONFIGS ================= */
-.fpd-products-button {
-  background: transparent;
-  border: none;
-  padding: 0;
-  font-family: inherit;
-}
-
-.fpd-dropdown {
-  position: relative;
-}
-
-.fpd-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 14px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3000;
-  background: #fefdfb;
-  border: 1px solid #1a1b1e;
-  border-radius: 12px;
-  padding: 8px 0;
-  min-width: 170px;
-  box-shadow: 0 12px 30px rgba(44, 42, 41, 0.06);
-}
-
-.fpd-dropdown-item {
-  display: block;
-  padding: 12px 24px;
-  color: #1a1b1e;
-  text-decoration: none;
-  font-size: 14px;
-  white-space: nowrap;
-  font-weight: 600;
-}
-
-.fpd-dropdown-item:hover {
-  color: #1a1b1e;
-  background: #f4f1ea;
-}
-
-@media (max-width: 768px) {
-  .fpd-dropdown-menu {
-    left: auto;
-    right: 0;
-    transform: none;
-  }
-}
-
-.main-support-dropdown {
-  position: relative;
-}
-
-.main-support-button {
-  border: none;
-  background: transparent;
-  color: #1a1b1e;
-  font: inherit;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 0;
-  font-weight: 600;
-}
-
-.main-support-button:hover {
-  color: #d4af37;
-}
-
-.main-support-menu {
-  position: absolute;
-  top: calc(100% + 16px);
-  right: 0;
-  z-index: 3000;
-  min-width: 185px;
-  padding: 8px 0;
-  background: #fefdfb;
-  border: 1px solid #1a1b1e;
-  border-radius: 10px;
-  box-shadow: 0 12px 30px rgba(44, 42, 41, 0.06);
-}
-
-.main-support-menu a {
-  display: block;
-  padding: 12px 16px;
-  color: #1a1b1e;
-  text-decoration: none;
-  font-size: 14px;
-  white-space: nowrap;
-  font-weight: 600;
-}
-
-.main-support-menu a:hover {
-  background: #f4f1ea;
-  color: #1a1b1e;
-}
-
-@media (max-width: 768px) {
-  .main-support-menu {
-    right: 0;
-  }
-
-  .main-support-button {
-    font-size: 13px;
-  }
-}
-
-/* ================= E-WASTE PAGE ================= */
-.ewaste-page {
-  background: #fbf9f4;
-  color: #1a1b1e;
-  min-height: 100vh;
-}
-
-.ewaste-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 70px 40px;
-}
-
-.ewaste-container h1 {
-  font-size: 56px;
-  margin-bottom: 40px;
-}
-
-.ewaste-container h2 {
-  font-size: 34px;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  color: #1a1b1e;
-}
-
-.ewaste-container p {
-  font-size: 18px;
-  line-height: 1.9;
-  color: #1a1b1e;
-  margin-bottom: 24px;
-  font-weight: 500;
-}
-
-.ewaste-card {
-  background: #fefdfb;
-  border: 1px solid #1a1b1e;
-  border-radius: 16px;
-  padding: 28px;
-  margin: 30px 0;
-  box-shadow: 0 4px 20px rgba(44,42,41,0.01);
-}
-
-.ewaste-card ul {
-  list-style: none;
-  padding: 0;
-}
-
-.ewaste-card li {
-  margin-bottom: 12px;
-  color: #1a1b1e;
-  font-weight: 600;
-}
-
-.ewaste-card strong {
-  color: #000000;
-}
-
-@media (max-width: 768px) {
-  .ewaste-container {
-    padding: 40px 20px;
-  }
-
-  .ewaste-container h1 {
-    font-size: 38px;
-  }
-
-  .ewaste-container h2 {
-    font-size: 26px;
-  }
-
-  .ewaste-container p {
-    font-size: 16px;
-  }
-}
-
-/* ================= KTC MONITORS BRAND PAGE ================= */
-.ktc-page {
-  background: #fbf9f4 !important;
-  color: #1a1b1e;
-  min-height: 100vh;
-}
-
-.ktc-hero {
-  padding: 80px 40px 40px;
-  text-align: center;
-}
-
-.ktc-hero h1 {
-  font-size: 52px;
-  margin-bottom: 14px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  color: #1a1b1e;
-}
+/* ==========================================================================
+   10. KTC MONITORS EXCLUSIVE PRODUCT HUB
+   ========================================================================== */
+.ktc-page { background: #fbf9f4 !important; min-height: 100vh; }
+.ktc-hero { padding: 80px 40px 40px; text-align: center; }
+.ktc-hero h1 { font-size: 52px; margin-bottom: 14px; font-weight: 800; letter-spacing: -1px; }
 
 .ktc-models {
   max-width: 1200px;
@@ -1209,29 +610,14 @@ body:has(.fpd-site) .footer {
   cursor: pointer;
   font-weight: 700;
   font-size: 16px;
-  box-shadow: 0 2px 4px rgba(44,42,41,0.01);
   transition: all 0.25s ease;
 }
+.ktc-model-card:hover { background: #f4f1ea; }
+.ktc-model-card.active { background: #1a1b1e; color: #fefdfb; box-shadow: 0 10px 20px rgba(44, 42, 41, 0.12); }
 
-.ktc-model-card:hover {
-  background: #f4f1ea;
-  border-color: #000000;
-  color: #000000;
-}
+.ktc-details { max-width: 1200px; margin: 0 auto; padding: 0 40px 90px; }
 
-.ktc-model-card.active {
-  background: #1a1b1e;
-  color: #fefdfb;
-  border-color: #1a1b1e;
-  box-shadow: 0 10px 20px rgba(44, 42, 41, 0.12);
-}
-
-.ktc-details {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px 90px;
-}
-
+/* Fixed Product Info Positioning */
 .ktc-product-top {
   display: flex;
   align-items: flex-start;
@@ -1241,25 +627,12 @@ body:has(.fpd-site) .footer {
   flex-wrap: wrap;
 }
 
-.ktc-product-info {
-  flex: 1 1 320px;
-}
+.ktc-product-info { flex: 1 1 320px; }
+.ktc-product-info h2 { font-size: 54px; font-weight: 800; margin-bottom: 24px; letter-spacing: -1px; line-height: 1.1; }
 
-.ktc-product-info h2 {
-  font-size: 54px;
-  font-weight: 800;
-  margin-bottom: 24px;
-  letter-spacing: -1px;
-  line-height: 1.1;
-  color: #1a1b1e;
-}
+.ktc-product-summary { display: flex; flex-direction: column; gap: 12px; }
 
-.ktc-product-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
+/* Fixed Monitor Media Containers */
 .ktc-media-container {
   flex: 1.5 1 540px;
   display: flex;
@@ -1287,11 +660,6 @@ body:has(.fpd-site) .footer {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: opacity 0.4s ease-in-out; 
-}
-
-.ktc-main-media div {
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .ktc-controls {
@@ -1306,39 +674,18 @@ body:has(.fpd-site) .footer {
 .ktc-video-btn {
   padding: 12px 24px;
   background: #fefdfb;
-  color: #1a1b1e;
   border: 1px solid #1a1b1e;
   border-radius: 10px;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(44,42,41,0.01);
   transition: all 0.2s ease;
 }
+.zoom-btn:hover { background: #f4f1ea; }
+.ktc-video-btn { background: #1a1b1e; color: #fefdfb; }
+.ktc-video-btn:hover { background: #000000; }
 
-.zoom-btn:hover {
-  background: #f4f1ea;
-  color: #000000;
-}
-
-.ktc-video-btn {
-  background: #1a1b1e;
-  color: #fefdfb;
-  border-color: #1a1b1e;
-}
-
-.ktc-video-btn:hover {
-  background: #000000;
-  border-color: #000000;
-}
-
-.photo-counter {
-  font-size: 16px;
-  font-weight: 700;
-  color: #1a1b1e;
-  min-width: 60px;
-  text-align: center;
-}
+.photo-counter { font-size: 16px; font-weight: 700; min-width: 60px; text-align: center; }
 
 .ktc-features-grid {
   display: grid;
@@ -1356,26 +703,12 @@ body:has(.fpd-site) .footer {
   align-items: center;
   gap: 12px;
   font-weight: 700;
-  color: #1a1b1e;
   box-shadow: 0 4px 10px rgba(44,42,41,0.01);
 }
 
-.feature-card span {
-  color: #000000;
-  font-size: 18px;
-}
-
-.ktc-specs-section {
-  border-top: 1px solid #1a1b1e;
-  padding-top: 50px;
-}
-
-.ktc-specs-section h3 {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 30px;
-  color: #1a1b1e;
-}
+/* Fixed Detailed Specs Rows */
+.ktc-specs-section { border-top: 1px solid #1a1b1e; padding-top: 50px; }
+.ktc-specs-section h3 { font-size: 28px; font-weight: 800; margin-bottom: 30px; }
 
 .ktc-spec-grid {
   display: grid;
@@ -1392,12 +725,9 @@ body:has(.fpd-site) .footer {
   font-size: 16px;
 }
 
-.spec-label {
-  color: #1a1b1e;
-  font-weight: 600;
-}
+.spec-label { font-weight: 600; }
 
-/* ================= CRISP CONTRAST BLACK TEXT OVERRIDES ================= */
+/* Premium Font Custom Styling Variables */
 .premium-display-subtitle,
 .ktc-hero p,
 .ktc-product-summary p,
@@ -1409,7 +739,6 @@ body:has(.fpd-site) .footer {
 .ktc-product-summary p {
   font-size: 19px;
   line-height: 1.6;
-  margin: 0;
   padding-left: 14px;
   border-left: 3.5px solid #1a1b1e;
   font-weight: 700; 
@@ -1421,21 +750,14 @@ body:has(.fpd-site) .footer {
   padding-left: 20px;
 }
 
-/* ================= KTC AUTOMATED HERO SLIDESHOW MODULE ================= */
+/* Automated Hero Slideshow */
 .ktc-hero-slideshow {
   position: relative;
   width: 100%;
   height: clamp(350px, 55vh, 600px);
   overflow: hidden;
-  background-color: #fbf9f4;
 }
-
-.slideshow-track {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
+.slideshow-track { width: 100%; height: 100%; position: relative; }
 .slide-item {
   position: absolute;
   top: 0;
@@ -1446,56 +768,219 @@ body:has(.fpd-site) .footer {
   transition: opacity 1.2s ease-in-out; 
   z-index: 1;
 }
+.slide-item.active { opacity: 1; z-index: 2; }
+.slide-item img { width: 100%; height: 100%; object-fit: cover; }
 
-.slide-item.active {
-  opacity: 1;
-  z-index: 2;
+
+/* ==========================================================================
+   11. MEDIA QUERIES & RESPONSIVE RULES (MOBILE OPTIMIZATIONS)
+   ========================================================================== */
+@media (max-width: 900px) {
+  /* Header Nav Configurations */
+  .header {
+    padding: 16px 12px 14px !important;
+    flex-direction: column !important;  
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 14px !important;
+  }
+
+  .header-logo-link {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .header-logo-img {
+    height: 34px !important;
+    width: auto !important;
+  }
+
+  .header nav {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 12px 16px !important;
+    padding: 0 4px !important;
+    overflow: visible !important;
+  }
+
+  .header nav a,
+  .main-support-button {
+    font-size: 13px !important;
+    white-space: nowrap !important;     
+    display: inline-block !important;
+  }
+
+  /* General Grid Layout Scales */
+  .hero { height: 88vh; }
+  .hero-overlay { padding: 18px 22px; width: 86%; }
+  .hero-overlay h2 { font-size: 34px; letter-spacing: 2px; }
+
+  .section, .about-container, .page-container { padding: 50px 18px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 26px; }
+  .about-text, .page-text { font-size: 16px; }
+  .slider-img { height: 260px; }
+
+  /* Sub-Page FPD Brand Components */
+  .fpd-header-inner {
+    padding: 14px 18px;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .fpd-logo img { height: 34px !important; }
+  .fpd-nav { gap: 16px; flex-wrap: wrap !important; justify-content: center !important; }
+  .fpd-nav-link { font-size: 12px; }
+
+  .fpd-section { padding: 50px 20px; }
+  .fpd-section h1 { font-size: 38px; margin-bottom: 20px; }
+  .fpd-section h2 { font-size: 22px; margin-bottom: 18px; }
+  .fpd-section p { font-size: 16px; line-height: 1.8; }
+  .fpd-image { margin-top: 30px; border-radius: 14px; }
+
+  /* FPD TV Viewer Mobile Layout */
+  .fpd-tv-models { grid-template-columns: repeat(2, 1fr); padding: 0 20px; margin-bottom: 34px; }
+  .fpd-tv-detail { padding: 0 20px 60px; }
+  .fpd-tv-detail-top { flex-direction: column; align-items: flex-start; padding: 22px; gap: 24px; }
+  .fpd-tv-detail-top h2 { font-size: 30px; }
+  .fpd-tv-detail-top p { font-size: 15px; }
+  .fpd-tv-detail-top img { width: 100%; max-width: 100%; height: 220px; }
+  .fpd-tv-spec-grid { grid-template-columns: 1fr; }
 }
 
-.slide-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ================= MONITOR RESPONSIVE OVERRIDES ================= */
 @media (max-width: 768px) {
-  .ktc-hero {
-    padding: 50px 20px 30px;
+  /* Fix 1: Home Strip Scaling & KTC Sizing Override */
+  .home-page { min-height: auto; }
+  .home-page .hero { height: 62vh; min-height: 430px; }
+
+  .home-brand-strip {
+    padding: 16px 20px;
+    gap: 28px;                        
+    overflow-x: auto;                 
+    justify-content: space-between;
   }
 
-  .ktc-hero h1 {
-    font-size: 38px;
+  .home-brand-strip .brand-logo-button {
+    height: 42px !important;
+    min-width: 110px;
+    flex: 0 0 auto;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
   }
 
-  .ktc-hero p {
-    font-size: 16px;
+  .home-brand-strip .brand-logo-button img {
+    width: auto !important;
+    height: 100% !important;
+    max-width: 140px !important;
+    object-fit: contain !important;
   }
 
-  .ktc-models {
-    padding: 0 20px;
-  }
-
-  .ktc-details {
-    padding: 0 20px 60px;
-  }
-
+  /* Fix 2: Layout Alignments & Media Scaling */
   .ktc-product-top {
+    display: flex;
     flex-direction: column;
-    gap: 30px;
+    align-items: center;
   }
 
-  .ktc-product-info h2 {
-    font-size: 38px;
+  .ktc-product-info {
+    width: 100%;
   }
 
+  .ktc-media-container {
+    width: 100%;
+  }
+
+  .ktc-main-media {
+    width: 100%;
+    height: 320px;
+    aspect-ratio: auto;
+  }
+
+  .ktc-monitor-image,
+  .ktc-video-player {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Fix 3: Button Flow Containment */
+  .ktc-controls {
+    justify-content: center;
+  }
+
+  .zoom-btn,
+  .nav-btn,
+  .ktc-video-btn {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  /* Fix 4: Continuous Text Wrapping / Stacking Specs Grid */
   .ktc-spec-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
+    display: block;
   }
-  
+
   .spec-row {
-    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
     padding: 12px 0;
+    font-size: 14px;
+  }
+
+  .spec-label {
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .spec-value {
+    text-align: left;
+    padding-left: 0;
+    font-size: 14px;
+    word-break: break-word;
+  }
+
+  /* Dropdown Positioning Alignment Adjustments */
+  .fpd-dropdown-menu { left: auto; right: 0; transform: none; }
+  .main-support-menu { right: 0; }
+  .main-support-button { font-size: 13px; }
+
+  /* E-Waste Container Constraints */
+  .ewaste-container { padding: 40px 20px; }
+  .ewaste-container h1 { font-size: 38px; }
+  .ewaste-container h2 { font-size: 26px; }
+  .ewaste-container p { font-size: 16px; }
+
+  /* Slider Controls */
+  .arrow { width: 38px; height: 38px; font-size: 14px; }
+  .arrow.left { left: 8px; }
+  .arrow.right { right: 8px; }
+
+  /* KTC Top Hero Layout Typography */
+  .ktc-hero { padding: 50px 20px 30px; }
+  .ktc-hero h1 { font-size: 38px; }
+  .ktc-hero p { font-size: 16px; }
+  .ktc-models { padding: 0 20px; }
+  .ktc-details { padding: 0 20px 60px; }
+  .ktc-product-info h2 { font-size: 38px; }
+
+  /* Promoters & Founders Layout Blocks */
+  .promoters-container { padding: 34px 22px 60px !important; max-width: 100% !important; }
+  .promoter-section { gap: 52px !important; }
+  .promoter-profile { flex-direction: column !important; gap: 18px !important; align-items: center !important; text-align: center !important; }
+  .promoter-copy { width: 100% !important; text-align: center !important; }
+  .promoter-copy h2 { font-size: 30px !important; line-height: 1.15 !important; margin-bottom: 18px !important; white-space: normal !important; }
+  .promoter-text { font-size: 14px !important; line-height: 1.55 !important; max-width: 92% !important; margin: 0 auto !important; }
+  .promoter-image { width: 76% !important; max-width: 280px !important; height: auto !important; max-height: 210px !important; object-fit: contain !important; margin: 10px auto 0 !important; }
+}
+
+@media (min-width: 769px) {
+  .home-page .hero {
+    height: clamp(380px, calc(100svh - 290px), 560px);
+    min-index: 0;
   }
 }
