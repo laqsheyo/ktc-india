@@ -11,10 +11,18 @@ body {
   background: #fbf9f4; /* Premium warm cream editorial backdrop */
   color: #1a1b1e;      /* Default high-visibility charcoal text */
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
+  min-height: 100vh;
 }
 
 a {
   color: #1a1b1e;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ==========================================================================
@@ -25,10 +33,10 @@ a {
   top: 0;
   z-index: 1000;
   width: 100%;
+  height: 80px;
   background: rgba(251, 249, 244, 0.94); 
   backdrop-filter: blur(8px);
-  color: #1a1b1e;
-  padding: 14px 40px;
+  padding: 0 40px;      
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,13 +47,11 @@ a {
 .header-logo-link {
   display: flex;
   align-items: center;
-  text-decoration: none;
 }
 
 .header-logo-img {
   height: 42px;
   width: auto;
-  display: block;
   object-fit: contain;
 }
 
@@ -54,38 +60,27 @@ a {
   align-items: center;
   justify-content: flex-end;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
-.header nav a {
+.header nav a,
+.main-support-button {
   color: #1a1b1e;
-  text-decoration: none;
   font-size: 14px;
   font-weight: 600;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
 }
 
-.header nav a:hover {
+.header nav a:hover,
+.main-support-button:hover {
   color: #d4af37; 
 }
 
 /* Main Site Support Dropdown */
 .main-support-dropdown {
   position: relative;
-}
-
-.main-support-button {
-  border: none;
-  background: transparent;
-  color: #1a1b1e;
-  font: inherit;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 0;
-  font-weight: 600;
-}
-
-.main-support-button:hover {
-  color: #d4af37;
 }
 
 .main-support-menu {
@@ -104,8 +99,6 @@ a {
 .main-support-menu a {
   display: block;
   padding: 12px 16px;
-  color: #1a1b1e;
-  text-decoration: none;
   font-size: 14px;
   white-space: nowrap;
   font-weight: 600;
@@ -120,7 +113,11 @@ a {
    ========================================================================== */
 .hero {
   position: relative;
-  height: 75vh; /* Reduced from 90vh to gracefully pull bottom elements up */
+  width: 100%;
+  height: calc(100vh - 150px);
+  min-height: 520px;
+  overflow: hidden;
+  background: #000;
 }
 
 .hero-video {
@@ -134,20 +131,22 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.25) !important; 
+  background: rgba(0, 0, 0, 0.25); 
   backdrop-filter: blur(12px);                 
   -webkit-backdrop-filter: blur(12px);
-  padding: 30px 50px;
+  padding: 18px 28px;  
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.25); 
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);  
+  text-align: center;
+  width: max-content;
+  max-width: 90%;
 }
 
 .hero-overlay h2 {
   font-size: 56px;
-  text-align: center;
   letter-spacing: 3px;
-  color: #ffffff !important; 
+  color: #ffffff; 
   font-weight: 800;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);  
 }
@@ -211,7 +210,6 @@ a {
 .page-text {
   font-size: 18px;
   line-height: 1.7;
-  color: #1a1b1e; 
   max-width: 750px;
   margin: 0 auto 14px;
   font-weight: 500;
@@ -220,23 +218,20 @@ a {
 h1 {
   font-size: 44px;
   margin-bottom: 20px;
-  color: #1a1b1e;
   font-weight: 800;
 }
 
 h2 {
   font-size: 30px;
   margin-bottom: 14px;
-  color: #1a1b1e;
   font-weight: 700;
 }
 
-img {
+.section img {
   width: 100%;
   max-width: 700px;
   margin: 30px auto;
   border-radius: 14px;
-  display: block;
   box-shadow: 0 12px 32px rgba(44, 42, 41, 0.04); 
 }
 
@@ -264,7 +259,6 @@ img {
   border-radius: 10px;
   border: 1px solid #1a1b1e;
   background: #fefdfb; 
-  color: #1a1b1e;
   font-weight: 600;
 }
 
@@ -272,7 +266,6 @@ img {
   display: block;
   width: fit-content;
   margin: 40px auto 90px;
-  text-decoration: none;
   color: #fefdfb !important;
   background: #1a1b1e;
   padding: 12px 30px;
@@ -284,13 +277,15 @@ img {
   background: #f4f1ea; 
   color: #1a1b1e;
   text-align: center;
-  padding: 32px 20px;
+  padding: 12px 0;      
+  font-size: 13px;
   border-top: 1px solid rgba(44, 42, 41, 0.06);
+  width: 100%;
+  margin-top: auto;
 }
 
 .footer p {
   margin: 0;
-  font-size: 14px;
   font-weight: 600;
 }
 
@@ -301,16 +296,12 @@ img {
   background: #fbf9f4 !important;
   display: flex;
   flex-direction: column;
-}
-
-.home-page .hero {
-  position: relative;
-  width: 100%;
+  min-height: 100vh;
 }
 
 .home-brand-strip {
   background: #111111; 
-  padding: 24px 40px; 
+  padding: 18px 0; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -322,7 +313,7 @@ img {
 
 .home-brand-strip .brand-logo-button {
   width: auto !important;            
-  height: 36px !important;            
+  height: 28px !important;            
   background: transparent !important; 
   border: none !important;            
   padding: 0 !important;          
@@ -340,7 +331,6 @@ img {
 .home-brand-strip .brand-logo-button img {
   width: auto !important;
   height: 100% !important;
-  max-width: 160px !important;
   margin: 0;
   padding: 0;
   border-radius: 0 !important;
@@ -787,46 +777,6 @@ body:has(.fpd-site) .footer {
    11. MEDIA QUERIES & RESPONSIVE RULES (NATURAL SYSTEM FLOW)
    ========================================================================== */
 @media (max-width: 900px) {
-  .header {
-    padding: 8px 12px 6px !important;
-    flex-direction: column !important;  
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-  }
-
-  .header-logo-link {
-    display: flex !important;
-    justify-content: center !important;
-    width: 100% !important;
-  }
-
-  .header-logo-img,
-  header img[src*="logo"],
-  img[alt*="KTC"] {
-    height: 32px !important;
-    width: auto !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  .header nav {
-    width: 100% !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 4px 12px !important;
-    padding: 0 !important;
-  }
-
-  .header nav a,
-  .main-support-button {
-    font-size: 11px !important;
-    white-space: nowrap !important;     
-    display: inline-block !important;
-  }
-
   .section, .about-container, .page-container { padding: 30px 14px; }
   h1 { font-size: 28px; }
   h2 { font-size: 22px; }
@@ -844,60 +794,144 @@ body:has(.fpd-site) .footer {
   .fpd-tv-spec-grid { grid-template-columns: 1fr; }
 }
 
+/* ==========================================================================
+   PRODUCTION-READY PREMIUM MOBILE ARCHITECTURE (ZERO-SCROLL COMPRESSION)
+   ========================================================================== */
 @media (max-width: 768px) {
   html, body {
     max-width: 100%;
   }
 
+  /* 1. Hard structural single-screen lock for mobile homepage framework */
   .home-page { 
+    height: 100vh !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  /* 2. Compressed Header: Single-line layout */
+  .header {
+    height: 60px !important;
+    padding: 0 16px !important;
+    flex-direction: row !important;  
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    border-bottom: 1px solid rgba(44, 42, 41, 0.08) !important;
+  }
+
+  .header-logo-link {
+    display: inline-flex !important;
+    width: auto !important;
+    justify-content: flex-start !important;
+  }
+
+  .header-logo-img,
+  header img[src*="logo"],
+  img[alt*="KTC"] {
+    height: 40px !important; /* Strictly restricted height */
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* Clean, single-line horizontal scrolling navigation track */
+  .header nav {
+    width: auto !important;
+    max-width: 65% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-end !important;
+    gap: 16px !important;
+    padding: 4px 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .header nav::-webkit-scrollbar {
+    display: none; /* Invisible track for pure scrolling mechanics */
+  }
+
+  .header nav a,
+  .main-support-button {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;     
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+  }
+
+  /* 3. Proportional Dynamic Hero Content Block */
+  .hero {
+    height: calc(100vh - 170px) !important; /* Dynamically balances remaining space */
+    min-height: auto !important;
+    flex-grow: 1 !important;
   }
 
   .hero-overlay { 
-    padding: 12px 14px !important; 
+    padding: 14px 22px !important; 
     width: 85% !important; 
+    max-width: 320px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 18px !important;
   }
   
   .hero-overlay h2 { 
-    font-size: 20px !important; 
+    font-size: 34px !important; 
+    line-height: 1.15 !important;
+    letter-spacing: 1px !important;
+    white-space: pre-line !important; /* Protects word wrapping boundaries cleanly */
   }
 
-  /* ================= BRAND STRIP MOBILE SCROLL FLOW ================= */
+  /* 4. Compact Brand Strip: Fits all 4 logos perfectly on one line */
   .home-brand-strip {
-    padding: 10px 16px !important;
-    gap: 24px !important;                        
-    justify-content: flex-start !important; 
+    height: 62px !important;
+    padding: 0 16px !important;
+    gap: 16px !important;                        
+    justify-content: center !important; 
     background: #111111 !important;
-    height: 54px !important;
-    overflow-x: auto !important;           
+    overflow: hidden !important;           
     white-space: nowrap !important;
     display: flex !important;
-    -webkit-overflow-scrolling: touch;     
-  }
-
-  .home-brand-strip::-webkit-scrollbar {
-    display: none;                         
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 32px !important;
+    height: 22px !important; /* Bound to protect ECLARA placement */
     width: auto !important;
     min-width: unset !important;           
     display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    flex: 0 0 auto !important;             
+    flex: 0 1 auto !important;             
   }
 
   .home-brand-strip .brand-logo-button img {
     height: 100% !important;
     width: auto !important;
-    max-width: 110px !important;
     display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
     object-fit: contain !important;
+  }
+
+  /* 5. Ultra-Low-Profile Single-Line Legal Footer */
+  .footer {
+    height: 48px !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-top: 1px solid rgba(44, 42, 41, 0.08) !important;
+    background: #f4f1ea !important;
+  }
+
+  .footer p {
+    font-size: 12px !important;
+    white-space: nowrap !important; /* Hard constraint to block 50px line-breaks */
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px !important;
   }
 
   /* ================= KTC MONITOR SPECS RESPONSIVE FLOW ================= */
