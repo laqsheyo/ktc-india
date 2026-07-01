@@ -849,15 +849,18 @@ body:has(.fpd-site) .footer {
 }
 
 @media (max-width: 768px) {
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+  /* ABSOLUTE 1-PAGE SCREEN LOCK ON MOBILE HOMEPAGE */
+  html:has(.home-page), 
+  body:has(.home-page) {
+    max-width: 100% !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important; /* Prevents base viewport window scrolling */
   }
-  
-  /* FIXED: ABSOLUTE 1-PAGE MAX VIEWPORT OVERRIDE ON MOBILE HOMEPAGE */
+
   .home-page { 
-    height: calc(100vh - 84px) !important; 
-    max-height: calc(100vh - 84px) !important;
+    height: calc(100vh - 58px) !important; /* Subtracts exact combined header layout footprint */
+    max-height: calc(100vh - 58px) !important;
     min-height: auto !important;
     overflow: hidden !important; 
     display: flex !important;
@@ -873,62 +876,64 @@ body:has(.fpd-site) .footer {
   }
 
   .hero-overlay { 
-    padding: 14px 16px !important; 
-    width: 90% !important; 
+    padding: 12px 14px !important; 
+    width: 85% !important; 
+    max-width: 320px !important;
   }
+  
   .hero-overlay h2 { 
-    font-size: 22px !important; 
+    font-size: 18px !important; /* Scaled cleanly downward matching image_0d54f6.jpg */
     letter-spacing: 1px !important; 
   }
 
-  /* ================= FIX: ECLARA BRAND STRIP MOBILE OVERFLOW ================= */
+  /* HORIZONTAL BRAND STRIP FIX */
   .home-brand-strip {
-    padding: 10px 16px !important;
+    padding: 8px 16px !important;
     gap: 24px !important;                        
-    justify-content: flex-start !important; /* Prevents center-squeezing elements */
+    justify-content: flex-start !important;
     flex-shrink: 0 !important; 
     background: #111111 !important;
-    height: 56px !important;
-    overflow-x: auto !important;           /* Enables smooth swiping on small viewports */
+    height: 48px !important; /* Compressed to save vertical screen space */
+    overflow-x: auto !important;           
     white-space: nowrap !important;
-    -webkit-overflow-scrolling: touch;     /* Restores elastic momentum scrolling on iOS */
+    -webkit-overflow-scrolling: touch;     
   }
 
   .home-brand-strip::-webkit-scrollbar {
-    display: none;                         /* Keeps design clean by hiding default scrollbars */
+    display: none;                         
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 32px !important;
+    height: 26px !important;
     width: auto !important;
-    min-width: unset !important;           /* Erases rigid limitations */
+    min-width: unset !important;           
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    flex: 0 0 auto !important;             /* CRITICAL: Stops the browser from crushing/scaling down the brand block */
+    flex: 0 0 auto !important;             
   }
 
   .home-brand-strip .brand-logo-button img {
     height: 100% !important;
     width: auto !important;
-    max-width: 110px !important;
+    max-width: 90px !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     object-fit: contain !important;
   }
 
-  /* ================= FIX: KTC MONITOR SPECS RESPONSIVE FLOW ================= */
+  /* RESPONSIVE SPECIFICATION GRID STACKING */
   .ktc-spec-grid { 
     display: grid !important;
-    grid-template-columns: 1fr !important; /* Single-column stack preserves room */
+    grid-template-columns: 1fr !important; 
     gap: 8px !important;
   }
   
   .spec-row { 
-    flex-direction: row !important;        /* Horizontal inline styling */
+    flex-direction: row !important;        
     justify-content: space-between !important; 
-    align-items: flex-start !important;    /* Clean top-alignment for multi-line values */
+    align-items: flex-start !important;    
     padding: 12px 8px !important; 
     background: #fefdfb;
     border: 1px solid rgba(26, 27, 30, 0.1) !important;
@@ -939,7 +944,7 @@ body:has(.fpd-site) .footer {
   .spec-label { 
     font-size: 13px !important; 
     opacity: 0.8;
-    flex-shrink: 0 !important;             /* Label won't compress */
+    flex-shrink: 0 !important;             
     max-width: 45%;
   }
   
@@ -948,7 +953,7 @@ body:has(.fpd-site) .footer {
     padding-left: 0 !important; 
     font-size: 13px !important; 
     font-weight: 700 !important;
-    word-break: break-word !important;     /* Safely wraps ultra-long model numbers */
+    word-break: break-word !important;     
   }
 
   .ktc-product-top { display: flex; flex-direction: column; align-items: center; gap: 20px; }
