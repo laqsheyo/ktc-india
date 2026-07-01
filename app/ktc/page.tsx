@@ -77,20 +77,41 @@ export default function KTCPage() {
 
   const currentImage = selectedModel?.images?.[currentPhotoIndex] || "";
 
-  // Auto-changing images every 3 seconds (only if video mode is off)
+  // Auto-changing images every 2 seconds (when video is hidden)
   useEffect(() => {
     if (showVideo || !selectedModel?.images?.length) return;
 
     const interval = setInterval(() => {
       resetZoom();
       setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % selectedModel.images.length);
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [showVideo, selectedModel]);
 
+  const nextPhoto = () => {
+    resetZoom();
+    if (selectedModel?.images) {
+      setCurrentPhotoIndex((p) => (p + 1) % selectedModel.images.length);
+    }
+  };
+  
+  const prevPhoto = () => {
+    resetZoom();
+    if (selectedModel?.images) {
+      setCurrentPhotoIndex((p) => (p - 1 + selectedModel.images.length) % selectedModel.images.length);
+    }
+  };
+
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current || showVideo) return;
+
+    // Check if hovering near the left/right custom navigation overlay bars to prevent active zoom behavior on click targets
+    const target = e.target as HTMLElement;
+    if (target.closest(".side-nav-bar")) {
+      resetZoom();
+      return;
+    }
 
     const { left, top, width, height } = containerRef.current.getBoundingClientRect();
     const x = ((e.clientX - left) / width) * 100;
@@ -153,6 +174,7 @@ export default function KTCPage() {
           </div>
 
           <div className="ktc-media-container" style={{ flex: "1.5 1 500px", display: "flex", flexDirection: "column", gap: "20px" }}>
+            {/* Main Media Border Frame */}
             <div 
               ref={containerRef}
               className="ktc-main-media" 
@@ -184,29 +206,91 @@ export default function KTCPage() {
                 />
               ) : (
                 currentImage && (
-                  <div 
-                    style={{ 
-                      width: "100%", 
-                      height: "100%", 
-                      position: "relative", 
-                      ...zoomStyle,
-                      transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
-                    }}
-                  >
-                    <Image 
-                      src={currentImage} 
-                      alt={selectedModel.name} 
-                      fill
-                      sizes="(max-width: 1200px) 100vw, 800px"
-                      style={{ objectFit: "contain", padding: "20px" }}
-                      priority 
-                    />
-                  </div>
+                  <>
+                    {/* Left Side Bar Controller */}
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
+                      className="side-nav-bar"
+                      aria-label="Previous image"
+                      style={{
+                        position: "absolute",
+                        left: 0,
+                        top: 0,
+                        bottom: 0,
+                        width: "60px",
+                        zIndex: 10,
+                        backgroundColor: "rgba(0, 0, 0, 0.2)",
+                        color: "#fff",
+                        border: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        transition: "background-color 0.2s ease"
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.2)")}
+                    >
+                      <span style={{ backgroundColor: "rgba(0,0,0,0.6)", borderRadius: "50%", width: "36px", height: "36px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 19l-7-7 7-7"/></svg>
+                      </span>
+                    </button>
+
+                    <div 
+                      style={{ 
+                        width: "100%", 
+                        height: "100%", 
+                        position: "relative", 
+                        ...zoomStyle,
+                        transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
+                      }}
+                    >
+                      <Image 
+                        src={currentImage} 
+                        alt={selectedModel.name} 
+                        fill
+                        sizes="(max-width: 1200px) 100vw, 800px"
+                        style={{ objectFit: "contain", padding: "40px" }}
+                        priority 
+                      />
+                    </div>
+
+                    {/* Right Side Bar Controller */}
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
+                      className="side-nav-bar"
+                      aria-label="Next image"
+                      style={{
+                        position: "absolute",
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        width: "60px",
+                        zIndex: 10,
+                        backgroundColor: "rgba(0, 0, 0, 0.2)",
+                        color: "#fff",
+                        border: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        transition: "background-color 0.2s ease"
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.2)")}
+                    >
+                      <span style={{ backgroundColor: "rgba(0,0,0,0.6)", borderRadius: "50%", width: "36px", height: "36px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 5l7 7-7 7"/></svg>
+                      </span>
+                    </button>
+                  </>
                 )
               )}
             </div>
 
-            {/* Controls Panel configured without navigation layouts */}
+            {/* Sub-Media controls matching visual spacing targets */}
             <div className="ktc-controls" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5px" }}>
               <div>
                 <span style={{ color: "#888", fontSize: "0.95rem" }}>
