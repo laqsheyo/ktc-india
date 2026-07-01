@@ -118,9 +118,6 @@ a {
 /* ==========================================================================
    3. HERO MODULES & CORRESPONDING SLIDERS
    ========================================================================== */
-/* ==========================================================================
-   3. HERO MODULES & CORRESPONDING SLIDERS
-   ========================================================================== */
 .hero {
   position: relative;
   height: 90vh;
@@ -579,9 +576,6 @@ body:has(.fpd-site) .footer {
 /* ==========================================================================
    9. E-WASTE ASSIGNMENT INTERFACES
    ========================================================================== */
-/* ==========================================================================
-   9. E-WASTE ASSIGNMENT INTERFACES
-   ========================================================================== */
 .ewaste-page { background: #fbf9f4; min-height: 100vh; }
 .ewaste-container { max-width: 1200px; margin: 0 auto; padding: 70px 40px; }
 .ewaste-container h1 { font-size: 56px; margin-bottom: 40px; }
@@ -887,61 +881,74 @@ body:has(.fpd-site) .footer {
     letter-spacing: 1px !important; 
   }
 
+  /* ================= FIX: ECLARA BRAND STRIP MOBILE OVERFLOW ================= */
   .home-brand-strip {
-    padding: 10px 12px !important;
-    gap: 12px !important;                        
-    justify-content: space-around !important;
+    padding: 10px 16px !important;
+    gap: 24px !important;                        
+    justify-content: flex-start !important; /* Prevents center-squeezing elements */
     flex-shrink: 0 !important; 
     background: #111111 !important;
     height: 56px !important;
+    overflow-x: auto !important;           /* Enables smooth swiping on small viewports */
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch;     /* Restores elastic momentum scrolling on iOS */
+  }
+
+  .home-brand-strip::-webkit-scrollbar {
+    display: none;                         /* Keeps design clean by hiding default scrollbars */
   }
 
   .home-brand-strip .brand-logo-button {
     height: 32px !important;
-    min-width: 80px !important;
-    display: flex !important;
+    width: auto !important;
+    min-width: unset !important;           /* Erases rigid limitations */
+    display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    flex: 0 0 auto !important;
+    flex: 0 0 auto !important;             /* CRITICAL: Stops the browser from crushing/scaling down the brand block */
   }
 
   .home-brand-strip .brand-logo-button img {
     height: 100% !important;
     width: auto !important;
-    max-width: 100px !important;
+    max-width: 110px !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     object-fit: contain !important;
   }
 
-  /* FIXED: OPTIMIZED KTC MONITOR SPECS GRID TO PREVENT DEEP VERTICAL SCROLLING */
+  /* ================= FIX: KTC MONITOR SPECS RESPONSIVE FLOW ================= */
   .ktc-spec-grid { 
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* Forces side-by-side spec layout */
-    gap: 10px !important;
+    grid-template-columns: 1fr !important; /* Single-column stack preserves room */
+    gap: 8px !important;
   }
   
   .spec-row { 
-    flex-direction: column !important; 
-    align-items: flex-start !important; 
-    padding: 8px !important; 
+    flex-direction: row !important;        /* Horizontal inline styling */
+    justify-content: space-between !important; 
+    align-items: flex-start !important;    /* Clean top-alignment for multi-line values */
+    padding: 12px 8px !important; 
     background: #fefdfb;
     border: 1px solid rgba(26, 27, 30, 0.1) !important;
     border-radius: 8px;
+    gap: 16px;
   }
   
   .spec-label { 
-    font-size: 11px !important; 
-    opacity: 0.7;
-    margin-bottom: 2px;
+    font-size: 13px !important; 
+    opacity: 0.8;
+    flex-shrink: 0 !important;             /* Label won't compress */
+    max-width: 45%;
   }
   
   .spec-value { 
-    text-align: left !important; 
+    text-align: right !important; 
     padding-left: 0 !important; 
-    font-size: 12px !important; 
+    font-size: 13px !important; 
     font-weight: 700 !important;
+    word-break: break-word !important;     /* Safely wraps ultra-long model numbers */
   }
 
   .ktc-product-top { display: flex; flex-direction: column; align-items: center; gap: 20px; }
