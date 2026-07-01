@@ -188,8 +188,7 @@ img {
 }
 
 .promoter-text {
-  max-width: 690px !important;
-  margin: 0 auto !important;
+  max-width: 690px !margin: 0 auto !important;
   font-size: 16px !important;
   line-height: 1.65 !important;
   color: #1a1b1e !important;
@@ -298,7 +297,7 @@ img {
   }
 }
 
-/* ================= SLIDER ================= */
+/* ================= SLIDER & SIDE BUTTON OPTIONS ================= */
 .slider-box {
   position: relative;
   max-width: 1100px;
@@ -313,30 +312,53 @@ img {
   box-shadow: 0 12px 36px rgba(44, 42, 41, 0.05);
 }
 
+/* Side circle arrow buttons matching showroom style overlay */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(254, 253, 251, 0.94);
+  background: #ffffff;
   color: #1a1b1e;
-  border: 1px solid rgba(44, 42, 41, 0.06);
+  border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 18px;
   font-weight: bold;
+  z-index: 10;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.arrow:hover {
+  background: #f4f1ea;
+  transform: translateY(-50%) scale(1.05);
 }
 
 .arrow.left {
-  left: 10px;
+  left: -24px; /* Perfectly centers split on the edge frame border line */
 }
 
 .arrow.right {
-  right: 10px;
+  right: -24px;
+}
+
+@media (max-width: 768px) {
+  .arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+  .arrow.left {
+    left: 8px; /* Tucks neatly inside on cramped mobile aspect screens */
+  }
+  .arrow.right {
+    right: 8px;
+  }
 }
 
 /* ================= CONTACT ================= */
@@ -669,23 +691,22 @@ body:has(.fpd-site) .footer {
 
 /* ================= REFACTORED CONTINUOUS BRAND STRIP LINE ================= */
 .home-brand-strip {
-  background: #111111; /* Sleek premium dark horizontal background strip running edge-to-edge */
+  background: #111111; 
   padding: 20px 40px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 64px;           /* Elegant horizontal spacing spacing between the raw brand marks */
+  gap: 64px;           
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
 }
 
-/* Drops the independent bounding box look entirely for clean transparent layout integration */
 .home-brand-strip .brand-logo-button {
   width: auto !important;            
-  height: 40px !important;            /* Restricts unified layout line vector limits safely */
-  background: transparent !important; /* Forces total box backdrop deletion */
-  border: none !important;            /* Destroys frame borders */
+  height: 40px !important;            
+  background: transparent !important; 
+  border: none !important;            
   padding: 0 !important;          
   margin: 0;
   cursor: pointer;
@@ -693,9 +714,9 @@ body:has(.fpd-site) .footer {
   align-items: center;
   justify-content: center;
   border-radius: 0 !important;       
-  box-shadow: none !important;        /* Flattens asset shadow structures */
+  box-shadow: none !important;        
   transition: transform 0.2s ease, opacity 0.2s ease;
-  opacity: 0.85;                      /* Clean modern visual weight integration blending */
+  opacity: 0.85;                      
 }
 
 .home-brand-strip .brand-logo-button img {
@@ -707,10 +728,9 @@ body:has(.fpd-site) .footer {
   border-radius: 0 !important;
   display: block;
   object-fit: contain !important;     
-  filter: brightness(1);              /* Maintains native high-visibility vector light settings */
+  filter: brightness(1);              
 }
 
-/* Elegant light vector focus change instead of heavy block pop transitions */
 .home-brand-strip .brand-logo-button:hover {
   transform: scale(1.05);
   opacity: 1;
@@ -729,13 +749,13 @@ body:has(.fpd-site) .footer {
 
   .home-brand-strip {
     padding: 16px 20px;
-    gap: 28px;                        /* Packs icons cleanly inside responsive phone views */
-    overflow-x: auto;                 /* Prevents component clipping if viewport breaks */
+    gap: 28px;                        
+    overflow-x: auto;                 
     justify-content: space-between;
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 28px !important;          /* Elegant scaling adjustments across screen transitions */
+    height: 28px !important;          
   }
 }
 
@@ -1220,8 +1240,10 @@ body:has(.fpd-site) .footer {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  position: relative; /* Context framework wrapper for absolute side controls */
 }
 
+/* Updated main media container containing overlay circle arrows and auto transitions */
 .ktc-main-media {
   position: relative;
   border-radius: 20px;
@@ -1241,21 +1263,22 @@ body:has(.fpd-site) .footer {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: opacity 0.4s ease-in-out; /* Smooth asset swapping transition for auto change */
 }
 
 .ktc-main-media div {
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* Keeps video/counter rows aligned natively minus old text buttons */
 .ktc-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end; /* Pushes utility counter metrics cleanly to the right */
   gap: 16px;
   flex-wrap: wrap;
 }
 
-.nav-btn, 
 .zoom-btn, 
 .ktc-video-btn {
   padding: 12px 24px;
@@ -1270,7 +1293,6 @@ body:has(.fpd-site) .footer {
   transition: all 0.2s ease;
 }
 
-.nav-btn:hover, 
 .zoom-btn:hover {
   background: #f4f1ea;
   color: #000000;
@@ -1353,13 +1375,12 @@ body:has(.fpd-site) .footer {
 }
 
 /* ================= CRISP CONTRAST BLACK TEXT OVERRIDES ================= */
-/* Hardens subheaders, premium display features, summaries and text strings from washing out */
 .premium-display-subtitle,
 .ktc-hero p,
 .ktc-product-summary p,
 .spec-value {
-  color: #000000 !important;   /* Solid bold black overlay */
-  opacity: 1 !important;       /* Blocks transparency masks */
+  color: #000000 !important;   
+  opacity: 1 !important;       
 }
 
 .ktc-product-summary p {
@@ -1399,7 +1420,7 @@ body:has(.fpd-site) .footer {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 1.2s ease-in-out; /* Smooth background crossfade translation */
+  transition: opacity 1.2s ease-in-out; 
   z-index: 1;
 }
 
