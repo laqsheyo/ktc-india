@@ -28,7 +28,8 @@ a {
   background: rgba(251, 249, 244, 0.94); 
   backdrop-filter: blur(8px);
   color: #1a1b1e;
-  padding: 14px 40px;
+  height: 80px;         /* Explicit lock for Grid mapping */
+  padding: 0 40px;      /* Vertical centering handled via flex alignment */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,7 +44,7 @@ a {
 }
 
 .header-logo-img {
-  height: 42px;
+  height: 34px;         /* Streamlined signature branding scale */
   width: auto;
   display: block;
   object-fit: contain;
@@ -120,7 +121,8 @@ a {
    ========================================================================== */
 .hero {
   position: relative;
-  height: 75vh; /* Reduced from 90vh to gracefully pull bottom elements up */
+  height: 100%;        /* Allows explicit filling of the grid track */
+  min-height: 0;       /* Defeats default flex/grid content overflow min-sizing */
 }
 
 .hero-video {
@@ -137,14 +139,14 @@ a {
   background: rgba(0, 0, 0, 0.25) !important; 
   backdrop-filter: blur(12px);                 
   -webkit-backdrop-filter: blur(12px);
-  padding: 30px 50px;
+  padding: 18px 28px;  /* Compact overlay bounds */
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.25); 
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);  
 }
 
 .hero-overlay h2 {
-  font-size: 56px;
+  font-size: 48px;     /* Balanced presentation sizing */
   text-align: center;
   letter-spacing: 3px;
   color: #ffffff !important; 
@@ -284,13 +286,13 @@ img {
   background: #f4f1ea; 
   color: #1a1b1e;
   text-align: center;
-  padding: 32px 20px;
+  padding: 8px 0;      /* Clean ultra-shrunk vertical line styling */
+  font-size: 13px;
   border-top: 1px solid rgba(44, 42, 41, 0.06);
 }
 
 .footer p {
   margin: 0;
-  font-size: 14px;
   font-weight: 600;
 }
 
@@ -299,18 +301,29 @@ img {
    ========================================================================== */
 .home-page {
   background: #fbf9f4 !important;
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 80px 1fr 70px 40px; /* Fully calculated, absolute viewport layout mapping */
+  overflow: hidden;
 }
 
-.home-page .hero {
-  position: relative;
-  width: 100%;
+/* Neutralize global header/footer parameters for exact grid track placement */
+.home-page .header {
+  position: static;
+  border-bottom: 1px solid rgba(44, 42, 41, 0.06);
+}
+
+.home-page .footer {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-brand-strip {
   background: #111111; 
-  padding: 24px 40px; 
+  height: 70px;        /* Locked track height validation */
+  padding: 10px 20px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -322,7 +335,7 @@ img {
 
 .home-brand-strip .brand-logo-button {
   width: auto !important;            
-  height: 36px !important;            
+  height: 28px !important;  /* Responsive micro-scaling for brand layouts */          
   background: transparent !important; 
   border: none !important;            
   padding: 0 !important;          
@@ -784,15 +797,21 @@ body:has(.fpd-site) .footer {
 .slide-item img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ==========================================================================
-   11. MEDIA QUERIES & RESPONSIVE RULES (NATURAL SYSTEM FLOW)
+   11. MEDIA QUERIES & RESPONSIVE RULES (RESPONSIVE NO-SCROLL SYSTEM OVERRIDES)
    ========================================================================== */
 @media (max-width: 900px) {
+  /* Retain scrolling mechanics on subpages/content blocks, but recalibrate layout densities */
   .header {
+    height: auto !important;
     padding: 8px 12px 6px !important;
     flex-direction: column !important;  
     align-items: center !important;
     justify-content: center !important;
     gap: 6px !important;
+  }
+
+  .home-page {
+    grid-template-rows: auto 1fr 54px 40px; /* Adapts dynamically to layout parameters on smaller viewports */
   }
 
   .header-logo-link {
@@ -849,11 +868,6 @@ body:has(.fpd-site) .footer {
     max-width: 100%;
   }
 
-  .home-page { 
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
   .hero-overlay { 
     padding: 12px 14px !important; 
     width: 85% !important; 
@@ -881,7 +895,7 @@ body:has(.fpd-site) .footer {
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 32px !important;
+    height: 24px !important; /* Scaled slightly down to drop beautifully on mobile tracks */
     width: auto !important;
     min-width: unset !important;           
     display: inline-flex !important;
