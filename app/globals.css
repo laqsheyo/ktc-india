@@ -788,8 +788,33 @@ body:has(.fpd-site) .footer {
 
 
 /* ==========================================================================
-   11. MEDIA QUERIES & RESPONSIVE RULES (MOBILE 1-PAGE SCREEN LOCK FIXES)
+   11. MEDIA QUERIES & RESPONSIVE RULES (DESKTOP & MOBILE WINDOW SCREEN LOCKS)
    ========================================================================== */
+@media (min-width: 769px) {
+  /* ================= FIX: DESKTOP HOMEPAGE 1-PAGE SCREEN LOCK ================= */
+  html:has(.home-page), 
+  body:has(.home-page) {
+    overflow: hidden !important; /* Locks browser frame canvas */
+    height: 100vh !important;
+    max-height: 100vh !important;
+  }
+
+  .home-page {
+    height: calc(100vh - 71px) !important; /* Subtract header exact track height */
+    max-height: calc(100vh - 71px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    overflow: hidden !important;
+  }
+
+  .home-page .hero {
+    flex: 1 1 auto !important; /* Scales dynamic view boundaries to fill area safely */
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+
 @media (max-width: 900px) {
   .header {
     padding: 8px 12px 6px !important;
@@ -849,18 +874,15 @@ body:has(.fpd-site) .footer {
 }
 
 @media (max-width: 768px) {
-  /* ABSOLUTE 1-PAGE SCREEN LOCK ON MOBILE HOMEPAGE */
-  html:has(.home-page), 
-  body:has(.home-page) {
-    max-width: 100% !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-    overflow: hidden !important; /* Prevents base viewport window scrolling */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
   }
-
+  
+  /* FIXED: ABSOLUTE 1-PAGE MAX VIEWPORT OVERRIDE ON MOBILE HOMEPAGE */
   .home-page { 
-    height: calc(100vh - 58px) !important; /* Subtracts exact combined header layout footprint */
-    max-height: calc(100vh - 58px) !important;
+    height: calc(100vh - 84px) !important; 
+    max-height: calc(100vh - 84px) !important;
     min-height: auto !important;
     overflow: hidden !important; 
     display: flex !important;
@@ -876,24 +898,22 @@ body:has(.fpd-site) .footer {
   }
 
   .hero-overlay { 
-    padding: 12px 14px !important; 
-    width: 85% !important; 
-    max-width: 320px !important;
+    padding: 14px 16px !important; 
+    width: 90% !important; 
   }
-  
   .hero-overlay h2 { 
-    font-size: 18px !important; /* Scaled cleanly downward matching image_0d54f6.jpg */
+    font-size: 22px !important; 
     letter-spacing: 1px !important; 
   }
 
-  /* HORIZONTAL BRAND STRIP FIX */
+  /* ================= FIX: ECLARA BRAND STRIP MOBILE OVERFLOW ================= */
   .home-brand-strip {
-    padding: 8px 16px !important;
+    padding: 10px 16px !important;
     gap: 24px !important;                        
-    justify-content: flex-start !important;
+    justify-content: flex-start !important; 
     flex-shrink: 0 !important; 
     background: #111111 !important;
-    height: 48px !important; /* Compressed to save vertical screen space */
+    height: 56px !important;
     overflow-x: auto !important;           
     white-space: nowrap !important;
     -webkit-overflow-scrolling: touch;     
@@ -904,7 +924,7 @@ body:has(.fpd-site) .footer {
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 26px !important;
+    height: 32px !important;
     width: auto !important;
     min-width: unset !important;           
     display: inline-flex !important;
@@ -916,14 +936,14 @@ body:has(.fpd-site) .footer {
   .home-brand-strip .brand-logo-button img {
     height: 100% !important;
     width: auto !important;
-    max-width: 90px !important;
+    max-width: 110px !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     object-fit: contain !important;
   }
 
-  /* RESPONSIVE SPECIFICATION GRID STACKING */
+  /* ================= FIX: KTC MONITOR SPECS RESPONSIVE FLOW ================= */
   .ktc-spec-grid { 
     display: grid !important;
     grid-template-columns: 1fr !important; 
@@ -972,10 +992,4 @@ body:has(.fpd-site) .footer {
   .promoter-profile { flex-direction: column !important; gap: 14px !important; }
   .promoter-copy h2 { font-size: 22px !important; }
   .promoter-image { width: 60% !important; max-width: 200px !important; height: auto !important; }
-}
-
-@media (min-width: 769px) {
-  .home-page .hero {
-    height: clamp(380px, calc(100svh - 240px), 560px);
-  }
 }
