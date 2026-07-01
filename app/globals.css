@@ -111,52 +111,6 @@ a {
   flex-wrap: nowrap;
 }
 
-/* ================= RECTANGULAR BRAND STRIP BUTTONS ================= */
-.brand-logo-button {
-  width: 170px !important;            /* Form factors a crisp rectangle aspect */
-  height: 85px !important;            /* Clean height constraints */
-  border: 1px solid #222 !important;
-  background-color: #111111 !important; /* Premium dark backdrop for transparent logos */
-  padding: 14px 24px !important;          
-  margin: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px !important;       /* Clean rectangular structure instead of circles */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease, box-shadow 0.25s ease;
-}
-
-.brand-logo-button img {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  margin: 0;
-  padding: 0;
-  border-radius: 0 !important;
-  display: block;
-  object-fit: contain !important;      /* Forces transparent elements to look right */
-}
-
-/* Interactive zoom action on hover */
-.brand-logo-button:hover {
-  transform: scale(1.06);
-  background-color: #000000 !important;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
-}
-
-.brand-label {
-  position: absolute;
-  bottom: -24px;
-  width: 100%;
-  text-align: center;
-  color: #1a1b1e;
-  font-size: 12px;
-  font-weight: 600;
-}
-
 /* ================= GENERAL PAGES ================= */
 .section,
 .about-container,
@@ -713,23 +667,54 @@ body:has(.fpd-site) .footer {
   min-height: 520px;
 }
 
+/* ================= REFACTORED CONTINUOUS BRAND STRIP LINE ================= */
 .home-brand-strip {
-  background: #f4f1ea;
-  padding: 30px 20px; 
+  background: #111111; /* Sleek premium dark horizontal background strip running edge-to-edge */
+  padding: 20px 40px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;              /* Clean gap management for rectangular layout grid nodes */
-  border-top: 1px solid rgba(44,42,41,0.04);
+  gap: 64px;           /* Elegant horizontal spacing spacing between the raw brand marks */
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
 }
 
-/* Home Strip Buttons Refactored as Rectangles Globally */
+/* Drops the independent bounding box look entirely for clean transparent layout integration */
 .home-brand-strip .brand-logo-button {
-  width: 170px !important;
-  height: 85px !important;
-  background: #111111 !important;
-  border-radius: 6px !important;
-  padding: 14px 24px !important;
+  width: auto !important;            
+  height: 40px !important;            /* Restricts unified layout line vector limits safely */
+  background: transparent !important; /* Forces total box backdrop deletion */
+  border: none !important;            /* Destroys frame borders */
+  padding: 0 !important;          
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 !important;       
+  box-shadow: none !important;        /* Flattens asset shadow structures */
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;                      /* Clean modern visual weight integration blending */
+}
+
+.home-brand-strip .brand-logo-button img {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 160px !important;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important;
+  display: block;
+  object-fit: contain !important;     
+  filter: brightness(1);              /* Maintains native high-visibility vector light settings */
+}
+
+/* Elegant light vector focus change instead of heavy block pop transitions */
+.home-brand-strip .brand-logo-button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  background: transparent !important;
 }
 
 @media (max-width: 768px) {
@@ -743,15 +728,14 @@ body:has(.fpd-site) .footer {
   }
 
   .home-brand-strip {
-    padding: 24px 10px;
-    gap: 14px;
-    flex-wrap: nowrap;
+    padding: 16px 20px;
+    gap: 28px;                        /* Packs icons cleanly inside responsive phone views */
+    overflow-x: auto;                 /* Prevents component clipping if viewport breaks */
+    justify-content: space-between;
   }
 
   .home-brand-strip .brand-logo-button {
-    width: 125px !important;
-    height: 65px !important;
-    padding: 10px 14px !important;
+    height: 28px !important;          /* Elegant scaling adjustments across screen transitions */
   }
 }
 
