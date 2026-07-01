@@ -31,37 +31,53 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home-brand-strip">
+      {/* Styled to match the dark premium branding shade from image_fd654f.jpg */}
+      <section 
+        className="home-brand-strip"
+        style={{
+          backgroundColor: "#0d0d0d", // Dark premium slate black accent shade
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "60px",
+          padding: "30px 20px",
+          width: "100%"
+        }}
+      >
         <button
           type="button"
           className="brand-logo-button"
           onClick={() => handleClick("KTC")}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
         >
-          <img src="/images/ktc.png" alt="KTC" />
+          <img src="/images/ktc.png" alt="KTC" style={{ height: "32px", width: "auto", display: "block", opacity: 0.9 }} />
         </button>
 
         <button
           type="button"
           className="brand-logo-button"
           onClick={() => handleClick("FPD")}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
         >
-          <img src="/images/fpd.png" alt="FPD" />
+          <img src="/images/fpd.png" alt="FPD" style={{ height: "32px", width: "auto", display: "block", opacity: 0.9 }} />
         </button>
 
         <button
           type="button"
           className="brand-logo-button"
           onClick={() => handleClick("Horion")}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
         >
-          <img src="/images/horion.png" alt="Horion" />
+          <img src="/images/horion.png" alt="Horion" style={{ height: "32px", width: "auto", display: "block", opacity: 0.9 }} />
         </button>
 
         <button
           type="button"
           className="brand-logo-button"
           onClick={() => handleClick("Eclara")}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
         >
-          <img src="/images/eclara.png" alt="Eclara" />
+          <img src="/images/eclara.png" alt="Eclara" style={{ height: "32px", width: "auto", display: "block", opacity: 0.9 }} />
         </button>
       </section>
     </main>
