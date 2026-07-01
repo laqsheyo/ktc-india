@@ -1846,3 +1846,32 @@ body:has(.fpd-site) .footer {
   border-color: #fff;
   transform: scale(1.05);
 }
+.ktc-main-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #111;
+  transition: transform 0.3s;
+}
+
+.ktc-main-media.zoomed {
+  transform: scale(1.15);
+}
+
+.ktc-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn, .zoom-btn, .ktc-video-btn {
+  padding: 0.8rem 1.5rem;
+  background: #222;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 8px;
+  cursor: pointer;
+}

@@ -5,8 +5,8 @@ import Image from "next/image";
 
 type MonitorModel = {
   name: string;
-  images: string[];           // Multiple photos
-  video?: string;             // Optional video path
+  images: string[];
+  video?: string;
   summary: string[];
   specs: string[][];
 };
@@ -20,52 +20,74 @@ const monitorModels: MonitorModel[] = [
       "/images/ktc/h15f9/3.png",
       "/images/ktc/h15f9/4.png",
       "/images/ktc/h15f9/6.png",
-      // Add more as needed
     ],
     video: "/videos/ktc/h15f9.mp4",
     summary: ["15.6 inch IPS", "1920 × 1080 @ 60Hz", "300 cd/m²", "Mini HDMI + Type-C"],
-    specs: [ /* ... your existing specs array unchanged ... */ ],
-  },
-  {
-    name: "H24V27",
-    images: [
-      "/images/ktc/h24v27/1.png", // replace with actual files you have for this model
-      // add more
+    specs: [
+      ["Model Name", "H15F9"],
+      ["Stand Model", "Rotary Support Square Plastic Fixed Base"],
+      ["Tilt", "0°-90°"],
+      ["Product Size Without Base", "358.646 × 222.876 × 11.8 mm"],
+      ["Packing Size", "414 × 263 × 55 mm"],
+      ["Gross Weight", "TBD / 13 KG, 12-in-1 box"],
+      ["Net Weight With Stand", "600 g"],
+      ["Color", "Black"],
+      ["Panel Supplier", "Goodstar"],
+      ["Panel Model", "LCM156CS0174D"],
+      ["Panel Size", "15.6 inch"],
+      ["Panel Type", "IPS"],
+      ["Module Type", "Flat"],
+      ["Aspect Ratio", "16:9"],
+      ["Backlight Type", "ELED"],
+      ["Maximum Resolution", "1920 × 1080 @ 60Hz"],
+      ["Pixel Pitch", "0.17925(H) × 0.17925(V)"],
+      ["PPI", "141"],
+      ["Active Area", "344.16(H) × 193.59(V)"],
+      ["Viewing Angle", "±89° Horizontal, ±89° Vertical"],
+      ["Surface Treatment", "Anti-Glare"],
+      ["Brightness", "300 cd/m² Typical"],
+      ["Contrast", "1000:1 Typical"],
+      ["Response Time", "20 ms"],
+      ["Display Colors", "16.7M, 6bit + 2FRC"],
+      ["NTSC Color Gamut", "44% Coverage, 44% Volume"],
+      ["Adobe RGB Color Gamut", "40% Coverage, 40% Volume"],
+      ["DCI-P3 Color Gamut", "37% Coverage, 37% Volume"],
+      ["sRGB Color Gamut", "61% Coverage, 62% Volume"],
+      ["Backlight Control", "DC"],
+      ["Mainboard Model", "RTD2525BE"],
+      ["HDMI Input", "1 × Mini HDMI"],
+      ["Type-C Input", "2 × Type-C"],
+      ["Audio Output", "1 × Earphone"],
+      ["Flicker Free", "Supported"],
+      ["HDR10", "Supported"],
+      ["AMD Freesync & Nvidia G-Sync Compatible", "Supported"],
+      ["Power Input", "DC 12V / 1A"],
+      ["Working Consumption", "12W"],
+      ["Standby Consumption", "≤0.5W"],
+      ["Warranty Period", "1 Year"],
     ],
-    summary: ["23.8 inch VA", "1920 × 1080 @ 100Hz", "300 cd/m²", "HDMI + VGA"],
-    specs: [ /* ... */ ],
   },
-  // Repeat pattern for H24F7, H27T27S, H27T22C, H32S5, H34S5
-  // Add images/video for each
+  // Add other models similarly...
 ];
 
 export default function KTCPage() {
   const [selectedModel, setSelectedModel] = useState(monitorModels[0]);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const currentImage = selectedModel.images[currentPhotoIndex];
 
-  const nextPhoto = () => {
-    setCurrentPhotoIndex((prev) => (prev + 1) % selectedModel.images.length);
-  };
-
-  const prevPhoto = () => {
-    setCurrentPhotoIndex((prev) => (prev - 1 + selectedModel.images.length) % selectedModel.images.length);
-  };
+  const nextPhoto = () => setCurrentPhotoIndex((prev) => (prev + 1) % selectedModel.images.length);
+  const prevPhoto = () => setCurrentPhotoIndex((prev) => (prev - 1 + selectedModel.images.length) % selectedModel.images.length);
 
   return (
     <main className="ktc-page">
       <section className="ktc-hero">
         <h1>KTC Monitors</h1>
-        <p>
-          Explore KTC display monitor models with detailed product
-          specifications, connectivity features, display performance, and
-          certification details.
-        </p>
+        <p>Explore our display monitor models with detailed specifications.</p>
       </section>
 
-      {/* Model Selector */}
       <section className="ktc-models">
         {monitorModels.map((model) => (
           <button
@@ -83,89 +105,60 @@ export default function KTCPage() {
         ))}
       </section>
 
-      {/* Details Section with Gallery + Video */}
       <section className="ktc-details">
         <div className="ktc-details-content">
           <div className="ktc-product-top">
             <div className="ktc-product-info">
               <h2>{selectedModel.name}</h2>
               <div className="ktc-product-summary">
-                {selectedModel.summary.map((item, i) => (
-                  <p key={i}>{item}</p>
-                ))}
+                {selectedModel.summary.map((item, i) => <p key={i}>{item}</p>)}
               </div>
             </div>
 
-            {/* Media Gallery */}
+            {/* Main Gallery - Single Large Image */}
             <div className="ktc-media-gallery">
-              <div className="ktc-main-media">
+              <div className={`ktc-main-media ${isZoomed ? 'zoomed' : ''}`}>
                 {showVideo && selectedModel.video ? (
-                  <video
-                    controls
-                    muted
-                    className="ktc-video-player"
-                    src={selectedModel.video}
-                    poster={currentImage}
-                  />
+                  <video controls muted className="ktc-video-player" src={selectedModel.video} poster={currentImage} />
                 ) : (
                   <Image
                     src={currentImage}
-                    alt={`${selectedModel.name} - Photo ${currentPhotoIndex + 1}`}
-                    width={800}
-                    height={500}
+                    alt={`${selectedModel.name} - View ${currentPhotoIndex + 1}`}
+                    width={900}
+                    height={600}
                     className="ktc-monitor-image"
                     priority
                   />
                 )}
               </div>
 
-              {/* Navigation Arrows */}
-              {selectedModel.images.length > 1 && (
-                <div className="ktc-photo-nav">
-                  <button onClick={prevPhoto} className="nav-btn">←</button>
-                  <span className="photo-counter">
-                    {currentPhotoIndex + 1} / {selectedModel.images.length}
-                  </span>
-                  <button onClick={nextPhoto} className="nav-btn">→</button>
-                </div>
-              )}
+              {/* Controls */}
+              <div className="ktc-controls">
+                {selectedModel.images.length > 1 && (
+                  <>
+                    <button onClick={prevPhoto} className="nav-btn">← Previous</button>
+                    <span className="photo-counter">{currentPhotoIndex + 1} / {selectedModel.images.length}</span>
+                    <button onClick={nextPhoto} className="nav-btn">Next →</button>
+                  </>
+                )}
 
-              {/* Video Button */}
-              {selectedModel.video && (
-                <button
-                  onClick={() => setShowVideo(!showVideo)}
-                  className="ktc-video-btn"
-                >
-                  {showVideo ? "Show Photos" : "Watch Product Video"}
+                <button onClick={() => setIsZoomed(!isZoomed)} className="zoom-btn">
+                  {isZoomed ? "Zoom Out" : "Zoom In"}
                 </button>
-              )}
 
-              {/* Thumbnails */}
-              {selectedModel.images.length > 1 && (
-                <div className="ktc-thumbnails">
-                  {selectedModel.images.map((img, index) => (
-                    <Image
-                      key={index}
-                      src={img}
-                      alt={`Thumbnail ${index + 1}`}
-                      width={80}
-                      height={60}
-                      className={`thumbnail ${index === currentPhotoIndex ? "active" : ""}`}
-                      onClick={() => {
-                        setCurrentPhotoIndex(index);
-                        setShowVideo(false);
-                      }}
-                    />
-                  ))}
-                </div>
-              )}
+                {selectedModel.video && (
+                  <button onClick={() => setShowVideo(!showVideo)} className="ktc-video-btn">
+                    {showVideo ? "Show Photos" : "Watch Product Video"}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* Specs */}
+          {/* Full Specs */}
           <div className="ktc-spec-grid">
             {selectedModel.specs.map(([label, value], index) => (
-              <div key={`${label}-${index}`}>
+              <div key={index}>
                 <span>{label}</span>
                 <strong>{value}</strong>
               </div>
