@@ -111,8 +111,8 @@ export default function KTCPage() {
   return (
     <main className="ktc-page" style={{ backgroundColor: "#16222f", color: "#fff", minHeight: "100vh", padding: "40px 20px" }}>
       <section className="ktc-hero" style={{ marginBottom: "40px", textAlign: "center" }}>
-        <h1 style={{ fontSize: "2.5rem", fontWeight: "700", letterSpacing: "1px", marginBottom: "10px" }}>KTC Monitors</h1>
-        <p style={{ color: "#aaa" }}>Premium display technology with professional specifications.</p>
+        <h1 style={{ fontSize: "2.5rem", fontWeight: "700", letterSpacing: "1px", marginBottom: "10px" }}>{"KTC Monitors"}</h1>
+        <p style={{ color: "#aaa" }}>{"Premium display technology with professional specifications."}</p>
       </section>
 
       <section className="ktc-models" style={{ display: "flex", gap: "15px", marginBottom: "40px", justifyContent: "center" }}>
@@ -145,7 +145,6 @@ export default function KTCPage() {
       <section className="ktc-details" style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="ktc-product-top" style={{ display: "flex", flexWrap: "wrap", gap: "40px", alignItems: "flex-start", marginBottom: "60px" }}>
           
-          {/* Left Side: Model Info */}
           <div className="ktc-product-info" style={{ flex: "1 1 300px", minWidth: "280px" }}>
             <h2 style={{ fontSize: "3rem", fontWeight: "800", marginBottom: "20px", letterSpacing: "-0.5px" }}>{selectedModel.name}</h2>
             <div className="ktc-product-summary" style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -155,7 +154,6 @@ export default function KTCPage() {
             </div>
           </div>
 
-          {/* Right Side: Media Showcase Container */}
           <div className="ktc-media-container" style={{ flex: "1.5 1 500px", display: "flex", flexDirection: "column", gap: "20px" }}>
             <div 
               ref={containerRef}
@@ -209,7 +207,6 @@ export default function KTCPage() {
               )}
             </div>
 
-            {/* Panel Controls */}
             <div className="ktc-controls" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "15px", justifyContent: "space-between", padding: "0 5px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <button 
@@ -229,7 +226,7 @@ export default function KTCPage() {
                   }}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  Prev
+                  {"Prev"}
                 </button>
                 <span className="photo-counter" style={{ color: "#888", fontSize: "0.9rem", minWidth: "45px", textAlign: "center" }}>
                   {currentPhotoIndex + 1} / {selectedModel?.images?.length || 0}
@@ -250,7 +247,7 @@ export default function KTCPage() {
                     gap: "6px"
                   }}
                 >
-                  Next
+                  {"Next"}
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
               </div>
@@ -258,7 +255,7 @@ export default function KTCPage() {
               <div style={{ display: "flex", gap: "10px" }}>
                 {!showVideo && (
                   <span style={{ color: "#666", fontSize: "0.85rem", display: "flex", alignItems: "center", paddingRight: "5px" }}>
-                    Hover over image to zoom
+                    {"Hover over image to zoom"}
                   </span>
                 )}
                 {selectedModel.video && (
@@ -287,9 +284,8 @@ export default function KTCPage() {
           </div>
         </div>
 
-        {/* Full Specs Section */}
         <div className="ktc-specs-section" style={{ borderTop: "1px solid #222", paddingTop: "40px" }}>
-          <h3 style={{ fontSize: "1.8rem", fontWeight: "700", marginBottom: "30px" }}>Detailed Specifications</h3>
+          <h3 style={{ fontSize: "1.8rem", fontWeight: "700", marginBottom: "30px" }}>{"Detailed Specifications"}</h3>
           <div className="ktc-spec-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(450px, 1fr))", gap: "0 40px" }}>
             {selectedModel.specs.map(([label, value], index) => (
               <div key={index} className="spec-row" style={{ display: "flex", justifyContent: "space-between", padding: "14px 0", borderBottom: "1px solid #111", fontSize: "0.95rem" }}>
