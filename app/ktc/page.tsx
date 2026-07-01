@@ -46,7 +46,7 @@ const monitorModels: MonitorModel[] = [
       ["Viewing Angle", "89 degree Horizontal, 89 degree Vertical"],
       ["Surface Treatment", "Anti-Glare"],
       ["Brightness", "300 cd/m2 Typical"],
-      ["Contrast", "1000:1 Typical"],
+      ["Contrast", "10000:1 Typical"],
       ["Response Time", "20 ms"],
       ["Display Colors", "16.7M (6bit + 2FRC)"],
       ["NTSC Color Gamut", "44% Coverage, 44% Volume"],
@@ -168,7 +168,7 @@ export default function KTCPage() {
                 aspectRatio: "16/10",
                 display: "flex",
                 alignItems: "center",
-                justify-content: "center",
+                justifyContent: "center", // Fixed syntax error
                 width: "100%",
                 cursor: showVideo ? "default" : "zoom-in"
               }}
