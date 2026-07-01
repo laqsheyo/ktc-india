@@ -65,7 +65,6 @@ const monitorModels: MonitorModel[] = [
       ["Warranty Period", "1 Year"],
     ],
   },
-  // Add other models here...
 ];
 
 export default function KTCPage() {
@@ -80,13 +79,13 @@ export default function KTCPage() {
   const prevPhoto = () => setCurrentPhotoIndex((p) => (p - 1 + selectedModel.images.length) % selectedModel.images.length);
 
   return (
-    <main className="ktc-page">
-      <section className="ktc-hero">
-        <h1>KTC Monitors</h1>
-        <p>Premium display technology with professional specifications.</p>
+    <main className="ktc-page" style={{ backgroundColor: "#000", color: "#fff", minHeight: "100vh", padding: "40px 20px" }}>
+      <section className="ktc-hero" style={{ marginBottom: "40px", textAlign: "center" }}>
+        <h1 style={{ fontSize: "2.5rem", fontWeight: "700", letterSpacing: "1px", marginBottom: "10px" }}>KTC Monitors</h1>
+        <p style={{ color: "#aaa" }}>Premium display technology with professional specifications.</p>
       </section>
 
-      <section className="ktc-models">
+      <section className="ktc-models" style={{ display: "flex", gap: "15px", marginBottom: "40px", justifyContent: "center" }}>
         {monitorModels.map((model) => (
           <button
             key={model.name}
@@ -96,53 +95,139 @@ export default function KTCPage() {
               setCurrentPhotoIndex(0);
               setShowVideo(false);
             }}
+            style={{
+              padding: "10px 24px",
+              backgroundColor: selectedModel.name === model.name ? "#fff" : "#111",
+              color: selectedModel.name === model.name ? "#000" : "#fff",
+              border: "1px solid #333",
+              borderRadius: "25px",
+              cursor: "pointer",
+              fontWeight: "600",
+              transition: "all 0.3s ease"
+            }}
           >
             {model.name}
           </button>
         ))}
       </section>
 
-      <section className="ktc-details">
-        <div className="ktc-product-top">
-          <div className="ktc-product-info">
-            <h2>{selectedModel.name}</h2>
-            <div className="ktc-product-summary">
-              {selectedModel.summary.map((item, i) => <p key={i}>{item}</p>)}
+      <section className="ktc-details" style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        {/* Modern side-by-side flexbox container */}
+        <div className="ktc-product-top" style={{ display: "flex", flexWrap: "wrap", gap: "40px", alignItems: "flex-start", marginBottom: "60px" }}>
+          
+          {/* Left Side: Model Info */}
+          <div className="ktc-product-info" style={{ flex: "1 1 300px", minWidth: "280px" }}>
+            <h2 style={{ fontSize: "3rem", fontWeight: "800", marginBottom: "20px", letterSpacing: "-0.5px" }}>{selectedModel.name}</h2>
+            <div className="ktc-product-summary" style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              {selectedModel.summary.map((item, i) => (
+                <p key={i} style={{ color: "#ccc", fontSize: "1.1rem", margin: 0, paddingLeft: "10px", borderLeft: "2px solid #333" }}>{item}</p>
+              ))}
             </div>
           </div>
 
-          {/* Large Media Area */}
-          <div className="ktc-media-container">
-            <div className={`ktc-main-media ${isZoomed ? 'zoomed' : ''}`}>
+          {/* Right Side: Media Showcase Container */}
+          <div className="ktc-media-container" style={{ flex: "1.5 1 500px", display: "flex", flexDirection: "column", gap: "20px" }}>
+            <div 
+              className={`ktc-main-media ${isZoomed ? 'zoomed' : ''}`} 
+              style={{ 
+                backgroundColor: "#0a0a0a", 
+                borderRadius: "16px", 
+                border: "1px solid #1a1a1a", 
+                overflow: "hidden", 
+                position: "relative",
+                aspectRatio: "16/10",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%"
+              }}
+            >
               {showVideo && selectedModel.video ? (
-                <video autoPlay controls muted className="ktc-video-player" src={selectedModel.video} />
+                <video 
+                  autoPlay 
+                  controls 
+                  muted 
+                  playsInline
+                  className="ktc-video-player" 
+                  src={selectedModel.video} 
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                />
               ) : (
-                <Image src={currentImage} alt={selectedModel.name} width={1000} height={650} className="ktc-monitor-image" priority />
+                <div style={{ width: "100%", height: "100%", position: "relative", transform: isZoomed ? "scale(1.25)" : "scale(1)", transition: "transform 0.3s ease" }}>
+                  <Image 
+                    src={currentImage} 
+                    alt={selectedModel.name} 
+                    fill
+                    sizes="(max-width: 1200px) 100vw, 800px"
+                    style={{ objectFit: "contain" }}
+                    priority 
+                  />
+                </div>
               )}
             </div>
 
-            <div className="ktc-controls">
-              <button onClick={prevPhoto} className="nav-btn">← Previous</button>
-              <span className="photo-counter">{currentPhotoIndex + 1} / {selectedModel.images.length}</span>
-              <button onClick={nextPhoto} className="nav-btn">Next →</button>
-              <button onClick={() => setIsZoomed(!isZoomed)} className="zoom-btn">{isZoomed ? "Zoom Out" : "Zoom In"}</button>
-              {selectedModel.video && (
-                <button onClick={() => setShowVideo(!showVideo)} className="ktc-video-btn">
-                  {showVideo ? "Show Photos" : "Watch Product Video"}
+            {/* Premium, spaced out panel controls */}
+            <div className="ktc-controls" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "15px", justifyContent: "space-between", padding: "0 5px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <button 
+                  onClick={() => { setShowVideo(false); prevPhoto(); }} 
+                  className="nav-btn"
+                  style={{ backgroundColor: "#111", color: "#fff", border: "1px solid #222", padding: "8px 16px", borderRadius: "8px", cursor: "pointer" }}
+                >
+                  ← Prev
                 </button>
-              )}
+                <span className="photo-counter" style={{ color: "#888", fontSize: "0.9rem", minWidth: "45px", textAlign: "center" }}>
+                  {currentPhotoIndex + 1} / {selectedModel.images.length}
+                </span>
+                <button 
+                  onClick={() => { setShowVideo(false); nextPhoto(); }} 
+                  className="nav-btn"
+                  style={{ backgroundColor: "#111", color: "#fff", border: "1px solid #222", padding: "8px 16px", borderRadius: "8px", cursor: "pointer" }}
+                >
+                  Next →
+                </button>
+              </div>
+
+              <div style={{ display: "flex", gap: "10px" }}>
+                {!showVideo && (
+                  <button 
+                    onClick={() => setIsZoomed(!isZoomed)} 
+                    className="zoom-btn"
+                    style={{ backgroundColor: "#111", color: "#fff", border: "1px solid #222", padding: "8px 16px", borderRadius: "8px", cursor: "pointer" }}
+                  >
+                    {isZoomed ? "Zoom Out" : "Zoom In"}
+                  </button>
+                )}
+                {selectedModel.video && (
+                  <button 
+                    onClick={() => setShowVideo(!showVideo)} 
+                    className="ktc-video-btn"
+                    style={{ 
+                      backgroundColor: showVideo ? "#fff" : "#222", 
+                      color: showVideo ? "#000" : "#fff", 
+                      border: "1px solid #444", 
+                      padding: "8px 20px", 
+                      borderRadius: "8px", 
+                      cursor: "pointer",
+                      fontWeight: "600"
+                    }}
+                  >
+                    {showVideo ? "Show Photos" : "Watch Video"}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Full Specs Table */}
-        <div className="ktc-specs-section">
-          <h3>Detailed Specifications</h3>
-          <div className="ktc-spec-grid">
+        {/* Full Specs Section */}
+        <div className="ktc-specs-section" style={{ borderTop: "1px solid #222", paddingTop: "40px" }}>
+          <h3 style={{ fontSize: "1.8rem", fontWeight: "700", marginBottom: "30px" }}>Detailed Specifications</h3>
+          <div className="ktc-spec-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(450px, 1fr))", gap: "0 40px" }}>
             {selectedModel.specs.map(([label, value], index) => (
-              <div key={index} className="spec-row">
-                <div className="spec-label">{label}</div>
-                <div className="spec-value">{value}</div>
+              <div key={index} className="spec-row" style={{ display: "flex", justifyContent: "space-between", padding: "14px 0", borderBottom: "1px solid #111", fontSize: "0.95rem" }}>
+                <div className="spec-label" style={{ color: "#888", fontWeight: "500" }}>{label}</div>
+                <div className="spec-value" style={{ color: "#fff", textAlign: "right", paddingLeft: "20px" }}>{value}</div>
               </div>
             ))}
           </div>
