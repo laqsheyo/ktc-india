@@ -313,6 +313,7 @@ img {
   box-shadow: 0 12px 36px rgba(44, 42, 41, 0.05);
 }
 
+/* Side circle arrow buttons matching showroom style overlay */
 .arrow {
   position: absolute;
   top: 50%;
@@ -340,7 +341,7 @@ img {
 }
 
 .arrow.left {
-  left: -24px;
+  left: -24px; /* Perfectly centers split on the edge frame border line */
 }
 
 .arrow.right {
@@ -354,7 +355,7 @@ img {
     font-size: 14px;
   }
   .arrow.left {
-    left: 8px;
+    left: 8px; /* Tucks neatly inside on cramped mobile aspect screens */
   }
   .arrow.right {
     right: 8px;
@@ -691,8 +692,7 @@ body:has(.fpd-site) .footer {
 
 /* ================= REFACTORED CONTINUOUS BRAND STRIP LINE ================= */
 .home-brand-strip {
-  background: transparent !important; /* FIXED: Overrides the black bar seen in image_fdce8a.jpg */
-  background-color: transparent !important;
+  background: transparent; /* Seamless blend into the native warm cream background */
   padding: 40px 40px; 
   display: flex;
   align-items: center;
@@ -704,18 +704,19 @@ body:has(.fpd-site) .footer {
 .home-brand-strip .brand-logo-button {
   width: 180px !important;            
   height: 64px !important;            
-  background: #1a1b1e !important; /* Dark solid contrasting pill containers so white brands pop on cream backdrop */
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;            
+  /* Isolated contrast pod protects white logos without cutting across the screen */
+  background: rgba(17, 17, 17, 0.95) !important; 
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;            
   padding: 12px 24px !important;          
   margin: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 32px !important;     
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16) !important;        
+  border-radius: 32px !important; /* Premium rounded pill outline contour */      
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;        
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, box-shadow 0.25s ease;
-  opacity: 0.95;                      
+  opacity: 0.9;                      
 }
 
 .home-brand-strip .brand-logo-button img {
@@ -727,13 +728,14 @@ body:has(.fpd-site) .footer {
   border-radius: 0 !important;
   display: block;
   object-fit: contain !important;     
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));              
 }
 
 .home-brand-strip .brand-logo-button:hover {
-  transform: translateY(-4px) scale(1.04);
+  transform: translateY(-3px) scale(1.03);
   opacity: 1;
   background: #000000 !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2) !important;
 }
 
 @media (max-width: 768px) {
