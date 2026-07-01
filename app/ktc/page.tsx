@@ -3,13 +3,13 @@
 import { useState, useRef, MouseEvent } from "react";
 import Image from "next/image";
 
-type MonitorModel = {
+interface MonitorModel {
   name: string;
   images: string[];
   video?: string;
   summary: string[];
   specs: string[][];
-};
+}
 
 const monitorModels: MonitorModel[] = [
   {
@@ -75,16 +75,20 @@ export default function KTCPage() {
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const currentImage = selectedModel.images[currentPhotoIndex];
+  const currentImage = selectedModel?.images?.[currentPhotoIndex] || "";
 
   const nextPhoto = () => {
     resetZoom();
-    setCurrentPhotoIndex((p) => (p + 1) % selectedModel.images.length);
+    if (selectedModel?.images) {
+      setCurrentPhotoIndex((p) => (p + 1) % selectedModel.images.length);
+    }
   };
   
   const prevPhoto = () => {
     resetZoom();
-    setCurrentPhotoIndex((p) => (p - 1 + selectedModel.images.length) % selectedModel.images.length);
+    if (selectedModel?.images) {
+      setCurrentPhotoIndex((p) => (p - 1 + selectedModel.images.length) % selectedModel.images.length);
+    }
   };
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -182,24 +186,26 @@ export default function KTCPage() {
                   style={{ width: "100%", height: "100%", objectFit: "contain" }}
                 />
               ) : (
-                <div 
-                  style={{ 
-                    width: "100%", 
-                    height: "100%", 
-                    position: "relative", 
-                    ...zoomStyle,
-                    transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
-                  }}
-                >
-                  <Image 
-                    src={currentImage} 
-                    alt={selectedModel.name} 
-                    fill
-                    sizes="(max-width: 1200px) 100vw, 800px"
-                    style={{ objectFit: "contain" }}
-                    priority 
-                  />
-                </div>
+                currentImage && (
+                  <div 
+                    style={{ 
+                      width: "100%", 
+                      height: "100%", 
+                      position: "relative", 
+                      ...zoomStyle,
+                      transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
+                    }}
+                  >
+                    <Image 
+                      src={currentImage} 
+                      alt={selectedModel.name} 
+                      fill
+                      sizes="(max-width: 1200px) 100vw, 800px"
+                      style={{ objectFit: "contain" }}
+                      priority 
+                    />
+                  </div>
+                )
               )}
             </div>
 
@@ -207,6 +213,7 @@ export default function KTCPage() {
             <div className="ktc-controls" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "15px", justifyContent: "space-between", padding: "0 5px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <button 
+                  type="button"
                   onClick={() => { setShowVideo(false); prevPhoto(); }} 
                   className="nav-btn"
                   style={{ backgroundColor: "#111", color: "#fff", border: "1px solid #222", padding: "8px 16px", borderRadius: "8px", cursor: "pointer" }}
@@ -214,9 +221,10 @@ export default function KTCPage() {
                   &larr; Prev
                 </button>
                 <span className="photo-counter" style={{ color: "#888", fontSize: "0.9rem", minWidth: "45px", textAlign: "center" }}>
-                  {currentPhotoIndex + 1} / {selectedModel.images.length}
+                  {currentPhotoIndex + 1} / {selectedModel?.images?.length || 0}
                 </span>
                 <button 
+                  type="button"
                   onClick={() => { setShowVideo(false); nextPhoto(); }} 
                   className="nav-btn"
                   style={{ backgroundColor: "#111", color: "#fff", border: "1px solid #222", padding: "8px 16px", borderRadius: "8px", cursor: "pointer" }}
@@ -233,6 +241,7 @@ export default function KTCPage() {
                 )}
                 {selectedModel.video && (
                   <button 
+                    type="button"
                     onClick={() => {
                       setShowVideo(!showVideo);
                       resetZoom();
