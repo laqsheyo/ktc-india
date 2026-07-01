@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, MouseEvent } from "react";
 import Image from "next/image";
 
 type MonitorModel = {
@@ -71,15 +71,43 @@ export default function KTCPage() {
   const [selectedModel, setSelectedModel] = useState(monitorModels[0]);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
-  const [isZoomed, setIsZoomed] = useState(false);
+  
+  // Amazon-Style Zoom States
+  const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const currentImage = selectedModel.images[currentPhotoIndex];
 
-  const nextPhoto = () => setCurrentPhotoIndex((p) => (p + 1) % selectedModel.images.length);
-  const prevPhoto = () => setCurrentPhotoIndex((p) => (p - 1 + selectedModel.images.length) % selectedModel.images.length);
+  const nextPhoto = () => {
+    resetZoom();
+    setCurrentPhotoIndex((p) => (p + 1) % selectedModel.images.length);
+  };
+  
+  const prevPhoto = () => {
+    resetZoom();
+    setCurrentPhotoIndex((p) => (p - 1 + selectedModel.images.length) % selectedModel.images.length);
+  };
+
+  // Tracks cursor coordinate percentages to update the lens focal point
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current || showVideo) return;
+
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+
+    setZoomStyle({
+      transformOrigin: `${x}% ${y}%`,
+      transform: "scale(2.2)" // Premium interactive magnification scale
+    });
+  };
+
+  const resetZoom = () => {
+    setZoomStyle({ transformOrigin: "center center", transform: "scale(1)" });
+  };
 
   return (
-    <main className="ktc-page" style={{ backgroundColor: "#000", color: "#fff", minHeight: "100vh", padding: "40px 20px" }}>
+    <main className="ktc-page" style={{ backgroundColor: "#16222f", color: "#fff", minHeight: "100vh", padding: "40px 20px" }}>
       <section className="ktc-hero" style={{ marginBottom: "40px", textAlign: "center" }}>
         <h1 style={{ fontSize: "2.5rem", fontWeight: "700", letterSpacing: "1px", marginBottom: "10px" }}>KTC Monitors</h1>
         <p style={{ color: "#aaa" }}>Premium display technology with professional specifications.</p>
@@ -94,6 +122,7 @@ export default function KTCPage() {
               setSelectedModel(model);
               setCurrentPhotoIndex(0);
               setShowVideo(false);
+              resetZoom();
             }}
             style={{
               padding: "10px 24px",
@@ -112,7 +141,6 @@ export default function KTCPage() {
       </section>
 
       <section className="ktc-details" style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        {/* Modern side-by-side flexbox container */}
         <div className="ktc-product-top" style={{ display: "flex", flexWrap: "wrap", gap: "40px", alignItems: "flex-start", marginBottom: "60px" }}>
           
           {/* Left Side: Model Info */}
@@ -128,18 +156,21 @@ export default function KTCPage() {
           {/* Right Side: Media Showcase Container */}
           <div className="ktc-media-container" style={{ flex: "1.5 1 500px", display: "flex", flexDirection: "column", gap: "20px" }}>
             <div 
-              className={`ktc-main-media ${isZoomed ? 'zoomed' : ''}`} 
+              ref={containerRef}
+              className="ktc-main-media" 
+              onMouseMove={handleMouseMove}
+              onMouseLeave={resetZoom}
               style={{ 
-                backgroundColor: "#0a0a0a", 
+                backgroundColor: "transparent", // Fixed: Changed from #0a0a0a to transparent
                 borderRadius: "16px", 
-                border: "1px solid #1a1a1a", 
                 overflow: "hidden", 
                 position: "relative",
                 aspectRatio: "16/10",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
-                width: "100%"
+                justify-content: "center",
+                width: "100%",
+                cursor: showVideo ? "default" : "zoom-in"
               }}
             >
               {showVideo && selectedModel.video ? (
@@ -153,7 +184,15 @@ export default function KTCPage() {
                   style={{ width: "100%", height: "100%", objectFit: "contain" }}
                 />
               ) : (
-                <div style={{ width: "100%", height: "100%", position: "relative", transform: isZoomed ? "scale(1.25)" : "scale(1)", transition: "transform 0.3s ease" }}>
+                <div 
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    position: "relative", 
+                    ...zoomStyle,
+                    transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
+                  }}
+                >
                   <Image 
                     src={currentImage} 
                     alt={selectedModel.name} 
@@ -166,7 +205,7 @@ export default function KTCPage() {
               )}
             </div>
 
-            {/* Premium, spaced out panel controls */}
+            {/* Panel Controls */}
             <div className="ktc-controls" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "15px", justifyContent: "space-between", padding: "0 5px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <button 
@@ -190,17 +229,16 @@ export default function KTCPage() {
 
               <div style={{ display: "flex", gap: "10px" }}>
                 {!showVideo && (
-                  <button 
-                    onClick={() => setIsZoomed(!isZoomed)} 
-                    className="zoom-btn"
-                    style={{ backgroundColor: "#111", color: "#fff", border: "1px solid #222", padding: "8px 16px", borderRadius: "8px", cursor: "pointer" }}
-                  >
-                    {isZoomed ? "Zoom Out" : "Zoom In"}
-                  </button>
+                  <span style={{ color: "#666", fontSize: "0.85rem", display: "flex", alignItems: "center", paddingRight: "5px" }}>
+                    Hover over image to zoom
+                  </span>
                 )}
                 {selectedModel.video && (
                   <button 
-                    onClick={() => setShowVideo(!showVideo)} 
+                    onClick={() => {
+                      setShowVideo(!showVideo);
+                      resetZoom();
+                    }} 
                     className="ktc-video-btn"
                     style={{ 
                       backgroundColor: showVideo ? "#fff" : "#222", 
