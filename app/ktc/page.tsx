@@ -161,6 +161,7 @@ const monitorModels: MonitorModel[] = [
       "/images/ktc/H27T27S/A (4).jpg",
       "/images/ktc/H27T27S/A (5).jpg",
     ],
+    video: "/videos/ktc/H27T22.mp4",
     summary: ["27 inch Fast IPS", "2560 x 1440 @ 165Hz", "350 cd/m2", "Professional Lift Stand"],
     specs: [
       ["Model Name", "H27T22"],
@@ -250,7 +251,7 @@ const monitorModels: MonitorModel[] = [
       "/images/ktc/H27T22C-3/A (4).jpg",
       "/images/ktc/H27T22C-3/A (5).jpg",
     ],
-    video: "/videos/ktc/H27T22.mp4",
+    video: "/videos/ktc/H27T22C-3.mp4",
     summary: ["27 inch Curved HVA", "2560 x 1440 @ 180Hz", "300 cd/m2", "1500R Curvature"],
     specs: [
       ["Model Name", "H27T22C"],
@@ -380,7 +381,7 @@ export default function KTCPage() {
   const [selectedModel, setSelectedModel] = useState<MonitorModel>(monitorModels[0]);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
   const [showVideo, setShowVideo] = useState<boolean>(false);
-  
+
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -404,7 +405,7 @@ export default function KTCPage() {
       setCurrentPhotoIndex((p) => (p + 1) % selectedModel.images.length);
     }
   };
-  
+
   const prevPhoto = () => {
     resetZoom();
     if (selectedModel?.images) {
@@ -471,7 +472,7 @@ export default function KTCPage() {
 
       <section className="ktc-details" style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="ktc-product-top" style={{ display: "flex", flexWrap: "wrap", gap: "40px", alignItems: "center", marginBottom: "60px" }}>
-          
+
           <div className="ktc-product-info" style={{ flex: "1 1 300px", minWidth: "280px" }}>
             <h2 style={{ fontSize: "4.5rem", fontWeight: "800", marginBottom: "20px", letterSpacing: "-1px" }}>{selectedModel.name}</h2>
             <div className="ktc-product-summary" style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
