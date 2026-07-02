@@ -208,7 +208,7 @@ const monitorModels: MonitorModel[] = [
       "/images/ktc/H27T22C-3/A (4).png",
       "/images/ktc/H27T22C-3/A (5).png",
     ],
-    video: "/videos/ktc/H27T22C-3.mp4",
+    video: "/videos/ktc/H27T22.mp4",
     summary: ["27 inch Curved HVA", "2560 x 1440 @ 180Hz", "300 cd/m2", "1500R Curvature"],
     specs: [
       ["Model Name", "H27T22C"],
