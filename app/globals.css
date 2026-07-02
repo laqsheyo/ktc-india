@@ -120,7 +120,7 @@ a {
    ========================================================================== */
 .hero {
   position: relative;
-  height: 75vh; /* Reduced from 90vh to gracefully pull bottom elements up */
+  height: 60vh; /* Reduced to fit homepage in single viewport */
 }
 
 .hero-video {
@@ -137,14 +137,14 @@ a {
   background: rgba(0, 0, 0, 0.25) !important; 
   backdrop-filter: blur(12px);                 
   -webkit-backdrop-filter: blur(12px);
-  padding: 30px 50px;
+  padding: 20px 40px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.25); 
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);  
 }
 
 .hero-overlay h2 {
-  font-size: 56px;
+  font-size: 48px;
   text-align: center;
   letter-spacing: 3px;
   color: #ffffff !important; 
@@ -284,7 +284,7 @@ img {
   background: #f4f1ea; 
   color: #1a1b1e;
   text-align: center;
-  padding: 32px 20px;
+  padding: 16px 20px;
   border-top: 1px solid rgba(44, 42, 41, 0.06);
 }
 
@@ -310,11 +310,11 @@ img {
 
 .home-brand-strip {
   background: #111111; 
-  padding: 24px 40px; 
+  padding: 12px 40px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 64px;           
+  gap: 40px;           
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
@@ -322,7 +322,7 @@ img {
 
 .home-brand-strip .brand-logo-button {
   width: auto !important;            
-  height: 36px !important;            
+  height: 28px !important;            
   background: transparent !important; 
   border: none !important;            
   padding: 0 !important;          
@@ -804,7 +804,7 @@ body:has(.fpd-site) .footer {
   .header-logo-img,
   header img[src*="logo"],
   img[alt*="KTC"] {
-    height: 32px !important;
+    height: 26px !important;
     width: auto !important;
     display: block !important;
     visibility: visible !important;
@@ -865,11 +865,11 @@ body:has(.fpd-site) .footer {
 
   /* ================= BRAND STRIP MOBILE SCROLL FLOW ================= */
   .home-brand-strip {
-    padding: 10px 16px !important;
+    padding: 6px 16px !important;
     gap: 24px !important;                        
     justify-content: flex-start !important; 
     background: #111111 !important;
-    height: 54px !important;
+    height: 44px !important;
     overflow-x: auto !important;           
     white-space: nowrap !important;
     display: flex !important;
