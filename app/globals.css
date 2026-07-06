@@ -69,6 +69,17 @@ a {
 }
 
 /* Main Site Support Dropdown */
+/* HIDE KTC INDIA LOGO FROM HEADER ON ALL PAGES */
+.header-logo-link,
+.header-logo-img {
+  display: none !important;
+}
+
+/* FIX E-WASTE DROPDOWN VISIBILITY ON MOBILE */
+.main-support-menu {
+  z-index: 9999 !important;
+}
+
 .main-support-dropdown {
   position: relative;
 }
@@ -959,6 +970,18 @@ body:has(.fpd-site) .footer {
     font-size: 13px !important;
     white-space: nowrap !important;
     display: inline-block !important;
+  }
+
+  /* Ensure dropdown is visible on mobile */
+  .main-support-menu {
+    position: fixed !important;
+    top: 60px !important;
+    right: 10px !important;
+    left: auto !important;
+    transform: none !important;
+    z-index: 9999 !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
   }
 
   /* ===== HERO ===== */

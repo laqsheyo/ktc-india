@@ -744,7 +744,7 @@ export default function KTCPage() {
     const interval = setInterval(() => {
       resetZoom();
       setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % selectedModel.images.length);
-    }, 2000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [showVideo, selectedModel]);
