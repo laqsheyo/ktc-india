@@ -786,25 +786,43 @@ body:has(.fpd-site) .footer {
 /* ==========================================================================
    11. MEDIA QUERIES & RESPONSIVE RULES (NATURAL SYSTEM FLOW)
    ========================================================================== */
-@media (max-width: 900px) {
+
+/* ==========================================================================
+   11. MEDIA QUERIES & RESPONSIVE RULES — MOBILE-FIRST REFINED
+   ========================================================================== */
+
+/* ─── TABLET & SMALL LAPTOPS (max-width: 1024px) ─── */
+@media (max-width: 1024px) {
   .header {
-    padding: 8px 12px 6px !important;
-    flex-direction: column !important;  
+    padding: 12px 24px !important;
+    gap: 16px !important;
+  }
+  .header nav {
+    gap: 24px !important;
+  }
+}
+
+/* ─── TABLET PORTRAIT (max-width: 900px) ─── */
+@media (max-width: 900px) {
+  /* Header: keep horizontal, just tighten spacing */
+  .header {
+    padding: 10px 16px !important;
+    flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
   }
 
   .header-logo-link {
     display: flex !important;
-    justify-content: center !important;
-    width: 100% !important;
+    justify-content: flex-start !important;
+    width: auto !important;
   }
 
   .header-logo-img,
   header img[src*="logo"],
   img[alt*="KTC"] {
-    height: 40px !important;
+    height: 36px !important;
     width: auto !important;
     display: block !important;
     visibility: visible !important;
@@ -812,130 +830,184 @@ body:has(.fpd-site) .footer {
   }
 
   .header nav {
-    width: 100% !important;
+    width: auto !important;
     display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 4px 12px !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-end !important;
+    gap: 10px 16px !important;
     padding: 0 !important;
   }
 
   .header nav a,
   .main-support-button {
-    font-size: 14px !important;
-    white-space: nowrap !important;     
+    font-size: 13px !important;
+    white-space: nowrap !important;
     display: inline-block !important;
   }
 
-  .section, .about-container, .page-container { padding: 30px 14px; }
-  h1 { font-size: 28px; }
-  h2 { font-size: 22px; }
-  .slider-img { height: 200px; }
+  /* Hero: reduce height proportionally */
+  .hero {
+    height: 50vh !important;
+  }
+
+  .hero-overlay {
+    padding: 16px 24px !important;
+    width: 90% !important;
+    max-width: 500px !important;
+  }
+
+  .hero-overlay h2 {
+    font-size: 28px !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* Brand strip: bigger logos, comfortable strip */
+  .home-brand-strip {
+    padding: 14px 20px !important;
+    gap: 28px !important;
+    justify-content: center !important;
+    height: auto !important;
+    overflow-x: visible !important;
+  }
+
+  .home-brand-strip .brand-logo-button {
+    height: 38px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .home-brand-strip .brand-logo-button img {
+    max-width: 140px !important;
+  }
+
+  /* Content sections */
+  .section, .about-container, .page-container {
+    padding: 40px 16px !important;
+  }
+
+  h1 { font-size: 32px !important; }
+  h2 { font-size: 24px !important; }
+  .slider-img { height: 220px !important; }
 
   /* Sub-Page FPD Components */
-  .fpd-header-inner { padding: 10px 14px; flex-direction: column !important; gap: 8px !important; }
-  .fpd-logo img { height: 30px !important; }
-  .fpd-nav { gap: 12px; flex-wrap: wrap !important; justify-content: center !important; }
-  .fpd-nav-link { font-size: 11px; }
-  .fpd-section { padding: 40px 16px; }
-  .fpd-tv-models { grid-template-columns: repeat(2, 1fr); padding: 0 16px; }
-  .fpd-tv-detail { padding: 0 16px 40px; }
-  .fpd-tv-detail-top { flex-direction: column; align-items: flex-start; padding: 18px; }
-  .fpd-tv-spec-grid { grid-template-columns: 1fr; }
+  .fpd-header-inner {
+    padding: 12px 16px !important;
+    flex-direction: row !important;
+    gap: 12px !important;
+  }
+  .fpd-logo img { height: 32px !important; }
+  .fpd-nav { gap: 14px !important; flex-wrap: nowrap !important; }
+  .fpd-nav-link { font-size: 13px !important; }
+  .fpd-section { padding: 40px 16px !important; }
+  .fpd-tv-models { grid-template-columns: repeat(3, 1fr) !important; padding: 0 16px !important; }
+  .fpd-tv-detail { padding: 0 16px 40px !important; }
+  .fpd-tv-detail-top { flex-direction: column; align-items: center !important; padding: 20px !important; }
+  .fpd-tv-detail-top img { width: 100% !important; max-width: 320px !important; height: auto !important; }
+  .fpd-tv-spec-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
+/* ─── MOBILE PHONES (max-width: 768px) ─── */
 @media (max-width: 768px) {
   html, body {
     max-width: 100%;
+    overflow-x: hidden;
   }
 
-  .home-page { 
+  .home-page {
     display: flex !important;
     flex-direction: column !important;
   }
 
-  .hero-overlay { 
-    padding: 12px 14px !important; 
-    width: 85% !important; 
-  }
-  
-  .hero-overlay h2 { 
-    font-size: 20px !important; 
+  /* Hero: comfortable mobile size */
+  .hero {
+    height: 45vh !important;
   }
 
-  /* ================= BRAND STRIP MOBILE SCROLL FLOW ================= */
+  .hero-overlay {
+    padding: 14px 20px !important;
+    width: 92% !important;
+    border-radius: 12px !important;
+  }
+
+  .hero-overlay h2 {
+    font-size: 24px !important;
+    letter-spacing: 1.5px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* ================= BRAND STRIP MOBILE ================= */
   .home-brand-strip {
-    padding: 8px 16px !important;
-    gap: 24px !important;                        
-    justify-content: flex-start !important; 
+    padding: 12px 16px !important;
+    gap: 20px !important;
+    justify-content: center !important;
     background: #111111 !important;
-    height: 56px !important;
-    overflow-x: auto !important;           
+    height: auto !important;
+    min-height: 52px !important;
+    overflow-x: auto !important;
     white-space: nowrap !important;
     display: flex !important;
-    -webkit-overflow-scrolling: touch;     
+    -webkit-overflow-scrolling: touch;
   }
 
   .home-brand-strip::-webkit-scrollbar {
-    display: none;                         
+    display: none;
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 32px !important;
+    height: 34px !important;
     width: auto !important;
-    min-width: unset !important;           
+    min-width: unset !important;
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    flex: 0 0 auto !important;             
+    flex: 0 0 auto !important;
   }
 
   .home-brand-strip .brand-logo-button img {
     height: 100% !important;
     width: auto !important;
-    max-width: 160px !important;
+    max-width: 130px !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     object-fit: contain !important;
   }
 
-  /* ================= KTC MONITOR SPECS RESPONSIVE FLOW ================= */
-  .ktc-spec-grid { 
+  /* ================= KTC MONITOR SPECS RESPONSIVE ================= */
+  .ktc-spec-grid {
     display: grid !important;
-    grid-template-columns: 1fr !important; 
+    grid-template-columns: 1fr !important;
     gap: 8px !important;
   }
-  
-  .spec-row { 
-    flex-direction: row !important;        
-    justify-content: space-between !important; 
-    align-items: flex-start !important;    
-    padding: 12px 8px !important; 
+
+  .spec-row {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding: 12px 10px !important;
     background: #fefdfb;
     border: 1px solid rgba(26, 27, 30, 0.1) !important;
     border-radius: 8px;
-    gap: 16px;
+    gap: 12px;
   }
-  
-  .spec-label { 
-    font-size: 13px !important; 
+
+  .spec-label {
+    font-size: 13px !important;
     opacity: 0.8;
-    flex-shrink: 0 !important;             
-    max-width: 45%;
+    flex-shrink: 0 !important;
+    max-width: 50%;
   }
-  
-  .spec-value { 
-    text-align: right !important; 
-    padding-left: 0 !important; 
-    font-size: 13px !important; 
+
+  .spec-value {
+    text-align: right !important;
+    padding-left: 0 !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
-    word-break: break-word !important;     
+    word-break: break-word !important;
   }
 
   .ktc-product-top { display: flex; flex-direction: column; align-items: center; gap: 20px; }
   .ktc-product-info, .ktc-media-container { width: 100%; }
-  .ktc-main-media { width: 100%; height: 240px; aspect-ratio: auto; }
+  .ktc-main-media { width: 100%; height: 220px; aspect-ratio: auto; }
   .ktc-controls { justify-content: center; gap: 10px; }
   .zoom-btn, .ktc-video-btn { width: 48%; padding: 10px; font-size: 13px; }
 
@@ -949,4 +1021,60 @@ body:has(.fpd-site) .footer {
   .promoter-profile { flex-direction: column !important; gap: 14px !important; }
   .promoter-copy h2 { font-size: 22px !important; }
   .promoter-image { width: 60% !important; max-width: 200px !important; height: auto !important; }
+}
+
+/* ─── SMALL PHONES (max-width: 480px) ─── */
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 12px !important;
+    gap: 8px !important;
+  }
+
+  .header-logo-img {
+    height: 30px !important;
+  }
+
+  .header nav a,
+  .main-support-button {
+    font-size: 11px !important;
+  }
+
+  .header nav {
+    gap: 8px 10px !important;
+  }
+
+  .hero {
+    height: 42vh !important;
+  }
+
+  .hero-overlay {
+    padding: 12px 16px !important;
+    width: 94% !important;
+  }
+
+  .hero-overlay h2 {
+    font-size: 20px !important;
+    letter-spacing: 1px !important;
+  }
+
+  .home-brand-strip {
+    padding: 10px 12px !important;
+    gap: 16px !important;
+  }
+
+  .home-brand-strip .brand-logo-button {
+    height: 30px !important;
+  }
+
+  .home-brand-strip .brand-logo-button img {
+    max-width: 110px !important;
+  }
+
+  .footer {
+    padding: 12px 16px !important;
+  }
+
+  .footer p {
+    font-size: 12px !important;
+  }
 }
