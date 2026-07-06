@@ -1149,13 +1149,12 @@ body:has(.fpd-site) .footer {
    ZOOM BUTTONS & MOBILE ENHANCEMENTS
    ========================================================================== */
 
-/* Show hover hint only on desktop */
+/* Desktop: show hover hint, hide mobile zoom UI */
 .hover-hint {
   display: inline-flex !important;
 }
 
-/* Mobile zoom buttons - hidden on desktop by default, shown on mobile */
-.zoom-btn-mobile {
+.zoom-mobile-ui {
   display: none !important;
 }
 
@@ -1165,9 +1164,9 @@ body:has(.fpd-site) .footer {
     display: none !important;
   }
 
-  /* Show zoom buttons on mobile */
-  .zoom-btn-mobile {
-    display: inline-block !important;
+  /* Show zoom UI on mobile */
+  .zoom-mobile-ui {
+    display: inline-flex !important;
   }
 
   /* Make KTC product image bigger on mobile */
