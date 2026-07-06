@@ -115,6 +115,14 @@ a {
   background: #f4f1ea;
 }
 
+/* HIDE KTC INDIA LOGO FROM HEADER ON ALL PAGES */
+.header-logo-link,
+.header-logo-img,
+header img[src*="logo"],
+img[alt*="KTC India"] {
+  display: none !important;
+}
+
 /* ==========================================================================
    3. HERO MODULES & CORRESPONDING SLIDERS
    ========================================================================== */
@@ -798,6 +806,12 @@ body:has(.fpd-site) .footer {
    ========================================================================== */
 
 /* ─── TABLET & SMALL LAPTOPS (max-width: 1024px) ─── */
+
+/* ==========================================================================
+   11. MEDIA QUERIES & RESPONSIVE RULES — MOBILE REFINED
+   ========================================================================== */
+
+/* ─── TABLET & SMALL LAPTOPS (max-width: 1024px) ─── */
 @media (max-width: 1024px) {
   .header {
     padding: 12px 28px !important;
@@ -912,13 +926,21 @@ body:has(.fpd-site) .footer {
     max-width: 100%;
     overflow-x: hidden;
   }
+  /* Hide logo on mobile */
+  .header-logo-link,
+  .header-logo-img,
+  header img[src*="logo"],
+  img[alt*="KTC India"] {
+    display: none !important;
+  }
+
 
   .home-page {
     display: flex !important;
     flex-direction: column !important;
   }
 
-  /* ===== HEADER: Clean vertical layout ===== */
+  /* ===== HEADER ===== */
   .header {
     padding: 10px 16px 8px !important;
     flex-direction: column !important;
@@ -1026,29 +1048,180 @@ body:has(.fpd-site) .footer {
   h2 { font-size: 22px !important; }
   .slider-img { height: 200px !important; }
 
-  /* ===== KTC MONITOR SPECS ===== */
-  .ktc-spec-grid {
+  /* ===== KTC MONITOR PAGE — COMPLETE MOBILE OVERHAUL ===== */
+  .ktc-page {
+    padding: 0 !important;
+  }
+
+  .ktc-hero {
+    padding: 60px 16px 24px !important;
+  }
+
+  .ktc-hero h1 {
+    font-size: 32px !important;
+    margin-bottom: 10px !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .ktc-hero p {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    padding: 0 8px !important;
+  }
+
+  /* Model selector buttons */
+  .ktc-models {
+    max-width: 100% !important;
+    margin: 16px auto 30px !important;
+    padding: 0 12px !important;
     display: grid !important;
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 8px !important;
+    justify-content: center !important;
+  }
+
+  .ktc-model-card {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    border-radius: 18px !important;
+    text-align: center !important;
+    min-width: 0 !important;
+  }
+
+  /* Product details section */
+  .ktc-details {
+    max-width: 100% !important;
+    padding: 0 12px 40px !important;
+    margin: 0 auto !important;
+  }
+
+  .ktc-product-top {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .ktc-product-info {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .ktc-product-info h2 {
+    font-size: 28px !important;
+    margin-bottom: 12px !important;
+    letter-spacing: 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  .ktc-product-summary {
+    gap: 8px !important;
+    align-items: center !important;
+  }
+
+  .ktc-product-summary p {
+    font-size: 14px !important;
+    padding-left: 10px !important;
+    border-left-width: 2.5px !important;
+    text-align: left !important;
+    max-width: 100% !important;
+  }
+
+  /* Media container — fix the huge white box */
+  .ktc-media-container {
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .ktc-main-media {
+    aspect-ratio: 16 / 10 !important;
+    height: 220px !important;
+    border-radius: 14px !important;
+    background: #fefdfb !important;
+  }
+
+  .ktc-monitor-image,
+  .ktc-video-player {
+    object-fit: contain !important;
+  }
+
+  /* Controls */
+  .ktc-controls {
+    justify-content: center !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .zoom-btn,
+  .ktc-video-btn {
+    padding: 8px 16px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+    width: auto !important;
+    flex: 1 !important;
+    max-width: 140px !important;
+  }
+
+  .photo-counter {
+    font-size: 13px !important;
+    min-width: 50px !important;
+  }
+
+  /* Hide "hover to zoom" text on mobile — no hover on touch */
+  .ktc-media-container .photo-counter + span,
+  .ktc-media-container [class*="zoom"] + span,
+  .ktc-controls span:last-child {
+    display: none !important;
+  }
+
+  /* Features grid */
+  .ktc-features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .feature-card {
+    padding: 12px !important;
+    font-size: 12px !important;
+    border-radius: 10px !important;
+    gap: 8px !important;
+  }
+
+  /* Specs section */
+  .ktc-specs-section {
+    padding-top: 30px !important;
+  }
+
+  .ktc-specs-section h3 {
+    font-size: 22px !important;
+    margin-bottom: 16px !important;
+    text-align: center !important;
+  }
+
+  .ktc-spec-grid {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
   }
 
   .spec-row {
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: flex-start !important;
-    padding: 12px 10px !important;
+    padding: 10px 12px !important;
     background: #fefdfb;
     border: 1px solid rgba(26, 27, 30, 0.1) !important;
     border-radius: 8px;
     gap: 12px;
+    font-size: 13px !important;
   }
 
   .spec-label {
     font-size: 13px !important;
-    opacity: 0.8;
+    opacity: 0.75;
     flex-shrink: 0 !important;
-    max-width: 50%;
+    max-width: 55%;
+    font-weight: 600 !important;
   }
 
   .spec-value {
@@ -1057,14 +1230,17 @@ body:has(.fpd-site) .footer {
     font-size: 13px !important;
     font-weight: 700 !important;
     word-break: break-word !important;
+    max-width: 45%;
   }
 
-  .ktc-product-top { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-  .ktc-product-info, .ktc-media-container { width: 100%; }
-  .ktc-main-media { width: 100%; height: 220px; aspect-ratio: auto; }
-  .ktc-controls { justify-content: center; gap: 10px; }
-  .zoom-btn, .ktc-video-btn { width: 48%; padding: 10px; font-size: 13px; }
+  /* ===== KTC MONITOR SPECS (fallback) ===== */
+  .ktc-spec-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
 
+  /* ===== FPD & OTHER PAGES ===== */
   .fpd-dropdown-menu, .main-support-menu { right: 0; left: auto; transform: none; }
   .ewaste-container { padding: 30px 16px; }
   .arrow { width: 34px; height: 34px; }
@@ -1078,6 +1254,184 @@ body:has(.fpd-site) .footer {
 }
 
 /* ─── SMALL PHONES (max-width: 480px) ─── */
+
+  /* ===== KTC MONITOR PAGE MOBILE FIXES ===== */
+  .ktc-page { padding: 0 !important; }
+
+  .ktc-hero {
+    padding: 60px 16px 24px !important;
+  }
+
+  .ktc-hero h1 {
+    font-size: 36px !important;
+    margin-bottom: 10px !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .ktc-hero p {
+    font-size: 16px !important;
+    padding: 0 10px !important;
+  }
+
+  /* Model selector buttons: horizontal scroll instead of awkward wrap */
+  .ktc-models {
+    padding: 0 16px !important;
+    margin: 16px auto 30px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .ktc-models::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ktc-model-card {
+    padding: 10px 22px !important;
+    font-size: 14px !important;
+    border-radius: 20px !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+
+  /* Product details section */
+  .ktc-details {
+    padding: 0 16px 50px !important;
+  }
+
+  .ktc-product-top {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
+    margin-bottom: 40px !important;
+  }
+
+  .ktc-product-info {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .ktc-product-info h2 {
+    font-size: 32px !important;
+    margin-bottom: 16px !important;
+    letter-spacing: 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  .ktc-product-summary {
+    gap: 8px !important;
+    align-items: center !important;
+  }
+
+  .ktc-product-summary p {
+    font-size: 15px !important;
+    padding-left: 0 !important;
+    border-left: none !important;
+    text-align: center !important;
+    padding: 0 10px !important;
+  }
+
+  /* Media container: bigger image, less wasted space */
+  .ktc-media-container {
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .ktc-main-media {
+    aspect-ratio: 16 / 10 !important;
+    height: 280px !important;
+    border-radius: 16px !important;
+  }
+
+  .ktc-monitor-image {
+    object-fit: contain !important;
+    padding: 10px !important;
+  }
+
+  /* Controls: hide zoom/hover text on mobile, show tap hint instead */
+  .ktc-controls {
+    justify-content: center !important;
+    gap: 12px !important;
+    margin-top: 8px !important;
+  }
+
+  .zoom-btn {
+    padding: 10px 18px !important;
+    font-size: 13px !important;
+    border-radius: 8px !important;
+  }
+
+  .ktc-video-btn {
+    padding: 10px 18px !important;
+    font-size: 13px !important;
+    border-radius: 8px !important;
+  }
+
+  .photo-counter {
+    font-size: 14px !important;
+    min-width: 50px !important;
+  }
+
+  /* Features grid: 2 columns instead of auto-fill */
+  .ktc-features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 40px !important;
+  }
+
+  .feature-card {
+    padding: 14px !important;
+    font-size: 13px !important;
+    border-radius: 12px !important;
+    gap: 8px !important;
+  }
+
+  /* Specs section */
+  .ktc-specs-section {
+    padding-top: 30px !important;
+  }
+
+  .ktc-specs-section h3 {
+    font-size: 22px !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+  }
+
+  .ktc-spec-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .spec-row {
+    padding: 14px 10px !important;
+    font-size: 14px !important;
+    gap: 12px !important;
+    border-bottom: 1px solid rgba(26, 27, 30, 0.15) !important;
+  }
+
+  .spec-label {
+    font-size: 14px !important;
+    max-width: 50% !important;
+  }
+
+  .spec-value {
+    font-size: 14px !important;
+    padding-left: 0 !important;
+  }
+
+  /* Hero slideshow on mobile */
+  .ktc-hero-slideshow {
+    height: 280px !important;
+  }
+
+  .slide-item img {
+    object-fit: cover !important;
+  }
+
 @media (max-width: 480px) {
   .header {
     padding: 8px 12px 6px !important;
@@ -1134,4 +1488,90 @@ body:has(.fpd-site) .footer {
   .footer p {
     font-size: 12px !important;
   }
+
+  /* KTC small phone fixes */
+  .ktc-hero h1 {
+    font-size: 26px !important;
+  }
+
+  .ktc-models {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .ktc-model-card {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .ktc-product-info h2 {
+    font-size: 24px !important;
+  }
+
+  .ktc-main-media {
+    height: 180px !important;
+  }
+
+  .ktc-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .feature-card {
+    padding: 10px !important;
+    font-size: 12px !important;
+  }
+
+  .spec-row {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+
+  .spec-label,
+  .spec-value {
+    font-size: 12px !important;
+  }
+
+
+  /* ===== KTC SMALL PHONE FIXES ===== */
+  .ktc-hero h1 {
+    font-size: 28px !important;
+  }
+
+  .ktc-hero p {
+    font-size: 14px !important;
+  }
+
+  .ktc-model-card {
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+  }
+
+  .ktc-product-info h2 {
+    font-size: 26px !important;
+  }
+
+  .ktc-main-media {
+    height: 220px !important;
+  }
+
+  .ktc-features-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .feature-card {
+    font-size: 12px !important;
+    padding: 12px !important;
+  }
+
+  .ktc-specs-section h3 {
+    font-size: 20px !important;
+  }
+
+  .spec-row {
+    padding: 12px 8px !important;
+    font-size: 13px !important;
+  }
+
 }
