@@ -913,13 +913,14 @@ body:has(.fpd-site) .footer {
     flex-direction: column !important;
   }
 
-  /* ===== HEADER: Mobile - logo hidden, nav centered ===== */
+  /* ===== HEADER: Mobile - clean horizontal nav ===== */
   .header {
-    padding: 12px 16px !important;
+    padding: 10px 12px !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 0 !important;
+    min-height: 48px !important;
   }
 
   .header-logo-link,
@@ -930,12 +931,20 @@ body:has(.fpd-site) .footer {
   .header nav {
     width: 100% !important;
     display: flex !important;
-    flex-wrap: nowrap !important;
+    flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 10px 18px !important;
+    gap: 2px 6px !important;
     padding: 0 !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: visible !important;
+  }
+
+  .header nav a,
+  .main-support-button {
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+    padding: 3px 5px !important;
+    letter-spacing: 0.3px !important;
   }
 
   .header nav::-webkit-scrollbar {
@@ -961,7 +970,7 @@ body:has(.fpd-site) .footer {
 
   /* ===== HERO ===== */
   .hero {
-    height: 48vh !important;
+    height: 46vh !important;
   }
 
   .hero-overlay {
@@ -1088,15 +1097,17 @@ body:has(.fpd-site) .footer {
 
   .header nav a,
   .main-support-button {
-    font-size: 12px !important;
+    font-size: 10px !important;
+    padding: 2px 4px !important;
+    letter-spacing: 0.2px !important;
   }
 
   .header nav {
-    gap: 8px 12px !important;
+    gap: 2px 6px !important;
   }
 
   .hero {
-    height: 44vh !important;
+    height: 42vh !important;
   }
 
   .hero-overlay {
