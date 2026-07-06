@@ -792,9 +792,15 @@ body:has(.fpd-site) .footer {
    ========================================================================== */
 
 /* ─── TABLET & SMALL LAPTOPS (max-width: 1024px) ─── */
+
+/* ==========================================================================
+   11. MEDIA QUERIES & RESPONSIVE RULES — MOBILE REFINED
+   ========================================================================== */
+
+/* ─── TABLET & SMALL LAPTOPS (max-width: 1024px) ─── */
 @media (max-width: 1024px) {
   .header {
-    padding: 12px 24px !important;
+    padding: 12px 28px !important;
     gap: 16px !important;
   }
   .header nav {
@@ -804,9 +810,8 @@ body:has(.fpd-site) .footer {
 
 /* ─── TABLET PORTRAIT (max-width: 900px) ─── */
 @media (max-width: 900px) {
-  /* Header: keep horizontal, just tighten spacing */
   .header {
-    padding: 10px 16px !important;
+    padding: 12px 20px !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -819,14 +824,9 @@ body:has(.fpd-site) .footer {
     width: auto !important;
   }
 
-  .header-logo-img,
-  header img[src*="logo"],
-  img[alt*="KTC"] {
-    height: 36px !important;
+  .header-logo-img {
+    height: 38px !important;
     width: auto !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
   }
 
   .header nav {
@@ -834,34 +834,38 @@ body:has(.fpd-site) .footer {
     display: flex !important;
     flex-wrap: nowrap !important;
     justify-content: flex-end !important;
-    gap: 10px 16px !important;
+    gap: 14px !important;
     padding: 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .header nav::-webkit-scrollbar {
+    display: none;
   }
 
   .header nav a,
   .main-support-button {
-    font-size: 13px !important;
+    font-size: 14px !important;
     white-space: nowrap !important;
     display: inline-block !important;
   }
 
-  /* Hero: reduce height proportionally */
   .hero {
-    height: 50vh !important;
+    height: 52vh !important;
   }
 
   .hero-overlay {
-    padding: 16px 24px !important;
-    width: 90% !important;
-    max-width: 500px !important;
+    padding: 18px 28px !important;
+    width: 88% !important;
+    max-width: 480px !important;
   }
 
   .hero-overlay h2 {
-    font-size: 28px !important;
+    font-size: 32px !important;
     letter-spacing: 2px !important;
   }
 
-  /* Brand strip: bigger logos, comfortable strip */
   .home-brand-strip {
     padding: 14px 20px !important;
     gap: 28px !important;
@@ -871,24 +875,21 @@ body:has(.fpd-site) .footer {
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 38px !important;
-    flex: 0 0 auto !important;
+    height: 36px !important;
   }
 
   .home-brand-strip .brand-logo-button img {
-    max-width: 140px !important;
+    max-width: 150px !important;
   }
 
-  /* Content sections */
   .section, .about-container, .page-container {
     padding: 40px 16px !important;
   }
 
   h1 { font-size: 32px !important; }
   h2 { font-size: 24px !important; }
-  .slider-img { height: 220px !important; }
+  .slider-img { height: 240px !important; }
 
-  /* Sub-Page FPD Components */
   .fpd-header-inner {
     padding: 12px 16px !important;
     flex-direction: row !important;
@@ -917,31 +918,75 @@ body:has(.fpd-site) .footer {
     flex-direction: column !important;
   }
 
-  /* Hero: comfortable mobile size */
+  /* ===== HEADER: Clean vertical layout ===== */
+  .header {
+    padding: 10px 16px 8px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    position: relative !important;
+  }
+
+  .header-logo-link {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .header-logo-img {
+    height: 40px !important;
+    width: auto !important;
+  }
+
+  .header nav {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    gap: 8px 16px !important;
+    padding: 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .header nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header nav a,
+  .main-support-button {
+    font-size: 13px !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+  }
+
+  /* ===== HERO ===== */
   .hero {
-    height: 45vh !important;
+    height: 48vh !important;
   }
 
   .hero-overlay {
-    padding: 14px 20px !important;
-    width: 92% !important;
-    border-radius: 12px !important;
+    padding: 16px 24px !important;
+    width: 90% !important;
+    max-width: 420px !important;
+    border-radius: 14px !important;
   }
 
   .hero-overlay h2 {
-    font-size: 24px !important;
-    letter-spacing: 1.5px !important;
+    font-size: 26px !important;
+    letter-spacing: 2px !important;
     line-height: 1.3 !important;
   }
 
-  /* ================= BRAND STRIP MOBILE ================= */
+  /* ===== BRAND STRIP ===== */
   .home-brand-strip {
     padding: 12px 16px !important;
     gap: 20px !important;
     justify-content: center !important;
     background: #111111 !important;
     height: auto !important;
-    min-height: 52px !important;
+    min-height: 50px !important;
     overflow-x: auto !important;
     white-space: nowrap !important;
     display: flex !important;
@@ -953,7 +998,7 @@ body:has(.fpd-site) .footer {
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 34px !important;
+    height: 32px !important;
     width: auto !important;
     min-width: unset !important;
     display: inline-flex !important;
@@ -972,7 +1017,16 @@ body:has(.fpd-site) .footer {
     object-fit: contain !important;
   }
 
-  /* ================= KTC MONITOR SPECS RESPONSIVE ================= */
+  /* ===== CONTENT ===== */
+  .section, .about-container, .page-container {
+    padding: 32px 14px !important;
+  }
+
+  h1 { font-size: 28px !important; }
+  h2 { font-size: 22px !important; }
+  .slider-img { height: 200px !important; }
+
+  /* ===== KTC MONITOR SPECS ===== */
   .ktc-spec-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
@@ -1026,12 +1080,12 @@ body:has(.fpd-site) .footer {
 /* ─── SMALL PHONES (max-width: 480px) ─── */
 @media (max-width: 480px) {
   .header {
-    padding: 8px 12px !important;
-    gap: 8px !important;
+    padding: 8px 12px 6px !important;
+    gap: 4px !important;
   }
 
   .header-logo-img {
-    height: 30px !important;
+    height: 34px !important;
   }
 
   .header nav a,
@@ -1040,30 +1094,33 @@ body:has(.fpd-site) .footer {
   }
 
   .header nav {
-    gap: 8px 10px !important;
+    gap: 6px 10px !important;
   }
 
   .hero {
-    height: 42vh !important;
+    height: 44vh !important;
   }
 
   .hero-overlay {
-    padding: 12px 16px !important;
-    width: 94% !important;
+    padding: 12px 18px !important;
+    width: 92% !important;
+    border-radius: 12px !important;
   }
 
   .hero-overlay h2 {
-    font-size: 20px !important;
-    letter-spacing: 1px !important;
+    font-size: 22px !important;
+    letter-spacing: 1.5px !important;
+    line-height: 1.25 !important;
   }
 
   .home-brand-strip {
     padding: 10px 12px !important;
-    gap: 16px !important;
+    gap: 14px !important;
+    min-height: 44px !important;
   }
 
   .home-brand-strip .brand-logo-button {
-    height: 30px !important;
+    height: 28px !important;
   }
 
   .home-brand-strip .brand-logo-button img {
