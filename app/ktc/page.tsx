@@ -733,6 +733,7 @@ export default function KTCPage() {
   const [showVideo, setShowVideo] = useState<boolean>(false);
 
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
+  const [zoomLevel, setZoomLevel] = useState<number>(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const currentImage = selectedModel?.images?.[currentPhotoIndex] || "";
@@ -784,6 +785,23 @@ export default function KTCPage() {
 
   const resetZoom = () => {
     setZoomStyle({ transformOrigin: "center center", transform: "scale(1)" });
+    setZoomLevel(1);
+  };
+
+  const zoomIn = () => {
+    setZoomLevel((prev) => {
+      const newLevel = Math.min(prev + 0.5, 3);
+      setZoomStyle({ transformOrigin: "center center", transform: `scale(${newLevel})` });
+      return newLevel;
+    });
+  };
+
+  const zoomOut = () => {
+    setZoomLevel((prev) => {
+      const newLevel = Math.max(prev - 0.5, 1);
+      setZoomStyle({ transformOrigin: "center center", transform: `scale(${newLevel})` });
+      return newLevel;
+    });
   };
 
   return (
@@ -897,7 +915,7 @@ export default function KTCPage() {
                         height: "100%", 
                         position: "relative", 
                         ...zoomStyle,
-                        transition: "transform 0.1s ease-out, transform-origin 0.1s ease-out" 
+                        transition: "transform 0.2s ease-out" 
                       }}
                     >
                       <Image 
@@ -940,18 +958,59 @@ export default function KTCPage() {
               )}
             </div>
 
-            <div className="ktc-controls" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5px" }}>
+            <div className="ktc-controls" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5px", flexWrap: "wrap", gap: "10px" }}>
               <div>
                 <span style={{ color: "#666", fontSize: "0.95rem" }}>
                   {currentPhotoIndex + 1} / {selectedModel?.images?.length || 0}
                 </span>
               </div>
 
-              <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 {!showVideo && (
-                  <span style={{ color: "#888", fontSize: "0.85rem" }}>
-                    {"Hover over image to zoom"}
-                  </span>
+                  <>
+                    <span style={{ color: "#888", fontSize: "0.85rem", display: "inline-flex", alignItems: "center" }} className="hover-hint">
+                      {"Hover to zoom"}
+                    </span>
+                    <button 
+                      type="button"
+                      onClick={zoomOut}
+                      disabled={zoomLevel <= 1}
+                      style={{ 
+                        backgroundColor: "#fff", 
+                        color: "#000", 
+                        border: "1px solid #000", 
+                        padding: "6px 14px", 
+                        borderRadius: "6px", 
+                        cursor: zoomLevel <= 1 ? "not-allowed" : "pointer",
+                        fontWeight: "600",
+                        fontSize: "0.9rem",
+                        opacity: zoomLevel <= 1 ? 0.5 : 1
+                      }}
+                      className="zoom-btn-mobile"
+                    >
+                      −
+                    </button>
+                    <span style={{ fontSize: "0.85rem", fontWeight: "600", minWidth: "30px", textAlign: "center" }}>{zoomLevel}x</span>
+                    <button 
+                      type="button"
+                      onClick={zoomIn}
+                      disabled={zoomLevel >= 3}
+                      style={{ 
+                        backgroundColor: "#fff", 
+                        color: "#000", 
+                        border: "1px solid #000", 
+                        padding: "6px 14px", 
+                        borderRadius: "6px", 
+                        cursor: zoomLevel >= 3 ? "not-allowed" : "pointer",
+                        fontWeight: "600",
+                        fontSize: "0.9rem",
+                        opacity: zoomLevel >= 3 ? 0.5 : 1
+                      }}
+                      className="zoom-btn-mobile"
+                    >
+                      +
+                    </button>
+                  </>
                 )}
                 {selectedModel.video && (
                   <button 

@@ -37,16 +37,11 @@ a {
 }
 
 .header-logo-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
+  display: none !important;
 }
 
 .header-logo-img {
-  height: 52px;
-  width: auto;
-  display: block;
-  object-fit: contain;
+  display: none !important;
 }
 
 .header nav {
@@ -69,17 +64,6 @@ a {
 }
 
 /* Main Site Support Dropdown */
-/* HIDE KTC INDIA LOGO FROM HEADER ON ALL PAGES */
-.header-logo-link,
-.header-logo-img {
-  display: none !important;
-}
-
-/* FIX E-WASTE DROPDOWN VISIBILITY ON MOBILE */
-.main-support-menu {
-  z-index: 9999 !important;
-}
-
 .main-support-dropdown {
   position: relative;
 }
@@ -103,7 +87,7 @@ a {
   position: absolute;
   top: calc(100% + 16px);
   right: 0;
-  z-index: 3000;
+  z-index: 9999;
   min-width: 185px;
   padding: 8px 0;
   background: #fefdfb;
@@ -131,7 +115,7 @@ a {
    ========================================================================== */
 .hero {
   position: relative;
-  height: 60vh; /* Reduced to fit homepage in single viewport */
+  height: 65vh; /* Increased for better desktop visual */
 }
 
 .hero-video {
@@ -929,25 +913,18 @@ body:has(.fpd-site) .footer {
     flex-direction: column !important;
   }
 
-  /* ===== HEADER: Clean vertical layout ===== */
+  /* ===== HEADER: Mobile - logo hidden, nav centered ===== */
   .header {
-    padding: 10px 16px 8px !important;
-    flex-direction: column !important;
+    padding: 12px 16px !important;
+    flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 6px !important;
-    position: relative !important;
+    gap: 0 !important;
   }
 
-  .header-logo-link {
-    display: flex !important;
-    justify-content: center !important;
-    width: 100% !important;
-  }
-
+  .header-logo-link,
   .header-logo-img {
-    height: 40px !important;
-    width: auto !important;
+    display: none !important;
   }
 
   .header nav {
@@ -955,7 +932,7 @@ body:has(.fpd-site) .footer {
     display: flex !important;
     flex-wrap: nowrap !important;
     justify-content: center !important;
-    gap: 8px 16px !important;
+    gap: 10px 18px !important;
     padding: 0 !important;
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch;
@@ -972,16 +949,14 @@ body:has(.fpd-site) .footer {
     display: inline-block !important;
   }
 
-  /* Ensure dropdown is visible on mobile */
+  /* Mobile dropdown fix */
   .main-support-menu {
     position: fixed !important;
-    top: 60px !important;
+    top: 80px !important;
     right: 10px !important;
     left: auto !important;
     transform: none !important;
     z-index: 9999 !important;
-    max-height: 80vh !important;
-    overflow-y: auto !important;
   }
 
   /* ===== HERO ===== */
@@ -990,14 +965,14 @@ body:has(.fpd-site) .footer {
   }
 
   .hero-overlay {
-    padding: 16px 24px !important;
-    width: 90% !important;
-    max-width: 420px !important;
+    padding: 18px 28px !important;
+    width: 92% !important;
+    max-width: 480px !important;
     border-radius: 14px !important;
   }
 
   .hero-overlay h2 {
-    font-size: 26px !important;
+    font-size: 28px !important;
     letter-spacing: 2px !important;
     line-height: 1.3 !important;
   }
@@ -1108,16 +1083,16 @@ body:has(.fpd-site) .footer {
   }
 
   .header-logo-img {
-    height: 34px !important;
+    display: none !important;
   }
 
   .header nav a,
   .main-support-button {
-    font-size: 11px !important;
+    font-size: 12px !important;
   }
 
   .header nav {
-    gap: 6px 10px !important;
+    gap: 8px 12px !important;
   }
 
   .hero {
@@ -1156,5 +1131,118 @@ body:has(.fpd-site) .footer {
 
   .footer p {
     font-size: 12px !important;
+  }
+}
+
+/* ==========================================================================
+   ZOOM BUTTONS & MOBILE ENHANCEMENTS
+   ========================================================================== */
+
+/* Show hover hint only on desktop */
+.hover-hint {
+  display: inline-flex !important;
+}
+
+/* Mobile zoom buttons - hidden on desktop by default, shown on mobile */
+.zoom-btn-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  /* Hide hover hint on mobile (no hover) */
+  .hover-hint {
+    display: none !important;
+  }
+
+  /* Show zoom buttons on mobile */
+  .zoom-btn-mobile {
+    display: inline-block !important;
+  }
+
+  /* Make KTC product image bigger on mobile */
+  .ktc-main-media {
+    height: 320px !important;
+    aspect-ratio: auto !important;
+  }
+
+  /* KTC controls wrap better on mobile */
+  .ktc-controls {
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  /* Model selector horizontal scroll on mobile */
+  .ktc-models {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    padding: 0 16px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .ktc-models::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ktc-model-card {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+
+  /* Product info centered on mobile */
+  .ktc-product-info {
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .ktc-product-info h2 {
+    font-size: 36px !important;
+  }
+
+  .ktc-product-summary p {
+    padding-left: 0 !important;
+    border-left: none !important;
+    text-align: center !important;
+  }
+
+  /* Specs single column on mobile */
+  .ktc-spec-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .spec-row {
+    padding: 12px 10px !important;
+    font-size: 14px !important;
+  }
+
+  /* Features 2-col on mobile */
+  .ktc-features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .feature-card {
+    padding: 14px !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ktc-main-media {
+    height: 260px !important;
+  }
+
+  .ktc-product-info h2 {
+    font-size: 30px !important;
+  }
+
+  .ktc-features-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ktc-model-card {
+    padding: 8px 18px !important;
+    font-size: 13px !important;
   }
 }
