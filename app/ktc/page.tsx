@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, MouseEvent, useEffect } from "react";
+import { useState, useRef, MouseEvent, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 interface MonitorModel {
@@ -727,28 +727,131 @@ const monitorModels: MonitorModel[] = [
   },
 ];
 
+const specCategories = [
+  {
+    key: "display",
+    label: "Display",
+    icon: "🖥",
+    keywords: ["Panel", "Resolution", "Pixel", "PPI", "Active Area", "Viewing Angle", "Surface", "Brightness", "Contrast", "Response Time", "Display Colors", "Color Gamut", "Backlight", "Aspect Ratio", "Module Type"],
+  },
+  {
+    key: "connectivity",
+    label: "Connectivity",
+    icon: "🔌",
+    keywords: ["HDMI", "DP Input", "Type-C", "VGA", "USB", "LAN", "Earphone", "Audio"],
+  },
+  {
+    key: "features",
+    label: "Features",
+    icon: "⚡",
+    keywords: ["Low Blue Light", "Flicker Free", "HDR", "MPRT", "KVM", "FreeSync", "G-Sync", "RGB Light", "PIP/PBP", "MCC", "Color Management"],
+  },
+  {
+    key: "power",
+    label: "Power",
+    icon: "🔋",
+    keywords: ["Power Input", "Adapter", "Working Consumption", "Standby Consumption", "Type-C PD"],
+  },
+  {
+    key: "physical",
+    label: "Physical",
+    icon: "📐",
+    keywords: ["Stand", "Tilt", "Swivel", "Pivot", "Height", "Quick Release", "Product Size", "Packing Size", "Weight", "Color", "VESA"],
+  },
+  {
+    key: "box",
+    label: "In The Box",
+    icon: "📦",
+    keywords: ["Accessory", "Warranty Card", "QSG", "UG", "Signal Cable", "Adaptor", "Power Cord", "Screwdriver", "Screw"],
+  },
+  {
+    key: "certification",
+    label: "Certification",
+    icon: "✅",
+    keywords: ["Certification", "Withstand Voltage", "Leakage Current", "Insulation", "Ground Bond", "Max Working Altitude", "Working Condition", "Storage Condition", "Warranty"],
+  },
+];
+
+const featureIcons: Record<string, string> = {
+  "15.6 inch IPS": "🖥",
+  "23.8 inch VA": "🖥",
+  "23.8 inch Fast IPS": "🖥",
+  "27 inch HVA": "🖥",
+  "27 inch Fast IPS": "🖥",
+  "31.5 inch HVA": "🖥",
+  "34 inch UltraWide HVA": "🖥",
+  "1920 x 1080 @ 60Hz": "📺",
+  "1920 x 1080 @ 100Hz": "⚡",
+  "1920 x 1080 @ 240Hz": "🎮",
+  "2560 x 1440 @ 144Hz": "🎮",
+  "2560 x 1440 @ 180Hz": "🎮",
+  "2560 x 1440 @ 185Hz": "🎮",
+  "3440 x 1440 @ 180Hz": "🎮",
+  "300 cd/m2": "☀",
+  "400 cd/m2": "☀",
+  "350 cd/m2": "☀",
+  "Mini HDMI + Type-C": "🔌",
+  "HDMI + VGA": "🔌",
+  "2 x HDMI + 1 x DP": "🔌",
+  "2 x HDMI + 2 x DP": "🔌",
+};
+
+function getHighlights(model: MonitorModel): string[] {
+  const highlights: string[] = [];
+  const specsMap = new Map(model.specs);
+  const res = specsMap.get("Maximum Resolution") || "";
+  if (res.includes("240Hz") || res.includes("180Hz") || res.includes("185Hz") || res.includes("144Hz")) {
+    highlights.push("High Refresh Rate Gaming");
+  }
+  const hdr = specsMap.get("HDR10") || "";
+  if (hdr.includes("Support")) highlights.push("HDR10 Support");
+  const panel = specsMap.get("Panel Type") || "";
+  if (panel) highlights.push(`${panel} Panel`);
+  const warranty = specsMap.get("Warranty Period") || "";
+  if (warranty) highlights.push(`${warranty} Warranty`);
+  const freesync = specsMap.get("FreeSync & G-Sync") || "";
+  if (freesync.includes("Support")) highlights.push("Adaptive Sync");
+  const curved = specsMap.get("Module Type") || "";
+  if (curved.includes("Curved")) highlights.push("Curved Display");
+  return highlights.slice(0, 5);
+}
+
 export default function KTCPage() {
   const [selectedModel, setSelectedModel] = useState<MonitorModel>(monitorModels[0]);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
   const [showVideo, setShowVideo] = useState<boolean>(false);
+  const [isChanging, setIsChanging] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["display"]));
 
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
   const [zoomLevel, setZoomLevel] = useState<number>(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const currentImage = selectedModel?.images?.[currentPhotoIndex] || "";
+  const highlights = getHighlights(selectedModel);
 
-  // Auto-changing images every 2 seconds
   useEffect(() => {
     if (showVideo || !selectedModel?.images?.length) return;
-
     const interval = setInterval(() => {
       resetZoom();
       setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % selectedModel.images.length);
     }, 10000);
-
     return () => clearInterval(interval);
   }, [showVideo, selectedModel]);
+
+  const handleModelChange = useCallback((model: MonitorModel) => {
+    if (model.name === selectedModel.name) return;
+    setIsChanging(true);
+    setTimeout(() => {
+      setSelectedModel(model);
+      setCurrentPhotoIndex(0);
+      setShowVideo(false);
+      resetZoom();
+      setExpandedSections(new Set(["display"]));
+      setIsChanging(false);
+    }, 300);
+  }, [selectedModel.name]);
 
   const nextPhoto = () => {
     resetZoom();
@@ -766,20 +869,17 @@ export default function KTCPage() {
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current || showVideo) return;
-
     const target = e.target as HTMLElement;
     if (target.closest(".side-nav-bar")) {
       resetZoom();
       return;
     }
-
     const { left, top, width, height } = containerRef.current.getBoundingClientRect();
     const x = ((e.clientX - left) / width) * 100;
     const y = ((e.clientY - top) / height) * 100;
-
     setZoomStyle({
       transformOrigin: `${x}% ${y}%`,
-      transform: "scale(2)"
+      transform: "scale(2)",
     });
   };
 
@@ -804,250 +904,247 @@ export default function KTCPage() {
     });
   };
 
+  const toggleSection = (key: string) => {
+    setExpandedSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
+
+  const categorizedSpecs = specCategories.map((cat) => ({
+    ...cat,
+    items: selectedModel.specs.filter(([label]) =>
+      cat.keywords.some((kw) => label.toLowerCase().includes(kw.toLowerCase()))
+    ),
+  })).filter((cat) => cat.items.length > 0);
+
+  const categorizedLabels = new Set(categorizedSpecs.flatMap((c) => c.items.map((i) => i[0])));
+  const uncategorized = selectedModel.specs.filter(([label]) => !categorizedLabels.has(label));
+
   return (
-    <main className="ktc-page" style={{ backgroundColor: "#faf9f6", color: "#000", minHeight: "100vh", padding: "40px 20px" }}>
-      <section className="ktc-hero" style={{ marginBottom: "40px", textAlign: "center" }}>
-        <h1 style={{ fontSize: "2.5rem", fontWeight: "700", letterSpacing: "1px", marginBottom: "10px" }}>{"KTC Monitors"}</h1>
-        <p style={{ color: "#666" }}>{"Premium display technology with professional specifications."}</p>
-      </section>
+    <main className="ktc-page">
+      {mobileMenuOpen && (
+        <div className="mobile-menu-overlay" onClick={() => setMobileMenuOpen(false)}>
+          <div className="mobile-menu-drawer" onClick={(e) => e.stopPropagation()}>
+            <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+            <nav className="mobile-menu-nav">
+              <a href="/" onClick={() => setMobileMenuOpen(false)}>Home</a>
+              <a href="/about" onClick={() => setMobileMenuOpen(false)}>About Us</a>
+              <a href="/leadership" onClick={() => setMobileMenuOpen(false)}>Leadership</a>
+              <a href="/showroom" onClick={() => setMobileMenuOpen(false)}>Showroom</a>
+              <a href="/support" onClick={() => setMobileMenuOpen(false)}>Support</a>
+              <a href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact Us</a>
+            </nav>
+          </div>
+        </div>
+      )}
 
-      <section className="ktc-models" style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "40px", justifyContent: "center" }}>
-        {monitorModels.map((model) => (
+      <header className="ktc-header">
+        <div className="ktc-header-inner">
+          <a href="/" className="ktc-logo">
+            <span className="ktc-logo-text">KTC</span>
+          </a>
+          <nav className="ktc-header-nav desktop-only">
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/leadership">Leadership</a>
+            <a href="/showroom">Showroom</a>
+            <a href="/support">Support</a>
+            <a href="/contact">Contact Us</a>
+          </nav>
           <button
-            key={model.name}
-            className={`ktc-model-card ${selectedModel.name === model.name ? "active" : ""}`}
-            onClick={() => {
-              setSelectedModel(model);
-              setCurrentPhotoIndex(0);
-              setShowVideo(false);
-              resetZoom();
-            }}
-            style={{
-              padding: "10px 24px",
-              backgroundColor: selectedModel.name === model.name ? "#000" : "#fff",
-              color: selectedModel.name === model.name ? "#fff" : "#000",
-              border: "1px solid #ddd",
-              borderRadius: "25px",
-              cursor: "pointer",
-              fontWeight: "600",
-              transition: "all 0.3s ease"
-            }}
+            className="ktc-hamburger mobile-only"
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Open menu"
           >
-            {model.name}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
           </button>
-        ))}
+        </div>
+      </header>
+
+      <section className="ktc-hero">
+        <div className="ktc-hero-content">
+          <h1>KTC Monitors</h1>
+          <p>Premium display technology with professional specifications.</p>
+        </div>
       </section>
 
-      <section className="ktc-details" style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="ktc-product-top" style={{ display: "flex", flexWrap: "wrap", gap: "40px", alignItems: "center", marginBottom: "60px" }}>
+      <section className="ktc-model-selector">
+        <div className="ktc-model-scroll">
+          {monitorModels.map((model) => (
+            <button
+              key={model.name}
+              className={`ktc-model-chip ${selectedModel.name === model.name ? "active" : ""}`}
+              onClick={() => handleModelChange(model)}
+            >
+              {model.name}
+            </button>
+          ))}
+        </div>
+      </section>
 
-          <div className="ktc-product-info" style={{ flex: "1 1 300px", minWidth: "280px" }}>
-            <h2 style={{ fontSize: "4.5rem", fontWeight: "800", marginBottom: "20px", letterSpacing: "-1px" }}>{selectedModel.name}</h2>
-            <div className="ktc-product-summary" style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-              {selectedModel.summary.map((item, i) => (
-                <p key={i} style={{ color: "#333", fontSize: "1.25rem", fontWeight: "600", margin: 0, paddingLeft: "15px", borderLeft: "3px solid #000" }}>{item}</p>
-              ))}
-            </div>
+      <section className={`ktc-product-section ${isChanging ? "fade-out" : "fade-in"}`}>
+        <div className="ktc-media-container">
+          <div
+            ref={containerRef}
+            className="ktc-main-media"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={resetZoom}
+          >
+            {showVideo && selectedModel.video ? (
+              <video
+                autoPlay
+                controls
+                muted
+                playsInline
+                className="ktc-video-player"
+                src={selectedModel.video}
+              />
+            ) : (
+              currentImage && (
+                <>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
+                    className="side-nav-bar side-nav-left"
+                    aria-label="Previous image"
+                  >
+                    <span className="nav-arrow-circle">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 19l-7-7 7-7"/></svg>
+                    </span>
+                  </button>
+
+                  <div className="ktc-image-zoom-wrapper" style={{ ...zoomStyle, transition: "transform 0.2s ease-out" }}>
+                    <Image
+                      src={currentImage}
+                      alt={selectedModel.name}
+                      fill
+                      sizes="(max-width: 1200px) 100vw, 800px"
+                      className="ktc-monitor-image"
+                      priority
+                    />
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
+                    className="side-nav-bar side-nav-right"
+                    aria-label="Next image"
+                  >
+                    <span className="nav-arrow-circle">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 5l7 7-7 7"/></svg>
+                    </span>
+                  </button>
+                </>
+              )
+            )}
           </div>
 
-          <div className="ktc-media-container" style={{ flex: "1.5 1 500px", display: "flex", flexDirection: "column", gap: "20px" }}>
-            <div 
-              ref={containerRef}
-              className="ktc-main-media" 
-              onMouseMove={handleMouseMove}
-              onMouseLeave={resetZoom}
-              style={{ 
-                backgroundColor: "#fff", 
-                border: "1px solid #ccc",
-                borderRadius: "16px", 
-                overflow: "hidden", 
-                position: "relative",
-                aspectRatio: "16/10",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                cursor: showVideo ? "default" : "zoom-in"
-              }}
-            >
-              {showVideo && selectedModel.video ? (
-                <video 
-                  autoPlay 
-                  controls 
-                  muted 
-                  playsInline
-                  className="ktc-video-player" 
-                  src={selectedModel.video} 
-                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                />
-              ) : (
-                currentImage && (
-                  <>
-                    {/* Transparent Left Click Area */}
-                    <button
-                      type="button"
-                      onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
-                      className="side-nav-bar"
-                      aria-label="Previous image"
-                      style={{
-                        position: "absolute",
-                        left: 0,
-                        top: 0,
-                        bottom: 0,
-                        width: "60px",
-                        zIndex: 10,
-                        backgroundColor: "transparent",
-                        border: "none",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer"
-                      }}
-                    >
-                      <span style={{ backgroundColor: "rgba(0,0,0,0.6)", color: "#fff", borderRadius: "50%", width: "36px", height: "36px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 19l-7-7 7-7"/></svg>
-                      </span>
-                    </button>
+          <div className="ktc-thumbnail-row">
+            {selectedModel.images.map((img, idx) => (
+              <button
+                key={idx}
+                className={`ktc-thumbnail ${currentPhotoIndex === idx ? "active" : ""}`}
+                onClick={() => { resetZoom(); setCurrentPhotoIndex(idx); setShowVideo(false); }}
+                aria-label={`View image ${idx + 1}`}
+              >
+                <Image src={img} alt={`${selectedModel.name} view ${idx + 1}`} fill sizes="80px" className="ktc-thumb-img" />
+              </button>
+            ))}
+            {selectedModel.video && (
+              <button
+                className={`ktc-thumbnail video-thumb ${showVideo ? "active" : ""}`}
+                onClick={() => { setShowVideo(!showVideo); resetZoom(); }}
+                aria-label="Play video"
+              >
+                <span className="video-play-icon">▶</span>
+                <span className="video-label">Video</span>
+              </button>
+            )}
+          </div>
 
-                    <div 
-                      style={{ 
-                        width: "100%", 
-                        height: "100%", 
-                        position: "relative", 
-                        ...zoomStyle,
-                        transition: "transform 0.2s ease-out" 
-                      }}
-                    >
-                      <Image 
-                        src={currentImage} 
-                        alt={selectedModel.name} 
-                        fill
-                        sizes="(max-width: 1200px) 100vw, 800px"
-                        style={{ objectFit: "contain", padding: "40px" }}
-                        priority 
-                      />
-                    </div>
-
-                    {/* Transparent Right Click Area */}
-                    <button
-                      type="button"
-                      onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
-                      className="side-nav-bar"
-                      aria-label="Next image"
-                      style={{
-                        position: "absolute",
-                        right: 0,
-                        top: 0,
-                        bottom: 0,
-                        width: "60px",
-                        zIndex: 10,
-                        backgroundColor: "transparent",
-                        border: "none",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer"
-                      }}
-                    >
-                      <span style={{ backgroundColor: "rgba(0,0,0,0.6)", color: "#fff", borderRadius: "50%", width: "36px", height: "36px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 5l7 7-7 7"/></svg>
-                      </span>
-                    </button>
-                  </>
-                )
-              )}
-            </div>
-
-            <div className="ktc-controls" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5px", flexWrap: "wrap", gap: "10px" }}>
-              <div>
-                <span style={{ color: "#666", fontSize: "0.95rem" }}>
-                  {currentPhotoIndex + 1} / {selectedModel?.images?.length || 0}
-                </span>
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                {!showVideo && (
-                  <>
-                    <span style={{ color: "#888", fontSize: "0.85rem", display: "inline-flex", alignItems: "center" }} className="hover-hint">
-                      {"Hover to zoom"}
-                    </span>
-                    <button 
-                      type="button"
-                      onClick={zoomOut}
-                      disabled={zoomLevel <= 1}
-                      style={{ 
-                        backgroundColor: "#fff", 
-                        color: "#000", 
-                        border: "1px solid #000", 
-                        padding: "6px 14px", 
-                        borderRadius: "6px", 
-                        cursor: zoomLevel <= 1 ? "not-allowed" : "pointer",
-                        fontWeight: "600",
-                        fontSize: "0.9rem",
-                        opacity: zoomLevel <= 1 ? 0.5 : 1
-                      }}
-                      className="zoom-btn-mobile"
-                    >
-                      −
-                    </button>
-                    <span style={{ fontSize: "0.85rem", fontWeight: "600", minWidth: "30px", textAlign: "center" }}>{zoomLevel}x</span>
-                    <button 
-                      type="button"
-                      onClick={zoomIn}
-                      disabled={zoomLevel >= 3}
-                      style={{ 
-                        backgroundColor: "#fff", 
-                        color: "#000", 
-                        border: "1px solid #000", 
-                        padding: "6px 14px", 
-                        borderRadius: "6px", 
-                        cursor: zoomLevel >= 3 ? "not-allowed" : "pointer",
-                        fontWeight: "600",
-                        fontSize: "0.9rem",
-                        opacity: zoomLevel >= 3 ? 0.5 : 1
-                      }}
-                      className="zoom-btn-mobile"
-                    >
-                      +
-                    </button>
-                  </>
-                )}
-                {selectedModel.video && (
-                  <button 
-                    type="button"
-                    onClick={() => {
-                      setShowVideo(!showVideo);
-                      resetZoom();
-                    }} 
-                    style={{ 
-                      backgroundColor: "#000", 
-                      color: "#fff", 
-                      border: "1px solid #000", 
-                      padding: "8px 20px", 
-                      borderRadius: "6px", 
-                      cursor: "pointer",
-                      fontWeight: "600",
-                      fontSize: "0.9rem"
-                    }}
-                  >
-                    {showVideo ? "Show Photos" : "Watch Video"}
-                  </button>
-                )}
-              </div>
+          <div className="ktc-controls">
+            <span className="photo-counter">{currentPhotoIndex + 1} / {selectedModel?.images?.length || 0}</span>
+            <div className="ktc-zoom-controls">
+              <span className="hover-hint desktop-only">Hover to zoom</span>
+              <button type="button" onClick={zoomOut} disabled={zoomLevel <= 1} className="zoom-btn">−</button>
+              <span className="zoom-level">{zoomLevel}x</span>
+              <button type="button" onClick={zoomIn} disabled={zoomLevel >= 3} className="zoom-btn">+</button>
             </div>
           </div>
         </div>
 
-        <div className="ktc-specs-section" style={{ borderTop: "1px solid #ddd", paddingTop: "40px" }}>
-          <h3 style={{ fontSize: "1.8rem", fontWeight: "700", marginBottom: "30px" }}>{"Detailed Specifications"}</h3>
-          <div className="ktc-spec-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(450px, 1fr))", gap: "0 40px" }}>
-            {selectedModel.specs.map(([label, value], index) => (
-              <div key={index} className="spec-row" style={{ display: "flex", justifyContent: "space-between", padding: "14px 0", borderBottom: "1px solid #eee", fontSize: "0.95rem" }}>
-                <div className="spec-label" style={{ color: "#666", fontWeight: "500" }}>{label}</div>
-                <div className="spec-value" style={{ color: "#000", textAlign: "right", paddingLeft: "20px" }}>{value}</div>
+        <div className="ktc-product-info">
+          <h2 className="ktc-model-name">{selectedModel.name}</h2>
+
+          <div className="ktc-highlights">
+            {highlights.map((h, i) => (
+              <span key={i} className="ktc-highlight-tag">{h}</span>
+            ))}
+          </div>
+
+          <div className="ktc-feature-cards">
+            {selectedModel.summary.map((item, i) => (
+              <div key={i} className="ktc-feature-card">
+                <span className="feature-icon">{featureIcons[item] || "✦"}</span>
+                <span className="feature-text">{item}</span>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="ktc-specs-section">
+        <h3 className="ktc-specs-title">Detailed Specifications</h3>
+        <div className="ktc-specs-accordion">
+          {categorizedSpecs.map((cat) => (
+            <div key={cat.key} className={`ktc-spec-category ${expandedSections.has(cat.key) ? "expanded" : ""}`}>
+              <button
+                className="ktc-spec-category-header"
+                onClick={() => toggleSection(cat.key)}
+                aria-expanded={expandedSections.has(cat.key)}
+              >
+                <span className="spec-cat-icon">{cat.icon}</span>
+                <span className="spec-cat-label">{cat.label}</span>
+                <span className="spec-cat-count">{cat.items.length}</span>
+                <svg className="spec-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div className="ktc-spec-category-body">
+                {cat.items.map(([label, value], idx) => (
+                  <div key={idx} className="spec-row">
+                    <div className="spec-label">{label}</div>
+                    <div className="spec-value">{value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          {uncategorized.length > 0 && (
+            <div className={`ktc-spec-category ${expandedSections.has("other") ? "expanded" : ""}`}>
+              <button
+                className="ktc-spec-category-header"
+                onClick={() => toggleSection("other")}
+                aria-expanded={expandedSections.has("other")}
+              >
+                <span className="spec-cat-icon">📋</span>
+                <span className="spec-cat-label">Other</span>
+                <span className="spec-cat-count">{uncategorized.length}</span>
+                <svg className="spec-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div className="ktc-spec-category-body">
+                {uncategorized.map(([label, value], idx) => (
+                  <div key={idx} className="spec-row">
+                    <div className="spec-label">{label}</div>
+                    <div className="spec-value">{value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </main>
