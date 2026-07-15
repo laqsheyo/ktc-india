@@ -1,1110 +1,1373 @@
-"use client";
+/* ==========================================================================
+   GLOBALS.CSS - KTC INDIA
+   Desktop design RESTORED. Mobile fixed. KTC styles added.
+   ========================================================================== */
 
-import { useState, useRef, MouseEvent, useEffect, useCallback } from "react";
-import Image from "next/image";
-
-interface MonitorModel {
-  name: string;
-  images: string[];
-  video?: string;
-  summary: string[];
-  specs: [string, string][];
+/* ==========================================================================
+   1. RESET & BASE
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-const monitorModels: MonitorModel[] = [
-  {
-    name: "H15F9",
-    images: [
-      "/images/ktc/h15f9/A (1).jpg",
-      "/images/ktc/h15f9/A (2).jpg",
-      "/images/ktc/h15f9/A (3).jpg",
-      "/images/ktc/h15f9/A (4).jpg",
-      "/images/ktc/h15f9/A (5).jpg",
-    ],
-    video: "/videos/ktc/h15f9.mp4",
-    summary: ["15.6 inch IPS", "1920 x 1080 @ 60Hz", "300 cd/m2", "Mini HDMI + Type-C"],
-    specs: [
-      ["Model Name", "H15F9"],
-      ["Stand Model", "Rotary Support Square Plastic Fixed Base"],
-      ["Tilt", "0° - 90°"],
-      ["Swivel", "N/A"],
-      ["Pivot", "N/A"],
-      ["Height Adjust", "N/A"],
-      ["Quick Release", "N/A"],
-      ["Product Size Without Base", "358.646 x 222.876 x 11.8 mm"],
-      ["Product Size With Base", "N/A"],
-      ["Packing Size", "414 x 263 x 55 mm"],
-      ["Gross Weight", "TBD / 13 KG (12-in-1 box)"],
-      ["Net Weight With Stand", "600 g"],
-      ["Color", "Black"],
-      ["VESA / Screw", "N/A"],
-      ["Panel Supplier", "Goodstar"],
-      ["Panel Model", "LCM156CS0174D"],
-      ["Panel Size", "15.6 inch"],
-      ["Panel Type", "IPS"],
-      ["Module Type", "Flat"],
-      ["Aspect Ratio", "16:9"],
-      ["Backlight Type", "ELED"],
-      ["Maximum Resolution", "1920 x 1080 @ 60Hz"],
-      ["Pixel Pitch", "0.17925(H) x 0.17925(V)"],
-      ["PPI", "141"],
-      ["Active Area", "344.16(H) x 193.59(V)"],
-      ["Viewing Angle", "±89° (H), ±89° (V) (Typ.)"],
-      ["Surface Treatment", "Anti-Glare"],
-      ["Brightness", "300 cd/m² (Typ.)"],
-      ["Contrast", "1000:1 (Typ.)"],
-      ["Response Time (Panel)", "20 ms"],
-      ["Response Time (with OD)", "TBD"],
-      ["Display Colors", "16.7M (6bit + 2FRC)"],
-      ["NTSC Color Gamut", "44% Coverage, 44% Volume"],
-      ["Adobe RGB Color Gamut", "40% Coverage, 40% Volume"],
-      ["DCI-P3 Color Gamut", "37% Coverage, 37% Volume"],
-      ["sRGB Color Gamut", "61% Coverage, 62% Volume"],
-      ["Backlight Control", "DC"],
-      ["Mainboard Model", "RTD2525BE"],
-      ["HDMI Input", "1 x Mini HDMI (1920x1080@60Hz)"],
-      ["DP Input", "N/A"],
-      ["Type-C Input", "2 x Type-C (1920x1080@60Hz)"],
-      ["VGA Input", "N/A"],
-      ["USB 3.0 Upstream", "N/A"],
-      ["USB 3.0 Downstream", "N/A"],
-      ["LAN (RJ45)", "N/A"],
-      ["USB 2.0", "N/A"],
-      ["Earphone Output", "x1"],
-      ["Low Blue Light", "N/A"],
-      ["Flicker Free", "Support"],
-      ["HDR10", "Support"],
-      ["MPRT", "Nonsupport"],
-      ["KVM", "Nonsupport"],
-      ["FreeSync & G-Sync", "Support"],
-      ["RGB Light", "Nonsupport"],
-      ["PIP/PBP", "Nonsupport"],
-      ["MCC PC Client", "Nonsupport"],
-      ["Color Management", "Nonsupport"],
-      ["Power Input", "DC 12V / 1A"],
-      ["Adapter Input Voltage", "N/A"],
-      ["Working Consumption", "12W"],
-      ["Standby Consumption", "≤0.5W"],
-      ["Type-C PD Power", "N/A"],
-      ["Audio", "2 x 0.8W"],
-      ["Monitor (Accessory)", "1 PCS"],
-      ["Base (Accessory)", "N/A"],
-      ["Warranty Card", "In UG"],
-      ["QSG", "In UG"],
-      ["UG", "1 PCS"],
-      ["Signal Cable", "2 PCS (HDMI to Mini HDMI x1, Type-C x1)"],
-      ["Adaptor", "N/A"],
-      ["Power Cord", "Use Type-C"],
-      ["Screwdriver", "N/A"],
-      ["Screw", "N/A"],
-      ["Withstand Voltage", "≤10mA @ 2.5KV DC / 60S"],
-      ["Leakage Current", "≤0.35mA @ 264V AC / 60S"],
-      ["Insulation Resistance", "N/A"],
-      ["Ground Bond Test", "N/A"],
-      ["EMC Certification", "FCC / CE"],
-      ["Energy Certification", "ERP (small size, no CEC)"],
-      ["AMD FreeSync Cert", "N/A"],
-      ["VESA DisplayHDR", "N/A"],
-      ["TÜV Low Blue Light", "N/A"],
-      ["DP Certification", "N/A"],
-      ["HDMI Certification", "Yes"],
-      ["Max Working Altitude", "< 5000 m"],
-      ["Working Condition", "Temp: 0°C~40°C, Humidity: 30%~90% Non-condensing"],
-      ["Storage Condition", "Temp: -20°C~55°C, Humidity: 20%~93% Non-condensing"],
-      ["Warranty Period", "1 Year"],
-    ],
-  },
-  {
-    name: "H24V27",
-    images: [
-      "/images/ktc/H24V27/A (1).png",
-      "/images/ktc/H24V27/A (2).png",
-      "/images/ktc/H24V27/A (3).png",
-      "/images/ktc/H24V27/A (4).png",
-      "/images/ktc/H24V27/A (5).png",
-    ],
-    summary: ["23.8 inch VA", "1920 x 1080 @ 100Hz", "300 cd/m2", "HDMI + VGA"],
-    specs: [
-      ["Model Name", "H24V27"],
-      ["Stand Model", "BCEC-24 Rotary Support Square Plastic Fixed Base"],
-      ["Tilt", "-5° ~ 15°"],
-      ["Swivel", "N/A"],
-      ["Pivot", "N/A"],
-      ["Height Adjust", "N/A"],
-      ["Quick Release", "N/A"],
-      ["Product Size Without Base", "540 x 319 x 46 mm"],
-      ["Product Size With Base", "540 x 405 x 183 mm"],
-      ["Packing Size", "620 x 115 x 475 mm"],
-      ["Gross Weight", "4.0 kg"],
-      ["Net Weight With Stand", "2.8 kg with stand / 2.4 kg without stand"],
-      ["Color", "Black"],
-      ["VESA / Screw", "100mm x 100mm"],
-      ["Panel Supplier", "CSOT"],
-      ["Panel Model", "SG2381B01-1"],
-      ["Panel Size", "23.8 inch"],
-      ["Panel Type", "VA"],
-      ["Module Type", "Flat"],
-      ["Aspect Ratio", "16:9"],
-      ["Backlight Type", "ELED"],
-      ["Maximum Resolution", "1920 x 1080 @ 100Hz"],
-      ["Pixel Pitch", "0.2745(H) x 0.2745(V) mm"],
-      ["PPI", "93"],
-      ["Active Area", "527.04(H) x 296.46(V) mm"],
-      ["Viewing Angle", "H: 178°, V: 178° (CR≥10)"],
-      ["Surface Treatment", "AG25%"],
-      ["Brightness", "300 cd/m² (Typ.)"],
-      ["Contrast", "4000:1 (Typ.)"],
-      ["Response Time (Panel)", "16 ms (typ)"],
-      ["Response Time (with OD)", "5 ms"],
-      ["Display Colors", "16.7M (8-bit)"],
-      ["NTSC Color Gamut", "72% CIE1976 Volume, 71% CIE1976 Coverage"],
-      ["Adobe RGB Color Gamut", "82% CIE1976 Volume, 82% CIE1976 Coverage"],
-      ["DCI-P3 Color Gamut", "77% CIE1976 Volume, 77% CIE1976 Coverage"],
-      ["sRGB Color Gamut", "103% CIE1931 Volume, 97% CIE1931 Coverage"],
-      ["Backlight Control", "DC"],
-      ["Mainboard Model", "MS6210BN M71E"],
-      ["HDMI Input", "1 x HDMI 1.4 (1920x1080@100Hz)"],
-      ["DP Input", "N/A"],
-      ["Type-C Input", "N/A"],
-      ["VGA Input", "1 x VGA (1920x1080@75Hz)"],
-      ["USB 3.0 Upstream", "N/A"],
-      ["USB 3.0 Downstream", "N/A"],
-      ["LAN (RJ45)", "N/A"],
-      ["USB 2.0", "N/A"],
-      ["Earphone Output", "N/A"],
-      ["Low Blue Light", "Support (Software LBL)"],
-      ["Flicker Free", "Support"],
-      ["HDR10", "Support"],
-      ["MPRT", "Nonsupport"],
-      ["KVM", "Nonsupport"],
-      ["FreeSync & G-Sync", "Nonsupport"],
-      ["RGB Light", "Nonsupport"],
-      ["PIP/PBP", "Nonsupport"],
-      ["MCC PC Client", "Nonsupport"],
-      ["Color Management", "N/A"],
-      ["Power Input", "DC 12V / 2A"],
-      ["Adapter Input Voltage", "100V ~ 240V AC, 50/60 Hz"],
-      ["Working Consumption", "≤24W"],
-      ["Standby Consumption", "≤0.5W"],
-      ["Type-C PD Power", "N/A"],
-      ["Audio", "N/A"],
-      ["Monitor (Accessory)", "1 PCS"],
-      ["Base (Accessory)", "1 PCS"],
-      ["Warranty Card", "In UG"],
-      ["QSG", "1 PCS"],
-      ["UG", "N/A"],
-      ["Signal Cable", "1 PCS (HDMI Cable)"],
-      ["Adaptor", "1 PCS"],
-      ["Power Cord", "N/A"],
-      ["Screwdriver", "N/A"],
-      ["Screw", "N/A"],
-      ["Withstand Voltage", "≤10mA @ 3.0KV AC / 60S"],
-      ["Leakage Current", "≤0.35mA @ 264V AC / 60S"],
-      ["Insulation Resistance", "≥4 MΩ @ 0.5KV DC / 5S"],
-      ["Ground Bond Test", "N/A"],
-      ["EMC Certification", "Yes"],
-      ["Energy Certification", "/"],
-      ["AMD FreeSync Cert", "N/A"],
-      ["VESA DisplayHDR", "N/A"],
-      ["TÜV Low Blue Light", "N/A"],
-      ["DP Certification", "N/A"],
-      ["HDMI Certification", "Yes"],
-      ["Max Working Altitude", "≤5000m"],
-      ["Working Condition", "Temp: 0°C~40°C, Humidity: 30%~90% Non-condensing"],
-      ["Storage Condition", "Temp: -20°C~55°C, Humidity: 20%~93% Non-condensing"],
-      ["Warranty Period", "3 Year"],
-    ],
-  },
-  {
-    name: "H24F7",
-    images: [
-      "/images/ktc/H24F7/A (1).png",
-      "/images/ktc/H24F7/A (2).png",
-      "/images/ktc/H24F7/A (3).png",
-      "/images/ktc/H24F7/A (4).png",
-      "/images/ktc/H24F7/A (5).png",
-    ],
-    video: "/videos/ktc/H24F7.mp4",
-    summary: ["23.8 inch Fast IPS", "1920 x 1080 @ 240Hz", "400 cd/m2", "2 x HDMI + 1 x DP"],
-    specs: [
-      ["Model Name", "H24F7"],
-      ["Stand Model", "BCEE-24 Trapezoidal Metal Base"],
-      ["Tilt", "-5° ~ 15° (±3°)"],
-      ["Swivel", "N/A"],
-      ["Pivot", "N/A"],
-      ["Height Adjust", "N/A"],
-      ["Quick Release", "N/A"],
-      ["Product Size Without Base", "540 x 321 x 48 mm"],
-      ["Product Size With Base", "540 x 400 x 137 mm"],
-      ["Packing Size", "620 x 115 x 475 mm"],
-      ["Gross Weight", "4.4 Kg"],
-      ["Net Weight With Stand", "3.2 Kg"],
-      ["Color", "Front frame: White / Rear cover: White"],
-      ["VESA / Screw", "100mm x 100mm, M4x8-12mm"],
-      ["Panel Supplier", "BOE"],
-      ["Panel Model", "MV238FHB-NF7"],
-      ["Panel Size", "23.8 inch Diagonal"],
-      ["Panel Type", "Fast IPS"],
-      ["Module Type", "Flat"],
-      ["Aspect Ratio", "16:9"],
-      ["Backlight Type", "ELED"],
-      ["Maximum Resolution", "1920 x 1080 @ 240Hz"],
-      ["Pixel Pitch", "0.2745(H) x 0.2745(V) mm"],
-      ["PPI", "93"],
-      ["Active Area", "527.04(H) x 296.46(V) mm"],
-      ["Viewing Angle", "±89° (H), ±89° (V) (Typ.) (CR≥10)"],
-      ["Surface Treatment", "Haze 25%, Hard Coating (3H)"],
-      ["Brightness", "Typ: 400 cd/m²; Min: 350 cd/m²"],
-      ["Contrast", "1000:1 (Typ.)"],
-      ["Response Time (Panel)", "5 ms (Typ.)"],
-      ["Response Time (with OD)", "2 ms"],
-      ["Display Colors", "16.7M (8-bit)"],
-      ["NTSC Color Gamut", "78% Coverage, 83% Area (±5%)"],
-      ["Adobe RGB Color Gamut", "91% Coverage, 99% Area (±5%)"],
-      ["DCI-P3 Color Gamut", "91% Coverage, 92% Area (±5%)"],
-      ["sRGB Color Gamut", "99% Coverage, 116% Area (±5%)"],
-      ["Backlight Control", "DC"],
-      ["Mainboard Model", "MT9800BTFUDG-KM2H"],
-      ["HDMI Input", "2 x HDMI 2.0 (1920x1080@240Hz)"],
-      ["DP Input", "1 x DP 1.4 (1920x1080@240Hz)"],
-      ["Type-C Input", "N/A"],
-      ["VGA Input", "N/A"],
-      ["USB 3.0 Upstream", "N/A"],
-      ["USB 3.0 Downstream", "N/A"],
-      ["LAN (RJ45)", "N/A"],
-      ["USB 2.0", "1 x (Upgrade only)"],
-      ["Earphone Output", "x1"],
-      ["Low Blue Light", "Support (Hardware LBL)"],
-      ["Flicker Free", "Support"],
-      ["HDR10", "Support"],
-      ["MPRT", "Support"],
-      ["KVM", "Nonsupport"],
-      ["FreeSync & G-Sync", "Support"],
-      ["RGB Light", "Nonsupport"],
-      ["PIP/PBP", "Nonsupport"],
-      ["MCC PC Client", "Nonsupport"],
-      ["Color Management", "YES (sRGB), ΔE<2"],
-      ["Power Input", "DC 12V / 3A"],
-      ["Adapter Input Voltage", "100V ~ 240V AC, 50/60 Hz"],
-      ["Working Consumption", "≤36W"],
-      ["Standby Consumption", "≤0.5W"],
-      ["Type-C PD Power", "N/A"],
-      ["Audio", "N/A"],
-      ["Monitor (Accessory)", "1 PCS"],
-      ["Base (Accessory)", "1 PCS"],
-      ["Warranty Card", "In QSG"],
-      ["QSG", "1 PCS"],
-      ["UG", "In QSG"],
-      ["Signal Cable", "1 PCS (HDMI Cable)"],
-      ["Adaptor", "1 PCS"],
-      ["Power Cord", "N/A"],
-      ["Screwdriver", "1 PCS"],
-      ["Screw", "2 PCS"],
-      ["Withstand Voltage", "≤10mA @ 3.0KV AC / 60S"],
-      ["Leakage Current", "≤0.35mA @ 264V AC / 60S"],
-      ["Insulation Resistance", "≥4 MΩ @ 0.5KV DC / 5S"],
-      ["Ground Bond Test", "N/A"],
-      ["EMC Certification", "FCC, CE"],
-      ["Energy Certification", "ERP, CEC"],
-      ["AMD FreeSync Cert", "N/A"],
-      ["VESA DisplayHDR", "N/A"],
-      ["TÜV Low Blue Light", "N/A"],
-      ["DP Certification", "N/A"],
-      ["HDMI Certification", "Yes"],
-      ["Max Working Altitude", "< 5000 m"],
-      ["Working Condition", "Temp: 0°C~40°C, Humidity: 30%~90% Non-condensing"],
-      ["Storage Condition", "Temp: -20°C~55°C, Humidity: 20%~93% Non-condensing"],
-      ["Warranty Period", "3 Year"],
-    ],
-  },
-  {
-    name: "H27T27S",
-    images: [
-      "/images/ktc/H27T27S/A (1).png",
-      "/images/ktc/H27T27S/A (2).png",
-      "/images/ktc/H27T27S/A (3).png",
-      "/images/ktc/H27T27S/A (4).png",
-      "/images/ktc/H27T27S/A (5).png",
-    ],
-    video: "/videos/ktc/H27T22.mp4",
-    summary: ["27 inch HVA", "2560 x 1440 @ 144Hz", "300 cd/m2", "2 x HDMI + 1 x DP"],
-    specs: [
-      ["Model Name", "H27T27S"],
-      ["Stand Model", "BCES-27 Square Fixed Base"],
-      ["Tilt", "-5° ~ 15° (±3°)"],
-      ["Swivel", "N/A"],
-      ["Pivot", "N/A"],
-      ["Height Adjust", "N/A"],
-      ["Quick Release", "Yes"],
-      ["Product Size Without Base", "616 x 364 x 46 mm"],
-      ["Product Size With Base", "616 x 450 x 191 mm"],
-      ["Packing Size", "690 x 465 x 130 mm"],
-      ["Gross Weight", "5.5 kg"],
-      ["Net Weight With Stand", "4.3 kg (with stand)"],
-      ["Color", "Front frame: Black / Rear cover: Black"],
-      ["VESA / Screw", "100mm x 100mm, M4x8"],
-      ["Panel Supplier", "CSOT"],
-      ["Panel Model", "SG270AG04-4"],
-      ["Panel Size", "27 inch Diagonal"],
-      ["Panel Type", "HVA"],
-      ["Module Type", "Flat"],
-      ["Aspect Ratio", "16:9"],
-      ["Backlight Type", "ELED"],
-      ["Maximum Resolution", "2560 x 1440 @ 144Hz"],
-      ["Pixel Pitch", "0.0777(H) x 0.2331(V) mm"],
-      ["PPI", "109"],
-      ["Active Area", "596.736 x 335.664 mm"],
-      ["Viewing Angle", "±89° (H), ±89° (V) (Typ.)"],
-      ["Surface Treatment", "Anti-glare, AG25%, Hard Coating (3H)"],
-      ["Brightness", "300 cd/m² (typ.)"],
-      ["Contrast", "Typ: 4000:1"],
-      ["Response Time (Panel)", "Typ: 11 ms"],
-      ["Response Time (with OD)", "Typ: 5 ms"],
-      ["Display Colors", "16.7M (8-bit)"],
-      ["NTSC Color Gamut", "80% Coverage, 91% Volume"],
-      ["Adobe RGB Color Gamut", "89% Coverage, 117% Volume"],
-      ["DCI-P3 Color Gamut", "94% Coverage, 109% Volume"],
-      ["sRGB Color Gamut", "99% Coverage, 129% Volume"],
-      ["Backlight Control", "DC"],
-      ["Mainboard Model", "HT6315E M61D"],
-      ["HDMI Input", "2 x HDMI 2.0 (2560x1440@144Hz)"],
-      ["DP Input", "1 x DP 1.4 (2560x1440@144Hz)"],
-      ["Type-C Input", "N/A"],
-      ["VGA Input", "N/A"],
-      ["USB 3.0 Upstream", "N/A"],
-      ["USB 3.0 Downstream", "N/A"],
-      ["LAN (RJ45)", "N/A"],
-      ["USB 2.0", "1 x (Upgrade only)"],
-      ["Earphone Output", "x1"],
-      ["Low Blue Light", "Support (Software LBL)"],
-      ["Flicker Free", "Support"],
-      ["HDR10", "Support, HDR400"],
-      ["MPRT", "Support"],
-      ["KVM", "Nonsupport"],
-      ["FreeSync & G-Sync", "Support"],
-      ["RGB Light", "Nonsupport"],
-      ["PIP/PBP", "Nonsupport"],
-      ["MCC PC Client", "Nonsupport"],
-      ["Color Management", "Nonsupport"],
-      ["Power Input", "DC 12V / 3A"],
-      ["Adapter Input Voltage", "100V ~ 240V AC, 50/60 Hz"],
-      ["Working Consumption", "≤36W"],
-      ["Standby Consumption", "≤0.5W"],
-      ["Type-C PD Power", "N/A"],
-      ["Audio", "N/A"],
-      ["Monitor (Accessory)", "1 PCS"],
-      ["Base (Accessory)", "1 PCS"],
-      ["Warranty Card", "In UG"],
-      ["QSG", "In UG"],
-      ["UG", "1 PCS"],
-      ["Signal Cable", "1 PCS (HDMI Cable)"],
-      ["Adaptor", "1 PCS"],
-      ["Power Cord", "N/A"],
-      ["Screwdriver", "N/A"],
-      ["Screw", "N/A"],
-      ["Withstand Voltage", "≤10mA @ 3.0KV AC / 60S"],
-      ["Leakage Current", "≤0.35mA @ 264V AC / 60S"],
-      ["Insulation Resistance", "≥4 MΩ @ 0.5KV DC / 5S"],
-      ["Ground Bond Test", "≤100mΩ @ 25A DC / 20S"],
-      ["EMC Certification", "CE / FCC / RCM"],
-      ["Energy Certification", "ERP / CEC / MEPS"],
-      ["AMD FreeSync Cert", "N/A"],
-      ["VESA DisplayHDR", "N/A"],
-      ["TÜV Low Blue Light", "N/A"],
-      ["DP Certification", "N/A"],
-      ["HDMI Certification", "Yes"],
-      ["Max Working Altitude", "≤5000m"],
-      ["Working Condition", "Temp: 0°C~40°C, Humidity: 30%~90% Non-condensing"],
-      ["Storage Condition", "Temp: -20°C~55°C, Humidity: 20%~93% Non-condensing"],
-      ["Warranty Period", "3 Year"],
-    ],
-  },
-  {
-    name: "H27T22C-3",
-    images: [
-      "/images/ktc/H27T22C-3/A (1).png",
-      "/images/ktc/H27T22C-3/A (2).png",
-      "/images/ktc/H27T22C-3/A (3).png",
-      "/images/ktc/H27T22C-3/A (4).png",
-      "/images/ktc/H27T22C-3/A (5).png",
-    ],
-    video: "/videos/ktc/H27T22.mp4",
-    summary: ["27 inch Fast IPS", "2560 x 1440 @ 180Hz", "350 cd/m2", "2 x HDMI + 1 x DP"],
-    specs: [
-      ["Model Name", "H27T22C-3"],
-      ["Stand Model", "/ Square Fixed Base"],
-      ["Tilt", "-5° ~ 15° (±3°)"],
-      ["Swivel", "N/A"],
-      ["Pivot", "N/A"],
-      ["Height Adjust", "N/A"],
-      ["Quick Release", "Yes"],
-      ["Product Size Without Base", "616 x 364 x 60 mm"],
-      ["Product Size With Base", "616 x 465 x 185 mm"],
-      ["Packing Size", "690 x 485 x 160 mm"],
-      ["Gross Weight", "7.1 kg (with stand)"],
-      ["Net Weight With Stand", "5.1 kg (with stand) / 4.1 kg (without base)"],
-      ["Color", "Front frame: Black / Rear cover: Black"],
-      ["VESA / Screw", "100mm x 100mm; M4x8-12mm"],
-      ["Panel Supplier", "AUO"],
-      ["Panel Model", "M270DAN13.0"],
-      ["Panel Size", "27 inch"],
-      ["Panel Type", "Fast IPS"],
-      ["Module Type", "Flat"],
-      ["Aspect Ratio", "16:9"],
-      ["Backlight Type", "ELED"],
-      ["Maximum Resolution", "2560 x 1440 @ 180Hz"],
-      ["Pixel Pitch", "0.2328(H) x 0.2328(V) mm"],
-      ["PPI", "109"],
-      ["Active Area", "595.968(H) x 335.232(V) mm"],
-      ["Viewing Angle", "H: 178°, V: 178° (CR≥10)"],
-      ["Surface Treatment", "Anti-Glare, 3H"],
-      ["Brightness", "350 cd/m² (Typ.)"],
-      ["Contrast", "Typ: 1000:1"],
-      ["Response Time (Panel)", "5 ms (typ)"],
-      ["Response Time (with OD)", "N/A"],
-      ["Display Colors", "1.07B (8-bit + FRC)"],
-      ["NTSC Color Gamut", "82% Coverage, 88% Volume"],
-      ["Adobe RGB Color Gamut", "99% Coverage, 125% Volume"],
-      ["DCI-P3 Color Gamut", "94% Coverage, 98% Volume"],
-      ["sRGB Color Gamut", "99% Coverage, 124% Volume"],
-      ["Backlight Control", "DC"],
-      ["Mainboard Model", "MT9800UTDUD M12U"],
-      ["HDMI Input", "2 x HDMI 2.0 (2560x1440@144Hz)"],
-      ["DP Input", "1 x DP 1.4 (2560x1440@180Hz)"],
-      ["Type-C Input", "N/A"],
-      ["VGA Input", "N/A"],
-      ["USB 3.0 Upstream", "N/A"],
-      ["USB 3.0 Downstream", "N/A"],
-      ["LAN (RJ45)", "N/A"],
-      ["USB 2.0", "1 x (Only for firmware upgrade, no data transmission)"],
-      ["Earphone Output", "x1"],
-      ["Low Blue Light", "Support (Hardware LBL)"],
-      ["Flicker Free", "Support"],
-      ["HDR10", "Support"],
-      ["MPRT", "Support"],
-      ["KVM", "Nonsupport"],
-      ["FreeSync & G-Sync", "Support"],
-      ["RGB Light", "Nonsupport"],
-      ["PIP/PBP", "Nonsupport"],
-      ["MCC PC Client", "Support"],
-      ["Color Management", "N/A"],
-      ["Power Input", "DC 12V / 4A"],
-      ["Adapter Input Voltage", "100V ~ 240V AC, 50/60 Hz"],
-      ["Working Consumption", "≤48W"],
-      ["Standby Consumption", "≤0.5W"],
-      ["Type-C PD Power", "N/A"],
-      ["Audio", "N/A"],
-      ["Monitor (Accessory)", "1 PCS"],
-      ["Base (Accessory)", "1 PCS"],
-      ["Warranty Card", "In UG"],
-      ["QSG", "1 PCS"],
-      ["UG", "In QSG"],
-      ["Signal Cable", "1 PCS (DP Cable)"],
-      ["Adaptor", "1 PCS"],
-      ["Power Cord", "1 PCS"],
-      ["Screwdriver", "N/A"],
-      ["Screw", "N/A"],
-      ["Withstand Voltage", "≤10mA @ 2.5KV DC / 60S"],
-      ["Leakage Current", "≤3.5mA @ 264V AC / 60S"],
-      ["Insulation Resistance", "N/A"],
-      ["Ground Bond Test", "N/A"],
-      ["EMC Certification", "VCCI / NOM"],
-      ["Energy Certification", "ERP"],
-      ["AMD FreeSync Cert", "N/A"],
-      ["VESA DisplayHDR", "N/A"],
-      ["TÜV Low Blue Light", "N/A"],
-      ["DP Certification", "N/A"],
-      ["HDMI Certification", "Yes"],
-      ["Max Working Altitude", "< 5000 m"],
-      ["Working Condition", "Temp: 0°C~40°C, Humidity: 30%~90% Non-condensing"],
-      ["Storage Condition", "Temp: -20°C~55°C, Humidity: 20%~93% Non-condensing"],
-      ["Warranty Period", "3 Year"],
-    ],
-  },
-  {
-    name: "H27S5C",
-    images: [
-      "/images/ktc/H27S5C/A (1).jpg",
-      "/images/ktc/H27S5C/A (2).jpg",
-      "/images/ktc/H27S5C/A (3).jpg",
-      "/images/ktc/H27S5C/A (4).jpg",
-      "/images/ktc/H27S5C/A (5).jpg",
-    ],
-    video: "/videos/ktc/H27S5C.mp4",
-    summary: ["31.5 inch HVA", "2560 x 1440 @ 185Hz", "300 cd/m2", "2 x HDMI + 2 x DP"],
-    specs: [
-      ["Model Name", "H27S5C"],
-      ["Stand Model", "BCH0-32 V-type Die-cast Fixed Base"],
-      ["Tilt", "-5° ~ 20° (±3°)"],
-      ["Swivel", "N/A"],
-      ["Pivot", "N/A"],
-      ["Height Adjust", "N/A"],
-      ["Quick Release", "Yes"],
-      ["Product Size Without Base", "711 x 423 x 99 mm"],
-      ["Product Size With Base", "711 x 520 x 148 mm"],
-      ["Packing Size", "810 x 530 x 158 mm"],
-      ["Gross Weight", "7.6 kg"],
-      ["Net Weight With Stand", "5.6 kg"],
-      ["Color", "Front frame: Black / Rear cover: Black"],
-      ["VESA / Screw", "100mm x 100mm, M4x10mm"],
-      ["Panel Supplier", "CSOT 华星"],
-      ["Panel Model", "SG3151G02-3 Ver2.4"],
-      ["Panel Size", "31.5 inch diagonal"],
-      ["Panel Type", "HVA"],
-      ["Module Type", "Curved R1500"],
-      ["Aspect Ratio", "16:9"],
-      ["Backlight Type", "ELED"],
-      ["Maximum Resolution", "2560 x 1440 @ 185Hz"],
-      ["Pixel Pitch", "0.2724(H) x 0.2724(V) mm"],
-      ["PPI", "93"],
-      ["Active Area", "697.344(H) x 392.256(V) mm"],
-      ["Viewing Angle", "±89° (H), ±89° (V) (Typ.)"],
-      ["Surface Treatment", "Anti-glare, AG25%, Hard Coating (3H)"],
-      ["Brightness", "300 cd/m² (Typ.)"],
-      ["Contrast", "Typ: 5000:1"],
-      ["Response Time (Panel)", "Typ: 5 ms (FR=180Hz)"],
-      ["Response Time (with OD)", "2 ms"],
-      ["Display Colors", "1.07B (8-bit + FRC)"],
-      ["NTSC Color Gamut", "82% Coverage, 91% Volume"],
-      ["Adobe RGB Color Gamut", "92% Coverage, 108% Volume"],
-      ["DCI-P3 Color Gamut", "96% Coverage, 100% Volume"],
-      ["sRGB Color Gamut", "99% Coverage, 126% Volume"],
-      ["Backlight Control", "DC"],
-      ["Mainboard Model", "MT9800GWDUCG KM2G"],
-      ["HDMI Input", "2 x HDMI 2.0 (2560x1440@144Hz)"],
-      ["DP Input", "2 x DP 1.4 (2560x1440@180Hz) (OC 185Hz)"],
-      ["Type-C Input", "N/A"],
-      ["VGA Input", "N/A"],
-      ["USB 3.0 Upstream", "N/A"],
-      ["USB 3.0 Downstream", "N/A"],
-      ["LAN (RJ45)", "N/A"],
-      ["USB 2.0", "1 x (Upgrade only)"],
-      ["Earphone Output", "x1"],
-      ["Low Blue Light", "Support (Software LBL)"],
-      ["Flicker Free", "Support"],
-      ["HDR10", "Support"],
-      ["MPRT", "Support"],
-      ["KVM", "Nonsupport"],
-      ["FreeSync & G-Sync", "Support"],
-      ["RGB Light", "Nonsupport"],
-      ["PIP/PBP", "Nonsupport"],
-      ["MCC PC Client", "Support"],
-      ["Color Management", "逐台校准 sRGB, ΔE<2"],
-      ["Power Input", "DC 19V / 3.42A"],
-      ["Adapter Input Voltage", "100V ~ 240V AC, 50/60 Hz"],
-      ["Working Consumption", "≤65W"],
-      ["Standby Consumption", "≤0.5W"],
-      ["Type-C PD Power", "N/A"],
-      ["Audio", "/"],
-      ["Monitor (Accessory)", "1 PCS"],
-      ["Base (Accessory)", "1 PCS"],
-      ["Warranty Card", "In QSG"],
-      ["QSG", "1 PCS"],
-      ["UG", "In QSG"],
-      ["Signal Cable", "1 PCS (DP Cable)"],
-      ["Adaptor", "1 PCS"],
-      ["Power Cord", "N/A"],
-      ["Screwdriver", "N/A"],
-      ["Screw", "N/A"],
-      ["Withstand Voltage", "≤10mA @ 3.0KV AC / 60S"],
-      ["Leakage Current", "≤0.35mA @ 264V AC / 60S"],
-      ["Insulation Resistance", "≥4 MΩ @ 0.5KV DC / 5S"],
-      ["Ground Bond Test", "N/A"],
-      ["EMC Certification", "Yes"],
-      ["Energy Certification", "高性能2级 (CEL2023)"],
-      ["AMD FreeSync Cert", "支持功能"],
-      ["VESA DisplayHDR", "N/A"],
-      ["TÜV Low Blue Light", "N/A"],
-      ["DP Certification", "N/A"],
-      ["HDMI Certification", "Yes"],
-      ["Max Working Altitude", "5000 m"],
-      ["Working Condition", "Temp: 0°C~40°C, Humidity: 30%~90% Non-condensing"],
-      ["Storage Condition", "Temp: -20°C~55°C, Humidity: 20%~93% Non-condensing"],
-      ["Warranty Period", "3 Year"],
-    ],
-  },
-  {
-    name: "H32S5",
-    images: [
-      "/images/ktc/H32S5/A (1).jpg",
-      "/images/ktc/H32S5/A (2).jpg",
-      "/images/ktc/H32S5/A (3).jpg",
-      "/images/ktc/H32S5/A (4).jpg",
-      "/images/ktc/H32S5/A (5).jpg",
-    ],
-    video: "/videos/ktc/H32S5.mp4",
-    summary: ["34 inch UltraWide HVA", "3440 x 1440 @ 180Hz", "300 cd/m2", "2 x HDMI + 2 x DP"],
-    specs: [
-      ["Model Name", "H32S5"],
-      ["Stand Model", "BCR5-34"],
-      ["Tilt", "-5° ~ 20° (±2°)"],
-      ["Swivel", "±45°"],
-      ["Pivot", "±5°"],
-      ["Height Adjust", "110mm (±5mm)"],
-      ["Quick Release", "Yes"],
-      ["Product Size Without Base", "812 x 367 x 125 mm"],
-      ["Product Size With Base", "812 x 521 x 307 mm"],
-      ["Packing Size", "990 x 486 x 170 mm"],
-      ["Gross Weight", "9.4 KG"],
-      ["Net Weight With Stand", "7.6 KG"],
-      ["Color", "Front frame: Black / Rear cover: Black"],
-      ["VESA / Screw", "100mm x 100mm, M4x8-12mm"],
-      ["Panel Supplier", "CSOT"],
-      ["Panel Model", "SG3402H03-1"],
-      ["Panel Size", "34 inch diagonal"],
-      ["Panel Type", "HVA"],
-      ["Module Type", "Curved R1500"],
-      ["Aspect Ratio", "21:9"],
-      ["Backlight Type", "ELED"],
-      ["Maximum Resolution", "3440 x 1440 @ 180Hz"],
-      ["Pixel Pitch", "0.23175(H) x 0.23175(V)"],
-      ["PPI", "110"],
-      ["Active Area", "797.22(H) x 333.72(V)"],
-      ["Viewing Angle", "H: 178°, V: 178° (CR≥10)"],
-      ["Surface Treatment", "Anti-glare AG25%"],
-      ["Brightness", "Min: 250 cd/m²; Typ: 300 cd/m²"],
-      ["Contrast", "4000:1 (Typ.)"],
-      ["Response Time (Panel)", "5 ms (Typ.)"],
-      ["Response Time (with OD)", "3 ms"],
-      ["Display Colors", "1.07B (8-bit + FRC)"],
-      ["NTSC Color Gamut", "82% Coverage, 89% Area (±5%)"],
-      ["Adobe RGB Color Gamut", "92% Coverage, 104% Area (±5%)"],
-      ["DCI-P3 Color Gamut", "95% Coverage, 96% Area (±5%)"],
-      ["sRGB Color Gamut", "99% Coverage, 125% Area (±5%)"],
-      ["Backlight Control", "DC"],
-      ["Mainboard Model", "MT9800RTPTNG M12C"],
-      ["HDMI Input", "2 x HDMI 2.0 (3440x1440@100Hz)"],
-      ["DP Input", "2 x DP 1.4 (3440x1440@180Hz)"],
-      ["Type-C Input", "N/A"],
-      ["VGA Input", "N/A"],
-      ["USB 3.0 Upstream", "N/A"],
-      ["USB 3.0 Downstream", "N/A"],
-      ["LAN (RJ45)", "N/A"],
-      ["USB 2.0", "1 x (Upgrade only)"],
-      ["Earphone Output", "x1"],
-      ["Low Blue Light", "Support (Software LBL)"],
-      ["Flicker Free", "Support"],
-      ["HDR10", "Support, HDR10"],
-      ["MPRT", "Support"],
-      ["KVM", "Nonsupport"],
-      ["FreeSync & G-Sync", "Support"],
-      ["RGB Light", "Support (LOGO Light)"],
-      ["PIP/PBP", "Support"],
-      ["MCC PC Client", "Support"],
-      ["Color Management", "Built-in data, ΔE<3"],
-      ["Power Input", "DC 19V / 3.42A"],
-      ["Adapter Input Voltage", "100V ~ 240V AC, 50/60 Hz"],
-      ["Working Consumption", "≤65W"],
-      ["Standby Consumption", "≤0.5W"],
-      ["Type-C PD Power", "N/A"],
-      ["Audio", "N/A"],
-      ["Monitor (Accessory)", "1 PCS"],
-      ["Base (Accessory)", "1 PCS"],
-      ["Warranty Card", "In QSG"],
-      ["QSG", "1 PCS"],
-      ["UG", "In QSG"],
-      ["Signal Cable", "1 PCS (DP Cable)"],
-      ["Adaptor", "1 PCS"],
-      ["Power Cord", "1 PCS (3-Pin Power Cord)"],
-      ["Screwdriver", "N/A"],
-      ["Screw", "N/A"],
-      ["Withstand Voltage", "≤10mA @ 2.5KV DC / 60S"],
-      ["Leakage Current", "≤0.35mA @ 264V AC / 60S"],
-      ["Insulation Resistance", "N/A"],
-      ["Ground Bond Test", "≤100mΩ @ 25A DC / 20S"],
-      ["EMC Certification", "CE"],
-      ["Energy Certification", "ERP"],
-      ["AMD FreeSync Cert", "N/A"],
-      ["VESA DisplayHDR", "N/A"],
-      ["TÜV Low Blue Light", "N/A"],
-      ["DP Certification", "N/A"],
-      ["HDMI Certification", "Yes"],
-      ["Max Working Altitude", "< 5000 m"],
-      ["Working Condition", "Temp: 0°C~40°C, Humidity: 30%~90% Non-condensing"],
-      ["Storage Condition", "Temp: -20°C~55°C, Humidity: 20%~93% Non-condensing"],
-      ["Warranty Period", "3 Year"],
-    ],
-  },
-];
+body {
+  background: #fbf9f4;
+  color: #1a1b1e;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
+}
 
-const specCategories = [
-  {
-    key: "display",
-    label: "Display",
-    icon: "🖥",
-    keywords: ["Panel", "Resolution", "Pixel", "PPI", "Active Area", "Viewing Angle", "Surface", "Brightness", "Contrast", "Response Time", "Display Colors", "Color Gamut", "Backlight", "Aspect Ratio", "Module Type"],
-  },
-  {
-    key: "connectivity",
-    label: "Connectivity",
-    icon: "🔌",
-    keywords: ["HDMI", "DP Input", "Type-C", "VGA", "USB", "LAN", "Earphone", "Audio"],
-  },
-  {
-    key: "features",
-    label: "Features",
-    icon: "⚡",
-    keywords: ["Low Blue Light", "Flicker Free", "HDR", "MPRT", "KVM", "FreeSync", "G-Sync", "RGB Light", "PIP/PBP", "MCC", "Color Management"],
-  },
-  {
-    key: "power",
-    label: "Power",
-    icon: "🔋",
-    keywords: ["Power Input", "Adapter", "Working Consumption", "Standby Consumption", "Type-C PD"],
-  },
-  {
-    key: "physical",
-    label: "Physical",
-    icon: "📐",
-    keywords: ["Stand", "Tilt", "Swivel", "Pivot", "Height", "Quick Release", "Product Size", "Packing Size", "Weight", "Color", "VESA"],
-  },
-  {
-    key: "box",
-    label: "In The Box",
-    icon: "📦",
-    keywords: ["Accessory", "Warranty Card", "QSG", "UG", "Signal Cable", "Adaptor", "Power Cord", "Screwdriver", "Screw"],
-  },
-  {
-    key: "certification",
-    label: "Certification",
-    icon: "✅",
-    keywords: ["Certification", "Withstand Voltage", "Leakage Current", "Insulation", "Ground Bond", "Max Working Altitude", "Working Condition", "Storage Condition", "Warranty"],
-  },
-];
+a {
+  color: #1a1b1e;
+  text-decoration: none;
+}
 
-const featureIcons: Record<string, string> = {
-  "15.6 inch IPS": "🖥",
-  "23.8 inch VA": "🖥",
-  "23.8 inch Fast IPS": "🖥",
-  "27 inch HVA": "🖥",
-  "27 inch Fast IPS": "🖥",
-  "31.5 inch HVA": "🖥",
-  "34 inch UltraWide HVA": "🖥",
-  "1920 x 1080 @ 60Hz": "📺",
-  "1920 x 1080 @ 100Hz": "⚡",
-  "1920 x 1080 @ 240Hz": "🎮",
-  "2560 x 1440 @ 144Hz": "🎮",
-  "2560 x 1440 @ 180Hz": "🎮",
-  "2560 x 1440 @ 185Hz": "🎮",
-  "3440 x 1440 @ 180Hz": "🎮",
-  "300 cd/m2": "☀",
-  "400 cd/m2": "☀",
-  "350 cd/m2": "☀",
-  "Mini HDMI + Type-C": "🔌",
-  "HDMI + VGA": "🔌",
-  "2 x HDMI + 1 x DP": "🔌",
-  "2 x HDMI + 2 x DP": "🔌",
-};
+/* ==========================================================================
+   2. HEADER & NAVIGATION (RESTORED DESKTOP)
+   ========================================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: rgba(251, 249, 244, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #1a1b1e;
+  padding: 16px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid rgba(44, 42, 41, 0.06);
+}
 
-function getHighlights(model: MonitorModel): string[] {
-  const highlights: string[] = [];
-  const specsMap = new Map(model.specs);
-  const res = specsMap.get("Maximum Resolution") || "";
-  if (res.includes("240Hz") || res.includes("180Hz") || res.includes("185Hz") || res.includes("144Hz")) {
-    highlights.push("High Refresh Rate Gaming");
+.header-logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* THIS IS THE FIX - header-nav class MUST match Header.tsx */
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.header-nav a {
+  color: #1a1b1e;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.header-nav a:hover {
+  color: #d4af37;
+}
+
+/* Support Dropdown */
+.main-support-dropdown {
+  position: relative;
+}
+
+.main-support-button {
+  border: none;
+  background: transparent;
+  color: #1a1b1e;
+  font: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.main-support-button:hover {
+  color: #d4af37;
+}
+
+.support-chevron {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.main-support-menu {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  z-index: 9999;
+  min-width: 185px;
+  padding: 8px 0;
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(44, 42, 41, 0.06);
+}
+
+.main-support-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: #1a1b1e;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.main-support-menu a:hover {
+  background: #f4f1ea;
+}
+
+/* Hamburger - hidden on desktop */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1001;
+  position: relative;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #1a1b1e;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu-backdrop {
+  display: none;
+}
+
+/* ==========================================================================
+   3. HERO
+   ========================================================================== */
+.hero {
+  position: relative;
+  height: 65vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 20px 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.hero-overlay h2 {
+  font-size: 48px;
+  text-align: center;
+  letter-spacing: 3px;
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   4. SLIDER
+   ========================================================================== */
+.slider-box {
+  position: relative;
+  max-width: 1100px;
+  margin: 50px auto;
+}
+
+.slider-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(44, 42, 41, 0.05);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1a1b1e;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 10;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.arrow:hover {
+  background: #f4f1ea;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.arrow.left { left: -24px; }
+.arrow.right { right: -24px; }
+
+/* ==========================================================================
+   5. CONTENT PAGES
+   ========================================================================== */
+.section,
+.about-container,
+.page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 70px 16px;
+  text-align: center;
+}
+
+.about-text,
+.page-text {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #1a1b1e;
+  max-width: 750px;
+  margin: 0 auto 14px;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 44px;
+  margin-bottom: 20px;
+  color: #1a1b1e;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 30px;
+  margin-bottom: 14px;
+  color: #1a1b1e;
+  font-weight: 700;
+}
+
+.content-img {
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
+  border-radius: 14px;
+  display: block;
+  box-shadow: 0 12px 32px rgba(44, 42, 41, 0.04);
+}
+
+.map-container {
+  max-width: 900px;
+  margin: 30px auto 40px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(44, 42, 41, 0.04);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #1a1b1e;
+  background: #fefdfb;
+  color: #1a1b1e;
+  font-weight: 600;
+}
+
+.directions-btn {
+  display: block;
+  width: fit-content;
+  margin: 40px auto 90px;
+  text-decoration: none;
+  color: #fefdfb;
+  background: #1a1b1e;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+.footer {
+  background: #f4f1ea;
+  color: #1a1b1e;
+  text-align: center;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(44, 42, 41, 0.06);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   7. HOME PAGE
+   ========================================================================== */
+.home-page {
+  background: #fbf9f4;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-brand-strip {
+  background: #111111;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+}
+
+.brand-logo-button {
+  height: 48px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.brand-logo-button img {
+  width: auto;
+  height: 100%;
+  max-width: 200px;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.brand-logo-button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   8. LEADERSHIP
+   ========================================================================== */
+.promoters-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 45px 40px;
+}
+
+.promoter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+.promoter-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 42px;
+}
+
+.promoter-copy {
+  flex: 1;
+  text-align: center;
+}
+
+.promoter-copy h2 {
+  font-size: 34px;
+  margin-bottom: 18px;
+  line-height: 1.15;
+  color: #1a1b1e;
+}
+
+.promoter-text {
+  max-width: 690px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #1a1b1e;
+  font-weight: 500;
+}
+
+.promoter-image {
+  width: 360px;
+  max-width: 34%;
+  height: 230px;
+  margin: 0;
+  border-radius: 14px;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* ==========================================================================
+   9. FPD SYSTEMS
+   ========================================================================== */
+.fpd-site {
+  background: #fbf9f4;
+  color: #1a1b1e;
+  min-height: 100vh;
+}
+
+body.fpd-page .header,
+body.fpd-page .footer {
+  display: none;
+}
+
+.fpd-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(251, 249, 244, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(44, 42, 41, 0.06);
+}
+
+.fpd-header-inner {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fpd-logo { display: flex; align-items: center; }
+.fpd-logo img {
+  height: 40px;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fpd-nav { display: flex; align-items: center; gap: 32px; }
+.fpd-nav-link {
+  color: #1a1b1e;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.fpd-nav-link:hover { color: #d4af37; }
+
+.fpd-dropdown { position: relative; }
+.fpd-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  border-radius: 12px;
+  padding: 8px 0;
+  min-width: 170px;
+  box-shadow: 0 12px 30px rgba(44, 42, 41, 0.06);
+}
+.fpd-dropdown-item {
+  display: block;
+  padding: 12px 24px;
+  color: #1a1b1e;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.fpd-dropdown-item:hover { background: #f4f1ea; }
+
+.fpd-page { width: 100%; background: #fbf9f4; color: #1a1b1e; }
+.fpd-hero { width: 100%; padding: 0; margin: 0; }
+.fpd-hero img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  object-fit: cover;
+  margin: 0;
+  box-shadow: none;
+}
+
+.fpd-section {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 80px 90px;
+}
+.fpd-section h1 { font-size: 52px; font-weight: 800; text-align: center; margin-bottom: 30px; }
+.fpd-section h2 { font-size: 28px; text-align: center; margin-bottom: 26px; }
+.fpd-section p { font-size: 20px; font-weight: 500; margin-bottom: 32px; line-height: 1.7; }
+
+.fpd-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 55px;
+  border-radius: 24px;
+  object-fit: contain;
+  box-shadow: 0 20px 40px rgba(44,42,41,0.03);
+}
+
+/* ==========================================================================
+   10. FPD TV PRODUCT VIEWER
+   ========================================================================== */
+.fpd-tv-page { background: #fbf9f4; min-height: 100vh; }
+.fpd-tv-hero { padding: 80px 40px 36px; text-align: center; }
+.fpd-tv-hero h1 { font-size: 52px; margin-bottom: 18px; }
+.fpd-tv-hero p { max-width: 820px; margin: 0 auto; font-size: 18px; font-weight: 500; line-height: 1.7; }
+
+.fpd-tv-models {
+  max-width: 1300px;
+  margin: 20px auto 50px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+}
+
+.fpd-tv-card {
+  border: 1px solid #1a1b1e;
+  background: #fefdfb;
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.fpd-tv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.fpd-tv-card img { width: 100%; height: 86px; object-fit: contain; margin-bottom: 12px; border-radius: 8px; box-shadow: none; }
+.fpd-tv-card span { display: block; font-size: 14px; font-weight: 700; }
+.fpd-tv-card small { display: block; margin-top: 6px; font-size: 12px; font-weight: 600; }
+.fpd-tv-card.active { background: #1a1b1e; color: #fefdfb; }
+.fpd-tv-card.active span, .fpd-tv-card.active small { color: #fefdfb; }
+
+.fpd-tv-detail { max-width: 1200px; margin: 0 auto; padding: 0 40px 90px; }
+.fpd-tv-detail-top {
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  border-radius: 18px;
+  padding: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 44px;
+  margin-bottom: 18px;
+}
+.fpd-tv-detail-top h2 { font-size: 42px; margin-bottom: 14px; }
+.fpd-tv-detail-top p { font-size: 18px; font-weight: 500; line-height: 1.6; }
+.fpd-tv-detail-top img { width: 420px; max-width: 42%; height: 240px; object-fit: contain; margin: 0; border-radius: 14px; box-shadow: none; }
+
+.fpd-tv-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.fpd-tv-spec-grid div { background: #fefdfb; border: 1px solid #1a1b1e; border-radius: 12px; padding: 16px; }
+.fpd-tv-spec-grid div:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.fpd-tv-spec-grid span { display: block; font-size: 13px; margin-bottom: 8px; font-weight: 600; opacity: 0.8; }
+.fpd-tv-spec-grid strong { display: block; font-size: 15px; font-weight: 700; }
+
+/* ==========================================================================
+   11. E-WASTE
+   ========================================================================== */
+.ewaste-page { background: #fbf9f4; min-height: 100vh; }
+.ewaste-container { max-width: 1200px; margin: 0 auto; padding: 70px 40px; }
+.ewaste-container h1 { font-size: 56px; margin-bottom: 40px; }
+.ewaste-container h2 { font-size: 34px; margin-top: 40px; margin-bottom: 20px; }
+.ewaste-container p { font-size: 18px; line-height: 1.9; margin-bottom: 24px; font-weight: 500; }
+
+.fpd-section div[style*="background:"] {
+  background: #ffffff;
+  border: 1px solid rgba(26, 27, 30, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+.fpd-section div[style*="background:"] h2,
+.fpd-section div[style*="background:"] p,
+.fpd-section div[style*="background:"] strong,
+.fpd-section div[style*="background:"] span {
+  color: #1a1b1e;
+  opacity: 1;
+}
+.fpd-section div[style*="background:"] a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   12. KTC MONITORS
+   ========================================================================== */
+.ktc-page { background: #fbf9f4; min-height: 100vh; }
+
+.ktc-header {
+  display: none;
+}
+
+.ktc-hero {
+  padding: 80px 40px 40px;
+  text-align: center;
+}
+.ktc-hero h1 {
+  font-size: 52px;
+  margin-bottom: 14px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.ktc-hero p {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.ktc-models {
+  max-width: 1200px;
+  margin: 20px auto 50px;
+  padding: 0 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.ktc-model-card {
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  color: #1a1b1e;
+  border-radius: 25px;
+  padding: 12px 28px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.25s ease;
+}
+.ktc-model-card:hover {
+  background: #f4f1ea;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+.ktc-model-card.active {
+  background: #1a1b1e;
+  color: #fefdfb;
+  box-shadow: 0 10px 20px rgba(44, 42, 41, 0.12);
+}
+
+.ktc-details { max-width: 1200px; margin: 0 auto; padding: 0 40px 90px; }
+
+.ktc-product-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.ktc-product-info { flex: 1 1 320px; }
+.ktc-product-info h2 {
+  font-size: 54px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.ktc-product-summary { display: flex; flex-direction: column; gap: 12px; }
+.ktc-product-summary p {
+  font-size: 19px;
+  line-height: 1.6;
+  padding-left: 14px;
+  border-left: 3.5px solid #1a1b1e;
+  font-weight: 700;
+  color: #000;
+}
+
+.ktc-media-container {
+  flex: 1.5 1 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+.ktc-main-media {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-shadow: 0 15px 35px rgba(44,42,41,0.02);
+}
+
+.ktc-monitor-image,
+.ktc-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ktc-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.zoom-btn,
+.ktc-video-btn {
+  padding: 12px 24px;
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.zoom-btn:hover { background: #f4f1ea; }
+.ktc-video-btn { background: #1a1b1e; color: #fefdfb; }
+.ktc-video-btn:hover { background: #000; }
+
+.photo-counter { font-size: 16px; font-weight: 700; min-width: 60px; text-align: center; }
+
+.ktc-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.feature-card {
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  padding: 20px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(44,42,41,0.01);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.ktc-specs-section { border-top: 1px solid #1a1b1e; padding-top: 50px; }
+.ktc-specs-section h3 { font-size: 28px; font-weight: 800; margin-bottom: 30px; }
+
+.ktc-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 0 50px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #1a1b1e;
+  font-size: 16px;
+}
+
+.spec-label { font-weight: 600; }
+.spec-value {
+  font-weight: 800;
+  text-align: right;
+  padding-left: 20px;
+  color: #000;
+}
+
+.ktc-hero-slideshow {
+  position: relative;
+  width: 100%;
+  height: clamp(350px, 55vh, 600px);
+  overflow: hidden;
+}
+.slideshow-track { width: 100%; height: 100%; position: relative; }
+.slide-item {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  z-index: 1;
+}
+.slide-item.active { opacity: 1; z-index: 2; }
+.slide-item img { width: 100%; height: 100%; object-fit: cover; }
+
+/* KTC Page Specific Components */
+.ktc-model-selector {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 0 40px;
+}
+.ktc-model-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+.ktc-model-chip {
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  color: #1a1b1e;
+  border-radius: 25px;
+  padding: 12px 28px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.25s ease;
+}
+.ktc-model-chip:hover { background: #f4f1ea; }
+.ktc-model-chip.active { background: #1a1b1e; color: #fefdfb; }
+
+.ktc-product-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.ktc-product-section.fade-out { opacity: 0; transition: opacity 0.3s ease; }
+.ktc-product-section.fade-in { opacity: 1; transition: opacity 0.3s ease; }
+
+.ktc-thumbnail-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px;
+}
+.ktc-thumbnail {
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  background: #f4f1ea;
+}
+.ktc-thumbnail.active { border-color: #1a1b1e; }
+.ktc-thumb-img { object-fit: cover; }
+.ktc-thumbnail.video-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1a1b1e;
+  color: #fefdfb;
+  gap: 2px;
+}
+.video-play-icon { font-size: 18px; }
+.video-label { font-size: 10px; font-weight: 600; }
+
+.ktc-image-zoom-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.side-nav-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.ktc-main-media:hover .side-nav-bar { opacity: 1; }
+.side-nav-left { left: 0; }
+.side-nav-right { right: 0; }
+.nav-arrow-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.ktc-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hover-hint {
+  font-size: 13px;
+  color: #666;
+  margin-right: 8px;
+}
+.zoom-level {
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 30px;
+  text-align: center;
+}
+
+.ktc-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.ktc-highlight-tag {
+  background: #1a1b1e;
+  color: #fefdfb;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ktc-feature-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.ktc-feature-card {
+  background: #fefdfb;
+  border: 1px solid rgba(26,27,30,0.15);
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.feature-icon { font-size: 20px; }
+.feature-text { font-size: 14px; font-weight: 600; }
+
+.ktc-specs-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.ktc-specs-accordion {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.ktc-spec-category {
+  border: 1px solid #1a1b1e;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  background: #fefdfb;
+}
+.ktc-spec-category-header {
+  width: 100%;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+}
+.spec-cat-icon { font-size: 20px; }
+.spec-cat-label { flex: 1; }
+.spec-cat-count {
+  background: #f4f1ea;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.spec-cat-chevron { transition: transform 0.3s ease; }
+.ktc-spec-category.expanded .spec-cat-chevron { transform: rotate(180deg); }
+.ktc-spec-category-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.ktc-spec-category.expanded .ktc-spec-category-body {
+  max-height: 2000px;
+  padding: 0 24px 20px;
+}
+
+/* Mobile menu overlay for KTC page */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+}
+.mobile-menu-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  background: #fefdfb;
+  padding: 60px 24px 24px;
+  z-index: 2001;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+}
+.mobile-menu-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-menu-nav a {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(26,27,30,0.1);
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1b1e;
+}
+
+/* ==========================================================================
+   13. RESPONSIVE - MOBILE (max-width: 768px)
+   ========================================================================== */
+/* ==========================================================================
+   13. RESPONSIVE - MOBILE (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
   }
-  const hdr = specsMap.get("HDR10") || "";
-  if (hdr.includes("Support")) highlights.push("HDR10 Support");
-  const panel = specsMap.get("Panel Type") || "";
-  if (panel) highlights.push(`${panel} Panel`);
-  const warranty = specsMap.get("Warranty Period") || "";
-  if (warranty) highlights.push(`${warranty} Warranty`);
-  const freesync = specsMap.get("FreeSync & G-Sync") || "";
-  if (freesync.includes("Support")) highlights.push("Adaptive Sync");
-  const curved = specsMap.get("Module Type") || "";
-  if (curved.includes("Curved")) highlights.push("Curved Display");
-  return highlights.slice(0, 5);
+
+  /* --- HEADER --- */
+  .header {
+    padding: 10px 16px;
+    justify-content: space-between;
+  }
+
+  .header-logo-link {
+    display: flex;
+  }
+
+  .header-logo-img {
+    height: 32px;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .mobile-menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 998;
+  }
+
+  .header-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background: #fefdfb;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 24px 24px;
+    gap: 0;
+    transition: right 0.3s ease;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    z-index: 999;
+    overflow-y: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .header-nav.open {
+    right: 0;
+  }
+
+  .header-nav a,
+  .main-support-button {
+    font-size: 16px;
+    padding: 14px 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(44,42,41,0.1);
+  }
+
+  .main-support-dropdown {
+    width: 100%;
+  }
+
+  .main-support-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    display: none;
+    min-width: auto;
+  }
+
+  .main-support-dropdown.open .main-support-menu {
+    display: block;
+  }
+
+  /* --- HERO --- */
+  .hero {
+    height: 50vh;
+  }
+  .hero-overlay {
+    padding: 16px 24px;
+    width: auto;
+    max-width: 85%;
+  }
+  .hero-overlay h2 {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+
+  /* --- BRAND STRIP --- */
+  .home-brand-strip {
+    padding: 12px 16px;
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .brand-logo-button {
+    height: 42px;
+    flex-shrink: 0;
+  }
+  .brand-logo-button img {
+    max-width: 150px;
+  }
+
+  /* --- CONTENT / ABOUT --- */
+  .section, .about-container, .page-container {
+    padding: 40px 16px;
+  }
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+
+  /* Prevent images, iframes, tables from overflowing */
+  img, iframe, table, video, embed, object {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .slider-img { height: 240px; }
+  .arrow.left { left: 8px; }
+  .arrow.right { right: 8px; }
+
+  /* --- LEADERSHIP --- */
+  .promoters-container { padding: 24px 16px; }
+  .promoter-profile { flex-direction: column; gap: 20px; }
+  .promoter-image { width: 80%; max-width: 280px; height: auto; }
+
+  /* --- FPD --- */
+  .fpd-header-inner { padding: 12px 16px; }
+  .fpd-nav { gap: 18px; }
+  .fpd-section { padding: 40px 20px; }
+  .fpd-section h1 { font-size: 36px; }
+  .fpd-section h2 { font-size: 22px; }
+  .fpd-section p { font-size: 17px; line-height: 1.7; }
+  .fpd-tv-models { grid-template-columns: repeat(3, 1fr); padding: 0 16px; }
+  .fpd-tv-detail-top { flex-direction: column; padding: 20px; }
+  .fpd-tv-detail-top img { width: 100%; max-width: 320px; height: auto; }
+  .fpd-tv-spec-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* --- KTC --- */
+  .ktc-hero { padding: 30px 16px 20px; }
+  .ktc-hero h1 { font-size: 32px; margin-bottom: 10px; }
+  .ktc-hero p { font-size: 16px; }
+
+  .ktc-models { padding: 0 16px; margin: 10px auto 30px; }
+  .ktc-model-scroll { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: flex-start; gap: 10px; }
+  .ktc-model-scroll::-webkit-scrollbar { display: none; }
+  .ktc-model-chip { flex-shrink: 0; white-space: nowrap; padding: 10px 20px; font-size: 14px; }
+
+  .ktc-product-section { padding: 0 16px 30px; flex-direction: column; gap: 24px; }
+  .ktc-product-info { width: 100%; text-align: center; }
+  .ktc-product-info h2 { font-size: 28px; margin-bottom: 16px; }
+  .ktc-product-summary p { padding-left: 0; border-left: none; text-align: center; font-size: 16px; }
+
+  /* FIX: KTC main media container - use explicit height, no aspect-ratio */
+  .ktc-media-container { 
+    width: 100%; 
+    flex: none; 
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .ktc-main-media { 
+    position: relative;
+    width: 100%;
+    height: 240px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fefdfb;
+    border: 1px solid #1a1b1e;
+  }
+  /* Next.js Image fill wrapper fix */
+  .ktc-main-media > span,
+  .ktc-main-media > div {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .ktc-main-media img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+
+  /* Thumbnails */
+  .ktc-thumbnail-row { 
+    gap: 8px; 
+    justify-content: center; 
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  .ktc-thumbnail { width: 60px; height: 45px; border-radius: 6px; }
+
+  /* Controls */
+  .ktc-controls { justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .ktc-zoom-controls { display: none; }
+  .hover-hint { display: none; }
+  .photo-counter { font-size: 14px; }
+
+  .ktc-highlights { justify-content: center; }
+  .ktc-highlight-tag { font-size: 12px; padding: 5px 12px; }
+
+  .ktc-feature-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .ktc-feature-card { padding: 12px; }
+  .feature-icon { font-size: 18px; }
+  .feature-text { font-size: 13px; }
+
+  .ktc-specs-section { padding: 24px 16px; }
+  .ktc-specs-title { font-size: 22px; margin-bottom: 20px; }
+  .ktc-spec-grid { grid-template-columns: 1fr; gap: 0; }
+  .spec-row { padding: 10px 0; font-size: 13px; }
+  .ktc-spec-category-header { padding: 14px 16px; font-size: 16px; }
+  .ktc-spec-category.expanded .ktc-spec-category-body { padding: 0 16px 16px; }
 }
 
-export default function KTCPage() {
-  const [selectedModel, setSelectedModel] = useState<MonitorModel>(monitorModels[0]);
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
-  const [showVideo, setShowVideo] = useState<boolean>(false);
-  const [isChanging, setIsChanging] = useState(false);
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["display"]));
+/* ==========================================================================
+   14. RESPONSIVE - SMALL PHONES (max-width: 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .header { padding: 10px 12px; }
+  .header-logo-img { height: 28px; }
 
-  const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
-  const [zoomLevel, setZoomLevel] = useState<number>(1);
-  const containerRef = useRef<HTMLDivElement>(null);
+  .hero { height: 45vh; }
+  .hero-overlay { padding: 12px 20px; border-radius: 12px; }
+  .hero-overlay h2 { font-size: 22px; letter-spacing: 1.5px; }
 
-  const currentImage = selectedModel?.images?.[currentPhotoIndex] || "";
-  const highlights = getHighlights(selectedModel);
+  .home-brand-strip { padding: 10px 12px; gap: 16px; }
+  .brand-logo-button { height: 36px; }
+  .brand-logo-button img { max-width: 120px; }
 
-  useEffect(() => {
-    if (showVideo || !selectedModel?.images?.length) return;
-    const interval = setInterval(() => {
-      resetZoom();
-      setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % selectedModel.images.length);
-    }, 10000);
-    return () => clearInterval(interval);
-  }, [showVideo, selectedModel]);
+  .footer { padding: 12px 16px; }
+  .footer p { font-size: 12px; }
 
-  const handleModelChange = useCallback((model: MonitorModel) => {
-    if (model.name === selectedModel.name) return;
-    setIsChanging(true);
-    setTimeout(() => {
-      setSelectedModel(model);
-      setCurrentPhotoIndex(0);
-      setShowVideo(false);
-      resetZoom();
-      setExpandedSections(new Set(["display"]));
-      setIsChanging(false);
-    }, 300);
-  }, [selectedModel.name]);
+  .fpd-tv-models { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .fpd-tv-card { padding: 10px; }
+  .fpd-tv-card img { height: 60px; }
+  .fpd-tv-spec-grid { grid-template-columns: 1fr; }
 
-  const nextPhoto = () => {
-    resetZoom();
-    if (selectedModel?.images) {
-      setCurrentPhotoIndex((p) => (p + 1) % selectedModel.images.length);
-    }
-  };
-
-  const prevPhoto = () => {
-    resetZoom();
-    if (selectedModel?.images) {
-      setCurrentPhotoIndex((p) => (p - 1 + selectedModel.images.length) % selectedModel.images.length);
-    }
-  };
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || showVideo) return;
-    const target = e.target as HTMLElement;
-    if (target.closest(".side-nav-bar")) {
-      resetZoom();
-      return;
-    }
-    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-    const x = ((e.clientX - left) / width) * 100;
-    const y = ((e.clientY - top) / height) * 100;
-    setZoomStyle({
-      transformOrigin: `${x}% ${y}%`,
-      transform: "scale(2)",
-    });
-  };
-
-  const resetZoom = () => {
-    setZoomStyle({ transformOrigin: "center center", transform: "scale(1)" });
-    setZoomLevel(1);
-  };
-
-  const zoomIn = () => {
-    setZoomLevel((prev) => {
-      const newLevel = Math.min(prev + 0.5, 3);
-      setZoomStyle({ transformOrigin: "center center", transform: `scale(${newLevel})` });
-      return newLevel;
-    });
-  };
-
-  const zoomOut = () => {
-    setZoomLevel((prev) => {
-      const newLevel = Math.max(prev - 0.5, 1);
-      setZoomStyle({ transformOrigin: "center center", transform: `scale(${newLevel})` });
-      return newLevel;
-    });
-  };
-
-  const toggleSection = (key: string) => {
-    setExpandedSections((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
-      return next;
-    });
-  };
-
-  const categorizedSpecs = specCategories.map((cat) => ({
-    ...cat,
-    items: selectedModel.specs.filter(([label]) =>
-      cat.keywords.some((kw) => label.toLowerCase().includes(kw.toLowerCase()))
-    ),
-  })).filter((cat) => cat.items.length > 0);
-
-  const categorizedLabels = new Set(categorizedSpecs.flatMap((c) => c.items.map((i) => i[0])));
-  const uncategorized = selectedModel.specs.filter(([label]) => !categorizedLabels.has(label));
-
-  return (
-    <main className="ktc-page">
-      <section className="ktc-hero">
-        <div className="ktc-hero-content">
-          <h1>KTC Monitors</h1>
-          <p>Premium display technology with professional specifications.</p>
-        </div>
-      </section>
-
-      <section className="ktc-model-selector">
-        <div className="ktc-model-scroll">
-          {monitorModels.map((model) => (
-            <button
-              key={model.name}
-              className={`ktc-model-chip ${selectedModel.name === model.name ? "active" : ""}`}
-              onClick={() => handleModelChange(model)}
-            >
-              {model.name}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <section className={`ktc-product-section ${isChanging ? "fade-out" : "fade-in"}`}>
-        <div className="ktc-media-container">
-          <div
-            ref={containerRef}
-            className="ktc-main-media"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={resetZoom}
-          >
-            {showVideo && selectedModel.video ? (
-              <video
-                autoPlay
-                controls
-                muted
-                playsInline
-                className="ktc-video-player"
-                src={selectedModel.video}
-              />
-            ) : (
-              currentImage && (
-                <>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
-                    className="side-nav-bar side-nav-left"
-                    aria-label="Previous image"
-                  >
-                    <span className="nav-arrow-circle">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 19l-7-7 7-7"/></svg>
-                    </span>
-                  </button>
-
-                  <div className="ktc-image-zoom-wrapper" style={{ ...zoomStyle, transition: "transform 0.2s ease-out" }}>
-                    <Image
-                      src={currentImage}
-                      alt={selectedModel.name}
-                      fill
-                      sizes="(max-width: 1200px) 100vw, 800px"
-                      className="ktc-monitor-image"
-                      priority
-                    />
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
-                    className="side-nav-bar side-nav-right"
-                    aria-label="Next image"
-                  >
-                    <span className="nav-arrow-circle">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 5l7 7-7 7"/></svg>
-                    </span>
-                  </button>
-                </>
-              )
-            )}
-          </div>
-
-          <div className="ktc-thumbnail-row">
-            {selectedModel.images.map((img, idx) => (
-              <button
-                key={idx}
-                className={`ktc-thumbnail ${currentPhotoIndex === idx ? "active" : ""}`}
-                onClick={() => { resetZoom(); setCurrentPhotoIndex(idx); setShowVideo(false); }}
-                aria-label={`View image ${idx + 1}`}
-              >
-                <Image src={img} alt={`${selectedModel.name} view ${idx + 1}`} fill sizes="80px" className="ktc-thumb-img" />
-              </button>
-            ))}
-            {selectedModel.video && (
-              <button
-                className={`ktc-thumbnail video-thumb ${showVideo ? "active" : ""}`}
-                onClick={() => { setShowVideo(!showVideo); resetZoom(); }}
-                aria-label="Play video"
-              >
-                <span className="video-play-icon">▶</span>
-                <span className="video-label">Video</span>
-              </button>
-            )}
-          </div>
-
-          <div className="ktc-controls">
-            <span className="photo-counter">{currentPhotoIndex + 1} / {selectedModel?.images?.length || 0}</span>
-            <div className="ktc-zoom-controls">
-              <span className="hover-hint desktop-only">Hover to zoom</span>
-              <button type="button" onClick={zoomOut} disabled={zoomLevel <= 1} className="zoom-btn">−</button>
-              <span className="zoom-level">{zoomLevel}x</span>
-              <button type="button" onClick={zoomIn} disabled={zoomLevel >= 3} className="zoom-btn">+</button>
-            </div>
-          </div>
-        </div>
-
-        <div className="ktc-product-info">
-          <h2 className="ktc-model-name">{selectedModel.name}</h2>
-
-          <div className="ktc-highlights">
-            {highlights.map((h, i) => (
-              <span key={i} className="ktc-highlight-tag">{h}</span>
-            ))}
-          </div>
-
-          <div className="ktc-feature-cards">
-            {selectedModel.summary.map((item, i) => (
-              <div key={i} className="ktc-feature-card">
-                <span className="feature-icon">{featureIcons[item] || "✦"}</span>
-                <span className="feature-text">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="ktc-specs-section">
-        <h3 className="ktc-specs-title">Detailed Specifications</h3>
-        <div className="ktc-specs-accordion">
-          {categorizedSpecs.map((cat) => (
-            <div key={cat.key} className={`ktc-spec-category ${expandedSections.has(cat.key) ? "expanded" : ""}`}>
-              <button
-                className="ktc-spec-category-header"
-                onClick={() => toggleSection(cat.key)}
-                aria-expanded={expandedSections.has(cat.key)}
-              >
-                <span className="spec-cat-icon">{cat.icon}</span>
-                <span className="spec-cat-label">{cat.label}</span>
-                <span className="spec-cat-count">{cat.items.length}</span>
-                <svg className="spec-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
-              </button>
-              <div className="ktc-spec-category-body">
-                {cat.items.map(([label, value], idx) => (
-                  <div key={idx} className="spec-row">
-                    <div className="spec-label">{label}</div>
-                    <div className="spec-value">{value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-          {uncategorized.length > 0 && (
-            <div className={`ktc-spec-category ${expandedSections.has("other") ? "expanded" : ""}`}>
-              <button
-                className="ktc-spec-category-header"
-                onClick={() => toggleSection("other")}
-                aria-expanded={expandedSections.has("other")}
-              >
-                <span className="spec-cat-icon">📋</span>
-                <span className="spec-cat-label">Other</span>
-                <span className="spec-cat-count">{uncategorized.length}</span>
-                <svg className="spec-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
-              </button>
-              <div className="ktc-spec-category-body">
-                {uncategorized.map(([label, value], idx) => (
-                  <div key={idx} className="spec-row">
-                    <div className="spec-label">{label}</div>
-                    <div className="spec-value">{value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-    </main>
-  );
+  .ktc-main-media { height: 200px; }
+  .ktc-product-info h2 { font-size: 24px; }
+  .ktc-model-chip { padding: 8px 16px; font-size: 13px; }
+  .ktc-feature-cards { grid-template-columns: 1fr; }
+  .ktc-hero h1 { font-size: 26px; }
+  .ktc-thumbnail { width: 52px; height: 40px; }
 }
