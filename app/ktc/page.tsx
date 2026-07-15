@@ -8,7 +8,7 @@ interface MonitorModel {
   images: string[];
   video?: string;
   summary: string[];
-  specs: string[][];
+  specs: [string, string][];
 }
 
 const monitorModels: MonitorModel[] = [
