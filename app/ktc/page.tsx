@@ -8,7 +8,7 @@ interface MonitorModel {
   images: string[];
   video?: string;
   summary: string[];
-  specs: string[][];
+  specs: [string, string][];
 }
 
 const monitorModels: MonitorModel[] = [
@@ -821,7 +821,6 @@ export default function KTCPage() {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(0);
   const [showVideo, setShowVideo] = useState<boolean>(false);
   const [isChanging, setIsChanging] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["display"]));
 
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
@@ -925,47 +924,6 @@ export default function KTCPage() {
 
   return (
     <main className="ktc-page">
-      {mobileMenuOpen && (
-        <div className="mobile-menu-overlay" onClick={() => setMobileMenuOpen(false)}>
-          <div className="mobile-menu-drawer" onClick={(e) => e.stopPropagation()}>
-            <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-            </button>
-            <nav className="mobile-menu-nav">
-              <a href="/" onClick={() => setMobileMenuOpen(false)}>Home</a>
-              <a href="/about" onClick={() => setMobileMenuOpen(false)}>About Us</a>
-              <a href="/leadership" onClick={() => setMobileMenuOpen(false)}>Leadership</a>
-              <a href="/showroom" onClick={() => setMobileMenuOpen(false)}>Showroom</a>
-              <a href="/support" onClick={() => setMobileMenuOpen(false)}>Support</a>
-              <a href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact Us</a>
-            </nav>
-          </div>
-        </div>
-      )}
-
-      <header className="ktc-header">
-        <div className="ktc-header-inner">
-          <a href="/" className="ktc-logo">
-            <span className="ktc-logo-text">KTC</span>
-          </a>
-          <nav className="ktc-header-nav desktop-only">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/leadership">Leadership</a>
-            <a href="/showroom">Showroom</a>
-            <a href="/support">Support</a>
-            <a href="/contact">Contact Us</a>
-          </nav>
-          <button
-            className="ktc-hamburger mobile-only"
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open menu"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-          </button>
-        </div>
-      </header>
-
       <section className="ktc-hero">
         <div className="ktc-hero-content">
           <h1>KTC Monitors</h1>

@@ -1,5 +1,10 @@
 /* ==========================================================================
-   1. RESET & BASE LAYOUTS
+   GLOBALS.CSS - KTC INDIA
+   Desktop design RESTORED. Mobile fixed. KTC styles added.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. RESET & BASE
    ========================================================================== */
 * {
   margin: 0;
@@ -8,25 +13,27 @@
 }
 
 body {
-  background: #fbf9f4; /* Premium warm cream editorial backdrop */
-  color: #1a1b1e;      /* Default high-visibility charcoal text */
+  background: #fbf9f4;
+  color: #1a1b1e;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
 }
 
 a {
   color: #1a1b1e;
+  text-decoration: none;
 }
 
 /* ==========================================================================
-   2. MAIN SITE HEADER & GLOBAL NAVIGATION
+   2. HEADER & NAVIGATION (RESTORED DESKTOP)
    ========================================================================== */
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
-  background: rgba(251, 249, 244, 0.94); 
+  background: rgba(251, 249, 244, 0.94);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #1a1b1e;
   padding: 16px 48px;
   display: flex;
@@ -37,14 +44,19 @@ a {
 }
 
 .header-logo-link {
-  display: none !important;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .header-logo-img {
-  display: none !important;
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
-.header nav {
+/* THIS IS THE FIX - header-nav class MUST match Header.tsx */
+.header-nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -52,18 +64,19 @@ a {
   flex-wrap: wrap;
 }
 
-.header nav a {
+.header-nav a {
   color: #1a1b1e;
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
-.header nav a:hover {
-  color: #d4af37; 
+.header-nav a:hover {
+  color: #d4af37;
 }
 
-/* Main Site Support Dropdown */
+/* Support Dropdown */
 .main-support-dropdown {
   position: relative;
 }
@@ -77,10 +90,18 @@ a {
   cursor: pointer;
   padding: 0;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .main-support-button:hover {
   color: #d4af37;
+}
+
+.support-chevron {
+  font-size: 12px;
+  transition: transform 0.2s ease;
 }
 
 .main-support-menu {
@@ -110,12 +131,51 @@ a {
   background: #f4f1ea;
 }
 
+/* Hamburger - hidden on desktop */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1001;
+  position: relative;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #1a1b1e;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu-backdrop {
+  display: none;
+}
+
 /* ==========================================================================
-   3. HERO MODULES & CORRESPONDING SLIDERS
+   3. HERO
    ========================================================================== */
 .hero {
   position: relative;
-  height: 65vh; /* Increased for better desktop visual */
+  height: 65vh;
+  overflow: hidden;
 }
 
 .hero-video {
@@ -129,24 +189,28 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.25) !important; 
-  backdrop-filter: blur(12px);                 
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 20px 40px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.25); 
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);  
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .hero-overlay h2 {
   font-size: 48px;
   text-align: center;
   letter-spacing: 3px;
-  color: #ffffff !important; 
+  color: #ffffff;
   font-weight: 800;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);  
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
+/* ==========================================================================
+   4. SLIDER
+   ========================================================================== */
 .slider-box {
   position: relative;
   max-width: 1100px;
@@ -191,7 +255,7 @@ a {
 .arrow.right { right: -24px; }
 
 /* ==========================================================================
-   4. CONTENT LAYOUTS (ABOUT, SHOWROOM, CONTACT, FOOTER)
+   5. CONTENT PAGES
    ========================================================================== */
 .section,
 .about-container,
@@ -206,7 +270,7 @@ a {
 .page-text {
   font-size: 18px;
   line-height: 1.7;
-  color: #1a1b1e; 
+  color: #1a1b1e;
   max-width: 750px;
   margin: 0 auto 14px;
   font-weight: 500;
@@ -226,13 +290,13 @@ h2 {
   font-weight: 700;
 }
 
-img {
+.content-img {
   width: 100%;
   max-width: 700px;
   margin: 30px auto;
   border-radius: 14px;
   display: block;
-  box-shadow: 0 12px 32px rgba(44, 42, 41, 0.04); 
+  box-shadow: 0 12px 32px rgba(44, 42, 41, 0.04);
 }
 
 .map-container {
@@ -258,7 +322,7 @@ img {
   padding: 14px;
   border-radius: 10px;
   border: 1px solid #1a1b1e;
-  background: #fefdfb; 
+  background: #fefdfb;
   color: #1a1b1e;
   font-weight: 600;
 }
@@ -268,15 +332,18 @@ img {
   width: fit-content;
   margin: 40px auto 90px;
   text-decoration: none;
-  color: #fefdfb !important;
+  color: #fefdfb;
   background: #1a1b1e;
   padding: 12px 30px;
   border-radius: 30px;
   font-weight: 600;
 }
 
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
 .footer {
-  background: #f4f1ea; 
+  background: #f4f1ea;
   color: #1a1b1e;
   text-align: center;
   padding: 16px 20px;
@@ -290,120 +357,112 @@ img {
 }
 
 /* ==========================================================================
-   5. HOME PAGE & SPECIFIC BRAND HORIZONTAL STRIP
+   7. HOME PAGE
    ========================================================================== */
 .home-page {
-  background: #fbf9f4 !important;
+  background: #fbf9f4;
   display: flex;
   flex-direction: column;
 }
 
-.home-page .hero {
-  position: relative;
-  width: 100%;
-}
-
 .home-brand-strip {
-  background: #111111; 
-  padding: 16px 40px; 
+  background: #111111;
+  padding: 16px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;           
+  gap: 40px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
 }
 
-.home-brand-strip .brand-logo-button {
-  width: auto !important;            
-  height: 48px !important;            
-  background: transparent !important; 
-  border: none !important;            
-  padding: 0 !important;          
+.brand-logo-button {
+  height: 48px;
+  background: transparent;
+  border: none;
+  padding: 0;
   margin: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0 !important;       
-  box-shadow: none !important;        
+  border-radius: 0;
+  box-shadow: none;
   transition: transform 0.2s ease, opacity 0.2s ease;
-  opacity: 0.85;                      
+  opacity: 0.85;
 }
 
-.home-brand-strip .brand-logo-button img {
-  width: auto !important;
-  height: 100% !important;
-  max-width: 200px !important;
+.brand-logo-button img {
+  width: auto;
+  height: 100%;
+  max-width: 200px;
   margin: 0;
   padding: 0;
-  border-radius: 0 !important;
-  display: block;
-  object-fit: contain !important;     
+  border-radius: 0;
+  object-fit: contain;
 }
 
-.home-brand-strip .brand-logo-button:hover {
+.brand-logo-button:hover {
   transform: scale(1.05);
   opacity: 1;
-  background: transparent !important;
 }
 
 /* ==========================================================================
-   6. LEADERSHIP & PROMOTERS ARCHITECTURE
+   8. LEADERSHIP
    ========================================================================== */
 .promoters-container {
-  max-width: 1280px !important;
-  margin: 0 auto !important;
-  padding: 45px 40px !important;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 45px 40px;
 }
 
 .promoter-section {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 42px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
 }
 
 .promoter-profile {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 42px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 42px;
 }
 
 .promoter-copy {
-  flex: 1 !important;
-  text-align: center !important;
+  flex: 1;
+  text-align: center;
 }
 
 .promoter-copy h2 {
-  font-size: 34px !important;
-  margin-bottom: 18px !important;
-  line-height: 1.15 !important;
-  color: #1a1b1e !important;
+  font-size: 34px;
+  margin-bottom: 18px;
+  line-height: 1.15;
+  color: #1a1b1e;
 }
 
 .promoter-text {
-  max-width: 690px !important;
-  margin: 0 auto !important;
-  font-size: 16px !important;
-  line-height: 1.65 !important;
-  color: #1a1b1e !important;
+  max-width: 690px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #1a1b1e;
   font-weight: 500;
 }
 
 .promoter-image {
-  width: 360px !important;
-  max-width: 34% !important;
-  height: 230px !important;
-  margin: 0 !important;
-  border-radius: 14px !important;
-  object-fit: contain !important;
-  background: transparent !important;
+  width: 360px;
+  max-width: 34%;
+  height: 230px;
+  margin: 0;
+  border-radius: 14px;
+  object-fit: contain;
+  background: transparent;
 }
 
 /* ==========================================================================
-   7. SUB-BRAND FPD SYSTEMS DESIGN
+   9. FPD SYSTEMS
    ========================================================================== */
 .fpd-site {
   background: #fbf9f4;
@@ -411,8 +470,8 @@ img {
   min-height: 100vh;
 }
 
-body:has(.fpd-site) .header,
-body:has(.fpd-site) .footer {
+body.fpd-page .header,
+body.fpd-page .footer {
   display: none;
 }
 
@@ -454,7 +513,6 @@ body:has(.fpd-site) .footer {
 }
 .fpd-nav-link:hover { color: #d4af37; }
 
-/* FPD Dropdown Modules */
 .fpd-dropdown { position: relative; }
 .fpd-dropdown-menu {
   position: absolute;
@@ -483,13 +541,13 @@ body:has(.fpd-site) .footer {
 .fpd-page { width: 100%; background: #fbf9f4; color: #1a1b1e; }
 .fpd-hero { width: 100%; padding: 0; margin: 0; }
 .fpd-hero img {
-  width: 100% !important;
-  max-width: none !important;
+  width: 100%;
+  max-width: none;
   height: auto;
   display: block;
   border-radius: 0;
   object-fit: cover;
-  margin: 0 !important;
+  margin: 0;
   box-shadow: none;
 }
 
@@ -515,7 +573,7 @@ body:has(.fpd-site) .footer {
 }
 
 /* ==========================================================================
-   8. FPD HIGH-END TV PRODUCT VIEWER
+   10. FPD TV PRODUCT VIEWER
    ========================================================================== */
 .fpd-tv-page { background: #fbf9f4; min-height: 100vh; }
 .fpd-tv-hero { padding: 80px 40px 36px; text-align: center; }
@@ -539,6 +597,10 @@ body:has(.fpd-site) .footer {
   cursor: pointer;
   text-align: center;
   transition: all 0.2s ease;
+}
+.fpd-tv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 .fpd-tv-card img { width: 100%; height: 86px; object-fit: contain; margin-bottom: 12px; border-radius: 8px; box-shadow: none; }
 .fpd-tv-card span { display: block; font-size: 14px; font-weight: 700; }
@@ -564,11 +626,12 @@ body:has(.fpd-site) .footer {
 
 .fpd-tv-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .fpd-tv-spec-grid div { background: #fefdfb; border: 1px solid #1a1b1e; border-radius: 12px; padding: 16px; }
+.fpd-tv-spec-grid div:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
 .fpd-tv-spec-grid span { display: block; font-size: 13px; margin-bottom: 8px; font-weight: 600; opacity: 0.8; }
 .fpd-tv-spec-grid strong { display: block; font-size: 15px; font-weight: 700; }
 
 /* ==========================================================================
-   9. E-WASTE ASSIGNMENT INTERFACES
+   11. E-WASTE
    ========================================================================== */
 .ewaste-page { background: #fbf9f4; min-height: 100vh; }
 .ewaste-container { max-width: 1200px; margin: 0 auto; padding: 70px 40px; }
@@ -576,32 +639,46 @@ body:has(.fpd-site) .footer {
 .ewaste-container h2 { font-size: 34px; margin-top: 40px; margin-bottom: 20px; }
 .ewaste-container p { font-size: 18px; line-height: 1.9; margin-bottom: 24px; font-weight: 500; }
 
-/* FORCE WHITE BACKGROUND AND BLACK TEXT OVER INLINE STYLES */
 .fpd-section div[style*="background:"] {
-  background: #ffffff !important;
-  border: 1px solid rgba(26, 27, 30, 0.15) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+  background: #ffffff;
+  border: 1px solid rgba(26, 27, 30, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
-
 .fpd-section div[style*="background:"] h2,
 .fpd-section div[style*="background:"] p,
 .fpd-section div[style*="background:"] strong,
 .fpd-section div[style*="background:"] span {
-  color: #1a1b1e !important; 
-  opacity: 1 !important;
+  color: #1a1b1e;
+  opacity: 1;
 }
-
 .fpd-section div[style*="background:"] a {
-  color: #0066cc !important;
-  text-decoration: underline !important;
+  color: #0066cc;
+  text-decoration: underline;
 }
 
 /* ==========================================================================
-   10. KTC MONITORS EXCLUSIVE PRODUCT HUB
+   12. KTC MONITORS
    ========================================================================== */
-.ktc-page { background: #fbf9f4 !important; min-height: 100vh; }
-.ktc-hero { padding: 80px 40px 40px; text-align: center; }
-.ktc-hero h1 { font-size: 52px; margin-bottom: 14px; font-weight: 800; letter-spacing: -1px; }
+.ktc-page { background: #fbf9f4; min-height: 100vh; }
+
+.ktc-header {
+  display: none;
+}
+
+.ktc-hero {
+  padding: 80px 40px 40px;
+  text-align: center;
+}
+.ktc-hero h1 {
+  font-size: 52px;
+  margin-bottom: 14px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.ktc-hero p {
+  font-size: 18px;
+  font-weight: 500;
+}
 
 .ktc-models {
   max-width: 1200px;
@@ -624,8 +701,16 @@ body:has(.fpd-site) .footer {
   font-size: 16px;
   transition: all 0.25s ease;
 }
-.ktc-model-card:hover { background: #f4f1ea; }
-.ktc-model-card.active { background: #1a1b1e; color: #fefdfb; box-shadow: 0 10px 20px rgba(44, 42, 41, 0.12); }
+.ktc-model-card:hover {
+  background: #f4f1ea;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+.ktc-model-card.active {
+  background: #1a1b1e;
+  color: #fefdfb;
+  box-shadow: 0 10px 20px rgba(44, 42, 41, 0.12);
+}
 
 .ktc-details { max-width: 1200px; margin: 0 auto; padding: 0 40px 90px; }
 
@@ -639,16 +724,30 @@ body:has(.fpd-site) .footer {
 }
 
 .ktc-product-info { flex: 1 1 320px; }
-.ktc-product-info h2 { font-size: 54px; font-weight: 800; margin-bottom: 24px; letter-spacing: -1px; line-height: 1.1; }
+.ktc-product-info h2 {
+  font-size: 54px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
 
 .ktc-product-summary { display: flex; flex-direction: column; gap: 12px; }
+.ktc-product-summary p {
+  font-size: 19px;
+  line-height: 1.6;
+  padding-left: 14px;
+  border-left: 3.5px solid #1a1b1e;
+  font-weight: 700;
+  color: #000;
+}
 
 .ktc-media-container {
   flex: 1.5 1 540px;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  position: relative; 
+  position: relative;
 }
 
 .ktc-main-media {
@@ -665,7 +764,7 @@ body:has(.fpd-site) .footer {
   box-shadow: 0 15px 35px rgba(44,42,41,0.02);
 }
 
-.ktc-monitor-image, 
+.ktc-monitor-image,
 .ktc-video-player {
   width: 100%;
   height: 100%;
@@ -675,12 +774,12 @@ body:has(.fpd-site) .footer {
 .ktc-controls {
   display: flex;
   align-items: center;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   gap: 16px;
   flex-wrap: wrap;
 }
 
-.zoom-btn, 
+.zoom-btn,
 .ktc-video-btn {
   padding: 12px 24px;
   background: #fefdfb;
@@ -693,7 +792,7 @@ body:has(.fpd-site) .footer {
 }
 .zoom-btn:hover { background: #f4f1ea; }
 .ktc-video-btn { background: #1a1b1e; color: #fefdfb; }
-.ktc-video-btn:hover { background: #000000; }
+.ktc-video-btn:hover { background: #000; }
 
 .photo-counter { font-size: 16px; font-weight: 700; min-width: 60px; text-align: center; }
 
@@ -714,6 +813,11 @@ body:has(.fpd-site) .footer {
   gap: 12px;
   font-weight: 700;
   box-shadow: 0 4px 10px rgba(44,42,41,0.01);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
 .ktc-specs-section { border-top: 1px solid #1a1b1e; padding-top: 50px; }
@@ -735,27 +839,11 @@ body:has(.fpd-site) .footer {
 }
 
 .spec-label { font-weight: 600; }
-
-.premium-display-subtitle,
-.ktc-hero p,
-.ktc-product-summary p,
-.spec-value {
-  color: #000000 !important;   
-  opacity: 1 !important;       
-}
-
-.ktc-product-summary p {
-  font-size: 19px;
-  line-height: 1.6;
-  padding-left: 14px;
-  border-left: 3.5px solid #1a1b1e;
-  font-weight: 700; 
-}
-
 .spec-value {
   font-weight: 800;
   text-align: right;
   padding-left: 20px;
+  color: #000;
 }
 
 .ktc-hero-slideshow {
@@ -767,492 +855,436 @@ body:has(.fpd-site) .footer {
 .slideshow-track { width: 100%; height: 100%; position: relative; }
 .slide-item {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   opacity: 0;
-  transition: opacity 1.2s ease-in-out; 
+  transition: opacity 1.2s ease-in-out;
   z-index: 1;
 }
 .slide-item.active { opacity: 1; z-index: 2; }
 .slide-item img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ==========================================================================
-   11. MEDIA QUERIES & RESPONSIVE RULES (NATURAL SYSTEM FLOW)
-   ========================================================================== */
+/* KTC Page Specific Components */
+.ktc-model-selector {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 0 40px;
+}
+.ktc-model-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+.ktc-model-chip {
+  background: #fefdfb;
+  border: 1px solid #1a1b1e;
+  color: #1a1b1e;
+  border-radius: 25px;
+  padding: 12px 28px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.25s ease;
+}
+.ktc-model-chip:hover { background: #f4f1ea; }
+.ktc-model-chip.active { background: #1a1b1e; color: #fefdfb; }
 
-/* ==========================================================================
-   11. MEDIA QUERIES & RESPONSIVE RULES — MOBILE-FIRST REFINED
-   ========================================================================== */
+.ktc-product-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.ktc-product-section.fade-out { opacity: 0; transition: opacity 0.3s ease; }
+.ktc-product-section.fade-in { opacity: 1; transition: opacity 0.3s ease; }
 
-/* ─── TABLET & SMALL LAPTOPS (max-width: 1024px) ─── */
+.ktc-thumbnail-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px;
+}
+.ktc-thumbnail {
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  background: #f4f1ea;
+}
+.ktc-thumbnail.active { border-color: #1a1b1e; }
+.ktc-thumb-img { object-fit: cover; }
+.ktc-thumbnail.video-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1a1b1e;
+  color: #fefdfb;
+  gap: 2px;
+}
+.video-play-icon { font-size: 18px; }
+.video-label { font-size: 10px; font-weight: 600; }
 
-/* ==========================================================================
-   11. MEDIA QUERIES & RESPONSIVE RULES — MOBILE REFINED
-   ========================================================================== */
-
-/* ─── TABLET & SMALL LAPTOPS (max-width: 1024px) ─── */
-@media (max-width: 1024px) {
-  .header {
-    padding: 12px 28px !important;
-    gap: 16px !important;
-  }
-  .header nav {
-    gap: 24px !important;
-  }
+.ktc-image-zoom-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-/* ─── TABLET PORTRAIT (max-width: 900px) ─── */
-@media (max-width: 900px) {
-  .header {
-    padding: 12px 20px !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 12px !important;
-  }
-
-  .header-logo-link {
-    display: flex !important;
-    justify-content: flex-start !important;
-    width: auto !important;
-  }
-
-  .header-logo-img {
-    height: 38px !important;
-    width: auto !important;
-  }
-
-  .header nav {
-    width: auto !important;
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    justify-content: flex-end !important;
-    gap: 14px !important;
-    padding: 0 !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .header nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .header nav a,
-  .main-support-button {
-    font-size: 14px !important;
-    white-space: nowrap !important;
-    display: inline-block !important;
-  }
-
-  .hero {
-    height: 52vh !important;
-  }
-
-  .hero-overlay {
-    padding: 18px 28px !important;
-    width: 88% !important;
-    max-width: 480px !important;
-  }
-
-  .hero-overlay h2 {
-    font-size: 32px !important;
-    letter-spacing: 2px !important;
-  }
-
-  .home-brand-strip {
-    padding: 14px 20px !important;
-    gap: 28px !important;
-    justify-content: center !important;
-    height: auto !important;
-    overflow-x: visible !important;
-  }
-
-  .home-brand-strip .brand-logo-button {
-    height: 36px !important;
-  }
-
-  .home-brand-strip .brand-logo-button img {
-    max-width: 150px !important;
-  }
-
-  .section, .about-container, .page-container {
-    padding: 40px 16px !important;
-  }
-
-  h1 { font-size: 32px !important; }
-  h2 { font-size: 24px !important; }
-  .slider-img { height: 240px !important; }
-
-  .fpd-header-inner {
-    padding: 12px 16px !important;
-    flex-direction: row !important;
-    gap: 12px !important;
-  }
-  .fpd-logo img { height: 32px !important; }
-  .fpd-nav { gap: 14px !important; flex-wrap: nowrap !important; }
-  .fpd-nav-link { font-size: 13px !important; }
-  .fpd-section { padding: 40px 16px !important; }
-  .fpd-tv-models { grid-template-columns: repeat(3, 1fr) !important; padding: 0 16px !important; }
-  .fpd-tv-detail { padding: 0 16px 40px !important; }
-  .fpd-tv-detail-top { flex-direction: column; align-items: center !important; padding: 20px !important; }
-  .fpd-tv-detail-top img { width: 100% !important; max-width: 320px !important; height: auto !important; }
-  .fpd-tv-spec-grid { grid-template-columns: repeat(2, 1fr) !important; }
+.side-nav-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.ktc-main-media:hover .side-nav-bar { opacity: 1; }
+.side-nav-left { left: 0; }
+.side-nav-right { right: 0; }
+.nav-arrow-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-/* ─── MOBILE PHONES (max-width: 768px) ─── */
+.ktc-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hover-hint {
+  font-size: 13px;
+  color: #666;
+  margin-right: 8px;
+}
+.zoom-level {
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 30px;
+  text-align: center;
+}
+
+.ktc-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.ktc-highlight-tag {
+  background: #1a1b1e;
+  color: #fefdfb;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ktc-feature-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.ktc-feature-card {
+  background: #fefdfb;
+  border: 1px solid rgba(26,27,30,0.15);
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.feature-icon { font-size: 20px; }
+.feature-text { font-size: 14px; font-weight: 600; }
+
+.ktc-specs-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.ktc-specs-accordion {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.ktc-spec-category {
+  border: 1px solid #1a1b1e;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  background: #fefdfb;
+}
+.ktc-spec-category-header {
+  width: 100%;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+}
+.spec-cat-icon { font-size: 20px; }
+.spec-cat-label { flex: 1; }
+.spec-cat-count {
+  background: #f4f1ea;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.spec-cat-chevron { transition: transform 0.3s ease; }
+.ktc-spec-category.expanded .spec-cat-chevron { transform: rotate(180deg); }
+.ktc-spec-category-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.ktc-spec-category.expanded .ktc-spec-category-body {
+  max-height: 2000px;
+  padding: 0 24px 20px;
+}
+
+/* Mobile menu overlay for KTC page */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+}
+.mobile-menu-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  background: #fefdfb;
+  padding: 60px 24px 24px;
+  z-index: 2001;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+}
+.mobile-menu-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-menu-nav a {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(26,27,30,0.1);
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1b1e;
+}
+
+/* ==========================================================================
+   13. RESPONSIVE - MOBILE (max-width: 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
   html, body {
     max-width: 100%;
     overflow-x: hidden;
   }
 
-  .home-page {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  /* ===== HEADER: Mobile - clean horizontal nav ===== */
+  /* Header becomes hamburger */
   .header {
-    padding: 10px 12px !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0 !important;
-    min-height: 48px !important;
+    padding: 12px 16px;
+    justify-content: space-between;
   }
 
-  .header-logo-link,
+  .header-logo-link {
+    display: flex;
+  }
+
   .header-logo-img {
-    display: none !important;
+    height: 32px;
   }
 
-  .header nav {
-    width: 100% !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 2px 6px !important;
-    padding: 0 !important;
-    overflow-x: visible !important;
+  .mobile-menu-toggle {
+    display: flex;
   }
 
-  .header nav a,
-  .main-support-button {
-    font-size: 11px !important;
-    white-space: nowrap !important;
-    display: inline-block !important;
-    padding: 3px 5px !important;
-    letter-spacing: 0.3px !important;
+  .mobile-menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 998;
   }
 
-  .header nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .header nav a,
-  .main-support-button {
-    font-size: 13px !important;
-    white-space: nowrap !important;
-    display: inline-block !important;
-  }
-
-  /* Mobile dropdown fix */
-  .main-support-menu {
-    position: fixed !important;
-    top: 80px !important;
-    right: 10px !important;
-    left: auto !important;
-    transform: none !important;
-    z-index: 9999 !important;
-  }
-
-  /* ===== HERO ===== */
-  .hero {
-    height: 46vh !important;
-  }
-
-  .hero-overlay {
-    padding: 18px 28px !important;
-    width: 92% !important;
-    max-width: 480px !important;
-    border-radius: 14px !important;
-  }
-
-  .hero-overlay h2 {
-    font-size: 28px !important;
-    letter-spacing: 2px !important;
-    line-height: 1.3 !important;
-  }
-
-  /* ===== BRAND STRIP ===== */
-  .home-brand-strip {
-    padding: 12px 16px !important;
-    gap: 20px !important;
-    justify-content: center !important;
-    background: #111111 !important;
-    height: auto !important;
-    min-height: 50px !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    display: flex !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .home-brand-strip::-webkit-scrollbar {
-    display: none;
-  }
-
-  .home-brand-strip .brand-logo-button {
-    height: 32px !important;
-    width: auto !important;
-    min-width: unset !important;
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    flex: 0 0 auto !important;
-  }
-
-  .home-brand-strip .brand-logo-button img {
-    height: 100% !important;
-    width: auto !important;
-    max-width: 130px !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    object-fit: contain !important;
-  }
-
-  /* ===== CONTENT ===== */
-  .section, .about-container, .page-container {
-    padding: 32px 14px !important;
-  }
-
-  h1 { font-size: 28px !important; }
-  h2 { font-size: 22px !important; }
-  .slider-img { height: 200px !important; }
-
-  /* ===== KTC MONITOR SPECS ===== */
-  .ktc-spec-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 8px !important;
-  }
-
-  .spec-row {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
-    padding: 12px 10px !important;
+  .header-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
     background: #fefdfb;
-    border: 1px solid rgba(26, 27, 30, 0.1) !important;
-    border-radius: 8px;
-    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 24px 24px;
+    gap: 0;
+    transition: right 0.3s ease;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    z-index: 999;
+    overflow-y: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
   }
 
-  .spec-label {
-    font-size: 13px !important;
-    opacity: 0.8;
-    flex-shrink: 0 !important;
-    max-width: 50%;
+  .header-nav.open {
+    right: 0;
   }
 
-  .spec-value {
-    text-align: right !important;
-    padding-left: 0 !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    word-break: break-word !important;
-  }
-
-  .ktc-product-top { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-  .ktc-product-info, .ktc-media-container { width: 100%; }
-  .ktc-main-media { width: 100%; height: 220px; aspect-ratio: auto; }
-  .ktc-controls { justify-content: center; gap: 10px; }
-  .zoom-btn, .ktc-video-btn { width: 48%; padding: 10px; font-size: 13px; }
-
-  .fpd-dropdown-menu, .main-support-menu { right: 0; left: auto; transform: none; }
-  .ewaste-container { padding: 30px 16px; }
-  .arrow { width: 34px; height: 34px; }
-  .arrow.left { left: 4px; }
-  .arrow.right { right: 4px; }
-
-  .promoters-container { padding: 24px 16px 40px !important; }
-  .promoter-profile { flex-direction: column !important; gap: 14px !important; }
-  .promoter-copy h2 { font-size: 22px !important; }
-  .promoter-image { width: 60% !important; max-width: 200px !important; height: auto !important; }
-}
-
-/* ─── SMALL PHONES (max-width: 480px) ─── */
-@media (max-width: 480px) {
-  .header {
-    padding: 8px 12px 6px !important;
-    gap: 4px !important;
-  }
-
-  .header-logo-img {
-    display: none !important;
-  }
-
-  .header nav a,
+  .header-nav a,
   .main-support-button {
-    font-size: 10px !important;
-    padding: 2px 4px !important;
-    letter-spacing: 0.2px !important;
+    font-size: 16px;
+    padding: 14px 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(44,42,41,0.1);
   }
 
-  .header nav {
-    gap: 2px 6px !important;
+  .main-support-dropdown {
+    width: 100%;
   }
 
+  .main-support-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    display: none;
+    min-width: auto;
+  }
+
+  .main-support-dropdown.open .main-support-menu {
+    display: block;
+  }
+
+  /* Hero */
   .hero {
-    height: 42vh !important;
+    height: 50vh;
   }
-
   .hero-overlay {
-    padding: 12px 18px !important;
-    width: 92% !important;
-    border-radius: 12px !important;
+    padding: 16px 24px;
+    width: 90%;
   }
-
   .hero-overlay h2 {
-    font-size: 22px !important;
-    letter-spacing: 1.5px !important;
-    line-height: 1.25 !important;
+    font-size: 28px;
+    letter-spacing: 2px;
   }
 
+  /* Brand strip scrollable */
   .home-brand-strip {
-    padding: 10px 12px !important;
-    gap: 14px !important;
-    min-height: 44px !important;
+    padding: 12px 16px;
+    gap: 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
   }
+  .home-brand-strip::-webkit-scrollbar { display: none; }
+  .brand-logo-button { height: 36px; flex-shrink: 0; }
+  .brand-logo-button img { max-width: 150px; }
 
-  .home-brand-strip .brand-logo-button {
-    height: 28px !important;
+  /* Content */
+  .section, .about-container, .page-container {
+    padding: 40px 16px;
   }
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+  .slider-img { height: 240px; }
+  .arrow.left { left: 8px; }
+  .arrow.right { right: 8px; }
 
-  .home-brand-strip .brand-logo-button img {
-    max-width: 110px !important;
-  }
+  /* Leadership */
+  .promoters-container { padding: 24px 16px; }
+  .promoter-profile { flex-direction: column; gap: 20px; }
+  .promoter-image { width: 80%; max-width: 280px; height: auto; }
 
-  .footer {
-    padding: 12px 16px !important;
-  }
+  /* FPD */
+  .fpd-section { padding: 40px 20px; }
+  .fpd-tv-models { grid-template-columns: repeat(3, 1fr); padding: 0 16px; }
+  .fpd-tv-detail-top { flex-direction: column; padding: 20px; }
+  .fpd-tv-detail-top img { width: 100%; max-width: 320px; height: auto; }
+  .fpd-tv-spec-grid { grid-template-columns: repeat(2, 1fr); }
 
-  .footer p {
-    font-size: 12px !important;
-  }
+  /* KTC */
+  .ktc-hero { padding: 40px 16px 20px; }
+  .ktc-hero h1 { font-size: 36px; }
+  .ktc-models { padding: 0 16px; }
+  .ktc-model-scroll { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: flex-start; }
+  .ktc-model-scroll::-webkit-scrollbar { display: none; }
+  .ktc-model-chip { flex-shrink: 0; white-space: nowrap; }
+  .ktc-product-section { padding: 0 16px 40px; flex-direction: column; gap: 30px; }
+  .ktc-product-info { width: 100%; text-align: center; }
+  .ktc-product-info h2 { font-size: 36px; }
+  .ktc-product-summary p { padding-left: 0; border-left: none; text-align: center; }
+  .ktc-main-media { height: 280px; aspect-ratio: auto; }
+  .ktc-feature-cards { grid-template-columns: 1fr; }
+  .ktc-spec-grid { grid-template-columns: 1fr; }
+  .ktc-specs-section { padding: 30px 16px; }
+  .ktc-specs-title { font-size: 24px; }
+  .spec-row { padding: 12px 0; font-size: 14px; }
 }
 
 /* ==========================================================================
-   ZOOM BUTTONS & MOBILE ENHANCEMENTS
+   14. RESPONSIVE - SMALL PHONES (max-width: 480px)
    ========================================================================== */
-
-/* Desktop: show hover hint, hide mobile zoom UI */
-.hover-hint {
-  display: inline-flex !important;
-}
-
-.zoom-mobile-ui {
-  display: none !important;
-}
-
-@media (max-width: 768px) {
-  /* Hide hover hint on mobile (no hover) */
-  .hover-hint {
-    display: none !important;
-  }
-
-  /* Show zoom UI on mobile */
-  .zoom-mobile-ui {
-    display: inline-flex !important;
-  }
-
-  /* Make KTC product image bigger on mobile */
-  .ktc-main-media {
-    height: 320px !important;
-    aspect-ratio: auto !important;
-  }
-
-  /* KTC controls wrap better on mobile */
-  .ktc-controls {
-    justify-content: center !important;
-    gap: 8px !important;
-  }
-
-  /* Model selector horizontal scroll on mobile */
-  .ktc-models {
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    justify-content: flex-start !important;
-    padding: 0 16px !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .ktc-models::-webkit-scrollbar {
-    display: none;
-  }
-
-  .ktc-model-card {
-    flex: 0 0 auto !important;
-    white-space: nowrap !important;
-  }
-
-  /* Product info centered on mobile */
-  .ktc-product-info {
-    text-align: center !important;
-    width: 100% !important;
-  }
-
-  .ktc-product-info h2 {
-    font-size: 36px !important;
-  }
-
-  .ktc-product-summary p {
-    padding-left: 0 !important;
-    border-left: none !important;
-    text-align: center !important;
-  }
-
-  /* Specs single column on mobile */
-  .ktc-spec-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .spec-row {
-    padding: 12px 10px !important;
-    font-size: 14px !important;
-  }
-
-  /* Features 2-col on mobile */
-  .ktc-features-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
-  }
-
-  .feature-card {
-    padding: 14px !important;
-    font-size: 13px !important;
-  }
-}
-
 @media (max-width: 480px) {
-  .ktc-main-media {
-    height: 260px !important;
-  }
+  .header { padding: 10px 12px; }
+  .header-logo-img { height: 28px; }
 
-  .ktc-product-info h2 {
-    font-size: 30px !important;
-  }
+  .hero { height: 45vh; }
+  .hero-overlay { padding: 12px 20px; border-radius: 12px; }
+  .hero-overlay h2 { font-size: 22px; letter-spacing: 1.5px; }
 
-  .ktc-features-grid {
-    grid-template-columns: 1fr !important;
-  }
+  .home-brand-strip { padding: 10px 12px; gap: 16px; }
+  .brand-logo-button { height: 30px; }
+  .brand-logo-button img { max-width: 120px; }
 
-  .ktc-model-card {
-    padding: 8px 18px !important;
-    font-size: 13px !important;
-  }
+  .footer { padding: 12px 16px; }
+  .footer p { font-size: 12px; }
+
+  .fpd-tv-models { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .fpd-tv-card { padding: 10px; }
+  .fpd-tv-card img { height: 60px; }
+  .fpd-tv-spec-grid { grid-template-columns: 1fr; }
+
+  .ktc-main-media { height: 220px; }
+  .ktc-product-info h2 { font-size: 28px; }
+  .ktc-model-chip { padding: 8px 18px; font-size: 14px; }
 }
