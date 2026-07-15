@@ -1122,15 +1122,15 @@ body.fpd-page .footer {
   /* --- HEADER --- */
   .header {
     padding: 10px 16px;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   .header-logo-link {
-    display: flex;
+    display: none;
   }
 
   .header-logo-img {
-    height: 32px;
+    display: none;
   }
 
   .mobile-menu-toggle {
@@ -1345,8 +1345,9 @@ body.fpd-page .footer {
    14. RESPONSIVE - SMALL PHONES (max-width: 480px)
    ========================================================================== */
 @media (max-width: 480px) {
-  .header { padding: 10px 12px; }
-  .header-logo-img { height: 28px; }
+  .header { padding: 10px 12px; justify-content: flex-end; }
+  .header-logo-link { display: none; }
+  .header-logo-img { display: none; }
 
   .hero { height: 45vh; }
   .hero-overlay { padding: 12px 20px; border-radius: 12px; }
