@@ -18,8 +18,10 @@ export default function Header() {
         setSupportOpen(false);
       }
     }
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   // Lock body scroll when mobile menu is open
@@ -29,7 +31,10 @@ export default function Header() {
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   const navLinks = [
@@ -42,15 +47,12 @@ export default function Header() {
 
   return (
     <header className="header">
+      {/* Text Logo */}
       <Link href="/" className="header-logo-link">
-        <img
-          src="/images/Ogbyf.jpg"
-          alt="KTC India Logo"
-          className="header-logo-img"
-        />
+        <span className="header-logo-text">KTC INDIA</span>
       </Link>
 
-      {/* Desktop + Mobile nav - className="header-nav" is CRITICAL */}
+      {/* Desktop + Mobile Navigation */}
       <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
         {navLinks.map((link) => (
           <Link
@@ -68,12 +70,21 @@ export default function Header() {
             className="main-support-button"
             onClick={() => setSupportOpen((prev) => !prev)}
           >
-            Support <span className="support-chevron">{supportOpen ? "▴" : "▾"}</span>
+            Support{" "}
+            <span className="support-chevron">
+              {supportOpen ? "▴" : "▾"}
+            </span>
           </button>
 
           {supportOpen && (
             <div className="main-support-menu">
-              <Link href="/e-waste" onClick={() => { setSupportOpen(false); setMenuOpen(false); }}>
+              <Link
+                href="/e-waste"
+                onClick={() => {
+                  setSupportOpen(false);
+                  setMenuOpen(false);
+                }}
+              >
                 E-Waste Management
               </Link>
             </div>
@@ -81,7 +92,7 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Hamburger button - visible only on mobile via CSS */}
+      {/* Mobile Hamburger */}
       <button
         type="button"
         className={`mobile-menu-toggle ${menuOpen ? "active" : ""}`}
@@ -94,9 +105,12 @@ export default function Header() {
         <span></span>
       </button>
 
-      {/* Mobile overlay backdrop */}
+      {/* Mobile Backdrop */}
       {menuOpen && (
-        <div className="mobile-menu-backdrop" onClick={() => setMenuOpen(false)} />
+        <div
+          className="mobile-menu-backdrop"
+          onClick={() => setMenuOpen(false)}
+        />
       )}
     </header>
   );
