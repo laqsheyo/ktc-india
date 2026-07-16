@@ -20,6 +20,7 @@ export default function Header() {
     }
 
     document.addEventListener("mousedown", handleClickOutside);
+
     return () =>
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -47,12 +48,6 @@ export default function Header() {
 
   return (
     <header className="header">
-      {/* Text Logo */}
-      <Link href="/" className="header-logo-link">
-        <span className="header-logo-text">KTC INDIA</span>
-      </Link>
-
-      {/* Desktop + Mobile Navigation */}
       <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
         {navLinks.map((link) => (
           <Link
@@ -92,7 +87,6 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile Hamburger */}
       <button
         type="button"
         className={`mobile-menu-toggle ${menuOpen ? "active" : ""}`}
@@ -105,7 +99,6 @@ export default function Header() {
         <span></span>
       </button>
 
-      {/* Mobile Backdrop */}
       {menuOpen && (
         <div
           className="mobile-menu-backdrop"
