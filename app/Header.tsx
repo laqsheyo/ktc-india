@@ -46,7 +46,40 @@ export default function Header() {
 
   return (
     <header className="header">
+      {/* Logo / brand area - left side */}
+      <Link href="/" className="header-logo-link">
+        <img
+          src="/logo.png"
+          alt="KTC India"
+          className="header-logo-img"
+        />
+      </Link>
+
+      {/* Hamburger - RIGHT side */}
+      <button
+        type="button"
+        className={`mobile-menu-toggle ${menuOpen ? "active" : ""}`}
+        onClick={() => setMenuOpen((prev) => !prev)}
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      {/* Navigation drawer */}
       <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
+        {/* Close button inside drawer */}
+        <button
+          type="button"
+          className="mobile-menu-close"
+          onClick={() => setMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          ✕
+        </button>
+
         {navLinks.map((link) => (
           <Link
             key={link.href}
@@ -57,7 +90,11 @@ export default function Header() {
           </Link>
         ))}
 
-        <div className="main-support-dropdown" ref={dropdownRef}>
+        {/* Support dropdown with .open class */}
+        <div
+          className={`main-support-dropdown ${supportOpen ? "open" : ""}`}
+          ref={dropdownRef}
+        >
           <button
             type="button"
             className="main-support-button"
@@ -85,18 +122,7 @@ export default function Header() {
         </div>
       </nav>
 
-      <button
-        type="button"
-        className={`mobile-menu-toggle ${menuOpen ? "active" : ""}`}
-        onClick={() => setMenuOpen((prev) => !prev)}
-        aria-label={menuOpen ? "Close menu" : "Open menu"}
-        aria-expanded={menuOpen}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
+      {/* Backdrop */}
       {menuOpen && (
         <div
           className="mobile-menu-backdrop"
