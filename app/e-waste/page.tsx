@@ -8,7 +8,7 @@ export default function EWastePage() {
 
         <p>
           At KTC INDIA DISPLAY LLP, we understand that our responsibility
-          doesn’t end at selling you our products.
+          doesn't end at selling you our products.
         </p>
 
         <p>
@@ -37,15 +37,7 @@ export default function EWastePage() {
           dismantle, and recycle e-waste across the country.
         </p>
 
-        <div
-          style={{
-            background: "#111",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: "16px",
-            padding: "30px",
-            marginBottom: "30px",
-          }}
-        >
+        <div className="ewaste-card">
           <h2>Recycling Partner Details</h2>
 
           <p>
@@ -59,15 +51,7 @@ export default function EWastePage() {
           <p><strong>Customer Grievances:</strong> +91-8130393629</p>
         </div>
 
-        <div
-          style={{
-            background: "#111",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: "16px",
-            padding: "30px",
-            marginBottom: "30px",
-          }}
-        >
+        <div className="ewaste-card">
           <h2>Customer Grievance Contact – KTC INDIA DISPLAY LLP</h2>
 
           <p><strong>Phone:</strong> 0124 490 8294</p>

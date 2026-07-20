@@ -639,23 +639,32 @@ body.fpd-page .footer {
 .ewaste-container h2 { font-size: 34px; margin-top: 40px; margin-bottom: 20px; }
 .ewaste-container p { font-size: 18px; line-height: 1.9; margin-bottom: 24px; font-weight: 500; }
 
-/* E-Waste dark section fix - white text on dark bg */
-.ewaste-page div[style*="background:"],
-.ewaste-page .dark-section,
-.ewaste-page [style*="background-color: #1a1b1e"],
-.ewaste-page [style*="background-color: #111"],
-.ewaste-page [style*="background-color: #000"] {
-  color: #ffffff !important;
+/* E-Waste info cards - dark background with white text */
+.ewaste-card {
+  background: #111111;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 30px;
+  color: #ffffff;
 }
-.ewaste-page div[style*="background:"] h2,
-.ewaste-page div[style*="background:"] p,
-.ewaste-page div[style*="background:"] strong,
-.ewaste-page div[style*="background:"] span {
-  color: #ffffff !important;
+.ewaste-card h2 {
+  color: #ffffff;
+  margin-bottom: 16px;
 }
-.ewaste-page div[style*="background:"] a {
-  color: #d4af37 !important;
+.ewaste-card p {
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+.ewaste-card strong {
+  color: #ffffff;
+}
+.ewaste-card a {
+  color: #d4af37;
   text-decoration: underline;
+}
+.ewaste-card a:hover {
+  color: #f0d78c;
 }
 
 /* ==========================================================================
@@ -1107,6 +1116,11 @@ body.fpd-page .footer {
   font-size: 16px;
   font-weight: 600;
   color: #1a1b1e;
+}
+
+/* Mobile menu close button - hidden on desktop */
+.mobile-menu-close {
+  display: none;
 }
 
 /* ==========================================================================
