@@ -639,32 +639,33 @@ body.fpd-page .footer {
 .ewaste-container h2 { font-size: 34px; margin-top: 40px; margin-bottom: 20px; }
 .ewaste-container p { font-size: 18px; line-height: 1.9; margin-bottom: 24px; font-weight: 500; }
 
-/* E-Waste info cards - dark background with white text */
+/* E-Waste info cards - white background with black text */
 .ewaste-card {
-  background: #111111;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: #ffffff;
+  border: 1px solid rgba(26, 27, 30, 0.15);
   border-radius: 16px;
   padding: 30px;
   margin-bottom: 30px;
-  color: #ffffff;
+  color: #1a1b1e;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 .ewaste-card h2 {
-  color: #ffffff;
+  color: #1a1b1e;
   margin-bottom: 16px;
 }
 .ewaste-card p {
-  color: #ffffff;
+  color: #1a1b1e;
   margin-bottom: 12px;
 }
 .ewaste-card strong {
-  color: #ffffff;
+  color: #1a1b1e;
 }
 .ewaste-card a {
-  color: #d4af37;
+  color: #0066cc;
   text-decoration: underline;
 }
 .ewaste-card a:hover {
-  color: #f0d78c;
+  color: #004499;
 }
 
 /* ==========================================================================
