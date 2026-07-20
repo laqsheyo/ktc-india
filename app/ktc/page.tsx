@@ -2,6 +2,7 @@
 
 import { useState, useRef, MouseEvent, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Script from "next/script";
 
 interface MonitorModel {
   name: string;
@@ -822,6 +823,8 @@ export default function KTCPage() {
   const [showVideo, setShowVideo] = useState<boolean>(false);
   const [isChanging, setIsChanging] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["display"]));
+  const [payLoading, setPayLoading] = useState(false);
+  const [payStatus, setPayStatus] = useState<string | null>(null);
 
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
   const [zoomLevel, setZoomLevel] = useState<number>(1);
@@ -902,6 +905,63 @@ export default function KTCPage() {
       return newLevel;
     });
   };
+  const buyNow = async () => {
+    setPayLoading(true);
+    setPayStatus(null);
+    try {
+      const res = await fetch("/api/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: 14999 }),
+      });
+      const data = await res.json();
+      if (!data.orderId) {
+        throw new Error(data.error || "Failed to create order");
+      }
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_TFip8ar2ihtAbp",
+        amount: data.amount,
+        currency: data.currency || "INR",
+        name: "KTC India",
+        description: `Purchase ${selectedModel.name}`,
+        order_id: data.orderId,
+        handler: async (response: any) => {
+          const verifyRes = await fetch("/api/verify-payment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_signature: response.razorpay_signature,
+            }),
+          });
+          const verifyData = await verifyRes.json();
+          if (verifyData.success) {
+            setPayStatus("Payment Successful");
+          } else {
+            setPayStatus("Payment Failed");
+          }
+        },
+        prefill: {
+          name: "",
+          email: "",
+          contact: "",
+        },
+        theme: {
+          color: "#1a1b1e",
+        },
+      };
+
+      const rzp = new (window as any).Razorpay(options);
+      rzp.open();
+    } catch (err: any) {
+      setPayStatus(err.message || "Payment Failed");
+    } finally {
+      setPayLoading(false);
+    }
+  };
+
 
   const toggleSection = (key: string) => {
     setExpandedSections((prev) => {
@@ -1053,6 +1113,35 @@ export default function KTCPage() {
               </div>
             ))}
           </div>
+
+          {selectedModel.name === "H15F9" && (
+            <div style={{ marginTop: "24px" }}>
+              <button
+                type="button"
+                onClick={buyNow}
+                disabled={payLoading}
+                style={{
+                  background: "#1a1b1e",
+                  color: "#fefdfb",
+                  padding: "14px 36px",
+                  borderRadius: "30px",
+                  border: "none",
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  cursor: payLoading ? "not-allowed" : "pointer",
+                  opacity: payLoading ? 0.6 : 1,
+                  transition: "all 0.2s ease",
+                }}
+              >
+                {payLoading ? "Processing..." : "Buy Now — ₹14,999"}
+              </button>
+              {payStatus && (
+                <p style={{ marginTop: "12px", fontWeight: 600, fontSize: "14px" }}>
+                  {payStatus}
+                </p>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -1105,6 +1194,11 @@ export default function KTCPage() {
           )}
         </div>
       </section>
+
+      <Script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        strategy="lazyOnload"
+      />
     </main>
   );
 }
