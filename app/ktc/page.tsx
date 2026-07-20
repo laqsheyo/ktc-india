@@ -1142,7 +1142,7 @@ export default function KTCPage() {
                   transition: "all 0.2s ease",
                 }}
               >
-                {payLoading ? "Processing..." : "Buy Now — ₹14,999"}
+                {payLoading ? "Processing..." : "Buy Now — ₹1"}
               </button>
               {payStatus && (
                 <p style={{ marginTop: "12px", fontWeight: 600, fontSize: "14px" }}>
