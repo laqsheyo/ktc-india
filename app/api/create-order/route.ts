@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// Hardcoded test credentials for reliability
+const RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY_ID || "rzp_test_TFip8ar2ihtAbp";
+const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET || "kwjs05r5raoqnd1a4drWCVws";
+
 export async function POST(req: NextRequest) {
   try {
     const { amount } = await req.json();
@@ -8,12 +12,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Amount is required" }, { status: 400 });
     }
 
-    // Dynamically import razorpay to avoid build-time env issues
+    // Dynamically import razorpay
     const { default: Razorpay } = await import("razorpay");
 
     const razorpay = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID!,
-      key_secret: process.env.RAZORPAY_KEY_SECRET!,
+      key_id: RAZORPAY_KEY_ID,
+      key_secret: RAZORPAY_KEY_SECRET,
     });
 
     const options = {
@@ -32,7 +36,7 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error("Create order error:", error);
     return NextResponse.json(
-      { error: error.message || "Failed to create order" },
+      { error: error.message || "Failed to create order", details: error.error?.description || "" },
       { status: 500 }
     );
   }

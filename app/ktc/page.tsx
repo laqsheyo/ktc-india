@@ -914,13 +914,22 @@ export default function KTCPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: 14999 }),
       });
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || `Server error: ${res.status}`);
+      }
+
       const data = await res.json();
       if (!data.orderId) {
         throw new Error(data.error || "Failed to create order");
       }
 
+      // Hardcoded test key for reliability
+      const RAZORPAY_KEY = "rzp_test_TFip8ar2ihtAbp";
+
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_TFip8ar2ihtAbp",
+        key: RAZORPAY_KEY,
         amount: data.amount,
         currency: data.currency || "INR",
         name: "KTC India",
@@ -938,9 +947,9 @@ export default function KTCPage() {
           });
           const verifyData = await verifyRes.json();
           if (verifyData.success) {
-            setPayStatus("Payment Successful");
+            setPayStatus("✅ Payment Successful");
           } else {
-            setPayStatus("Payment Failed");
+            setPayStatus("❌ Payment Failed: " + (verifyData.message || "Verification failed"));
           }
         },
         prefill: {
@@ -956,7 +965,7 @@ export default function KTCPage() {
       const rzp = new (window as any).Razorpay(options);
       rzp.open();
     } catch (err: any) {
-      setPayStatus(err.message || "Payment Failed");
+      setPayStatus("❌ " + (err.message || "Payment Failed"));
     } finally {
       setPayLoading(false);
     }
