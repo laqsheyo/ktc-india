@@ -314,23 +314,6 @@ h2 {
   gap: 14px;
   margin-top: 30px;
 }
-.contact-submit-btn {
-  margin-top: 20px;
-  padding: 14px 38px;
-  background: #1a1b1e;
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.contact-submit-btn:hover {
-  background: #000;
-  transform: translateY(-2px);
-}
 
 .contact-form input,
 .contact-form textarea {
@@ -1290,37 +1273,22 @@ body.fpd-page .footer {
   }
 
   /* --- BRAND STRIP --- */
- .home-brand-strip {
-  background: #fbf9f4;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  padding: 20px;
-}
-
-.brand-logo-button {
-  background: #ffffff;
-  border: 1px solid #d8d8d8;
-  border-radius: 14px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(0,0,0,.05);
-  transition: .25s ease;
-}
-
-.brand-logo-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,.08);
-}
-
-.brand-logo-button img {
-  width: auto;
-  max-width: 170px;
-  max-height: 60px;
-  object-fit: contain;
-}
+  .home-brand-strip {
+    padding: 14px 16px;
+    gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .brand-logo-button {
+    height: 56px;
+    flex-shrink: 0;
+  }
+  .brand-logo-button img {
+    max-width: 180px;
+    height: 100%;
+  }
 
   /* --- CONTENT / ABOUT --- */
   .section, .about-container, .page-container {
@@ -1458,20 +1426,9 @@ body.fpd-page .footer {
   .hero-overlay { padding: 16px 22px; border-radius: 12px; }
   .hero-overlay h2 { font-size: 22px; letter-spacing: 1.5px; }
 
-.home-brand-strip {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  padding: 16px;
-}
-
-.brand-logo-button {
-  height: 85px;
-}
-
-.brand-logo-button img {
-  max-width: 130px;
-  max-height: 48px;
-}
+  .home-brand-strip { padding: 12px 12px; gap: 18px; }
+  .brand-logo-button { height: 48px; }
+  .brand-logo-button img { max-width: 140px; }
 
   .footer { padding: 12px 16px; }
   .footer p { font-size: 12px; }
