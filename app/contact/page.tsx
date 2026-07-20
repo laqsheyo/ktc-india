@@ -1,13 +1,15 @@
 export default function Contact() {
   return (
     <main className="section">
-
       <h1>KTC India Display LLP</h1>
 
       <p>
-        707-710 Paras Trinity, Maidawas Rd, Sector 63,<br />
-        Gurugram, Haryana 122098<br />
-        Phone: <a href="tel:+917683005899">0124 490 8294</a><br />
+        707-710 Paras Trinity, Maidawas Rd, Sector 63,
+        <br />
+        Gurugram, Haryana 122098
+        <br />
+        Phone: <a href="tel:+917683005899">0124 490 8294</a>
+        <br />
         Email: <a href="mailto:Support@ktcindia.co">Support@ktcindia.co</a>
       </p>
 
@@ -34,6 +36,7 @@ export default function Contact() {
 
       {/* HEADING */}
       <h1 className="contact-heading">Send an Enquiry or Feedback</h1>
+
       <p>We will get back to you as soon as possible.</p>
 
       {/* CONTACT FORM */}
@@ -42,15 +45,30 @@ export default function Contact() {
         method="POST"
         className="contact-form"
       >
-        <input type="text" name="name" placeholder="Your Name" required />
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+        />
 
-        <input type="email" name="email" placeholder="Your Email" required />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        />
 
-        <textarea name="message" placeholder="Your Message" required />
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          required
+        />
 
-        <button type="submit">Send Message</button>
+        <button type="submit" className="contact-submit-btn">
+          Send Message
+        </button>
       </form>
-
     </main>
   );
 }

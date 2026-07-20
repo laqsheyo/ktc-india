@@ -314,6 +314,23 @@ h2 {
   gap: 14px;
   margin-top: 30px;
 }
+.contact-submit-btn {
+  margin-top: 20px;
+  padding: 14px 38px;
+  background: #1a1b1e;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.contact-submit-btn:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
 
 .contact-form input,
 .contact-form textarea {
