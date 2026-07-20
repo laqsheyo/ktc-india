@@ -48,11 +48,11 @@ export default function Header() {
     <header className="header">
       {/* Logo / brand area - left side */}
       <Link href="/" className="header-logo-link">
-        <img
-          src="/images/logo"
-          alt="KTC India"
-          className="header-logo-img"
-        />
+       <img
+  src="/images/logo.png"
+  alt="KTC India"
+  className="header-logo-img"
+/>
       </Link>
 
       {/* Hamburger - RIGHT side */}
