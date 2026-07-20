@@ -49,7 +49,7 @@ export default function Header() {
       {/* Logo / brand area - left side */}
       <Link href="/" className="header-logo-link">
         <img
-          src="/logo.png"
+          src="/images/logo"
           alt="KTC India"
           className="header-logo-img"
         />
