@@ -57,7 +57,8 @@ export default function Header() {
           </Link>
         ))}
 
-        <div className="main-support-dropdown" ref={dropdownRef}>
+        {/* Support Dropdown - Fixed with open class */}
+        <div className={`main-support-dropdown ${supportOpen ? "open" : ""}`} ref={dropdownRef}>
           <button
             type="button"
             className="main-support-button"
@@ -85,6 +86,7 @@ export default function Header() {
         </div>
       </nav>
 
+      {/* Hamburger moved to right via CSS */}
       <button
         type="button"
         className={`mobile-menu-toggle ${menuOpen ? "active" : ""}`}
